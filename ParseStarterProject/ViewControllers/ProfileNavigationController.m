@@ -1,20 +1,18 @@
 //
-//  AddCatchViewController.m
+//  ProfileNavigationController.m
 //  TopFish
 //
-//  Created by Brycen Rogers on 8/10/13.
+//  Created by Brycen Rogers on 9/4/13.
 //
 //
 
-#import "AddCatchViewController.h"
+#import "ProfileNavigationController.h"
 
-@interface AddCatchViewController ()
+@interface ProfileNavigationController ()
 
 @end
 
-@implementation AddCatchViewController
-
-@synthesize addCatchInfo;
+@implementation ProfileNavigationController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -29,8 +27,6 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    
-    
 }
 
 - (void)didReceiveMemoryWarning
@@ -39,7 +35,4 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)startWithInfoButton:(UIButton *)sender {
-    [self performSegueWithIdentifier:@"addCatchInfo" sender:sender];
-}
 @end

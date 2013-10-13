@@ -22,7 +22,7 @@
     // [PFFacebookUtils initializeFacebook];
     // ****************************************************************************
 
-    [PFUser enableAutomaticUser];
+    //[PFUser enableAutomaticUser];
     
     PFACL *defaultACL = [PFACL ACL];
 
@@ -42,7 +42,7 @@
                                                     UIRemoteNotificationTypeAlert|
                                                     UIRemoteNotificationTypeSound];
     
-    [PFUser logInWithUsername:@"brycen_test" password:@"brycen_test"];
+    //[PFUser logInWithUsername:@"brycen_test" password:@"brycen_test"];
     
     return YES;
 }

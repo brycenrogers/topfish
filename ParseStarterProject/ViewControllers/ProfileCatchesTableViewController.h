@@ -2,17 +2,12 @@
 //  ProfileCatchesTableViewController.h
 //  TopFish
 //
-//  Created by Brycen Rogers on 8/11/13.
+//  Created by Brycen Rogers on 9/4/13.
 //
 //
 
-#import <UIKit/UIKit.h>
+#import <Parse/Parse.h>
 
-@interface ProfileCatchesTableViewController : UITableViewController
-
-@property (nonatomic) NSMutableArray *catches;
-@property (weak, nonatomic) IBOutlet UITableView *catchesTable;
-
-- (void)fetchCatchesData;
+@interface ProfileCatchesTableViewController : PFQueryTableViewController
 
 @end

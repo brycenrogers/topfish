@@ -12,11 +12,17 @@
 
 + (NSString *)parseClassName;
 
-@property (retain) NSString *name;
 @property int length;
 @property int weight;
 @property (retain) NSString *lengthMeasurement;
 @property (retain) NSString *weightMeasurement;
+@property (retain) NSString *species;
+@property (retain) NSString *method;
+@property (retain) NSString *notes;
+@property BOOL rankedCatch;
+@property BOOL tellMyFriends;
 @property (retain) PFUser *user;
+@property (retain) PFGeoPoint *location;
+@property (retain) PFFile *photo;
 
 @end

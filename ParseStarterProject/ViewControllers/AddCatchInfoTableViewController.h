@@ -7,23 +7,44 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "EAActionSheetPicker.h"
+#import "CatchMapAnnotation.h"
+#import "SpeciesList.h"
+#import "MethodListTableViewController.h"
+#import "AddCatchNotesViewController.h"
 
-@interface AddCatchInfoTableViewController : UITableViewController<UITextFieldDelegate>
+@interface AddCatchInfoTableViewController :
+UITableViewController<UITextFieldDelegate,
+UIImagePickerControllerDelegate,
+UINavigationControllerDelegate,
+SpeciesListSelector,
+MethodListSelector,
+CatchNotesDelegate>
 {
-    EAActionSheetPicker *lengthPicker;
-    EAActionSheetPicker *weightPicker;
+    UIToolbar *dismissView;
+    UIImage *catchPhoto;
+    UIView *loadingOverlay;
+    UIProgressView *uploadProgressView;
+    UIImage *defaultFishPhoto;
 }
+
 @property (weak, nonatomic) IBOutlet UITextField *lengthMeasurementField;
 @property (weak, nonatomic) IBOutlet UITextField *weightMeasurementField;
-@property (weak, nonatomic) IBOutlet UITextField *catchNameField;
 @property (weak, nonatomic) IBOutlet UITextField *catchLengthField;
 @property (weak, nonatomic) IBOutlet UITextField *catchWeightField;
+@property (weak, nonatomic) IBOutlet UIImageView *selectedPhoto;
+@property (weak, nonatomic) IBOutlet UISwitch *rankedCatchSwitch;
+@property (weak, nonatomic) IBOutlet UISwitch *tellMyFriendsSwitch;
+@property (weak, nonatomic) IBOutlet UILabel *selectedLocationLabel;
+@property (weak, nonatomic) IBOutlet UILabel *selectedMethodLabel;
+@property (weak, nonatomic) IBOutlet UILabel *selectedSpeciesLabel;
+@property (weak, nonatomic) IBOutlet UILabel *catchNotesLabel;
+
+@property (nonatomic) CLLocationCoordinate2D catchAnnotationCoordinate;
+@property (nonatomic) NSString *notesText;
 
 - (IBAction)selectWeightMeasurement:(UIButton *)sender;
 - (IBAction)selectLengthMeasurement:(UIButton *)sender;
-- (IBAction)saveNewCatch:(UIBarButtonItem *)sender;
-- (IBAction)cancelNewCatch:(UIBarButtonItem *)sender;
-- (IBAction)topSaveNewCatch:(id)sender;
+- (IBAction)clearNewCatchForm:(UIBarButtonItem *)sender;
+- (IBAction)saveCatch:(UIButton *)sender;
 
 @end

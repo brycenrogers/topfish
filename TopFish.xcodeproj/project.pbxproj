@@ -21,13 +21,37 @@
 		09ABC08213A1D52D009C3FCF /* TopFishAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 09ABC08113A1D52D009C3FCF /* TopFishAppDelegate.m */; };
 		09ABC08813A1D52E009C3FCF /* TopFishViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09ABC08713A1D52E009C3FCF /* TopFishViewController.m */; };
 		09BEF34C13D51C3F001BBCDB /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09BEF34B13D51C3F001BBCDB /* Security.framework */; };
+		1818F01117D7FD8F00EF425C /* LeaderboardTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1818F01017D7FD8F00EF425C /* LeaderboardTableViewController.m */; };
+		1818F01517D8046F00EF425C /* ProfileCatchesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1818F01417D8046F00EF425C /* ProfileCatchesTableViewController.m */; };
+		1818F01717D80C8500EF425C /* fish-default-photo.png in Resources */ = {isa = PBXBuildFile; fileRef = 1818F01617D80C8500EF425C /* fish-default-photo.png */; };
+		1818F01A17D81E5A00EF425C /* ProfileTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1818F01917D81E5A00EF425C /* ProfileTableViewController.m */; };
+		1818F01D17D81E9D00EF425C /* ProfileNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1818F01C17D81E9D00EF425C /* ProfileNavigationController.m */; };
+		1844C011180AEE4A0064BC19 /* MethodList.m in Sources */ = {isa = PBXBuildFile; fileRef = 1844C010180AEE4A0064BC19 /* MethodList.m */; };
+		1846418917EFCEA10080D7FF /* Fish.m in Sources */ = {isa = PBXBuildFile; fileRef = 1846418817EFCEA10080D7FF /* Fish.m */; };
+		185BA39D17EF45DF001E2481 /* WeightMeasurementOptionsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 185BA39C17EF45DF001E2481 /* WeightMeasurementOptionsTableViewController.m */; };
+		185E58BC17D529BA006375B3 /* AddCatchNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 185E58BB17D529BA006375B3 /* AddCatchNavigationController.m */; };
+		185E58BF17D52EF9006375B3 /* CatchAddedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 185E58BE17D52EF9006375B3 /* CatchAddedViewController.m */; };
+		185E58C217D5405C006375B3 /* AddCatchNotesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 185E58C117D5405C006375B3 /* AddCatchNotesViewController.m */; };
+		185E58C517D560DC006375B3 /* CatchPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 185E58C417D560DC006375B3 /* CatchPhoto.m */; };
+		185E58C917D6C60C006375B3 /* CatchesMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 185E58C817D6C60C006375B3 /* CatchesMapViewController.m */; };
+		185E58CD17D6E470006375B3 /* LeaderboardNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 185E58CC17D6E470006375B3 /* LeaderboardNavigationController.m */; };
+		186C894C17EE521900CF3ECC /* LengthMeasurementOptionsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 186C894B17EE521900CF3ECC /* LengthMeasurementOptionsTableViewController.m */; };
+		18A25CF217EFAFB6007A43F6 /* SpeciesList.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A25CF117EFAFB6007A43F6 /* SpeciesList.m */; };
+		18A25CF617EFB662007A43F6 /* SpeciesListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A25CF517EFB662007A43F6 /* SpeciesListTableViewController.m */; };
 		18A7DB9917B6BB2900471456 /* Catch.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A7DB9817B6BB2900471456 /* Catch.m */; };
 		18A7DB9B17B6DA1C00471456 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18A7DB9A17B6DA1C00471456 /* MainStoryboard.storyboard */; };
-		18A7DB9F17B6DF2E00471456 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A7DB9E17B6DF2E00471456 /* ProfileViewController.m */; };
-		18A7DBA217B6E17800471456 /* AddCatchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A7DBA117B6E17800471456 /* AddCatchViewController.m */; };
 		18A7DBA517B6E5AE00471456 /* AddCatchInfoTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A7DBA417B6E5AE00471456 /* AddCatchInfoTableViewController.m */; };
-		18A7DBAD17B852E400471456 /* EAActionSheetPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A7DBAC17B852E400471456 /* EAActionSheetPicker.m */; };
-		18A7DBB017B86B6600471456 /* ProfileCatchesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A7DBAF17B86B6600471456 /* ProfileCatchesTableViewController.m */; };
+		18B1012F1808DE5300330ECB /* UserLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B1012E1808DE5300330ECB /* UserLoginViewController.m */; };
+		18B101321808DED800330ECB /* UserSignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B101311808DED800330ECB /* UserSignupViewController.m */; };
+		18C1C0B0180A18B9002AE1F8 /* MethodListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C1C0AF180A18B9002AE1F8 /* MethodListTableViewController.m */; };
+		18C1C0B3180A193C002AE1F8 /* FilterTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C1C0B2180A193C002AE1F8 /* FilterTableViewController.m */; };
+		18DB96ED17C9103B00BFD184 /* TakePhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DB96EC17C9103B00BFD184 /* TakePhotoViewController.m */; };
+		18DB96F017C9884900BFD184 /* CustomTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DB96EF17C9884900BFD184 /* CustomTabBarController.m */; };
+		18DB96F317C9901600BFD184 /* capture-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 18DB96F117C9901600BFD184 /* capture-button.png */; };
+		18DB96F417C9901600BFD184 /* capture-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18DB96F217C9901600BFD184 /* capture-button@2x.png */; };
+		18DB96F617CA4FA400BFD184 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18DB96F517CA4FA400BFD184 /* MapKit.framework */; };
+		18DB96F917CA518800BFD184 /* AddCatchMapLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DB96F817CA518800BFD184 /* AddCatchMapLocationViewController.m */; };
+		18DB96FC17CBB92100BFD184 /* CatchMapAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DB96FB17CBB92100BFD184 /* CatchMapAnnotation.m */; };
 		2FCDD6B014A573F500295AAC /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FCDD6AF14A573F500295AAC /* QuartzCore.framework */; };
 		4998650515BF305000803E05 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4998650415BF305000803E05 /* StoreKit.framework */; };
 		743D7B6D157DA60100084B67 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 743D7B6C157DA60100084B67 /* CoreGraphics.framework */; };
@@ -57,19 +81,63 @@
 		09ABC08613A1D52E009C3FCF /* TopFishViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TopFishViewController.h; sourceTree = "<group>"; };
 		09ABC08713A1D52E009C3FCF /* TopFishViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TopFishViewController.m; sourceTree = "<group>"; };
 		09BEF34B13D51C3F001BBCDB /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		1818F00F17D7FD8F00EF425C /* LeaderboardTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LeaderboardTableViewController.h; path = ViewControllers/LeaderboardTableViewController.h; sourceTree = "<group>"; };
+		1818F01017D7FD8F00EF425C /* LeaderboardTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LeaderboardTableViewController.m; path = ViewControllers/LeaderboardTableViewController.m; sourceTree = "<group>"; };
+		1818F01317D8046F00EF425C /* ProfileCatchesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProfileCatchesTableViewController.h; path = ViewControllers/ProfileCatchesTableViewController.h; sourceTree = "<group>"; };
+		1818F01417D8046F00EF425C /* ProfileCatchesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProfileCatchesTableViewController.m; path = ViewControllers/ProfileCatchesTableViewController.m; sourceTree = "<group>"; };
+		1818F01617D80C8500EF425C /* fish-default-photo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fish-default-photo.png"; sourceTree = "<group>"; };
+		1818F01817D81E5A00EF425C /* ProfileTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProfileTableViewController.h; path = ViewControllers/ProfileTableViewController.h; sourceTree = "<group>"; };
+		1818F01917D81E5A00EF425C /* ProfileTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProfileTableViewController.m; path = ViewControllers/ProfileTableViewController.m; sourceTree = "<group>"; };
+		1818F01B17D81E9D00EF425C /* ProfileNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProfileNavigationController.h; path = ViewControllers/ProfileNavigationController.h; sourceTree = "<group>"; };
+		1818F01C17D81E9D00EF425C /* ProfileNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProfileNavigationController.m; path = ViewControllers/ProfileNavigationController.m; sourceTree = "<group>"; };
+		1844C00F180AEE4A0064BC19 /* MethodList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MethodList.h; path = Models/MethodList.h; sourceTree = "<group>"; };
+		1844C010180AEE4A0064BC19 /* MethodList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MethodList.m; path = Models/MethodList.m; sourceTree = "<group>"; };
+		1846418717EFCEA10080D7FF /* Fish.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Fish.h; path = Models/Fish.h; sourceTree = "<group>"; };
+		1846418817EFCEA10080D7FF /* Fish.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Fish.m; path = Models/Fish.m; sourceTree = "<group>"; };
+		185BA39B17EF45DF001E2481 /* WeightMeasurementOptionsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WeightMeasurementOptionsTableViewController.h; path = ViewControllers/WeightMeasurementOptionsTableViewController.h; sourceTree = "<group>"; };
+		185BA39C17EF45DF001E2481 /* WeightMeasurementOptionsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WeightMeasurementOptionsTableViewController.m; path = ViewControllers/WeightMeasurementOptionsTableViewController.m; sourceTree = "<group>"; };
+		185E58BA17D529BA006375B3 /* AddCatchNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddCatchNavigationController.h; path = ViewControllers/AddCatchNavigationController.h; sourceTree = "<group>"; };
+		185E58BB17D529BA006375B3 /* AddCatchNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddCatchNavigationController.m; path = ViewControllers/AddCatchNavigationController.m; sourceTree = "<group>"; };
+		185E58BD17D52EF9006375B3 /* CatchAddedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CatchAddedViewController.h; path = ViewControllers/CatchAddedViewController.h; sourceTree = "<group>"; };
+		185E58BE17D52EF9006375B3 /* CatchAddedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CatchAddedViewController.m; path = ViewControllers/CatchAddedViewController.m; sourceTree = "<group>"; };
+		185E58C017D5405C006375B3 /* AddCatchNotesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddCatchNotesViewController.h; path = ViewControllers/AddCatchNotesViewController.h; sourceTree = "<group>"; };
+		185E58C117D5405C006375B3 /* AddCatchNotesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddCatchNotesViewController.m; path = ViewControllers/AddCatchNotesViewController.m; sourceTree = "<group>"; };
+		185E58C317D560DC006375B3 /* CatchPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CatchPhoto.h; path = Models/CatchPhoto.h; sourceTree = "<group>"; };
+		185E58C417D560DC006375B3 /* CatchPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CatchPhoto.m; path = Models/CatchPhoto.m; sourceTree = "<group>"; };
+		185E58C717D6C60C006375B3 /* CatchesMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CatchesMapViewController.h; path = ViewControllers/CatchesMapViewController.h; sourceTree = "<group>"; };
+		185E58C817D6C60C006375B3 /* CatchesMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CatchesMapViewController.m; path = ViewControllers/CatchesMapViewController.m; sourceTree = "<group>"; };
+		185E58CB17D6E470006375B3 /* LeaderboardNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LeaderboardNavigationController.h; path = ViewControllers/LeaderboardNavigationController.h; sourceTree = "<group>"; };
+		185E58CC17D6E470006375B3 /* LeaderboardNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LeaderboardNavigationController.m; path = ViewControllers/LeaderboardNavigationController.m; sourceTree = "<group>"; };
+		186C894A17EE521900CF3ECC /* LengthMeasurementOptionsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LengthMeasurementOptionsTableViewController.h; path = ViewControllers/LengthMeasurementOptionsTableViewController.h; sourceTree = "<group>"; };
+		186C894B17EE521900CF3ECC /* LengthMeasurementOptionsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LengthMeasurementOptionsTableViewController.m; path = ViewControllers/LengthMeasurementOptionsTableViewController.m; sourceTree = "<group>"; };
+		18A25CF017EFAFB6007A43F6 /* SpeciesList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpeciesList.h; path = Models/SpeciesList.h; sourceTree = "<group>"; };
+		18A25CF117EFAFB6007A43F6 /* SpeciesList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpeciesList.m; path = Models/SpeciesList.m; sourceTree = "<group>"; };
+		18A25CF417EFB662007A43F6 /* SpeciesListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpeciesListTableViewController.h; path = ViewControllers/SpeciesListTableViewController.h; sourceTree = "<group>"; };
+		18A25CF517EFB662007A43F6 /* SpeciesListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpeciesListTableViewController.m; path = ViewControllers/SpeciesListTableViewController.m; sourceTree = "<group>"; };
 		18A7DB9717B6BB2900471456 /* Catch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Catch.h; path = Models/Catch.h; sourceTree = "<group>"; };
 		18A7DB9817B6BB2900471456 /* Catch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Catch.m; path = Models/Catch.m; sourceTree = "<group>"; };
 		18A7DB9A17B6DA1C00471456 /* MainStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard.storyboard; sourceTree = "<group>"; };
-		18A7DB9D17B6DF2E00471456 /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProfileViewController.h; path = ViewControllers/ProfileViewController.h; sourceTree = "<group>"; };
-		18A7DB9E17B6DF2E00471456 /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProfileViewController.m; path = ViewControllers/ProfileViewController.m; sourceTree = "<group>"; };
-		18A7DBA017B6E17800471456 /* AddCatchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddCatchViewController.h; path = ViewControllers/AddCatchViewController.h; sourceTree = "<group>"; };
-		18A7DBA117B6E17800471456 /* AddCatchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddCatchViewController.m; path = ViewControllers/AddCatchViewController.m; sourceTree = "<group>"; };
 		18A7DBA317B6E5AE00471456 /* AddCatchInfoTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddCatchInfoTableViewController.h; path = ViewControllers/AddCatchInfoTableViewController.h; sourceTree = "<group>"; };
 		18A7DBA417B6E5AE00471456 /* AddCatchInfoTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddCatchInfoTableViewController.m; path = ViewControllers/AddCatchInfoTableViewController.m; sourceTree = "<group>"; };
-		18A7DBAB17B852E400471456 /* EAActionSheetPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EAActionSheetPicker.h; sourceTree = "<group>"; };
-		18A7DBAC17B852E400471456 /* EAActionSheetPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EAActionSheetPicker.m; sourceTree = "<group>"; };
-		18A7DBAE17B86B6600471456 /* ProfileCatchesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProfileCatchesTableViewController.h; path = ViewControllers/ProfileCatchesTableViewController.h; sourceTree = "<group>"; };
-		18A7DBAF17B86B6600471456 /* ProfileCatchesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProfileCatchesTableViewController.m; path = ViewControllers/ProfileCatchesTableViewController.m; sourceTree = "<group>"; };
+		18B1012D1808DE5300330ECB /* UserLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserLoginViewController.h; path = ViewControllers/UserLoginViewController.h; sourceTree = "<group>"; };
+		18B1012E1808DE5300330ECB /* UserLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserLoginViewController.m; path = ViewControllers/UserLoginViewController.m; sourceTree = "<group>"; };
+		18B101301808DED800330ECB /* UserSignupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserSignupViewController.h; path = ViewControllers/UserSignupViewController.h; sourceTree = "<group>"; };
+		18B101311808DED800330ECB /* UserSignupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserSignupViewController.m; path = ViewControllers/UserSignupViewController.m; sourceTree = "<group>"; };
+		18C1C0AE180A18B9002AE1F8 /* MethodListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MethodListTableViewController.h; path = ViewControllers/MethodListTableViewController.h; sourceTree = "<group>"; };
+		18C1C0AF180A18B9002AE1F8 /* MethodListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MethodListTableViewController.m; path = ViewControllers/MethodListTableViewController.m; sourceTree = "<group>"; };
+		18C1C0B1180A193C002AE1F8 /* FilterTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FilterTableViewController.h; path = ViewControllers/FilterTableViewController.h; sourceTree = "<group>"; };
+		18C1C0B2180A193C002AE1F8 /* FilterTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FilterTableViewController.m; path = ViewControllers/FilterTableViewController.m; sourceTree = "<group>"; };
+		18DB96EB17C9103B00BFD184 /* TakePhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TakePhotoViewController.h; path = ViewControllers/TakePhotoViewController.h; sourceTree = "<group>"; };
+		18DB96EC17C9103B00BFD184 /* TakePhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TakePhotoViewController.m; path = ViewControllers/TakePhotoViewController.m; sourceTree = "<group>"; };
+		18DB96EE17C9884900BFD184 /* CustomTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomTabBarController.h; path = ViewControllers/CustomTabBarController.h; sourceTree = "<group>"; };
+		18DB96EF17C9884900BFD184 /* CustomTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomTabBarController.m; path = ViewControllers/CustomTabBarController.m; sourceTree = "<group>"; };
+		18DB96F117C9901600BFD184 /* capture-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "capture-button.png"; sourceTree = "<group>"; };
+		18DB96F217C9901600BFD184 /* capture-button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "capture-button@2x.png"; sourceTree = "<group>"; };
+		18DB96F517CA4FA400BFD184 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		18DB96F717CA518800BFD184 /* AddCatchMapLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddCatchMapLocationViewController.h; path = ViewControllers/AddCatchMapLocationViewController.h; sourceTree = "<group>"; };
+		18DB96F817CA518800BFD184 /* AddCatchMapLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddCatchMapLocationViewController.m; path = ViewControllers/AddCatchMapLocationViewController.m; sourceTree = "<group>"; };
+		18DB96FA17CBB92100BFD184 /* CatchMapAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CatchMapAnnotation.h; path = Models/CatchMapAnnotation.h; sourceTree = "<group>"; };
+		18DB96FB17CBB92100BFD184 /* CatchMapAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CatchMapAnnotation.m; path = Models/CatchMapAnnotation.m; sourceTree = "<group>"; };
 		2FCDD6AF14A573F500295AAC /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		4998650415BF305000803E05 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		6332375315E438E900AE2736 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
@@ -88,6 +156,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18DB96F617CA4FA400BFD184 /* MapKit.framework in Frameworks */,
 				DD952FCB16E7F5CF00470144 /* CoreLocation.framework in Frameworks */,
 				4998650515BF305000803E05 /* StoreKit.framework in Frameworks */,
 				743D7B6D157DA60100084B67 /* CoreGraphics.framework in Frameworks */,
@@ -127,6 +196,7 @@
 		09ABC07013A1D52D009C3FCF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				18DB96F517CA4FA400BFD184 /* MapKit.framework */,
 				6372FF571613CC47002132AF /* AdSupport.framework */,
 				6372FF551613CC42002132AF /* Social.framework */,
 				6372FF521613CC3C002132AF /* Accounts.framework */,
@@ -168,6 +238,9 @@
 		09ABC07813A1D52D009C3FCF /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				1818F01617D80C8500EF425C /* fish-default-photo.png */,
+				18DB96F117C9901600BFD184 /* capture-button.png */,
+				18DB96F217C9901600BFD184 /* capture-button@2x.png */,
 				C4C51B541613CE0800959FDC /* Default.png */,
 				C4C51B561613CE0800959FDC /* Default@2x.png */,
 				C4C51B551613CE0800959FDC /* Default-568h@2x.png */,
@@ -180,11 +253,90 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		1818F01217D8043500EF425C /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				1818F01317D8046F00EF425C /* ProfileCatchesTableViewController.h */,
+				1818F01417D8046F00EF425C /* ProfileCatchesTableViewController.m */,
+				1818F01817D81E5A00EF425C /* ProfileTableViewController.h */,
+				1818F01917D81E5A00EF425C /* ProfileTableViewController.m */,
+				1818F01B17D81E9D00EF425C /* ProfileNavigationController.h */,
+				1818F01C17D81E9D00EF425C /* ProfileNavigationController.m */,
+			);
+			name = Profile;
+			sourceTree = "<group>";
+		};
+		185E58C617D6C5A5006375B3 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				185E58C717D6C60C006375B3 /* CatchesMapViewController.h */,
+				185E58C817D6C60C006375B3 /* CatchesMapViewController.m */,
+			);
+			name = Map;
+			sourceTree = "<group>";
+		};
+		185E58CA17D6E413006375B3 /* Leaderboard */ = {
+			isa = PBXGroup;
+			children = (
+				185E58CB17D6E470006375B3 /* LeaderboardNavigationController.h */,
+				185E58CC17D6E470006375B3 /* LeaderboardNavigationController.m */,
+				1818F00F17D7FD8F00EF425C /* LeaderboardTableViewController.h */,
+				1818F01017D7FD8F00EF425C /* LeaderboardTableViewController.m */,
+				18C1C0B1180A193C002AE1F8 /* FilterTableViewController.h */,
+				18C1C0B2180A193C002AE1F8 /* FilterTableViewController.m */,
+			);
+			name = Leaderboard;
+			sourceTree = "<group>";
+		};
+		187004CF17D28AD800B711D4 /* AddCatch */ = {
+			isa = PBXGroup;
+			children = (
+				18A7DBA317B6E5AE00471456 /* AddCatchInfoTableViewController.h */,
+				18A7DBA417B6E5AE00471456 /* AddCatchInfoTableViewController.m */,
+				18DB96EB17C9103B00BFD184 /* TakePhotoViewController.h */,
+				18DB96EC17C9103B00BFD184 /* TakePhotoViewController.m */,
+				18DB96F717CA518800BFD184 /* AddCatchMapLocationViewController.h */,
+				18DB96F817CA518800BFD184 /* AddCatchMapLocationViewController.m */,
+				185E58BA17D529BA006375B3 /* AddCatchNavigationController.h */,
+				185E58BB17D529BA006375B3 /* AddCatchNavigationController.m */,
+				185E58BD17D52EF9006375B3 /* CatchAddedViewController.h */,
+				185E58BE17D52EF9006375B3 /* CatchAddedViewController.m */,
+				185E58C017D5405C006375B3 /* AddCatchNotesViewController.h */,
+				185E58C117D5405C006375B3 /* AddCatchNotesViewController.m */,
+				186C894A17EE521900CF3ECC /* LengthMeasurementOptionsTableViewController.h */,
+				186C894B17EE521900CF3ECC /* LengthMeasurementOptionsTableViewController.m */,
+				185BA39B17EF45DF001E2481 /* WeightMeasurementOptionsTableViewController.h */,
+				185BA39C17EF45DF001E2481 /* WeightMeasurementOptionsTableViewController.m */,
+			);
+			name = AddCatch;
+			sourceTree = "<group>";
+		};
+		18A25CF317EFB644007A43F6 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				18A25CF417EFB662007A43F6 /* SpeciesListTableViewController.h */,
+				18A25CF517EFB662007A43F6 /* SpeciesListTableViewController.m */,
+				18C1C0AE180A18B9002AE1F8 /* MethodListTableViewController.h */,
+				18C1C0AF180A18B9002AE1F8 /* MethodListTableViewController.m */,
+			);
+			name = Shared;
+			sourceTree = "<group>";
+		};
 		18A7DB9617B6BAE200471456 /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				18A7DB9717B6BB2900471456 /* Catch.h */,
 				18A7DB9817B6BB2900471456 /* Catch.m */,
+				18DB96FA17CBB92100BFD184 /* CatchMapAnnotation.h */,
+				18DB96FB17CBB92100BFD184 /* CatchMapAnnotation.m */,
+				185E58C317D560DC006375B3 /* CatchPhoto.h */,
+				185E58C417D560DC006375B3 /* CatchPhoto.m */,
+				18A25CF017EFAFB6007A43F6 /* SpeciesList.h */,
+				18A25CF117EFAFB6007A43F6 /* SpeciesList.m */,
+				1846418717EFCEA10080D7FF /* Fish.h */,
+				1846418817EFCEA10080D7FF /* Fish.m */,
+				1844C00F180AEE4A0064BC19 /* MethodList.h */,
+				1844C010180AEE4A0064BC19 /* MethodList.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -192,14 +344,14 @@
 		18A7DB9C17B6DEFD00471456 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				18A7DBAE17B86B6600471456 /* ProfileCatchesTableViewController.h */,
-				18A7DBAF17B86B6600471456 /* ProfileCatchesTableViewController.m */,
-				18A7DB9D17B6DF2E00471456 /* ProfileViewController.h */,
-				18A7DB9E17B6DF2E00471456 /* ProfileViewController.m */,
-				18A7DBA017B6E17800471456 /* AddCatchViewController.h */,
-				18A7DBA117B6E17800471456 /* AddCatchViewController.m */,
-				18A7DBA317B6E5AE00471456 /* AddCatchInfoTableViewController.h */,
-				18A7DBA417B6E5AE00471456 /* AddCatchInfoTableViewController.m */,
+				18B1012C1808DE1000330ECB /* Login */,
+				18A25CF317EFB644007A43F6 /* Shared */,
+				1818F01217D8043500EF425C /* Profile */,
+				185E58CA17D6E413006375B3 /* Leaderboard */,
+				185E58C617D6C5A5006375B3 /* Map */,
+				187004CF17D28AD800B711D4 /* AddCatch */,
+				18DB96EE17C9884900BFD184 /* CustomTabBarController.h */,
+				18DB96EF17C9884900BFD184 /* CustomTabBarController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -207,10 +359,19 @@
 		18A7DBAA17B852CB00471456 /* External Libraries */ = {
 			isa = PBXGroup;
 			children = (
-				18A7DBAB17B852E400471456 /* EAActionSheetPicker.h */,
-				18A7DBAC17B852E400471456 /* EAActionSheetPicker.m */,
 			);
 			name = "External Libraries";
+			sourceTree = "<group>";
+		};
+		18B1012C1808DE1000330ECB /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				18B1012D1808DE5300330ECB /* UserLoginViewController.h */,
+				18B1012E1808DE5300330ECB /* UserLoginViewController.m */,
+				18B101301808DED800330ECB /* UserSignupViewController.h */,
+				18B101311808DED800330ECB /* UserSignupViewController.m */,
+			);
+			name = Login;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -239,7 +400,7 @@
 		09ABC06413A1D52D009C3FCF /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0460;
+				LastUpgradeCheck = 0500;
 			};
 			buildConfigurationList = 09ABC06713A1D52D009C3FCF /* Build configuration list for PBXProject "TopFish" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -269,6 +430,9 @@
 				C4C51B581613CE0800959FDC /* Default-568h@2x.png in Resources */,
 				C4C51B591613CE0800959FDC /* Default@2x.png in Resources */,
 				18A7DB9B17B6DA1C00471456 /* MainStoryboard.storyboard in Resources */,
+				18DB96F317C9901600BFD184 /* capture-button.png in Resources */,
+				18DB96F417C9901600BFD184 /* capture-button@2x.png in Resources */,
+				1818F01717D80C8500EF425C /* fish-default-photo.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -281,13 +445,33 @@
 			files = (
 				09ABC07F13A1D52D009C3FCF /* main.m in Sources */,
 				09ABC08213A1D52D009C3FCF /* TopFishAppDelegate.m in Sources */,
+				18A25CF617EFB662007A43F6 /* SpeciesListTableViewController.m in Sources */,
+				1846418917EFCEA10080D7FF /* Fish.m in Sources */,
 				09ABC08813A1D52E009C3FCF /* TopFishViewController.m in Sources */,
 				18A7DB9917B6BB2900471456 /* Catch.m in Sources */,
-				18A7DB9F17B6DF2E00471456 /* ProfileViewController.m in Sources */,
-				18A7DBA217B6E17800471456 /* AddCatchViewController.m in Sources */,
+				18B1012F1808DE5300330ECB /* UserLoginViewController.m in Sources */,
 				18A7DBA517B6E5AE00471456 /* AddCatchInfoTableViewController.m in Sources */,
-				18A7DBAD17B852E400471456 /* EAActionSheetPicker.m in Sources */,
-				18A7DBB017B86B6600471456 /* ProfileCatchesTableViewController.m in Sources */,
+				18DB96ED17C9103B00BFD184 /* TakePhotoViewController.m in Sources */,
+				18A25CF217EFAFB6007A43F6 /* SpeciesList.m in Sources */,
+				18DB96F017C9884900BFD184 /* CustomTabBarController.m in Sources */,
+				1844C011180AEE4A0064BC19 /* MethodList.m in Sources */,
+				18DB96F917CA518800BFD184 /* AddCatchMapLocationViewController.m in Sources */,
+				18DB96FC17CBB92100BFD184 /* CatchMapAnnotation.m in Sources */,
+				185E58BC17D529BA006375B3 /* AddCatchNavigationController.m in Sources */,
+				185E58BF17D52EF9006375B3 /* CatchAddedViewController.m in Sources */,
+				186C894C17EE521900CF3ECC /* LengthMeasurementOptionsTableViewController.m in Sources */,
+				185E58C217D5405C006375B3 /* AddCatchNotesViewController.m in Sources */,
+				185E58C517D560DC006375B3 /* CatchPhoto.m in Sources */,
+				185BA39D17EF45DF001E2481 /* WeightMeasurementOptionsTableViewController.m in Sources */,
+				185E58C917D6C60C006375B3 /* CatchesMapViewController.m in Sources */,
+				185E58CD17D6E470006375B3 /* LeaderboardNavigationController.m in Sources */,
+				18B101321808DED800330ECB /* UserSignupViewController.m in Sources */,
+				1818F01117D7FD8F00EF425C /* LeaderboardTableViewController.m in Sources */,
+				18C1C0B3180A193C002AE1F8 /* FilterTableViewController.m in Sources */,
+				18C1C0B0180A18B9002AE1F8 /* MethodListTableViewController.m in Sources */,
+				1818F01517D8046F00EF425C /* ProfileCatchesTableViewController.m in Sources */,
+				1818F01A17D81E5A00EF425C /* ProfileTableViewController.m in Sources */,
+				1818F01D17D81E9D00EF425C /* ProfileNavigationController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -308,22 +492,27 @@
 		09ABC08C13A1D52E009C3FCF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Brycen Rogers (AZ2UH3PCFV)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_VERSION = "";
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "0886F5A4-6B1A-45AF-9A86-AF0D5E9A8940";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -331,20 +520,24 @@
 		09ABC08D13A1D52E009C3FCF /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Brycen Rogers (AZ2UH3PCFV)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_VERSION = "";
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PROVISIONING_PROFILE = "0886F5A4-6B1A-45AF-9A86-AF0D5E9A8940";
 				SDKROOT = iphoneos;
 			};
 			name = Release;

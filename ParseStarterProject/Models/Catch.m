@@ -15,11 +15,17 @@
     return @"Catch";
 }
 
-@dynamic name;
 @dynamic length;
 @dynamic weight;
 @dynamic lengthMeasurement;
 @dynamic weightMeasurement;
+@dynamic species;
+@dynamic method;
+@dynamic notes;
+@dynamic rankedCatch;
+@dynamic tellMyFriends;
 @dynamic user;
+@dynamic location;
+@dynamic photo;
 
 @end

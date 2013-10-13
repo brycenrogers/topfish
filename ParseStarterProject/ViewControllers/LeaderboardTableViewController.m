@@ -1,19 +1,19 @@
 //
-//  ProfileCatchesTableViewController.m
+//  LeaderboardTableViewController.m
 //  TopFish
 //
 //  Created by Brycen Rogers on 9/4/13.
 //
 //
 
-#import "ProfileCatchesTableViewController.h"
+#import "LeaderboardTableViewController.h"
 #import "Catch.h"
 
-@interface ProfileCatchesTableViewController ()
+@interface LeaderboardTableViewController ()
 
 @end
 
-@implementation ProfileCatchesTableViewController
+@implementation LeaderboardTableViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -22,7 +22,6 @@
         // Custom initialization
         self.parseClassName = @"Catch";
         self.textKey = @"species";
-        self.imageKey = @"photo";
     }
     return self;
 }
@@ -31,6 +30,7 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -41,8 +41,9 @@
 
 - (PFQuery *)queryForTable {
     PFQuery *query = [Catch query];
-    [query whereKey:@"user" equalTo:[PFUser currentUser]];
-    [query orderByDescending:@"createdAt"];
+    [query whereKey:@"rankedCatch" equalTo:[NSNumber numberWithBool:YES]];
+    [query orderByDescending:@"length"];
+    query.limit = 20;
     return query;
 }
 
@@ -50,7 +51,7 @@
     if ([self.objects count] == 0) {
         return [[PFTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:nil];
     }
-    static NSString *CellIdentifier = @"Cell";
+    static NSString *CellIdentifier = @"LeaderboardCell";
     PFTableViewCell *cell = [tableView
                              dequeueReusableCellWithIdentifier:CellIdentifier
                              forIndexPath:indexPath];
