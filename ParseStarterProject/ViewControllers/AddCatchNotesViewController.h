@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "AddCatchInfoTableViewController.h"
 
 @protocol CatchNotesDelegate <NSObject>
 
@@ -21,6 +20,7 @@
 }
 
 @property id<CatchNotesDelegate> delegate;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *doneButton;
 @property (weak, nonatomic) IBOutlet UITextView *textView;
 
 @end

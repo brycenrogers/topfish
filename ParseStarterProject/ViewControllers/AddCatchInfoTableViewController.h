@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Catch.h"
 #import "CatchMapAnnotation.h"
 #import "SpeciesList.h"
 #import "MethodListTableViewController.h"
@@ -42,9 +43,10 @@ CatchNotesDelegate>
 @property (nonatomic) CLLocationCoordinate2D catchAnnotationCoordinate;
 @property (nonatomic) NSString *notesText;
 
+@property (nonatomic, strong) Catch *selectedCatch;
+
 - (IBAction)selectWeightMeasurement:(UIButton *)sender;
 - (IBAction)selectLengthMeasurement:(UIButton *)sender;
 - (IBAction)clearNewCatchForm:(UIBarButtonItem *)sender;
-- (IBAction)saveCatch:(UIButton *)sender;
 
 @end

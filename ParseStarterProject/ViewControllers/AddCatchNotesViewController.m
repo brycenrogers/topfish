@@ -35,10 +35,12 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    if (parentVC.notesText == nil || [parentVC.notesText isEqualToString:@""]) {
+    if (self.delegate.catchNotesLabel.text == nil ||
+        [self.delegate.catchNotesLabel.text isEqualToString:@""] ||
+        [self.delegate.catchNotesLabel.text isEqualToString:@"Add Notes"]) {
         return;
     }
-    textView.text = parentVC.notesText;
+    textView.text = self.delegate.catchNotesLabel.text;
 }
 
 - (void)didReceiveMemoryWarning
@@ -49,9 +51,8 @@
 
 - (IBAction)doneButton:(UIBarButtonItem *)sender {
     if (![textView.text isEqualToString:@""]) {
-        parentVC.notesText = textView.text;
-        parentVC.notesLabel.text = textView.text;
+        self.delegate.catchNotesLabel.text = textView.text;
     }
-    [self dismissViewControllerAnimated:TRUE completion:nil];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 @end

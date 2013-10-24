@@ -35,7 +35,8 @@ tellMyFriendsSwitch,
 selectedLocationLabel,
 catchNotesLabel,
 catchAnnotationCoordinate,
-notesText;
+notesText,
+selectedCatch;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -122,9 +123,11 @@ notesText;
     Catch *brandNewCatch = [Catch object];
     brandNewCatch.length = [catchLengthField.text doubleValue];
     brandNewCatch.weight = [catchWeightField.text doubleValue];
+    brandNewCatch.lengthMeasurement = lengthMeasurementField.text;
+    brandNewCatch.weightMeasurement = weightMeasurementField.text;
     brandNewCatch.method = selectedMethodLabel.text;
     brandNewCatch.species = selectedSpeciesLabel.text;
-    brandNewCatch.notes = notesText;
+    brandNewCatch.notes = catchNotesLabel.text;
     brandNewCatch.rankedCatch = rankedCatchSwitch.on;
     brandNewCatch.tellMyFriends = tellMyFriendsSwitch.on;
     brandNewCatch.user = [PFUser currentUser];
@@ -157,6 +160,7 @@ notesText;
             brandNewCatch.photo = imageFile;
             [brandNewCatch saveEventually];
             [loadingOverlay removeFromSuperview];
+            self.selectedCatch = brandNewCatch;
             
             // Move to CatchAddedViewController to show success message
             [self performSegueWithIdentifier:@"catchAddedVC" sender:nil];
@@ -166,6 +170,7 @@ notesText;
         }];
     } else {
         [brandNewCatch saveEventually];
+        self.selectedCatch = brandNewCatch;
         
         // Move to CatchAddedViewController to show success message
         [self performSegueWithIdentifier:@"catchAddedVC" sender:nil];
@@ -175,7 +180,7 @@ notesText;
 }
 
 - (void)buildLoadingView {
-    UIView *loadingOverlayView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 548)];
+    UIView *loadingOverlayView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 568)];
     loadingOverlayView.backgroundColor = [UIColor colorWithWhite:0 alpha:.75];
     loadingOverlay = loadingOverlayView;
 
@@ -253,6 +258,7 @@ notesText;
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
+    
     if ([[segue identifier] isEqualToString:@"showLocationModal"])
     {
         AddCatchMapLocationViewController *parentVC = [segue destinationViewController];
@@ -273,16 +279,33 @@ notesText;
         parentVC.delegate = self;
         return;
     }
+    
+    if ([[segue identifier] isEqualToString:@"addNote"])
+    {
+        AddCatchNotesViewController *parentVC = [segue destinationViewController];
+        parentVC.delegate = self;
+        return;
+    }
+    
+    if ([[segue identifier] isEqualToString:@"catchAddedVC"])
+    {
+        CatchAddedViewController *cavc = [segue destinationViewController];
+        cavc.selectedCatch = self.selectedCatch;
+    }
+}
+
+- (void)showNotesModal {
+    [self performSegueWithIdentifier:@"addNote" sender:nil];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     int row = indexPath.row;
     int sec = indexPath.section;
-    if (sec == 0 && row == 1) {
+    if (sec == 0 && row == 2) {
         [self showCameraAction];
     }
-    if (sec == 0 && row == 2) {
+    if (sec == 0 && row == 3) {
         [self startMediaBrowserFromViewController:self usingDelegate:self];
     }
     if (sec == 3 && row == 0) {
@@ -290,6 +313,9 @@ notesText;
     }
     if (sec == 4 && row == 1) {
         [self showLocationModal];
+    }
+    if (sec == 5 && row == 0) {
+        [self showNotesModal];
     }
     if (sec == 2 && row == 0) {
         [self selectSpecies];

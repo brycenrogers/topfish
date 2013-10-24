@@ -7,14 +7,15 @@
 //
 
 #import "CatchAddedViewController.h"
+#import "CatchDetailTableViewController.h"
 
 @interface CatchAddedViewController ()
-
-
 
 @end
 
 @implementation CatchAddedViewController
+
+@synthesize selectedCatch;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -50,4 +51,18 @@
 - (IBAction)ViewLeaderboardButton:(UIButton *)sender {
     [self.tabBarController setSelectedIndex:0];
 }
+
+- (IBAction)viewCatchButton:(UIButton *)sender {
+    [self performSegueWithIdentifier:@"viewCatchDetailsFromAddCatch" sender:nil];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([[segue identifier] isEqualToString:@"viewCatchDetailsFromAddCatch"])
+    {
+        CatchDetailTableViewController *cdtvc = [segue destinationViewController];
+        cdtvc.selectedCatch = self.selectedCatch;
+    }
+}
+
 @end
