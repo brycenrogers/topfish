@@ -10,6 +10,9 @@
 #import "Catch.h"
 
 @interface CatchDetailTableViewController : UITableViewController<UIGestureRecognizerDelegate>
+{
+    CAGradientLayer *gradient;
+}
 
 @property (retain, nonatomic) UITapGestureRecognizer *gestureRecognizer;
 

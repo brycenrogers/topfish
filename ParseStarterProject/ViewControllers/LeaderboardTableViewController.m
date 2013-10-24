@@ -67,6 +67,10 @@
     [[cell.contentView viewWithTag:334] removeFromSuperview];
 }
 
+- (void)tableView:(UITableView *)tableView didEndDisplayingCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    [[cell.contentView viewWithTag:1] removeFromSuperview];
+}
+
 - (PFTableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath object:(PFObject *)object {
     
     if ([self.objects count] == 0) {
@@ -132,6 +136,12 @@
         NSAttributedString *sizeStringAttributed = [[NSAttributedString alloc] initWithString:sizeString attributes:@{NSForegroundColorAttributeName: [UIColor grayColor],
                                                                                                                       NSFontAttributeName: [UIFont fontWithName:@"Helvetica" size:12.0]}];
         cell.sizeLabel.attributedText = sizeStringAttributed;
+        cell.placementString = [NSString stringWithFormat:@"%d", indexPath.row + 1];
+        
+        cell.imageView.frame = CGRectMake(0, 0, 88, 61);
+        
+        [self drawPlacementBadgeForCell:cell withNumber:[NSString stringWithFormat:@"%d", indexPath.row + 1]];
+        
         return cell;
     }
 }
@@ -143,6 +153,23 @@
     }
     
     return 60;
+}
+
+- (void)drawPlacementBadgeForCell:(PFTableViewCell *)cell withNumber:(NSString *)placementNumber {
+    UIView *badge = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 30, 61)];
+    badge.tag = 1;
+    //badge.backgroundColor = [UIColor greenColor];
+    
+    UILabel *number = [[UILabel alloc] initWithFrame:CGRectMake(6, 28, 15, 10)];
+    
+    NSAttributedString *num = [[NSAttributedString alloc] initWithString:placementNumber attributes:@{NSFontAttributeName: [UIFont fontWithName:@"Arial" size:12.0]}];
+    
+    number.attributedText = num;
+    number.textAlignment = NSTextAlignmentCenter;
+    
+    [badge addSubview:number];
+    
+    [cell.contentView insertSubview:badge atIndex:1];
 }
 
 // Segues

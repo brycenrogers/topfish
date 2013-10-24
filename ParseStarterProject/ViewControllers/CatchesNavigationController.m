@@ -1,25 +1,24 @@
 //
-//  LeaderboardNavigationController.m
+//  CatchesNavigationController.m
 //  TopFish
 //
-//  Created by Brycen Rogers on 9/3/13.
+//  Created by Brycen Rogers on 10/23/13.
 //
 //
 
-#import "LeaderboardNavigationController.h"
+#import "CatchesNavigationController.h"
 
-@interface LeaderboardNavigationController ()
+@interface CatchesNavigationController ()
 
 @end
 
-@implementation LeaderboardNavigationController
+@implementation CatchesNavigationController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        
     }
     return self;
 }

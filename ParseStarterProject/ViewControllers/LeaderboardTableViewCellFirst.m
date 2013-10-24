@@ -33,21 +33,27 @@
         self.speciesLabel.shadowColor = [UIColor blackColor];
         self.sizeLabel.shadowColor = [UIColor blackColor];
         
-        [self.contentView addSubview:self.speciesLabel];
-        [self.contentView addSubview:self.sizeLabel];
+        [self.contentView insertSubview:self.speciesLabel atIndex:3];
+        [self.contentView insertSubview:self.sizeLabel atIndex:3];
+        
         [self addNumberOneBadgeView];
+        [self setGradient];
     }
     return self;
 }
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
-{
-    // Drawing code
+- (void)drawPlacementBadge {
+    return;
 }
-*/
+
+- (void)setGradient {
+    CAGradientLayer *gradient = [CAGradientLayer layer];
+    gradient.frame = CGRectMake(0, 85, 320, 85);
+    gradient.colors = [NSArray arrayWithObjects:(id)[[UIColor clearColor] CGColor], (id)[[UIColor blackColor] CGColor], nil];
+    gradient.opacity = 0.75;
+    
+    [self.contentView.layer insertSublayer:gradient atIndex:1];
+}
 
 - (void)layoutSubviews {
     [super layoutSubviews];

@@ -9,7 +9,7 @@
 #import <Parse/Parse.h>
 #import "Catch.h"
 
-@interface ProfileCatchesTableViewController : PFQueryTableViewController
+@interface CatchesTableViewController : PFQueryTableViewController
 {
     Catch *selectedCatch;
 }

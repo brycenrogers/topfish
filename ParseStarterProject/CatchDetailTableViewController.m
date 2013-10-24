@@ -61,6 +61,24 @@ gestureRecognizer;
     [self buildSingleTapGestureRecognizer];
 }
 
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.row == 0 && gradient == nil) {
+        [self setGradient];
+    }
+    return [super tableView:tableView cellForRowAtIndexPath:indexPath];
+}
+
+- (void)setGradient {
+    CAGradientLayer *gradientFill = [CAGradientLayer layer];
+    gradientFill.frame = CGRectMake(0, 85, 320, 85);
+    gradientFill.colors = [NSArray arrayWithObjects:(id)[[UIColor clearColor] CGColor], (id)[[UIColor blackColor] CGColor], nil];
+    gradientFill.opacity = 0.5;
+    
+    gradient = gradientFill;
+    
+    [self.view.layer insertSublayer:gradient atIndex:1];
+}
+
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch {
     CGPoint touchLocation = [touch locationInView:self.view];
     return !CGRectContainsPoint(self.catchImageView.frame, touchLocation);

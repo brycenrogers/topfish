@@ -41,7 +41,7 @@
                             [self viewControllerWithTabTitle:@"Map" image:[UIImage imageNamed:@""]],
                             [self viewControllerWithTabTitle:@"Add Catch" image:[UIImage imageNamed:nil]],
                             [self viewControllerWithTabTitle:@"Catches" image:[UIImage imageNamed:@""]],
-                            [self viewControllerWithTabTitle:@"Friends" image:[UIImage imageNamed:@""]],
+                            [self viewControllerWithTabTitle:@"Profile" image:[UIImage imageNamed:@""]],
                             nil];
     [self addCenterButtonWithImage:[UIImage imageNamed:@"capture-button.png"] highlightImage:nil];
 }
@@ -70,11 +70,11 @@
     }
     
     if ([title isEqual: @"Catches"]) {
-        viewController = [storyboard instantiateViewControllerWithIdentifier:@"ProfileNC"];
+        viewController = [storyboard instantiateViewControllerWithIdentifier:@"CatchesNC"];
     }
     
-    if ([title isEqual: @"Friends"]) {
-        viewController = [storyboard instantiateViewControllerWithIdentifier:@"FriendsVC"];
+    if ([title isEqual: @"Profile"]) {
+        viewController = [storyboard instantiateViewControllerWithIdentifier:@"ProfileNC"];
     }
     
     viewController.tabBarItem = [[UITabBarItem alloc] initWithTitle:title image:image tag:0];

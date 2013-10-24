@@ -6,16 +6,16 @@
 //
 //
 
-#import "ProfileCatchesTableViewController.h"
+#import "CatchesTableViewController.h"
 #import "Catch.h"
 #import "CatchDetailTableViewController.h"
 #import "LeaderboardTableViewCell.h"
 
-@interface ProfileCatchesTableViewController ()
+@interface CatchesTableViewController ()
 
 @end
 
-@implementation ProfileCatchesTableViewController
+@implementation CatchesTableViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -33,7 +33,7 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    [self.tableView registerClass:[LeaderboardTableViewCell class] forCellReuseIdentifier:@"LeaderboardCell"];
+    [self.tableView registerClass:[LeaderboardTableViewCell class] forCellReuseIdentifier:@"CatchesCell"];
 }
 
 - (void)didReceiveMemoryWarning
@@ -51,14 +51,15 @@
 }
 
 - (PFTableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath object:(PFObject *)object {
+    
     LeaderboardTableViewCell *cell = [tableView
-                                      dequeueReusableCellWithIdentifier:@"LeaderboardCell"
+                                      dequeueReusableCellWithIdentifier:@"CatchesCell"
                                       forIndexPath:indexPath];
     
     if (cell == nil) {
         cell = [[LeaderboardTableViewCell alloc]
                 initWithStyle:UITableViewCellStyleSubtitle
-                reuseIdentifier:@"LeaderboardCell"];
+                reuseIdentifier:@"CatchesCell"];
     }
     
     PFFile *imageFile = object[@"photo"];
@@ -86,6 +87,12 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    if (indexPath.row == self.objects.count && self.paginationEnabled) {
+        // Load More Cell
+        return [self loadNextPage];
+    }
+    
     selectedCatch = [self.objects objectAtIndex:indexPath.row];
     [self performSegueWithIdentifier:@"showCatchDetailFromProfile" sender:nil];
 }

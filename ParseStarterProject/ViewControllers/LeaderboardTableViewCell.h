@@ -11,6 +11,7 @@
 
 @interface LeaderboardTableViewCell : PFTableViewCell
 
+@property (nonatomic, retain) NSString *placementString;
 @property (nonatomic, retain) UILabel *speciesLabel;
 @property (nonatomic, retain) UILabel *sizeLabel;
 
