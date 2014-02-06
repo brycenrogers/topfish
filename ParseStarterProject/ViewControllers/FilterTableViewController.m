@@ -85,12 +85,14 @@
         if (self.allMethodsSwitch.on) {
             [self.allMethodsSwitch setOn:NO animated:YES];
         }
+        self.delegate.selectedMethodFilter = nil;
         [self showMethodList];
     }
     if (indexPath.section == 1 && indexPath.row == 1) {
         if (self.allSpeciesSwitch.on) {
             [self.allSpeciesSwitch setOn:NO animated:YES];
         }
+        self.delegate.selectedSpeciesFilter = nil;
         [self showSpeciesList];
     }
     if (indexPath.section == 2 && indexPath.row == 0) {
