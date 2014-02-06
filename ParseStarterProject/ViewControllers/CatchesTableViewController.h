@@ -8,8 +8,9 @@
 
 #import <Parse/Parse.h>
 #import "Catch.h"
+#import "ThemedPFQueryTableViewController.h"
 
-@interface CatchesTableViewController : PFQueryTableViewController
+@interface CatchesTableViewController : ThemedPFQueryTableViewController
 {
     Catch *selectedCatch;
 }

@@ -7,13 +7,14 @@
 //
 
 #import "WeightMeasurementOptionsTableViewController.h"
-#import "AddCatchInfoTableViewController.h"
 
 @interface WeightMeasurementOptionsTableViewController ()
 
 @end
 
 @implementation WeightMeasurementOptionsTableViewController
+
+@synthesize delegate;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -27,9 +28,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    UITabBarController *customTabBar = (UITabBarController *)self.presentingViewController;
-    UINavigationController *navigationController = (UINavigationController *)[customTabBar.viewControllers objectAtIndex:2];
-    parentVC = (AddCatchInfoTableViewController *)[navigationController.viewControllers objectAtIndex:0];
 }
 
 - (void)didReceiveMemoryWarning
@@ -43,30 +41,15 @@
     int row = indexPath.row;
     int sec = indexPath.section;
     if (sec == 0 && row == 0) {
-        [self selectGrams];
+        self.delegate.selectedWeightMeasurementLabel.text = @"g.";
     }
     if (sec == 0 && row == 1) {
-        [self selectOunces];
+        self.delegate.selectedWeightMeasurementLabel.text = @"oz.";
     }
     if (sec == 0 && row == 2) {
-        [self selectPounds];
+        self.delegate.selectedWeightMeasurementLabel.text = @"lbs.";
     }
-    [self dismissViewControllerAnimated:TRUE completion:nil];
-}
-
-- (void)selectGrams {
-    // Set the selected option to 'inches' for the parent VC
-    parentVC.weightMeasurementField.text = @"g.";
-}
-
-- (void)selectOunces {
-    // Set the selected option to 'centimeters' for the parent VC
-    parentVC.weightMeasurementField.text = @"oz.";
-}
-
-- (void)selectPounds {
-    // Set the selected option to 'centimeters' for the parent VC
-    parentVC.weightMeasurementField.text = @"lbs.";
+    [self.navigationController popToViewController:(UIViewController *)self.delegate animated:YES];
 }
 
 @end

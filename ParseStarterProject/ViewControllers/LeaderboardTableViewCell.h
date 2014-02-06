@@ -15,4 +15,6 @@
 @property (nonatomic, retain) UILabel *speciesLabel;
 @property (nonatomic, retain) UILabel *sizeLabel;
 
+- (void)drawPlacementBadgeWithNumber:(NSString *)placementNumber;
+
 @end

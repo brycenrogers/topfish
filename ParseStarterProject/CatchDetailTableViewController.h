@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "Catch.h"
+#import "ThemedTableViewController.h"
+#import "CatchMapDelegate.h"
 
-@interface CatchDetailTableViewController : UITableViewController<UIGestureRecognizerDelegate>
+@interface CatchDetailTableViewController : ThemedTableViewController<UIGestureRecognizerDelegate, CatchMapDelegate>
 {
     CAGradientLayer *gradient;
 }
@@ -27,6 +29,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *methodLabel;
 @property (weak, nonatomic) IBOutlet UILabel *notesLabel;
 
-- (IBAction)showOnMap:(UIButton *)sender;
+@property (nonatomic) CLLocationCoordinate2D catchAnnotationCoordinate;
 
 @end

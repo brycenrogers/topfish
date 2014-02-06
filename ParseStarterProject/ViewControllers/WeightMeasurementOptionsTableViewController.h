@@ -7,10 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "AddCatchInfoTableViewController.h"
+
+@protocol WeightMeasurementSelector <NSObject>
+
+- (UILabel *)selectedWeightMeasurementLabel;
+
+@end
 
 @interface WeightMeasurementOptionsTableViewController : UITableViewController
-{
-    AddCatchInfoTableViewController *parentVC;
-}
+
+@property (nonatomic, assign) id<WeightMeasurementSelector> delegate;
+
 @end

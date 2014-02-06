@@ -34,9 +34,14 @@
     self.catchPhotoScrollView.minimumZoomScale = 0.5;
     self.catchPhotoScrollView.maximumZoomScale = 6.0;
     self.catchPhotoScrollView.delegate = self;
+    self.catchPhotoScrollView.backgroundColor = [UIColor blackColor];
     
     self.imageView = [[UIImageView alloc] initWithImage:self.photo];
     [self.catchPhotoScrollView addSubview:self.imageView];
+}
+
+- (void)doneButtonPressed {
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)didReceiveMemoryWarning

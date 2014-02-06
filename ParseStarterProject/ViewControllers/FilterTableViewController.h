@@ -9,12 +9,16 @@
 #import <UIKit/UIKit.h>
 #import "SpeciesList.h"
 #import "MethodList.h"
+#import "AllMethodsSwitch.h"
+#import "FishingFilterProtocol.h"
 
 @interface FilterTableViewController : UITableViewController
 <SpeciesListSelector, MethodListSelector>
 
-@property id delegate;
+@property id<FishingFilterProtocol> delegate;
 @property (weak, nonatomic) IBOutlet UILabel *selectedSpeciesLabel;
 @property (weak, nonatomic) IBOutlet UILabel *selectedMethodLabel;
+@property (weak, nonatomic) IBOutlet UISwitch *allMethodsSwitch;
+@property (weak, nonatomic) IBOutlet UISwitch *allSpeciesSwitch;
 
 @end

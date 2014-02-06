@@ -11,6 +11,7 @@
 #import <Parse/Parse.h>
 #import "Catch.h"
 #import "CatchPhotoScrollViewController.h"
+#import "AddCatchMapLocationViewController.h"
 
 @interface CatchDetailTableViewController ()
 
@@ -59,6 +60,17 @@ gestureRecognizer;
     }
     
     [self buildSingleTapGestureRecognizer];
+    [self setupViewOnMapButton];
+}
+
+- (void)setupViewOnMapButton {
+    if (selectedCatch.location.latitude == -90.0 && selectedCatch.location.longitude == 0) {
+        [self.viewOnMapButton setEnabled:NO];
+        [self.viewOnMapButton setTitle:@"No Location Set" forState:UIControlStateNormal];
+    } else {
+        [self.viewOnMapButton setEnabled:YES];
+        [self.viewOnMapButton setTitle:@"View on Map" forState:UIControlStateNormal];
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -70,7 +82,7 @@ gestureRecognizer;
 
 - (void)setGradient {
     CAGradientLayer *gradientFill = [CAGradientLayer layer];
-    gradientFill.frame = CGRectMake(0, 85, 320, 85);
+    gradientFill.frame = CGRectMake(0, 155, 320, 85);
     gradientFill.colors = [NSArray arrayWithObjects:(id)[[UIColor clearColor] CGColor], (id)[[UIColor blackColor] CGColor], nil];
     gradientFill.opacity = 0.5;
     
@@ -152,14 +164,19 @@ gestureRecognizer;
     if ([[segue identifier] isEqualToString:@"showCatchPhotoScrollViewFromDetails"])
     {
         CatchPhotoScrollViewController *cpsvc = [segue destinationViewController];
-        //UIImageView *newImageView = [[UIImageView alloc] initWithImage:self.catchImageView.image];
         cpsvc.selectedCatch = self.selectedCatch;
         cpsvc.photo = self.catchImageView.image;
+    }
+    if ([[segue identifier] isEqualToString:@"showOnMapFromDetails"])
+    {
+        AddCatchMapLocationViewController *acmlvc = [segue destinationViewController];
+        acmlvc.delegate = self;
+        acmlvc.locationCoordinate = CLLocationCoordinate2DMake(self.selectedCatch.location.latitude, self.selectedCatch.location.longitude);
     }
 }
 
 - (IBAction)showOnMap:(UIButton *)sender {
-    NSLog(@"SHO MAP BITCH");
+    [self performSegueWithIdentifier:@"showOnMapFromDetails" sender:nil];
 }
 
 @end

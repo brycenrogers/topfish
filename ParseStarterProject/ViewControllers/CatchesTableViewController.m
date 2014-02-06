@@ -9,7 +9,7 @@
 #import "CatchesTableViewController.h"
 #import "Catch.h"
 #import "CatchDetailTableViewController.h"
-#import "LeaderboardTableViewCell.h"
+#import "CatchTableViewCell.h"
 
 @interface CatchesTableViewController ()
 
@@ -33,7 +33,7 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    [self.tableView registerClass:[LeaderboardTableViewCell class] forCellReuseIdentifier:@"CatchesCell"];
+    [self.tableView registerClass:[CatchTableViewCell class] forCellReuseIdentifier:@"CatchesCell"];
 }
 
 - (void)didReceiveMemoryWarning
@@ -52,12 +52,12 @@
 
 - (PFTableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath object:(PFObject *)object {
     
-    LeaderboardTableViewCell *cell = [tableView
+    CatchTableViewCell *cell = [tableView
                                       dequeueReusableCellWithIdentifier:@"CatchesCell"
                                       forIndexPath:indexPath];
     
     if (cell == nil) {
-        cell = [[LeaderboardTableViewCell alloc]
+        cell = [[CatchTableViewCell alloc]
                 initWithStyle:UITableViewCellStyleSubtitle
                 reuseIdentifier:@"CatchesCell"];
     }

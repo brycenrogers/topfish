@@ -12,14 +12,22 @@
 #import "SpeciesList.h"
 #import "MethodListTableViewController.h"
 #import "AddCatchNotesViewController.h"
+#import "WeightMeasurementOptionsTableViewController.h"
+#import "LengthMeasurementOptionsTableViewController.h"
+#import "ThemedTableViewController.h"
+#import "CatchMapDelegate.h"
 
 @interface AddCatchInfoTableViewController :
-UITableViewController<UITextFieldDelegate,
+ThemedTableViewController<UITextFieldDelegate,
 UIImagePickerControllerDelegate,
 UINavigationControllerDelegate,
+UIAlertViewDelegate,
 SpeciesListSelector,
 MethodListSelector,
-CatchNotesDelegate>
+CatchNotesDelegate,
+WeightMeasurementSelector,
+LengthMeasurementSelector,
+CatchMapDelegate>
 {
     UIToolbar *dismissView;
     UIImage *catchPhoto;
@@ -28,13 +36,12 @@ CatchNotesDelegate>
     UIImage *defaultFishPhoto;
 }
 
-@property (weak, nonatomic) IBOutlet UITextField *lengthMeasurementField;
-@property (weak, nonatomic) IBOutlet UITextField *weightMeasurementField;
+@property (weak, nonatomic) IBOutlet UILabel *selectedLengthMeasurementLabel;
+@property (weak, nonatomic) IBOutlet UILabel *selectedWeightMeasurementLabel;
 @property (weak, nonatomic) IBOutlet UITextField *catchLengthField;
 @property (weak, nonatomic) IBOutlet UITextField *catchWeightField;
 @property (weak, nonatomic) IBOutlet UIImageView *selectedPhoto;
 @property (weak, nonatomic) IBOutlet UISwitch *rankedCatchSwitch;
-@property (weak, nonatomic) IBOutlet UISwitch *tellMyFriendsSwitch;
 @property (weak, nonatomic) IBOutlet UILabel *selectedLocationLabel;
 @property (weak, nonatomic) IBOutlet UILabel *selectedMethodLabel;
 @property (weak, nonatomic) IBOutlet UILabel *selectedSpeciesLabel;

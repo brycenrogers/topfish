@@ -36,14 +36,16 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    //[self.tabBar setBarTintColor:[UIColor colorWithRed:239/255.0 green:236/255.0 blue:225/255.0 alpha:1]];
     self.viewControllers = [NSArray arrayWithObjects:
-                            [self viewControllerWithTabTitle:@"Leaderboard" image:[UIImage imageNamed:@""]],
-                            [self viewControllerWithTabTitle:@"Map" image:[UIImage imageNamed:@""]],
+                            [self viewControllerWithTabTitle:@"Leaderboard" image:[UIImage imageNamed:@"trophy-mini.png"]],
+                            [self viewControllerWithTabTitle:@"Map" image:[UIImage imageNamed:@"map-pin-area-mini.png"]],
                             [self viewControllerWithTabTitle:@"Add Catch" image:[UIImage imageNamed:nil]],
-                            [self viewControllerWithTabTitle:@"Catches" image:[UIImage imageNamed:@""]],
-                            [self viewControllerWithTabTitle:@"Profile" image:[UIImage imageNamed:@""]],
+                            [self viewControllerWithTabTitle:@"Catches" image:[UIImage imageNamed:@"shopping-bag-mini.png"]],
+                            [self viewControllerWithTabTitle:@"Profile" image:[UIImage imageNamed:@"man-mini.png"]],
                             nil];
-    [self addCenterButtonWithImage:[UIImage imageNamed:@"capture-button.png"] highlightImage:nil];
+    [self addCenterButtonWithImage:[UIImage imageNamed:@"add-catch-button.png"] highlightImage:nil];
+    self.selectedViewController = [self.viewControllers objectAtIndex:0];
 }
 
 - (void)didReceiveMemoryWarning
@@ -85,7 +87,7 @@
 {
     UIButton* button = [UIButton buttonWithType:UIButtonTypeCustom];
     button.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleTopMargin;
-    button.frame = CGRectMake(0.0, 0.0, buttonImage.size.width, buttonImage.size.height);
+    button.frame = CGRectMake(0.0, -2.0, buttonImage.size.width, buttonImage.size.height);
     [button setBackgroundImage:buttonImage forState:UIControlStateNormal];
     [button setBackgroundImage:highlightImage forState:UIControlStateHighlighted];
     

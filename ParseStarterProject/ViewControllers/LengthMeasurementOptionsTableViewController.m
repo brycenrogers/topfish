@@ -7,13 +7,14 @@
 //
 
 #import "LengthMeasurementOptionsTableViewController.h"
-#import "AddCatchInfoTableViewController.h"
 
 @interface LengthMeasurementOptionsTableViewController ()
 
 @end
 
 @implementation LengthMeasurementOptionsTableViewController
+
+@synthesize delegate;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -27,9 +28,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    UITabBarController *customTabBar = (UITabBarController *)self.presentingViewController;
-    UINavigationController *navigationController = (UINavigationController *)[customTabBar.viewControllers objectAtIndex:2];
-    parentVC = (AddCatchInfoTableViewController *)[navigationController.viewControllers objectAtIndex:0];
 }
 
 - (void)didReceiveMemoryWarning
@@ -43,22 +41,12 @@
     int row = indexPath.row;
     int sec = indexPath.section;
     if (sec == 0 && row == 0) {
-        [self selectInches];
+        self.delegate.selectedLengthMeasurementLabel.text = @"in.";
     }
     if (sec == 0 && row == 1) {
-        [self selectCentimeters];
+        self.delegate.selectedLengthMeasurementLabel.text = @"cm.";
     }
-    [self dismissViewControllerAnimated:TRUE completion:nil];
-}
-
-- (void)selectInches {
-    // Set the selected option to 'inches' for the parent VC
-    parentVC.lengthMeasurementField.text = @"in.";
-}
-
-- (void)selectCentimeters {
-    // Set the selected option to 'centimeters' for the parent VC
-    parentVC.lengthMeasurementField.text = @"cm.";
+    [self.navigationController popToViewController:(UIViewController *)self.delegate animated:YES];
 }
 
 @end

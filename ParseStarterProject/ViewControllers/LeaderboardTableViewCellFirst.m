@@ -50,7 +50,7 @@
     CAGradientLayer *gradient = [CAGradientLayer layer];
     gradient.frame = CGRectMake(0, 85, 320, 85);
     gradient.colors = [NSArray arrayWithObjects:(id)[[UIColor clearColor] CGColor], (id)[[UIColor blackColor] CGColor], nil];
-    gradient.opacity = 0.75;
+    gradient.opacity = 0.5;
     
     [self.contentView.layer insertSublayer:gradient atIndex:1];
 }
@@ -63,8 +63,8 @@
 }
 
 - (void)addNumberOneBadgeView {
-    UIView *numOneView = [[UIView alloc] initWithFrame:CGRectMake(150, 5, 30, 30)];
-    numOneView.backgroundColor = [UIColor redColor];
+    UIImageView *numOneView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 100, 114)];
+    numOneView.image = [UIImage imageNamed:@"first-place-badge.png"];
     self.numberOneView = numOneView;
     [self.contentView addSubview:self.numberOneView];
 }

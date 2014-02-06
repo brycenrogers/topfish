@@ -27,9 +27,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
- 
-    self.usernameRowCell.detailTextLabel.text = [[PFUser currentUser] username];
-    self.emailRowCell.detailTextLabel.text = [[PFUser currentUser] email];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    self.usernameRowCell.textLabel.text = [[PFUser currentUser] username];
+    self.emailRowCell.textLabel.text = [[PFUser currentUser] email];
 }
 
 - (void)didReceiveMemoryWarning
@@ -46,7 +49,7 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.section == 0 && indexPath.row == 2) {
+    if (indexPath.section == 2 && indexPath.row == 0) {
         [self logOut];
     }
 }

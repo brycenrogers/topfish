@@ -54,10 +54,10 @@
     switch (section)
     {
         case 0:
-            sectionName = NSLocalizedString(@"Fly Fishing", @"Fly Fishing");
+            sectionName = NSLocalizedString(@"Fly Tackle", @"Fly Tackle");
             break;
         case 1:
-            sectionName = NSLocalizedString(@"Spin Fishing", @"Spin Fishing");
+            sectionName = NSLocalizedString(@"Conventional Tackle", @"Conventional Tackle");
             break;
             // ...
         default:

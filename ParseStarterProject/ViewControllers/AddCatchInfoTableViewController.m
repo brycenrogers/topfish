@@ -16,6 +16,8 @@
 #import <MobileCoreServices/UTCoreTypes.h>
 #import "AddCatchMapLocationViewController.h"
 #import "SpeciesListTableViewController.h"
+#import "WeightMeasurementOptionsTableViewController.h"
+#import "LengthMeasurementOptionsTableViewController.h"
 
 @interface AddCatchInfoTableViewController ()
 
@@ -23,15 +25,14 @@
 
 @implementation AddCatchInfoTableViewController
 
-@synthesize lengthMeasurementField,
-weightMeasurementField,
+@synthesize selectedLengthMeasurementLabel,
+selectedWeightMeasurementLabel,
 catchLengthField,
 catchWeightField,
 selectedPhoto,
 selectedSpeciesLabel,
 selectedMethodLabel,
 rankedCatchSwitch,
-tellMyFriendsSwitch,
 selectedLocationLabel,
 catchNotesLabel,
 catchAnnotationCoordinate,
@@ -55,12 +56,20 @@ selectedCatch;
     catchWeightField.delegate = self;
     catchPhoto = nil;
     rankedCatchSwitch.selected = YES;
-    tellMyFriendsSwitch.selected = YES;
     catchAnnotationCoordinate = kCLLocationCoordinate2DInvalid;
     selectedPhoto.contentMode = UIViewContentModeScaleAspectFit;
     defaultFishPhoto = [UIImage imageNamed:@"fish-default-photo.png"];
     selectedPhoto.image = defaultFishPhoto;
+    
     [self buildDismissKeyboardAccessoryView];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    if (CLLocationCoordinate2DIsValid(self.catchAnnotationCoordinate)) {
+        self.selectedLocationLabel.text = @"Location Selected!";
+    }
 }
 
 - (void)buildDismissKeyboardAccessoryView {
@@ -76,6 +85,12 @@ selectedCatch;
     catchWeightField.inputAccessoryView = dismissView;
 }
 
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
+{
+    [catchLengthField resignFirstResponder];
+    [catchWeightField resignFirstResponder];
+}
+
 - (void)removeKeyboard {
     [self.view endEditing:YES];
 }
@@ -87,11 +102,11 @@ selectedCatch;
 }
 
 - (IBAction)selectWeightMeasurement:(UIButton *)sender {
-    
+    [self performSegueWithIdentifier:@"selectWeightMeasurementFromAdd" sender:nil];
 }
 
 - (IBAction)selectLengthMeasurement:(UIButton *)sender {
-    
+    [self performSegueWithIdentifier:@"selectLengthMeasurementFromAdd" sender:nil];
 }
 
 - (IBAction)clearNewCatchForm:(UIBarButtonItem *)sender {
@@ -123,14 +138,13 @@ selectedCatch;
     Catch *brandNewCatch = [Catch object];
     brandNewCatch.length = [catchLengthField.text doubleValue];
     brandNewCatch.weight = [catchWeightField.text doubleValue];
-    brandNewCatch.lengthMeasurement = lengthMeasurementField.text;
-    brandNewCatch.weightMeasurement = weightMeasurementField.text;
+    brandNewCatch.lengthMeasurement = self.selectedLengthMeasurementLabel.text;
+    brandNewCatch.weightMeasurement = self.selectedWeightMeasurementLabel.text;
     brandNewCatch.method = selectedMethodLabel.text;
-    brandNewCatch.species = selectedSpeciesLabel.text;
     brandNewCatch.notes = catchNotesLabel.text;
     brandNewCatch.rankedCatch = rankedCatchSwitch.on;
-    brandNewCatch.tellMyFriends = tellMyFriendsSwitch.on;
     brandNewCatch.user = [PFUser currentUser];
+    brandNewCatch.species = self.selectedSpeciesLabel.text;
     
     // Sets a default location coordinate if none was selected
     if (!CLLocationCoordinate2DIsValid(catchAnnotationCoordinate)) {
@@ -154,16 +168,33 @@ selectedCatch;
         
         
         [imageFile saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-            if (!succeeded) {
-                // Handle upload error
-            }            
+            if (succeeded) {
             brandNewCatch.photo = imageFile;
-            [brandNewCatch saveEventually];
-            [loadingOverlay removeFromSuperview];
-            self.selectedCatch = brandNewCatch;
-            
-            // Move to CatchAddedViewController to show success message
-            [self performSegueWithIdentifier:@"catchAddedVC" sender:nil];
+            [brandNewCatch saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                [loadingOverlay removeFromSuperview];
+                if (succeeded) {
+                    self.selectedCatch = brandNewCatch;
+                    
+                    // Move to CatchAddedViewController to show success message
+                    [self performSegueWithIdentifier:@"catchAddedVC" sender:nil];
+                } else {
+                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Network Error"
+                                                                    message:@"Could not save catch. Network error occured."
+                                                                   delegate:self
+                                                          cancelButtonTitle:nil
+                                                          otherButtonTitles:nil, nil];
+                    [alert show];
+                }
+                
+            }];
+            } else {
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Network Error"
+                                                                message:@"Could not save catch. Network error occured."
+                                                               delegate:self
+                                                      cancelButtonTitle:nil
+                                                      otherButtonTitles:nil, nil];
+                [alert show];
+            }
             
         } progressBlock:^(int percentDone) {
             [uploadProgressView setProgress:percentDone animated:YES];
@@ -201,18 +232,15 @@ selectedCatch;
 - (BOOL)validateForm {
     if (![self validateCatchLength]) {
         [self showAlertForField:catchLengthField
-                    withMessage:@"Please enter the length of your catch"];
-        //[self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:NSNotFound inSection:3] atScrollPosition:nil animated:YES];
-        
-        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:1];
-        [self.tableView scrollToRowAtIndexPath:indexPath
-                              atScrollPosition:UITableViewScrollPositionTop
-                                      animated:YES];
-        
+                    withMessage:@"Please enter the length of your catch" andTag:2];
         return NO;
     }
     if (![self validateCatchPhoto]) {
-        [self showAlertForField:nil withMessage:@"Ranked Catches must have a photo"];
+        [self showAlertForField:nil withMessage:@"Ranked Catches must have a photo" andTag:1];
+        return NO;
+    }
+    if (![self validateSpecies]) {
+        [self showAlertForField:nil withMessage:@"Please select a species" andTag:3];
         return NO;
     }
     return YES;
@@ -220,6 +248,13 @@ selectedCatch;
 
 - (BOOL)validateCatchLength {
     if ([catchLengthField.text isEqualToString:@""]) {
+        return NO;
+    }
+    return YES;
+}
+
+- (BOOL)validateSpecies {
+    if ([selectedSpeciesLabel.text isEqualToString:@"Select Species"]) {
         return NO;
     }
     return YES;
@@ -243,13 +278,29 @@ selectedCatch;
     selectedLocationLabel.text = @"No Location Selected";
 }
 
-- (void)showAlertForField:(UITextField *)field withMessage:(NSString *)message {
+- (void)showAlertForField:(UITextField *)field withMessage:(NSString *)message andTag:(int)tagNum {
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@""
                                                     message:message
                                                    delegate:nil cancelButtonTitle:@"OK"
                                           otherButtonTitles:nil, nil];
+    alert.delegate = self;
+    alert.tag = tagNum;
     [alert show];
     [field becomeFirstResponder];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+    if (alertView.tag == 2) {
+        indexPath = [NSIndexPath indexPathForRow:0 inSection:1];
+    } else if (alertView.tag == 3) {
+        indexPath = [NSIndexPath indexPathForRow:0 inSection:2];
+    }
+    
+    [self.tableView scrollToRowAtIndexPath:indexPath
+                          atScrollPosition:UITableViewScrollPositionTop
+                                  animated:YES];
 }
 
 - (void)showLocationModal {
@@ -263,6 +314,9 @@ selectedCatch;
     {
         AddCatchMapLocationViewController *parentVC = [segue destinationViewController];
         parentVC.delegate = self;
+        if (CLLocationCoordinate2DIsValid(self.catchAnnotationCoordinate)) {
+            parentVC.locationCoordinate = CLLocationCoordinate2DMake(self.catchAnnotationCoordinate.latitude, self.catchAnnotationCoordinate.longitude);
+        }
         return;
     }
     
@@ -292,10 +346,80 @@ selectedCatch;
         CatchAddedViewController *cavc = [segue destinationViewController];
         cavc.selectedCatch = self.selectedCatch;
     }
+    
+    if ([[segue identifier] isEqualToString:@"selectWeightMeasurementFromAdd"])
+    {
+        WeightMeasurementOptionsTableViewController *wmotvc = [segue destinationViewController];
+        wmotvc.delegate = self;
+    }
+    
+    if ([[segue identifier] isEqualToString:@"selectLengthMeasurementFromAdd"])
+    {
+        LengthMeasurementOptionsTableViewController *lmotvc = [segue destinationViewController];
+        lmotvc.delegate = self;
+    }
 }
 
 - (void)showNotesModal {
     [self performSegueWithIdentifier:@"addNote" sender:nil];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.section == 0 && indexPath.row == 2) {
+        UITableViewCell *theCell = [super tableView:tableView cellForRowAtIndexPath:indexPath];
+        theCell.imageView.image = [UIImage imageNamed:@"camera-mini.png"];
+        theCell.textLabel.text = @"Take a Photo";
+        return theCell;
+    }
+    if (indexPath.section == 0 && indexPath.row == 3) {
+        UITableViewCell *theCell = [super tableView:tableView cellForRowAtIndexPath:indexPath];
+        theCell.imageView.image = [UIImage imageNamed:@"image-mini.png"];
+        theCell.textLabel.text = @"Choose Existing Photo";
+        return theCell;
+    }
+    if (indexPath.section == 1 && indexPath.row == 0) {
+        UITableViewCell *theCell = [super tableView:tableView cellForRowAtIndexPath:indexPath];
+        theCell.imageView.image = [UIImage imageNamed:@"ruler-mini.png"];
+        theCell.textLabel.text = @"Length";
+        return theCell;
+    }
+    if (indexPath.section == 1 && indexPath.row == 1) {
+        UITableViewCell *theCell = [super tableView:tableView cellForRowAtIndexPath:indexPath];
+        theCell.imageView.image = [UIImage imageNamed:@"weight-mini.png"];
+        theCell.textLabel.text = @"Weight";
+        return theCell;
+    }
+    if (indexPath.section == 2 && indexPath.row == 0) {
+        UITableViewCell *theCell = [super tableView:tableView cellForRowAtIndexPath:indexPath];
+        theCell.imageView.image = [UIImage imageNamed:@"circle-overlapping-mini.png"];
+        return theCell;
+    }
+    if (indexPath.section == 3 && indexPath.row == 0) {
+        UITableViewCell *theCell = [super tableView:tableView cellForRowAtIndexPath:indexPath];
+        theCell.imageView.image = [UIImage imageNamed:@"hand-mini.png"];
+        return theCell;
+    }
+    if (indexPath.section == 4 && indexPath.row == 0) {
+        UITableViewCell *theCell = [super tableView:tableView cellForRowAtIndexPath:indexPath];
+        theCell.imageView.image = [UIImage imageNamed:@"map-pin-area-mini-grey.png"];
+        return theCell;
+    }
+    if (indexPath.section == 4 && indexPath.row == 1) {
+        UITableViewCell *theCell = [super tableView:tableView cellForRowAtIndexPath:indexPath];
+        theCell.imageView.image = [UIImage imageNamed:@"map-pin-mini.png"];
+        return theCell;
+    }
+    if (indexPath.section == 5 && indexPath.row == 0) {
+        UITableViewCell *theCell = [super tableView:tableView cellForRowAtIndexPath:indexPath];
+        theCell.imageView.image = [UIImage imageNamed:@"sticky-note-mini.png"];
+        return theCell;
+    }
+    if (indexPath.section == 6 && indexPath.row == 0) {
+        UITableViewCell *theCell = [super tableView:tableView cellForRowAtIndexPath:indexPath];
+        theCell.imageView.image = [UIImage imageNamed:@"trophy-mini-grey.png"];
+        return theCell;
+    }
+    return [super tableView:tableView cellForRowAtIndexPath:indexPath];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

@@ -11,9 +11,9 @@
 
 @interface CatchPhotoScrollViewController : UIViewController<UIScrollViewDelegate>
 
-@property (weak, nonatomic) IBOutlet UIScrollView *catchPhotoScrollView;
-@property (strong, nonatomic) UIImageView *imageView;
-@property (strong, nonatomic) UIImage *photo;
-@property (weak, nonatomic) Catch *selectedCatch;
+@property (retain, nonatomic) IBOutlet UIScrollView *catchPhotoScrollView;
+@property (retain, nonatomic) UIImageView *imageView;
+@property (retain, nonatomic) UIImage *photo;
+@property (retain, nonatomic) Catch *selectedCatch;
 
 @end

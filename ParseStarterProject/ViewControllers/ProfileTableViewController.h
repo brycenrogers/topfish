@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ThemedTableViewController.h"
 
-@interface ProfileTableViewController : UITableViewController
+@interface ProfileTableViewController : ThemedTableViewController
 
 @property (weak, nonatomic) IBOutlet UITableViewCell *usernameRowCell;
 @property (weak, nonatomic) IBOutlet UITableViewCell *emailRowCell;

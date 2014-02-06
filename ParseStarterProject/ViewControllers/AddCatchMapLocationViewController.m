@@ -19,7 +19,7 @@
 
 @implementation AddCatchMapLocationViewController
 
-@synthesize delegate, catchAnnotation;
+@synthesize delegate, catchAnnotation, locationCoordinate;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -40,19 +40,16 @@
     [self.mapView addGestureRecognizer:longpress];
     
     self.mapView.delegate = self;
-    
-    // Step back through the view heirarchy and assign the parent VC to the current VC for use later
-    //[self bindParentVC];
 }
 
 - (void)placeSelectedCatchAnnotationOnMap {
     // This places a Catch Annotation set from the Parent VC on the mapView
-    if (self.delegate.catchAnnotationCoordinate.latitude == 90.0 && self.delegate.catchAnnotationCoordinate.longitude == 0.0) {
+    if (self.locationCoordinate.latitude == 90.0 && self.locationCoordinate.longitude == 0.0) {
         return;
     }
-    MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(self.delegate.catchAnnotationCoordinate, 1200, 1200);
+    MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(self.locationCoordinate, 1200, 1200);
     [self.mapView setRegion:[self.mapView regionThatFits:region] animated:YES];
-    [self placeCatchAnnotationOnMap:self.delegate.catchAnnotationCoordinate];
+    [self placeCatchAnnotationOnMap:self.locationCoordinate];
 }
 
 - (void)didReceiveMemoryWarning
@@ -64,22 +61,26 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
-    if (CLLocationCoordinate2DIsValid(self.delegate.catchAnnotationCoordinate) && self.catchAnnotation == nil) {
+    if (self.locationCoordinate.longitude == 0 && self.locationCoordinate.latitude == 0) {
+        self.locationCoordinate = kCLLocationCoordinate2DInvalid;
+    }
+    
+    if (CLLocationCoordinate2DIsValid(self.locationCoordinate) &&
+        self.catchAnnotation == nil) {
         [self placeSelectedCatchAnnotationOnMap];
     }
 }
 
 - (IBAction)doneButton:(UIBarButtonItem *)sender {
-    NSString *coordString = [[NSString alloc] initWithFormat:@"Lat. %f, Long. %f",
-                             self.delegate.catchAnnotationCoordinate.latitude,
-                             self.delegate.catchAnnotationCoordinate.longitude];
-    self.delegate.selectedLocationLabel.text = coordString;
+    
+    self.delegate.catchAnnotationCoordinate = locationCoordinate;
+    
     [self dismissViewControllerAnimated:TRUE completion:nil];
 }
 
 - (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
 {
-    if (CLLocationCoordinate2DIsValid(self.delegate.catchAnnotationCoordinate) == NO) {
+    if (CLLocationCoordinate2DIsValid(self.locationCoordinate) == NO) {
         MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(self.mapView.userLocation.coordinate, 1200, 1200);
         [self.mapView setRegion:[self.mapView regionThatFits:region] animated:YES];
         [self placeCatchAnnotationOnMap:self.mapView.userLocation.coordinate];
@@ -105,7 +106,7 @@
     catchAnnot.animatesDrop = YES;
     [self.mapView removeAnnotations:self.mapView.annotations];
     [self.mapView addAnnotation:catchAnnot];
-    self.delegate.catchAnnotationCoordinate = CLLocationCoordinate2DMake(catchAnnot.coordinate.latitude, catchAnnot.coordinate.longitude);
+    self.locationCoordinate = CLLocationCoordinate2DMake(catchAnnot.coordinate.latitude, catchAnnot.coordinate.longitude);
     self.catchAnnotation = catchAnnot;
 }
 

@@ -7,11 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "AddCatchInfoTableViewController.h"
+
+@protocol LengthMeasurementSelector <NSObject>
+
+- (UILabel *)selectedLengthMeasurementLabel;
+
+@end
 
 @interface LengthMeasurementOptionsTableViewController : UITableViewController
-{
-    AddCatchInfoTableViewController *parentVC;
-}
+
+@property (nonatomic, assign) id<LengthMeasurementSelector> delegate;
 
 @end

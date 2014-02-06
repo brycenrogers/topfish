@@ -13,10 +13,10 @@
 // Returns a list of Fish objects with fish.species specified
 + (NSMutableArray *)getFlyFishingList {
     NSMutableArray *list = [[NSMutableArray alloc] initWithObjects:
-                     @"Back Cast",
-                     @"Forward Cast",
-                     @"Tight Loop & Open Loop",
-                     @"Roll Cast",nil];
+                     @"Nymphing (Dead Drift)",
+                     @"Nymphing (Active Retrieve)",
+                     @"Streamer",
+                     @"Surface / Dry Fly",nil];
     
     return list;
 }
@@ -24,18 +24,10 @@
 // Returns a list of Fish objects with fish.species specified
 + (NSMutableArray *)getSpinFishingList {
     NSMutableArray *list = [[NSMutableArray alloc] initWithObjects:
-                            @"Bait Casting",
-                            @"Bottom Bouncing",
-                            @"Chumming",
-                            @"Drift Fishing",
-                            @"Jigging",
-                            @"Jig and Worm",
-                            @"Live Lining",
-                            @"Spoons",
-                            @"Spin Casting",
                             @"Still Fishing",
-                            @"Surface Poppers",
-                            @"Trolling",nil];
+                            @"Trolling",
+                            @"Casting",
+                            @"Jigging",nil];
     
     return list;
 }

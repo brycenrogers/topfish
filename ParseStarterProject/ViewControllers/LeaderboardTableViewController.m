@@ -12,6 +12,7 @@
 #import "LoadingView.h"
 #import "LeaderboardTableViewCell.h"
 #import "LeaderboardTableViewCellFirst.h"
+#import "FilterTableViewController.h"
 
 @interface LeaderboardTableViewController ()
 
@@ -47,10 +48,20 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)updateLeaderboardWithFilter {
+    [self loadObjects];
+}
+
 - (PFQuery *)queryForTable {
     PFQuery *query = [Catch query];
     [query whereKey:@"rankedCatch" equalTo:[NSNumber numberWithBool:YES]];
-    [query orderByDescending:@"weight"];
+    if (self.selectedSpeciesFilter != nil) {
+        [query whereKey:@"species" equalTo:self.selectedSpeciesFilter];
+    }
+    if (self.selectedMethodFilter != nil) {
+        [query whereKey:@"method" equalTo:self.selectedMethodFilter];
+    }
+    [query orderByDescending:@"length"];
     [query includeKey:@"user"];
     query.limit = 20;
     return query;
@@ -93,7 +104,7 @@
         cell.speciesLabel.attributedText = speciesString;
 
         NSString *sizeString = [NSString
-                                     stringWithFormat:@"Length - %1@ %1@, Weight - %1@ %1@",
+                                     stringWithFormat:@"%1@ %1@, %1@ %1@",
                                      object[@"length"],
                                      object[@"lengthMeasurement"],
                                      object[@"weight"],
@@ -128,7 +139,7 @@
         cell.speciesLabel.attributedText = speciesString;
         
         NSString *sizeString = [NSString
-                                stringWithFormat:@"Length - %1@ %1@, Weight - %1@ %1@",
+                                stringWithFormat:@"%1@ %1@, %1@ %1@",
                                 object[@"length"],
                                 object[@"lengthMeasurement"],
                                 object[@"weight"],
@@ -140,7 +151,7 @@
         
         cell.imageView.frame = CGRectMake(0, 0, 88, 61);
         
-        [self drawPlacementBadgeForCell:cell withNumber:[NSString stringWithFormat:@"%d", indexPath.row + 1]];
+        [cell drawPlacementBadgeWithNumber:[NSString stringWithFormat:@"%d", indexPath.row + 1]];
         
         return cell;
     }
@@ -153,23 +164,6 @@
     }
     
     return 60;
-}
-
-- (void)drawPlacementBadgeForCell:(PFTableViewCell *)cell withNumber:(NSString *)placementNumber {
-    UIView *badge = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 30, 61)];
-    badge.tag = 1;
-    //badge.backgroundColor = [UIColor greenColor];
-    
-    UILabel *number = [[UILabel alloc] initWithFrame:CGRectMake(6, 28, 15, 10)];
-    
-    NSAttributedString *num = [[NSAttributedString alloc] initWithString:placementNumber attributes:@{NSFontAttributeName: [UIFont fontWithName:@"Arial" size:12.0]}];
-    
-    number.attributedText = num;
-    number.textAlignment = NSTextAlignmentCenter;
-    
-    [badge addSubview:number];
-    
-    [cell.contentView insertSubview:badge atIndex:1];
 }
 
 // Segues
@@ -185,6 +179,11 @@
     {
         CatchDetailTableViewController *catchDetailVC = [segue destinationViewController];
         catchDetailVC.selectedCatch = selectedCatch;
+    }
+    if ([[segue identifier] isEqualToString:@"showFilterSegue"])
+    {
+        FilterTableViewController *filterTVC = (FilterTableViewController *)[segue destinationViewController];
+        filterTVC.delegate = self;
     }
 }
 

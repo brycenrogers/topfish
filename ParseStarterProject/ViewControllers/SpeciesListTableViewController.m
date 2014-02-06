@@ -71,7 +71,21 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     Fish *fish = [speciesList objectAtIndex:indexPath.row];
-    self.delegate.selectedSpeciesLabel.text = fish.species;
+    
+    NSArray *words = [fish.species componentsSeparatedByString:@", "];
+    NSEnumerator *reversed = [words reverseObjectEnumerator];
+    NSMutableString *speciesPhonetic = [[NSMutableString alloc] init];
+    int i = 0;
+    for (id obj in reversed) {
+        if (i != 0) {
+            [speciesPhonetic appendString:@" "];
+        }
+        [speciesPhonetic appendString:obj];
+        i++;
+    }
+    
+    self.delegate.selectedSpeciesLabel.text = speciesPhonetic;
+    self.delegate.selectedSpeciesLabel.textColor = [UIColor blackColor];
     [self.navigationController popViewControllerAnimated:YES];
 }
 
