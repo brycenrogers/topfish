@@ -12,6 +12,7 @@
 #import "Catch.h"
 #import "CatchPhotoScrollViewController.h"
 #import "AddCatchMapLocationViewController.h"
+#import "CatchesTableViewController.h"
 
 @interface CatchDetailTableViewController ()
 
@@ -21,7 +22,7 @@
 
 @synthesize selectedCatch,
 catchImageView,
-caughtByLabel,
+caughtByButton,
 rankedCatchLabel,
 viewOnMapButton,
 lengthLabel,
@@ -43,7 +44,7 @@ gestureRecognizer;
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    self.caughtByLabel.text = selectedCatch.user.username;
+    [self.caughtByButton setTitle:selectedCatch.user.username forState:UIControlStateNormal];
     self.speciesLabel.text = selectedCatch.species;
     self.rankedCatchLabel.text = [self rankedCatchToString];
     self.lengthLabel.text = [self catchLengthToString];
@@ -76,6 +77,31 @@ gestureRecognizer;
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.row == 0 && gradient == nil) {
         [self setGradient];
+    }
+    if (indexPath.row == 2) {
+        UITableViewCell *theCell = [super tableView:tableView cellForRowAtIndexPath:indexPath];
+        theCell.imageView.image = [UIImage imageNamed:@"map-pin-mini.png"];
+        return theCell;
+    }
+    if (indexPath.row == 3) {
+        UITableViewCell *theCell = [super tableView:tableView cellForRowAtIndexPath:indexPath];
+        theCell.imageView.image = [UIImage imageNamed:@"hand-mini.png"];
+        return theCell;
+    }
+    if (indexPath.row == 4) {
+        UITableViewCell *theCell = [super tableView:tableView cellForRowAtIndexPath:indexPath];
+        theCell.imageView.image = [UIImage imageNamed:@"weight-mini.png"];
+        return theCell;
+    }
+    if (indexPath.row == 5) {
+        UITableViewCell *theCell = [super tableView:tableView cellForRowAtIndexPath:indexPath];
+        theCell.imageView.image = [UIImage imageNamed:@"ruler-mini.png"];
+        return theCell;
+    }
+    if (indexPath.row == 6) {
+        UITableViewCell *theCell = [super tableView:tableView cellForRowAtIndexPath:indexPath];
+        theCell.imageView.image = [UIImage imageNamed:@"sticky-note-mini.png"];
+        return theCell;
     }
     return [super tableView:tableView cellForRowAtIndexPath:indexPath];
 }
@@ -173,10 +199,19 @@ gestureRecognizer;
         acmlvc.delegate = self;
         acmlvc.locationCoordinate = CLLocationCoordinate2DMake(self.selectedCatch.location.latitude, self.selectedCatch.location.longitude);
     }
+    if ([[segue identifier] isEqualToString:@"shoCatchesFromUser"])
+    {
+        CatchesTableViewController *ctvc = [segue destinationViewController];
+        ctvc.selectedCatch = self.selectedCatch;
+    }
 }
 
 - (IBAction)showOnMap:(UIButton *)sender {
     [self performSegueWithIdentifier:@"showOnMapFromDetails" sender:nil];
+}
+
+- (IBAction)caughtByButton:(id)sender {
+    [self performSegueWithIdentifier:@"showCatchesFromUser" sender:nil];
 }
 
 @end

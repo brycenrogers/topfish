@@ -11,4 +11,7 @@
 
 @interface ThemedPFQueryTableViewController : PFQueryTableViewController
 
+- (void)setSeparatorColor;
+- (void)setBackgroundColor;
+
 @end

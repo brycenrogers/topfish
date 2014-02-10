@@ -26,7 +26,15 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self.tableView setSeparatorColor:self.tableView.backgroundColor = [UIColor colorWithRed:(183.0f/255.0f) green:(147.0f/255.0f) blue:(101.0f/255.0f) alpha:1.0f]];
+    [self setSeparatorColor];
+    [self setBackgroundColor];
+}
+
+- (void)setSeparatorColor {
+    [self.tableView setSeparatorColor:[UIColor colorWithRed:(183.0f/255.0f) green:(147.0f/255.0f) blue:(101.0f/255.0f) alpha:1.0f]];
+}
+
+- (void)setBackgroundColor {
     self.tableView.backgroundColor = [UIColor colorWithRed:(239.0f/255.0f) green:(236.0f/255.0f) blue:(225.0f/255.0f) alpha:1.0f];
 }
 

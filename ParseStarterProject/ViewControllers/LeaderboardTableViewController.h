@@ -21,6 +21,7 @@
 @property (nonatomic, strong) Catch *selectedCatch;
 @property (nonatomic, strong) NSString *selectedSpeciesFilter;
 @property (nonatomic, strong) NSString *selectedMethodFilter;
+@property (nonatomic, strong) UIView *noResultsView;
 
 - (void)updateLeaderboardWithFilter;
 

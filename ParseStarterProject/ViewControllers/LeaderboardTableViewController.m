@@ -20,7 +20,7 @@
 
 @implementation LeaderboardTableViewController
 
-@synthesize selectedCatch, selectedMethodFilter, selectedSpeciesFilter;
+@synthesize selectedCatch, selectedMethodFilter, selectedSpeciesFilter, noResultsView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -29,6 +29,7 @@
         // Custom initialization
         self.parseClassName = @"Catch";
         self.textKey = @"species";
+        
     }
     return self;
 }
@@ -40,6 +41,16 @@
     [self.tableView registerClass:[LeaderboardTableViewCell class] forCellReuseIdentifier:@"LeaderboardCell"];
     [self.tableView registerClass:[LeaderboardTableViewCellFirst class] forCellReuseIdentifier:@"LeaderboardCellFirst"];
     self.paginationEnabled = NO;
+    
+    UIView *noResultsV = [[UIView alloc] initWithFrame:CGRectMake(30, -100, 100, 100)];
+    UILabel *noResults = [[UILabel alloc] initWithFrame:self.view.frame];
+    noResults.text = @"No fish found for selected filters";
+    noResultsView.backgroundColor = [UIColor redColor];
+    self.noResultsView = noResultsV;
+    [self.noResultsView addSubview:noResults];
+    [self.view addSubview:self.noResultsView];
+    [self.view bringSubviewToFront:self.noResultsView];
+    self.noResultsView.hidden = YES;
 }
 
 - (void)didReceiveMemoryWarning
@@ -67,6 +78,17 @@
     return query;
 }
 
+- (void)objectsDidLoad:(NSError *)error {
+    [super objectsDidLoad:error];
+    if ([self.objects count] == 0) {
+        self.noResultsView.hidden = NO;
+        [self.tableView setSeparatorColor:[UIColor clearColor]];
+    } else {
+        self.noResultsView.hidden = YES;
+        [self setSeparatorColor];
+    }
+}
+
 - (void)showNumberOne {
     UIView *numberOneView = [[UIView alloc] initWithFrame:CGRectMake(150, 5, 30, 30)];
     numberOneView.backgroundColor = [UIColor redColor];
@@ -83,10 +105,6 @@
 }
 
 - (PFTableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath object:(PFObject *)object {
-    
-    if ([self.objects count] == 0) {
-        return [[LeaderboardTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:nil];
-    }
     
     if (indexPath.row == 0) {
         LeaderboardTableViewCellFirst *cell = [tableView

@@ -21,7 +21,7 @@
 @property (nonatomic, strong) Catch *selectedCatch;
 @property (weak, nonatomic) IBOutlet UIImageView *catchImageView;
 @property (weak, nonatomic) IBOutlet UILabel *speciesLabel;
-@property (weak, nonatomic) IBOutlet UILabel *caughtByLabel;
+@property (weak, nonatomic) IBOutlet UIButton *caughtByButton;
 @property (weak, nonatomic) IBOutlet UILabel *rankedCatchLabel;
 @property (weak, nonatomic) IBOutlet UIButton *viewOnMapButton;
 @property (weak, nonatomic) IBOutlet UILabel *lengthLabel;

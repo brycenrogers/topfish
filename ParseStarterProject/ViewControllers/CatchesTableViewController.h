@@ -11,8 +11,7 @@
 #import "ThemedPFQueryTableViewController.h"
 
 @interface CatchesTableViewController : ThemedPFQueryTableViewController
-{
-    Catch *selectedCatch;
-}
+
+@property (nonatomic, strong) Catch *selectedCatch;
 
 @end
