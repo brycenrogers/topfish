@@ -84,6 +84,8 @@
 		186C894C17EE521900CF3ECC /* LengthMeasurementOptionsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 186C894B17EE521900CF3ECC /* LengthMeasurementOptionsTableViewController.m */; };
 		188C06CA180F2D4D003C7FFC /* LoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 188C06C9180F2D4D003C7FFC /* LoadingView.m */; };
 		188ED2BE18A3428700F96E4B /* AllMethodsSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = 188ED2BD18A3428700F96E4B /* AllMethodsSwitch.m */; };
+		189ABA7818F4359E00093BE7 /* funnel-mini.png in Resources */ = {isa = PBXBuildFile; fileRef = 189ABA7618F4359E00093BE7 /* funnel-mini.png */; };
+		189ABA7918F4359E00093BE7 /* funnel-mini@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 189ABA7718F4359E00093BE7 /* funnel-mini@2x.png */; };
 		18A25CF217EFAFB6007A43F6 /* SpeciesList.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A25CF117EFAFB6007A43F6 /* SpeciesList.m */; };
 		18A25CF617EFB662007A43F6 /* SpeciesListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A25CF517EFB662007A43F6 /* SpeciesListTableViewController.m */; };
 		18A7DB9917B6BB2900471456 /* Catch.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A7DB9817B6BB2900471456 /* Catch.m */; };
@@ -216,6 +218,8 @@
 		188ED2BC18A3428700F96E4B /* AllMethodsSwitch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AllMethodsSwitch.h; path = Models/AllMethodsSwitch.h; sourceTree = "<group>"; };
 		188ED2BD18A3428700F96E4B /* AllMethodsSwitch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AllMethodsSwitch.m; path = Models/AllMethodsSwitch.m; sourceTree = "<group>"; };
 		188ED2BF18A3515B00F96E4B /* FishingFilterProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FishingFilterProtocol.h; sourceTree = "<group>"; };
+		189ABA7618F4359E00093BE7 /* funnel-mini.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "funnel-mini.png"; sourceTree = "<group>"; };
+		189ABA7718F4359E00093BE7 /* funnel-mini@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "funnel-mini@2x.png"; sourceTree = "<group>"; };
 		18A25CF017EFAFB6007A43F6 /* SpeciesList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpeciesList.h; path = Models/SpeciesList.h; sourceTree = "<group>"; };
 		18A25CF117EFAFB6007A43F6 /* SpeciesList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpeciesList.m; path = Models/SpeciesList.m; sourceTree = "<group>"; };
 		18A25CF417EFB662007A43F6 /* SpeciesListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpeciesListTableViewController.h; path = ViewControllers/SpeciesListTableViewController.h; sourceTree = "<group>"; };
@@ -373,6 +377,8 @@
 				1825113A181C830600D5909B /* map-pin-down-mini@2x.png */,
 				1825112F181C829500D5909B /* circle-overlapping-mini.png */,
 				18251130181C829500D5909B /* circle-overlapping-mini@2x.png */,
+				189ABA7618F4359E00093BE7 /* funnel-mini.png */,
+				189ABA7718F4359E00093BE7 /* funnel-mini@2x.png */,
 				18251131181C829500D5909B /* hand-mini.png */,
 				18251132181C829500D5909B /* hand-mini@2x.png */,
 				1825111F181C7E7500D5909B /* camera-mini.png */,
@@ -686,7 +692,9 @@
 				1825115B181CD78400D5909B /* Icon@2x.png in Resources */,
 				C4C51B591613CE0800959FDC /* Default@2x.png in Resources */,
 				18251135181C829500D5909B /* hand-mini.png in Resources */,
+				189ABA7818F4359E00093BE7 /* funnel-mini.png in Resources */,
 				18251133181C829500D5909B /* circle-overlapping-mini.png in Resources */,
+				189ABA7918F4359E00093BE7 /* funnel-mini@2x.png in Resources */,
 				18251115181B86FB00D5909B /* add-catch-button.png in Resources */,
 				1825115A181CD78400D5909B /* AppIcon29x29.png in Resources */,
 				18251109181B799A00D5909B /* map-pin-area-mini@2x.png in Resources */,

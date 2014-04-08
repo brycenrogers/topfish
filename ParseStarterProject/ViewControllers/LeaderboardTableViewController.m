@@ -20,7 +20,7 @@
 
 @implementation LeaderboardTableViewController
 
-@synthesize selectedCatch, selectedMethodFilter, selectedSpeciesFilter, noResultsView;
+@synthesize selectedCatch, selectedMethodFilter, selectedSpeciesFilter, noResultsView, filterButton;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -61,6 +61,10 @@
 
 - (void)updateLeaderboardWithFilter {
     [self loadObjects];
+}
+
+- (void)setFilterButtonColor:(UIColor *)toColor {
+    [self.filterButton setTitleTextAttributes:@{NSForegroundColorAttributeName: toColor} forState:UIControlStateNormal];
 }
 
 - (PFQuery *)queryForTable {

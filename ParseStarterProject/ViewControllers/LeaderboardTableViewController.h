@@ -22,7 +22,9 @@
 @property (nonatomic, strong) NSString *selectedSpeciesFilter;
 @property (nonatomic, strong) NSString *selectedMethodFilter;
 @property (nonatomic, strong) UIView *noResultsView;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *filterButton;
 
 - (void)updateLeaderboardWithFilter;
+- (void)setFilterButtonColor:(UIColor *)toColor;
 
 @end
