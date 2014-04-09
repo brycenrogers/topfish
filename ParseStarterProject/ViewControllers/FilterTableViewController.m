@@ -106,6 +106,9 @@
     if (indexPath.section == 2 && indexPath.row == 0) {
         [self applyFilter];
     }
+    if (indexPath.section == 3 && indexPath.row == 0) {
+        [self clearAllFilters];
+    }
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -133,6 +136,14 @@
     if (self.allSpeciesSwitch.on) {
         self.selectedSpeciesLabel.text = @"Filter by Species";
     }
+}
+
+- (void)clearAllFilters {
+    self.selectedSpeciesLabel.text = @"Filter by Species";
+    self.allSpeciesSwitch.on = YES;
+    self.selectedMethodLabel.text = @"Filter by Method";
+    self.allMethodsSwitch.on = YES;
+    [self applyFilter];
 }
 
 @end
