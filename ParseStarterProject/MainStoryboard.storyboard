@@ -1529,10 +1529,10 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="0iD-mx-FVF"/>
-        <segue reference="77Z-eG-1XR"/>
-        <segue reference="Fgq-cR-LaV"/>
-        <segue reference="ocG-Wj-rP4"/>
         <segue reference="RIB-mm-YyM"/>
+        <segue reference="ocG-Wj-rP4"/>
+        <segue reference="77Z-eG-1XR"/>
+        <segue reference="0iD-mx-FVF"/>
+        <segue reference="3jK-Ua-gAO"/>
     </inferredMetricsTieBreakers>
 </document>

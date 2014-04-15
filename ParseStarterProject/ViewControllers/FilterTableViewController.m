@@ -68,21 +68,21 @@
     LeaderboardTableViewController *leaderboardTVC = (LeaderboardTableViewController *)self.delegate;
     if ([selectedSpeciesLabel.text isEqualToString:@"Filter by Species"]) {
         leaderboardTVC.selectedSpeciesFilter = nil;
-//        [leaderboardTVC setFilterButtonColor:[UIColor whiteColor]];
+        [leaderboardTVC hideFilteredLayer];
     } else {
         leaderboardTVC.selectedSpeciesFilter = self.selectedSpeciesLabel.text;
-//        [leaderboardTVC setFilterButtonColor:[UIColor whiteColor]];
+        [leaderboardTVC showFilteredLayer];
     }
     if ([selectedMethodLabel.text isEqualToString:@"Filter by Method"]) {
         leaderboardTVC.selectedMethodFilter = nil;
         if ([selectedSpeciesLabel.text isEqualToString:@"Filter by Species"]) {
-//            [leaderboardTVC setFilterButtonColor:[UIColor colorWithRed:0.0 green:122.0/255.0 blue:1.0 alpha:1.0]];
+            [leaderboardTVC hideFilteredLayer];
         } else {
-//            [leaderboardTVC setFilterButtonColor:[UIColor whiteColor]];
+            [leaderboardTVC hideFilteredLayer];
         }
     } else {
         leaderboardTVC.selectedMethodFilter = self.selectedMethodLabel.text;
-//        [leaderboardTVC setFilterButtonColor:[UIColor whiteColor]];
+        [leaderboardTVC showFilteredLayer];
     }
     [leaderboardTVC loadObjects];
     [self.navigationController popViewControllerAnimated:YES];

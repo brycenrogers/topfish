@@ -20,7 +20,7 @@
 
 @implementation LeaderboardTableViewController
 
-@synthesize selectedCatch, selectedMethodFilter, selectedSpeciesFilter, noResultsView, filterButton;
+@synthesize selectedCatch, selectedMethodFilter, selectedSpeciesFilter, noResultsView, filterButton, filteredLayer;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -32,6 +32,12 @@
         
     }
     return self;
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    if (self.selectedMethodFilter != nil || self.selectedSpeciesFilter != nil) {
+        [self showFilteredLayer];
+    }
 }
 
 - (void)viewDidLoad
@@ -51,6 +57,15 @@
     [self.view addSubview:self.noResultsView];
     [self.view bringSubviewToFront:self.noResultsView];
     self.noResultsView.hidden = YES;
+    
+    UIBezierPath *path = [UIBezierPath bezierPath];
+    [path addArcWithCenter:CGPointMake(262.0, 43.0) radius:4.0 startAngle:0 endAngle:M_PI * 2.0 clockwise:YES];
+    CAShapeLayer *layer = [[CAShapeLayer alloc] init];
+    layer.path = [path CGPath];
+    layer.fillColor = [[UIColor whiteColor] CGColor];
+    layer.opacity = 0.0;
+    self.filteredLayer = layer;
+    [self.navigationController.view.layer addSublayer:self.filteredLayer];
 }
 
 - (void)didReceiveMemoryWarning
@@ -63,8 +78,12 @@
     [self loadObjects];
 }
 
-- (void)showFilteredView {
-    
+- (void)showFilteredLayer {
+    [self.filteredLayer setOpacity:1.0];
+}
+
+- (void)hideFilteredLayer {
+    [self.filteredLayer setOpacity:0.0];
 }
 
 - (void)setFilterButtonColor:(UIColor *)toColor {
@@ -210,6 +229,7 @@
     {
         FilterTableViewController *filterTVC = (FilterTableViewController *)[segue destinationViewController];
         filterTVC.delegate = self;
+        [self hideFilteredLayer];
     }
 }
 

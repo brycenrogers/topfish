@@ -199,7 +199,7 @@ gestureRecognizer;
         acmlvc.delegate = self;
         acmlvc.locationCoordinate = CLLocationCoordinate2DMake(self.selectedCatch.location.latitude, self.selectedCatch.location.longitude);
     }
-    if ([[segue identifier] isEqualToString:@"shoCatchesFromUser"])
+    if ([[segue identifier] isEqualToString:@"showCatchesFromUser"])
     {
         CatchesTableViewController *ctvc = [segue destinationViewController];
         ctvc.selectedCatch = self.selectedCatch;
@@ -211,7 +211,14 @@ gestureRecognizer;
 }
 
 - (IBAction)caughtByButton:(id)sender {
-    [self performSegueWithIdentifier:@"showCatchesFromUser" sender:nil];
+    PFUser *currentUser = [PFUser currentUser];
+    if ([selectedCatch.user.username isEqualToString:currentUser.username]) {
+        [self.tabBarController setSelectedIndex:3];
+        [[self.tabBarController.viewControllers objectAtIndex:3] popToRootViewControllerAnimated:YES];
+    } else {
+        [self performSegueWithIdentifier:@"showCatchesFromUser" sender:nil];
+    }
+    
 }
 
 - (void)changeLocationFieldIconToColor:(NSString *)color

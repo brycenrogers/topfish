@@ -250,11 +250,11 @@
 /** @name Delegating URL Actions */
 
 /*!
- Handles URLs being opened by your AppDelegate. Invoke and return this from application:handleOpenURL:
- or application:openURL:sourceApplication:annotation in your AppDelegate.
- @param url URL being opened by your application.
- @result True if Facebook will handle this URL.
+ Deprecated.  Instead, please use:
+   [FBAppCall handleOpenURL:url
+          sourceApplication:sourceApplication
+                withSession:[PFFacebookUtils session]];
  */
-+ (BOOL)handleOpenURL:(NSURL *)url;
++ (BOOL)handleOpenURL:(NSURL *)url __attribute__ ((deprecated));
 
 @end

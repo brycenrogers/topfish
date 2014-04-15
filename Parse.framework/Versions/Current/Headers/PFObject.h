@@ -146,6 +146,11 @@ NS_REQUIRES_PROPERTY_DEFINITIONS
  Returns the relation object associated with the given key 
  @param key The key that the relation is associated with. 
  */
+- (PFRelation *)relationForKey:(NSString *)key;
+
+/*!
+ Use relationForKey instead. This method exists only for backward compatibility.
+ */
 - (PFRelation *)relationforKey:(NSString *)key;
 
 #pragma mark -
@@ -561,6 +566,22 @@ NS_REQUIRES_PROPERTY_DEFINITIONS
  connection can be re-established, and the queued requests can go through.
  */
 - (void)deleteEventually;
+
+#pragma mark -
+#pragma Dirtiness
+
+/*!
+ Gets whether any key-value pair in this object (or its children) has been added/updated/removed and not saved yet.
+ @result Returns whether this object has been altered and not saved yet.
+ */
+- (BOOL)isDirty;
+
+/*!
+ Get whether a value associated with a key has been added/updated/removed and not saved yet.
+ @param key The key to check for
+ @result Returns whether this key has been altered and not saved yet.
+ */
+- (BOOL)isDirtyForKey:(NSString *)key;
 
 #pragma mark -
 

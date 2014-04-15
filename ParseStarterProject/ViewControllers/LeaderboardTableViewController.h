@@ -22,9 +22,12 @@
 @property (nonatomic, strong) NSString *selectedSpeciesFilter;
 @property (nonatomic, strong) NSString *selectedMethodFilter;
 @property (nonatomic, strong) UIView *noResultsView;
+@property (nonatomic, strong) CAShapeLayer *filteredLayer;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *filterButton;
 
 - (void)updateLeaderboardWithFilter;
 - (void)setFilterButtonColor:(UIColor *)toColor;
+- (void)showFilteredLayer;
+- (void)hideFilteredLayer;
 
 @end
