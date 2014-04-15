@@ -63,6 +63,10 @@
     [self loadObjects];
 }
 
+- (void)showFilteredView {
+    
+}
+
 - (void)setFilterButtonColor:(UIColor *)toColor {
     [self.filterButton setTitleTextAttributes:@{NSForegroundColorAttributeName: toColor} forState:UIControlStateNormal];
 }

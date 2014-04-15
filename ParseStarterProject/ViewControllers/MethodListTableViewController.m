@@ -117,7 +117,13 @@
 {
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     self.delegate.selectedMethodLabel.text = cell.textLabel.text;
+    [self.delegate changeMethodFieldIconToColor:@"blue"];
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+- (IBAction)clearButton:(UIBarButtonItem *)sender {
+    self.delegate.selectedMethodLabel.text = @"Select Method";
+    [self.delegate changeMethodFieldIconToColor:@"grey"];
+    [self.navigationController popViewControllerAnimated:YES];
+}
 @end

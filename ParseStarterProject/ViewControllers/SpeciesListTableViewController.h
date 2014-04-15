@@ -15,4 +15,6 @@
 @property NSMutableArray *speciesList;
 @property (nonatomic, assign) id<SpeciesListSelector> delegate;
 
+- (IBAction)clearButton:(UIBarButtonItem *)sender;
+
 @end

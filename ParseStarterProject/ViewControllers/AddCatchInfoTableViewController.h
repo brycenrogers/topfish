@@ -35,7 +35,8 @@ CatchMapDelegate>
     UIProgressView *uploadProgressView;
     UIImage *defaultFishPhoto;
 }
-
+@property (weak, nonatomic) IBOutlet UIButton *takePhotoButton;
+@property (weak, nonatomic) IBOutlet UIButton *choosePhotoButton;
 @property (weak, nonatomic) IBOutlet UILabel *selectedLengthMeasurementLabel;
 @property (weak, nonatomic) IBOutlet UILabel *selectedWeightMeasurementLabel;
 @property (weak, nonatomic) IBOutlet UITextField *catchLengthField;
@@ -46,14 +47,17 @@ CatchMapDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *selectedMethodLabel;
 @property (weak, nonatomic) IBOutlet UILabel *selectedSpeciesLabel;
 @property (weak, nonatomic) IBOutlet UILabel *catchNotesLabel;
-
 @property (nonatomic) CLLocationCoordinate2D catchAnnotationCoordinate;
 @property (nonatomic) NSString *notesText;
-
 @property (nonatomic, strong) Catch *selectedCatch;
 
+- (IBAction)clickTakePhotoButton:(UIButton *)sender;
+- (IBAction)clickChoosePhotoButton:(UIButton *)sender;
 - (IBAction)selectWeightMeasurement:(UIButton *)sender;
 - (IBAction)selectLengthMeasurement:(UIButton *)sender;
 - (IBAction)clearNewCatchForm:(UIBarButtonItem *)sender;
+- (void)changeSpeciesFieldIconToColor:(NSString *)color;
+- (void)changeMethodFieldIconToColor:(NSString *)color;
+- (void)changeLocationFieldIconToColor:(NSString *)color;
 
 @end

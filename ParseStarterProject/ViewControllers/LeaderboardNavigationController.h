@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ThemedNavigationController.h"
 
-@interface LeaderboardNavigationController : UINavigationController
+@interface LeaderboardNavigationController : ThemedNavigationController
 
 @end

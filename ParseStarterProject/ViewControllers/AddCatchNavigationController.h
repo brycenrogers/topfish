@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ThemedNavigationController.h"
 
-@interface AddCatchNavigationController : UINavigationController
+@interface AddCatchNavigationController : ThemedNavigationController
 
 @property BOOL catchAdded;
 

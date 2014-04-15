@@ -13,4 +13,6 @@
 
 @property (nonatomic) CLLocationCoordinate2D catchAnnotationCoordinate;
 
+- (void)changeLocationFieldIconToColor:(NSString *)color;
+
 @end

@@ -37,44 +37,48 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" enabled="NO" highlighted="YES" adjustsFontSizeToFit="NO" id="Cmm-fk-5cX">
-                                                    <rect key="frame" x="13" y="14" width="271" height="21"/>
-                                                    <attributedString key="attributedText">
-                                                        <fragment content="★ Ranked Catches must have a photo">
-                                                            <attributes>
-                                                                <color key="NSColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                                <font key="NSFont" size="14" name="HelveticaNeue-Bold"/>
-                                                                <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
-                                                            </attributes>
-                                                        </fragment>
-                                                    </attributedString>
-                                                    <color key="highlightedColor" red="1" green="0.53382794950000001" blue="0.43871831639999997" alpha="1" colorSpace="calibratedRGB"/>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="★ Ranked Catches must have a photo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="DPJ-e8-SI6">
+                                                    <rect key="frame" x="12" y="14" width="297" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="50" id="BSi-j7-ptQ">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="50" id="BSi-j7-ptQ">
                                         <rect key="frame" x="0.0" y="302" width="320" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="BSi-j7-ptQ" id="VDY-Bx-Rab">
-                                            <rect key="frame" x="0.0" y="0.0" width="287" height="49"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="8qn-gF-euB">
+                                                    <rect key="frame" x="49" y="10" width="120" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <state key="normal" title="Take Photo">
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="clickTakePhotoButton:" destination="VKv-ai-DfD" eventType="touchUpInside" id="jGB-Zh-Te6"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="cWL-tL-iph">
+                                                    <rect key="frame" x="180" y="10" width="120" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <state key="normal" title="Choose Photo">
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="clickChoosePhotoButton:" destination="VKv-ai-DfD" eventType="touchUpInside" id="MlC-D9-gdl"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="50" id="o8x-8X-LvB">
-                                        <rect key="frame" x="0.0" y="352" width="320" height="50"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="o8x-8X-LvB" id="dbw-Lt-4pq">
-                                            <rect key="frame" x="0.0" y="0.0" width="287" height="49"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </cells>
-                            </tableViewSection>
-                            <tableViewSection id="KOa-SF-1kO">
-                                <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="o5m-gF-tjL">
-                                        <rect key="frame" x="0.0" y="422" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="352" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="o5m-gF-tjL" id="Elu-ME-pEs">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -105,7 +109,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="I8m-Lj-CYB">
-                                        <rect key="frame" x="0.0" y="466" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="396" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="I8m-Lj-CYB" id="30d-mG-LQG">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -134,12 +138,8 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                </cells>
-                            </tableViewSection>
-                            <tableViewSection id="ghU-iS-nae">
-                                <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" id="wh6-ej-EJR">
-                                        <rect key="frame" x="0.0" y="530" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="440" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wh6-ej-EJR" id="OMX-ur-inW">
                                             <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
@@ -155,12 +155,8 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                </cells>
-                            </tableViewSection>
-                            <tableViewSection id="rju-AH-FNk">
-                                <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" id="s0n-RB-7FF">
-                                        <rect key="frame" x="0.0" y="594" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="484" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="s0n-RB-7FF" id="DfC-sq-gjE">
                                             <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
@@ -175,48 +171,23 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                </cells>
-                            </tableViewSection>
-                            <tableViewSection id="O50-9v-0lz">
-                                <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="yMP-gq-1g7">
-                                        <rect key="frame" x="0.0" y="658" width="320" height="44"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="yMP-gq-1g7" id="gbV-xZ-jWU">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" restorationIdentifier="selectedLocationLabel" text="No Location Selected" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="zWS-Dc-8EK">
-                                                    <rect key="frame" x="50" y="11" width="224" height="21"/>
-                                                    <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="14"/>
-                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                </label>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" id="fbi-MF-uAu">
-                                        <rect key="frame" x="0.0" y="702" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="528" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fbi-MF-uAu" id="k7t-mc-hIe">
                                             <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Select Location" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="rQn-Z6-N2t">
-                                                    <rect key="frame" x="50" y="12" width="207" height="21"/>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" restorationIdentifier="selectedLocationLabel" text="Select Location" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="zWS-Dc-8EK">
+                                                    <rect key="frame" x="49" y="11" width="224" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                </cells>
-                            </tableViewSection>
-                            <tableViewSection id="Muk-Hn-APM">
-                                <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" id="Rej-rU-a7x">
-                                        <rect key="frame" x="0.0" y="766" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="572" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Rej-rU-a7x" id="DZ8-e7-W6g">
                                             <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
@@ -231,12 +202,8 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                </cells>
-                            </tableViewSection>
-                            <tableViewSection id="zu4-Yo-M32">
-                                <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="dwG-yS-fMp">
-                                        <rect key="frame" x="0.0" y="830" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="616" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dwG-yS-fMp" id="Dj8-zV-qyZ">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -256,10 +223,10 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection id="ANU-Le-slX">
+                            <tableViewSection id="7TD-7b-Xpp">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="E0c-Kz-bAH">
-                                        <rect key="frame" x="0.0" y="894" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="680" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="E0c-Kz-bAH" id="OMU-oG-NIu">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -277,9 +244,6 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection id="7TD-7b-Xpp">
-                                <cells/>
-                            </tableViewSection>
                         </sections>
                         <connections>
                             <outlet property="dataSource" destination="VKv-ai-DfD" id="5ry-gY-naV"/>
@@ -288,7 +252,7 @@
                     </tableView>
                     <tabBarItem key="tabBarItem" title="Add Catch" id="OHe-qo-4gz"/>
                     <navigationItem key="navigationItem" title="Add Catch" id="gzG-KV-7Ic">
-                        <barButtonItem key="leftBarButtonItem" title="Clear" id="XYr-pf-vq2">
+                        <barButtonItem key="rightBarButtonItem" title="Clear" id="XYr-pf-vq2">
                             <connections>
                                 <action selector="clearNewCatchForm:" destination="VKv-ai-DfD" id="VoA-SO-WtJ"/>
                             </connections>
@@ -298,6 +262,7 @@
                         <outlet property="catchLengthField" destination="fVi-bW-tlm" id="dUe-n7-DNe"/>
                         <outlet property="catchNotesLabel" destination="wIl-65-cAr" id="HEN-CP-d3s"/>
                         <outlet property="catchWeightField" destination="0Z6-nL-dJU" id="XkN-YP-lqr"/>
+                        <outlet property="choosePhotoButton" destination="cWL-tL-iph" id="cbW-Xy-9l9"/>
                         <outlet property="rankedCatchSwitch" destination="yaT-98-deD" id="sIm-02-NzG"/>
                         <outlet property="selectedLengthMeasurementLabel" destination="Jbj-9e-kap" id="sas-mr-lQr"/>
                         <outlet property="selectedLocationLabel" destination="zWS-Dc-8EK" id="Let-w5-W8E"/>
@@ -305,6 +270,7 @@
                         <outlet property="selectedPhoto" destination="hYL-v8-Bhd" id="VkI-05-fN1"/>
                         <outlet property="selectedSpeciesLabel" destination="fJB-sy-WKk" id="9Je-oh-fu3"/>
                         <outlet property="selectedWeightMeasurementLabel" destination="O5t-Y0-OdC" id="0Vm-3X-zJA"/>
+                        <outlet property="takePhotoButton" destination="8qn-gF-euB" id="X4z-l4-BBI"/>
                         <segue destination="dUx-62-oUp" kind="push" identifier="catchAddedVC" id="dYm-UT-oUH"/>
                         <segue destination="8c7-dZ-8h4" kind="modal" identifier="showLocationModal" modalTransitionStyle="coverVertical" id="Fgq-cR-LaV"/>
                         <segue destination="wz7-gc-i4a" kind="push" identifier="selectSpeciesListFromAdd" id="ocG-Wj-rP4"/>
@@ -363,10 +329,10 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" id="kue-g3-YaD">
-                                <rect key="frame" x="0.0" y="308" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="278" width="320" height="44"/>
                                 <items>
                                     <navigationItem id="rod-mg-8Q9">
-                                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="Scm-eV-zaP">
+                                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="Scm-eV-zaP">
                                             <connections>
                                                 <action selector="doneButton:" destination="gdP-aR-ots" id="8DX-xv-mNw"/>
                                             </connections>
@@ -375,7 +341,7 @@
                                 </items>
                             </navigationBar>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="UE8-EO-bYh">
-                                <rect key="frame" x="8" y="73" width="304" height="229"/>
+                                <rect key="frame" x="8" y="20" width="304" height="202"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -893,7 +859,13 @@
                             <outlet property="delegate" destination="wz7-gc-i4a" id="kWs-td-r8x"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Species" id="9jI-6i-zke"/>
+                    <navigationItem key="navigationItem" title="Species" id="9jI-6i-zke">
+                        <barButtonItem key="rightBarButtonItem" title="Clear" id="lq5-D5-FFP">
+                            <connections>
+                                <action selector="clearButton:" destination="wz7-gc-i4a" id="6hI-lf-CIO"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vz6-dy-iU6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -924,7 +896,13 @@
                             <outlet property="delegate" destination="Xsj-Xh-rCK" id="vjb-ad-UmE"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Method" id="1Fo-yb-cSG"/>
+                    <navigationItem key="navigationItem" title="Method" id="1Fo-yb-cSG">
+                        <barButtonItem key="rightBarButtonItem" title="Clear" id="BeQ-yu-EDX">
+                            <connections>
+                                <action selector="clearButton:" destination="Xsj-Xh-rCK" id="Ol1-WJ-Snc"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4uu-Lt-N32" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

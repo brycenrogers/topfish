@@ -12,6 +12,8 @@
 
 - (UILabel *)catchNotesLabel;
 
+- (void)changeNotesFieldIconToColor:(NSString *)color;
+
 @end
 
 @interface AddCatchNotesViewController : UIViewController

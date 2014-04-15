@@ -15,4 +15,6 @@
 @property (nonatomic, strong) NSMutableArray *spinFishingMethodList;
 @property id<MethodListSelector> delegate;
 
+- (IBAction)clearButton:(UIBarButtonItem *)sender;
+
 @end

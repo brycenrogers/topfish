@@ -74,7 +74,11 @@
 - (IBAction)doneButton:(UIBarButtonItem *)sender {
     
     self.delegate.catchAnnotationCoordinate = locationCoordinate;
-    
+    if (self.catchAnnotation == nil) {
+        [self.delegate changeLocationFieldIconToColor:@"grey"];
+    } else {
+        [self.delegate changeLocationFieldIconToColor:@"blue"];
+    }
     [self dismissViewControllerAnimated:TRUE completion:nil];
 }
 

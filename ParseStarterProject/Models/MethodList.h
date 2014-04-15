@@ -11,6 +11,7 @@
 @protocol MethodListSelector <NSObject>
 
 - (UILabel *)selectedMethodLabel;
+- (void)changeMethodFieldIconToColor:(NSString *)color;
 
 @end
 

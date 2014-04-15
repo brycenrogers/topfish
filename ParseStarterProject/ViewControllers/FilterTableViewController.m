@@ -68,21 +68,21 @@
     LeaderboardTableViewController *leaderboardTVC = (LeaderboardTableViewController *)self.delegate;
     if ([selectedSpeciesLabel.text isEqualToString:@"Filter by Species"]) {
         leaderboardTVC.selectedSpeciesFilter = nil;
-        [leaderboardTVC setFilterButtonColor:[UIColor colorWithRed:0.0 green:122.0/255.0 blue:1.0 alpha:1.0]];
+//        [leaderboardTVC setFilterButtonColor:[UIColor whiteColor]];
     } else {
         leaderboardTVC.selectedSpeciesFilter = self.selectedSpeciesLabel.text;
-        [leaderboardTVC setFilterButtonColor:[UIColor colorWithRed:(22.0f/255.0f) green:(159.0f/255.0f) blue:(46.0f/255.0f) alpha:0.75f]];
+//        [leaderboardTVC setFilterButtonColor:[UIColor whiteColor]];
     }
     if ([selectedMethodLabel.text isEqualToString:@"Filter by Method"]) {
         leaderboardTVC.selectedMethodFilter = nil;
         if ([selectedSpeciesLabel.text isEqualToString:@"Filter by Species"]) {
-            [leaderboardTVC setFilterButtonColor:[UIColor colorWithRed:0.0 green:122.0/255.0 blue:1.0 alpha:1.0]];
+//            [leaderboardTVC setFilterButtonColor:[UIColor colorWithRed:0.0 green:122.0/255.0 blue:1.0 alpha:1.0]];
         } else {
-            [leaderboardTVC setFilterButtonColor:[UIColor colorWithRed:(22.0f/255.0f) green:(159.0f/255.0f) blue:(46.0f/255.0f) alpha:0.75f]];
+//            [leaderboardTVC setFilterButtonColor:[UIColor whiteColor]];
         }
     } else {
         leaderboardTVC.selectedMethodFilter = self.selectedMethodLabel.text;
-        [leaderboardTVC setFilterButtonColor:[UIColor colorWithRed:(22.0f/255.0f) green:(159.0f/255.0f) blue:(46.0f/255.0f) alpha:0.75f]];
+//        [leaderboardTVC setFilterButtonColor:[UIColor whiteColor]];
     }
     [leaderboardTVC loadObjects];
     [self.navigationController popViewControllerAnimated:YES];
@@ -144,6 +144,14 @@
     self.selectedMethodLabel.text = @"Filter by Method";
     self.allMethodsSwitch.on = YES;
     [self applyFilter];
+}
+
+- (void)changeSpeciesFieldIconToColor:(NSString *)color {
+    
+}
+
+- (void)changeMethodFieldIconToColor:(NSString *)color {
+    
 }
 
 @end

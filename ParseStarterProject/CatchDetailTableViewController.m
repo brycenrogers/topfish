@@ -214,4 +214,9 @@ gestureRecognizer;
     [self performSegueWithIdentifier:@"showCatchesFromUser" sender:nil];
 }
 
+- (void)changeLocationFieldIconToColor:(NSString *)color
+{
+    
+}
+
 @end

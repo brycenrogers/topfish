@@ -17,5 +17,6 @@
 @protocol SpeciesListSelector <NSObject>
 
 - (UILabel *)selectedSpeciesLabel;
+- (void)changeSpeciesFieldIconToColor:(NSString *)color;
 
 @end

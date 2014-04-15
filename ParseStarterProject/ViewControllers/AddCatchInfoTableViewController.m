@@ -37,7 +37,9 @@ selectedLocationLabel,
 catchNotesLabel,
 catchAnnotationCoordinate,
 notesText,
-selectedCatch;
+selectedCatch,
+takePhotoButton,
+choosePhotoButton;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -61,6 +63,16 @@ selectedCatch;
     defaultFishPhoto = [UIImage imageNamed:@"fish-default-photo.png"];
     selectedPhoto.image = defaultFishPhoto;
     
+    // Buttons
+    takePhotoButton.layer.borderWidth=1.0f;
+    takePhotoButton.layer.borderColor=[[UIColor colorWithRed:(183.0f/255.0f) green:(147.0f/255.0f) blue:(101.0f/255.0f) alpha:0.3f] CGColor];
+    takePhotoButton.layer.cornerRadius=6.0f;
+    choosePhotoButton.layer.borderWidth=1.0f;
+    choosePhotoButton.layer.borderColor=[[UIColor colorWithRed:(183.0f/255.0f) green:(147.0f/255.0f) blue:(101.0f/255.0f) alpha:0.3f] CGColor];
+    choosePhotoButton.layer.cornerRadius=6.0f;
+    
+    [rankedCatchSwitch addTarget:self action:@selector(changeRankedCatchSwitch:) forControlEvents:UIControlEventValueChanged];
+    
     [self buildDismissKeyboardAccessoryView];
 }
 
@@ -68,7 +80,79 @@ selectedCatch;
     [super viewDidAppear:animated];
     
     if (CLLocationCoordinate2DIsValid(self.catchAnnotationCoordinate)) {
-        self.selectedLocationLabel.text = @"Location Selected!";
+        self.selectedLocationLabel.text = @"Location Selected";
+    }
+}
+
+- (void)changeRankedCatchSwitch:(id)sender {
+    if([sender isOn]){
+        [self changeRankedCatchFieldIconToColor:@"blue"];
+    } else{
+        [self changeRankedCatchFieldIconToColor:@"grey"];
+    }
+}
+
+- (void)changePhotoFieldIconToColor:(NSString *)color {
+    UITableViewCell *theCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:0]];
+    theCell.imageView.image = [UIImage imageNamed:@"camera-mini.png"];
+    if ([color isEqualToString:@"blue"]) {
+        theCell.imageView.image = [UIImage imageNamed:@"camera-mini-blue.png"];
+    }
+}
+
+- (void)changeCatchLengthFieldIconToColor:(NSString *)color {
+    UITableViewCell *theCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:3 inSection:0]];
+    theCell.imageView.image = [UIImage imageNamed:@"ruler-mini.png"];
+    if ([color isEqualToString:@"blue"]) {
+        theCell.imageView.image = [UIImage imageNamed:@"ruler-mini-blue.png"];
+    }
+}
+
+- (void)changeCatchWeightFieldIconToColor:(NSString *)color {
+    UITableViewCell *theCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:4 inSection:0]];
+    theCell.imageView.image = [UIImage imageNamed:@"weight-mini.png"];
+    if ([color isEqualToString:@"blue"]) {
+        theCell.imageView.image = [UIImage imageNamed:@"weight-mini-blue.png"];
+    }
+}
+
+- (void)changeSpeciesFieldIconToColor:(NSString *)color {
+    UITableViewCell *theCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:5 inSection:0]];
+    theCell.imageView.image = [UIImage imageNamed:@"circle-overlapping-mini.png"];
+    if ([color isEqualToString:@"blue"]) {
+        theCell.imageView.image = [UIImage imageNamed:@"circle-overlapping-mini-blue.png"];
+    }
+}
+
+- (void)changeMethodFieldIconToColor:(NSString *)color {
+    UITableViewCell *theCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:6 inSection:0]];
+    theCell.imageView.image = [UIImage imageNamed:@"hand-mini.png"];
+    if ([color isEqualToString:@"blue"]) {
+        theCell.imageView.image = [UIImage imageNamed:@"hand-mini-blue.png"];
+    }
+}
+
+- (void)changeLocationFieldIconToColor:(NSString *)color {
+    UITableViewCell *theCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:7 inSection:0]];
+    theCell.imageView.image = [UIImage imageNamed:@"map-pin-area-mini-grey.png"];
+    if ([color isEqualToString:@"blue"]) {
+        theCell.imageView.image = [UIImage imageNamed:@"map-pin-area-mini-blue.png"];
+    }
+}
+
+- (void)changeNotesFieldIconToColor:(NSString *)color {
+    UITableViewCell *theCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:8 inSection:0]];
+    theCell.imageView.image = [UIImage imageNamed:@"sticky-note-mini.png"];
+    if ([color isEqualToString:@"blue"]) {
+        theCell.imageView.image = [UIImage imageNamed:@"sticky-note-mini-blue.png"];
+    }
+}
+
+- (void)changeRankedCatchFieldIconToColor:(NSString *)color {
+    UITableViewCell *theCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:9 inSection:0]];
+    theCell.imageView.image = [UIImage imageNamed:@"trophy-mini-grey.png"];
+    if ([color isEqualToString:@"blue"]) {
+        theCell.imageView.image = [UIImage imageNamed:@"trophy-mini-blue.png"];
     }
 }
 
@@ -93,12 +177,30 @@ selectedCatch;
 
 - (void)removeKeyboard {
     [self.view endEditing:YES];
+    if ([catchLengthField.text isEqualToString:@""]) {
+        [self changeCatchLengthFieldIconToColor:@"grey"];
+    } else {
+        [self changeCatchLengthFieldIconToColor:@"blue"];
+    }
+    if ([catchWeightField.text isEqualToString:@""]) {
+        [self changeCatchWeightFieldIconToColor:@"grey"];
+    } else {
+        [self changeCatchWeightFieldIconToColor:@"blue"];
+    }
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (IBAction)clickTakePhotoButton:(UIButton *)sender {
+    [self showCameraAction];
+}
+
+- (IBAction)clickChoosePhotoButton:(UIButton *)sender {
+    [self startMediaBrowserFromViewController:self usingDelegate:self];
 }
 
 - (IBAction)selectWeightMeasurement:(UIButton *)sender {
@@ -144,7 +246,13 @@ selectedCatch;
     brandNewCatch.notes = catchNotesLabel.text;
     brandNewCatch.rankedCatch = rankedCatchSwitch.on;
     brandNewCatch.user = [PFUser currentUser];
-    brandNewCatch.species = self.selectedSpeciesLabel.text;
+    
+    if (![selectedSpeciesLabel.text isEqualToString:@"Select Species"]) {
+        brandNewCatch.species = self.selectedSpeciesLabel.text;
+    }
+    if (![selectedMethodLabel.text isEqualToString:@"Select Method"]) {
+        brandNewCatch.method = self.selectedMethodLabel.text;
+    }
     
     // Sets a default location coordinate if none was selected
     if (!CLLocationCoordinate2DIsValid(catchAnnotationCoordinate)) {
@@ -273,9 +381,22 @@ selectedCatch;
     catchLengthField.text = @"";
     catchWeightField.text = @"";
     catchPhoto = nil;
+    catchNotesLabel.text = @"Add Notes";
     selectedPhoto.image = defaultFishPhoto;
     catchAnnotationCoordinate = kCLLocationCoordinate2DInvalid;
-    selectedLocationLabel.text = @"No Location Selected";
+    selectedLocationLabel.text = @"Select Location";
+    selectedLocationLabel.textColor = [UIColor blackColor];
+    selectedSpeciesLabel.text = @"Select Species";
+    selectedMethodLabel.text = @"Select Method";
+    
+    NSString *grey = @"grey";
+    [self changePhotoFieldIconToColor:grey];
+    [self changeLocationFieldIconToColor:grey];
+    [self changeCatchLengthFieldIconToColor:grey];
+    [self changeCatchWeightFieldIconToColor:grey];
+    [self changeMethodFieldIconToColor:grey];
+    [self changeSpeciesFieldIconToColor:grey];
+    [self changeNotesFieldIconToColor:grey];
 }
 
 - (void)showAlertForField:(UITextField *)field withMessage:(NSString *)message andTag:(int)tagNum {
@@ -293,9 +414,9 @@ selectedCatch;
 {
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
     if (alertView.tag == 2) {
-        indexPath = [NSIndexPath indexPathForRow:0 inSection:1];
+        indexPath = [NSIndexPath indexPathForRow:4 inSection:0];
     } else if (alertView.tag == 3) {
-        indexPath = [NSIndexPath indexPathForRow:0 inSection:2];
+        indexPath = [NSIndexPath indexPathForRow:5 inSection:0];
     }
     
     [self.tableView scrollToRowAtIndexPath:indexPath
@@ -368,55 +489,67 @@ selectedCatch;
     if (indexPath.section == 0 && indexPath.row == 2) {
         UITableViewCell *theCell = [super tableView:tableView cellForRowAtIndexPath:indexPath];
         theCell.imageView.image = [UIImage imageNamed:@"camera-mini.png"];
-        theCell.textLabel.text = @"Take a Photo";
+        if (catchPhoto != nil) {
+            theCell.imageView.image = [UIImage imageNamed:@"camera-mini-blue.png"];
+        }
         return theCell;
     }
     if (indexPath.section == 0 && indexPath.row == 3) {
         UITableViewCell *theCell = [super tableView:tableView cellForRowAtIndexPath:indexPath];
-        theCell.imageView.image = [UIImage imageNamed:@"image-mini.png"];
-        theCell.textLabel.text = @"Choose Existing Photo";
-        return theCell;
-    }
-    if (indexPath.section == 1 && indexPath.row == 0) {
-        UITableViewCell *theCell = [super tableView:tableView cellForRowAtIndexPath:indexPath];
         theCell.imageView.image = [UIImage imageNamed:@"ruler-mini.png"];
+        if (![catchLengthField.text isEqualToString:@""]) {
+            theCell.imageView.image = [UIImage imageNamed:@"ruler-mini-blue.png"];
+        }
         theCell.textLabel.text = @"Length";
         return theCell;
     }
-    if (indexPath.section == 1 && indexPath.row == 1) {
+    if (indexPath.section == 0 && indexPath.row == 4) {
         UITableViewCell *theCell = [super tableView:tableView cellForRowAtIndexPath:indexPath];
         theCell.imageView.image = [UIImage imageNamed:@"weight-mini.png"];
+        if (![catchWeightField.text isEqualToString:@""]) {
+            theCell.imageView.image = [UIImage imageNamed:@"weight-mini-blue.png"];
+        }
         theCell.textLabel.text = @"Weight";
         return theCell;
     }
-    if (indexPath.section == 2 && indexPath.row == 0) {
+    if (indexPath.section == 0 && indexPath.row == 5) {
         UITableViewCell *theCell = [super tableView:tableView cellForRowAtIndexPath:indexPath];
         theCell.imageView.image = [UIImage imageNamed:@"circle-overlapping-mini.png"];
+        if (![selectedSpeciesLabel.text isEqualToString:@"Select Species"]) {
+            theCell.imageView.image = [UIImage imageNamed:@"circle-overlapping-mini-blue.png"];
+        }
         return theCell;
     }
-    if (indexPath.section == 3 && indexPath.row == 0) {
+    if (indexPath.section == 0 && indexPath.row == 6) {
         UITableViewCell *theCell = [super tableView:tableView cellForRowAtIndexPath:indexPath];
         theCell.imageView.image = [UIImage imageNamed:@"hand-mini.png"];
+        if (![selectedMethodLabel.text isEqualToString:@"Select Method"]) {
+            theCell.imageView.image = [UIImage imageNamed:@"hand-mini-blue.png"];
+        }
         return theCell;
     }
-    if (indexPath.section == 4 && indexPath.row == 0) {
+    if (indexPath.section == 0 && indexPath.row == 7) {
         UITableViewCell *theCell = [super tableView:tableView cellForRowAtIndexPath:indexPath];
         theCell.imageView.image = [UIImage imageNamed:@"map-pin-area-mini-grey.png"];
+        if (![selectedLocationLabel.text isEqualToString:@"Select Location"]) {
+            theCell.imageView.image = [UIImage imageNamed:@"map-pin-area-mini-blue.png"];
+        }
         return theCell;
     }
-    if (indexPath.section == 4 && indexPath.row == 1) {
-        UITableViewCell *theCell = [super tableView:tableView cellForRowAtIndexPath:indexPath];
-        theCell.imageView.image = [UIImage imageNamed:@"map-pin-mini.png"];
-        return theCell;
-    }
-    if (indexPath.section == 5 && indexPath.row == 0) {
+    if (indexPath.section == 0 && indexPath.row == 8) {
         UITableViewCell *theCell = [super tableView:tableView cellForRowAtIndexPath:indexPath];
         theCell.imageView.image = [UIImage imageNamed:@"sticky-note-mini.png"];
+        if (![catchNotesLabel.text isEqualToString:@"Add Notes"]) {
+            theCell.imageView.image = [UIImage imageNamed:@"sticky-note-mini-blue.png"];
+        }
         return theCell;
     }
-    if (indexPath.section == 6 && indexPath.row == 0) {
+    if (indexPath.section == 0 && indexPath.row == 9) {
         UITableViewCell *theCell = [super tableView:tableView cellForRowAtIndexPath:indexPath];
         theCell.imageView.image = [UIImage imageNamed:@"trophy-mini-grey.png"];
+        if (rankedCatchSwitch.on) {
+            theCell.imageView.image = [UIImage imageNamed:@"trophy-mini-blue.png"];
+        }
         return theCell;
     }
     return [super tableView:tableView cellForRowAtIndexPath:indexPath];
@@ -426,25 +559,19 @@ selectedCatch;
 {
     int row = indexPath.row;
     int sec = indexPath.section;
-    if (sec == 0 && row == 2) {
-        [self showCameraAction];
-    }
-    if (sec == 0 && row == 3) {
-        [self startMediaBrowserFromViewController:self usingDelegate:self];
-    }
-    if (sec == 3 && row == 0) {
-        [self selectFishingMethod];
-    }
-    if (sec == 4 && row == 1) {
-        [self showLocationModal];
-    }
-    if (sec == 5 && row == 0) {
-        [self showNotesModal];
-    }
-    if (sec == 2 && row == 0) {
+    if (sec == 0 && row == 5) {
         [self selectSpecies];
     }
-    if (sec == 7 && row == 0) {
+    if (sec == 0 && row == 6) {
+        [self selectFishingMethod];
+    }
+    if (sec == 0 && row == 7) {
+        [self showLocationModal];
+    }
+    if (sec == 0 && row == 8) {
+        [self showNotesModal];
+    }
+    if (sec == 1 && row == 0) {
         [self addNewCatch];
     }
 }
@@ -495,6 +622,7 @@ selectedCatch;
     self.selectedPhoto.image = chosenImage;
     catchPhoto = chosenImage;
     
+    [self changePhotoFieldIconToColor:@"blue"];
     [picker dismissViewControllerAnimated:YES completion:nil];
 }
 

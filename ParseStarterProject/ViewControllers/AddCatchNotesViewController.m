@@ -50,8 +50,12 @@
 }
 
 - (IBAction)doneButton:(UIBarButtonItem *)sender {
-    if (![textView.text isEqualToString:@""]) {
+    if ([textView.text isEqualToString:@""]) {
+        self.delegate.catchNotesLabel.text = @"Add Notes";
+        [self.delegate changeNotesFieldIconToColor:@"grey"];
+    } else {
         self.delegate.catchNotesLabel.text = textView.text;
+        [self.delegate changeNotesFieldIconToColor:@"blue"];
     }
     [self.navigationController popViewControllerAnimated:YES];
 }
