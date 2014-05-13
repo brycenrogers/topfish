@@ -15,7 +15,7 @@
 
 @implementation AddCatchNotesViewController
 
-@synthesize textView;
+@synthesize textView, viewMode, doneButton, doneButtonToolBar;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -30,17 +30,56 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    [textView becomeFirstResponder];
+    
+    textView = [[UITextView alloc] initWithFrame:CGRectMake(10, 10, (self.view.frame.size.width - 20), (self.view.frame.size.height - 30))];
+    textView.font = [UIFont fontWithName:@"ArialMT" size:16.0f];
+    [self.view addSubview:textView];
+    
+    if (!viewMode) {
+        [textView becomeFirstResponder];
+//        dismissView = [[UIToolbar alloc] initWithFrame:CGRectMake(0.0, 0.0, self.view.bounds.size.width, 44.0)];
+//        UIBarButtonItem *extraSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+//        UIBarButtonItem *doneBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneButton:)];
+//        dismissView.items = [NSArray arrayWithObjects:extraSpace, doneBtn, nil];
+//        textView.inputAccessoryView = dismissView;
+    }
+    
+    [[NSNotificationCenter defaultCenter]
+     addObserver:self
+     selector:@selector(keyboardWasShown:)
+     name:UIKeyboardWillShowNotification
+     object:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    
+    // Setup view mode if needed
+    if (viewMode) {
+        textView.editable = NO;
+    } else {
+        textView.editable = YES;
+    }
+    
     if (self.delegate.catchNotesLabel.text == nil ||
         [self.delegate.catchNotesLabel.text isEqualToString:@""] ||
         [self.delegate.catchNotesLabel.text isEqualToString:@"Add Notes"]) {
         return;
     }
     textView.text = self.delegate.catchNotesLabel.text;
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    if(!viewMode) {
+        if ([textView.text isEqualToString:@""]) {
+            self.delegate.catchNotesLabel.text = @"Add Notes";
+            [self.delegate changeNotesFieldIconToColor:@"grey"];
+        } else {
+            self.delegate.catchNotesLabel.text = textView.text;
+            [self.delegate changeNotesFieldIconToColor:@"blue"];
+        }
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -59,4 +98,13 @@
     }
     [self.navigationController popViewControllerAnimated:YES];
 }
+
+- (void)keyboardWasShown:(NSNotification *)notification {
+    CGRect viewFrame = textView.frame;
+    CGFloat textEndCord = CGRectGetMaxY(textView.frame);
+    CGFloat kbStartCord = textEndCord - ([[[notification userInfo] objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue]).size.height;
+    viewFrame.size.height = kbStartCord;
+    textView.frame = viewFrame;
+}
+
 @end

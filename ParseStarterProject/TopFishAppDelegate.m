@@ -42,7 +42,7 @@
                                                     UIRemoteNotificationTypeAlert|
                                                     UIRemoteNotificationTypeSound];
     
-    //[PFUser logInWithUsername:@"brycen_test" password:@"brycen_test"];
+    [PFUser logInWithUsername:@"notLoggedInUser" password:@"notLoggedInUser"];
     
     return YES;
 }

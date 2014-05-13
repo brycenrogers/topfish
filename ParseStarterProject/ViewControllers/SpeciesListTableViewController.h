@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "AddCatchInfoTableViewController.h"
 #import "SpeciesList.h"
+#import "ThemedTableViewController.h"
 
-@interface SpeciesListTableViewController : UITableViewController
+@interface SpeciesListTableViewController : ThemedTableViewController
 
 @property NSMutableArray *speciesList;
 @property (nonatomic, assign) id<SpeciesListSelector> delegate;

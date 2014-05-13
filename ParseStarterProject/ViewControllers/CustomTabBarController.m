@@ -8,6 +8,8 @@
 
 #import "CustomTabBarController.h"
 #import "AddCatchInfoTableViewController.h"
+#import "LeaderboardNavigationController.h"
+#import "ThemeColors.h"
 #import <Parse/Parse.h>
 
 @interface CustomTabBarController ()
@@ -26,25 +28,20 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    // Check for login
-    if ([PFUser currentUser] == nil) {
-        [self performSegueWithIdentifier:@"userLoginFormSegue" sender:nil];
-    }
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
-    //[self.tabBar setBarTintColor:[UIColor colorWithRed:239/255.0 green:236/255.0 blue:225/255.0 alpha:1]];
+	self.tabBar.selectedImageTintColor = [ThemeColors greenColor];
     self.viewControllers = [NSArray arrayWithObjects:
                             [self viewControllerWithTabTitle:@"Leaderboard" image:[UIImage imageNamed:@"trophy-mini.png"]],
                             [self viewControllerWithTabTitle:@"Map" image:[UIImage imageNamed:@"map-pin-area-mini.png"]],
-                            [self viewControllerWithTabTitle:@"Add Catch" image:[UIImage imageNamed:nil]],
+                            [self viewControllerWithTabTitle:@"Add Catch" image:nil],
                             [self viewControllerWithTabTitle:@"Catches" image:[UIImage imageNamed:@"shopping-bag-mini.png"]],
                             [self viewControllerWithTabTitle:@"Profile" image:[UIImage imageNamed:@"man-mini.png"]],
                             nil];
-    [self addCenterButtonWithImage:[UIImage imageNamed:@"add-catch-button.png"] highlightImage:nil];
+    [self addCenterButtonWithImage:[UIImage imageNamed:@"add-catch-button-green.png"] highlightImage:nil];
     self.selectedViewController = [self.viewControllers objectAtIndex:0];
 }
 
@@ -112,6 +109,14 @@
     [addCatchNC popToRootViewControllerAnimated:YES];
     [addCatchTVC.tableView setContentOffset:CGPointZero animated:YES];
     [self setSelectedViewController:addCatchNC];
+}
+
+- (void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item {
+    if ([item.title isEqualToString:@"Leaderboard"]) {
+        NSArray *vcArray = [self viewControllers];
+        LeaderboardNavigationController *lbnc = (LeaderboardNavigationController *)[vcArray objectAtIndex:0];
+        [lbnc popToRootViewControllerAnimated:YES];
+    }
 }
 
 @end

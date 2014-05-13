@@ -35,7 +35,7 @@
         [self.contentView addSubview:self.speciesLabel];
         [self.contentView addSubview:self.sizeLabel];
         
-        [self setGradient];
+        //[self setGradient];
     }
     return self;
 }

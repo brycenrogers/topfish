@@ -16,13 +16,15 @@
 
 @end
 
-@interface AddCatchNotesViewController : UIViewController
+@interface AddCatchNotesViewController : UIViewController<UITextFieldDelegate>
 {
     UIToolbar *dismissView;
 }
 
 @property id<CatchNotesDelegate> delegate;
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *doneButton;
-@property (weak, nonatomic) IBOutlet UITextView *textView;
+@property (strong, nonatomic) UIBarButtonItem *doneButton;
+@property (strong, nonatomic) IBOutlet UITextView *textView;
+@property (strong, nonatomic) UIToolbar *doneButtonToolBar;
+@property (nonatomic) BOOL viewMode;
 
 @end

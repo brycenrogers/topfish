@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ThemedTableViewController.h"
 
 @protocol LengthMeasurementSelector <NSObject>
 
@@ -14,7 +15,7 @@
 
 @end
 
-@interface LengthMeasurementOptionsTableViewController : UITableViewController
+@interface LengthMeasurementOptionsTableViewController : ThemedTableViewController
 
 @property (nonatomic, assign) id<LengthMeasurementSelector> delegate;
 

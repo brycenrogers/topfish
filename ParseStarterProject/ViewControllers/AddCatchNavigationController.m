@@ -7,6 +7,7 @@
 //
 
 #import "AddCatchNavigationController.h"
+#import "CatchUpdatedView.h"
 
 @interface AddCatchNavigationController ()
 
@@ -14,7 +15,7 @@
 
 @implementation AddCatchNavigationController
 
-@synthesize catchAdded;
+@synthesize catchAdded, catchUpdated;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -54,6 +55,11 @@
         UITableViewController *addCatchInfoTable = [self.viewControllers objectAtIndex:0];
         [addCatchInfoTable.tableView setContentOffset:CGPointZero animated:YES];
     }
+}
+
+- (void)showCatchUpdatedMessage
+{
+    [CatchUpdatedView animateCatchUpdatedViewforView:self.view];
 }
 
 @end

@@ -10,8 +10,12 @@
 #import "Catch.h"
 #import "ThemedTableViewController.h"
 #import "CatchMapDelegate.h"
+#import "AddCatchNotesViewController.h"
 
-@interface CatchDetailTableViewController : ThemedTableViewController<UIGestureRecognizerDelegate, CatchMapDelegate>
+@interface CatchDetailTableViewController : ThemedTableViewController
+<UIGestureRecognizerDelegate,
+CatchMapDelegate,
+CatchNotesDelegate>
 {
     CAGradientLayer *gradient;
 }
@@ -27,8 +31,12 @@
 @property (weak, nonatomic) IBOutlet UILabel *lengthLabel;
 @property (weak, nonatomic) IBOutlet UILabel *weightLabel;
 @property (weak, nonatomic) IBOutlet UILabel *methodLabel;
-@property (weak, nonatomic) IBOutlet UILabel *notesLabel;
-
+@property (weak, nonatomic) UIButton *editButton;
+@property (weak, nonatomic) UIButton *deleteButton;
+@property (nonatomic) BOOL fromSelectedCatchUsersCatches;
+@property (weak, nonatomic) IBOutlet UILabel *catchNotesLabel;
 @property (nonatomic) CLLocationCoordinate2D catchAnnotationCoordinate;
+
+- (void)changeNotesFieldIconToColor:(NSString *)color;
 
 @end

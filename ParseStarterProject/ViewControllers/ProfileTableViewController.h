@@ -13,5 +13,8 @@
 
 @property (weak, nonatomic) IBOutlet UITableViewCell *usernameRowCell;
 @property (weak, nonatomic) IBOutlet UITableViewCell *emailRowCell;
+@property (weak, nonatomic) IBOutlet UIButton *loginLogoutButton;
+
+- (IBAction)loginLogoutButtonClicked:(UIButton *)sender;
 
 @end

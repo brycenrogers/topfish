@@ -11,8 +11,9 @@
 #import "MethodList.h"
 #import "AllMethodsSwitch.h"
 #import "FishingFilterProtocol.h"
+#import "ThemedTableViewController.h"
 
-@interface FilterTableViewController : UITableViewController
+@interface FilterTableViewController : ThemedTableViewController
 <SpeciesListSelector, MethodListSelector>
 
 @property id<FishingFilterProtocol> delegate;

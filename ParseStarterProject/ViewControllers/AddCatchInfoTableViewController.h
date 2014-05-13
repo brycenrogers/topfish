@@ -30,7 +30,6 @@ LengthMeasurementSelector,
 CatchMapDelegate>
 {
     UIToolbar *dismissView;
-    UIImage *catchPhoto;
     UIView *loadingOverlay;
     UIProgressView *uploadProgressView;
     UIImage *defaultFishPhoto;
@@ -41,15 +40,19 @@ CatchMapDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *selectedWeightMeasurementLabel;
 @property (weak, nonatomic) IBOutlet UITextField *catchLengthField;
 @property (weak, nonatomic) IBOutlet UITextField *catchWeightField;
-@property (weak, nonatomic) IBOutlet UIImageView *selectedPhoto;
 @property (weak, nonatomic) IBOutlet UISwitch *rankedCatchSwitch;
 @property (weak, nonatomic) IBOutlet UILabel *selectedLocationLabel;
 @property (weak, nonatomic) IBOutlet UILabel *selectedMethodLabel;
 @property (weak, nonatomic) IBOutlet UILabel *selectedSpeciesLabel;
 @property (weak, nonatomic) IBOutlet UILabel *catchNotesLabel;
+@property (strong, nonatomic) Catch *selectedCatch;
+@property (strong, nonatomic) Catch *selectedCatchQueryObject;
+@property (strong, nonatomic) NSString *selectedCatchObjectId;
+@property (strong, nonatomic) IBOutlet UIImageView *selectedPhoto;
+@property (strong, nonatomic) UIImage *catchPhoto;
 @property (nonatomic) CLLocationCoordinate2D catchAnnotationCoordinate;
 @property (nonatomic) NSString *notesText;
-@property (nonatomic, strong) Catch *selectedCatch;
+@property (nonatomic) BOOL photoUpdated;
 
 - (IBAction)clickTakePhotoButton:(UIButton *)sender;
 - (IBAction)clickChoosePhotoButton:(UIButton *)sender;
@@ -59,5 +62,6 @@ CatchMapDelegate>
 - (void)changeSpeciesFieldIconToColor:(NSString *)color;
 - (void)changeMethodFieldIconToColor:(NSString *)color;
 - (void)changeLocationFieldIconToColor:(NSString *)color;
+- (void)changePhotoFieldIconToColor:(NSString *)color;
 
 @end

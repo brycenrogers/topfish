@@ -72,6 +72,10 @@
 		18251168181CDE8E00D5909B /* CatchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18251167181CDE8E00D5909B /* CatchTableViewCell.m */; };
 		1844C011180AEE4A0064BC19 /* MethodList.m in Sources */ = {isa = PBXBuildFile; fileRef = 1844C010180AEE4A0064BC19 /* MethodList.m */; };
 		1846418917EFCEA10080D7FF /* Fish.m in Sources */ = {isa = PBXBuildFile; fileRef = 1846418817EFCEA10080D7FF /* Fish.m */; };
+		18493D43191581B500E8D72E /* CatchUpdatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18493D42191581B500E8D72E /* CatchUpdatedView.m */; };
+		18493D49191EEDF800E8D72E /* ThemeColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 18493D48191EEDF800E8D72E /* ThemeColors.m */; };
+		18493D50191EF2AA00E8D72E /* add-catch-button-green.png in Resources */ = {isa = PBXBuildFile; fileRef = 18493D4E191EF2AA00E8D72E /* add-catch-button-green.png */; };
+		18493D51191EF2AA00E8D72E /* add-catch-button-green@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18493D4F191EF2AA00E8D72E /* add-catch-button-green@2x.png */; };
 		18534DA918142CE4007F046A /* LeaderboardTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18534DA818142CE4007F046A /* LeaderboardTableViewCell.m */; };
 		18534DB21814498A007F046A /* LeaderboardTableViewCellFirst.m in Sources */ = {isa = PBXBuildFile; fileRef = 18534DB11814498A007F046A /* LeaderboardTableViewCellFirst.m */; };
 		185BA39D17EF45DF001E2481 /* WeightMeasurementOptionsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 185BA39C17EF45DF001E2481 /* WeightMeasurementOptionsTableViewController.m */; };
@@ -84,6 +88,8 @@
 		186C894C17EE521900CF3ECC /* LengthMeasurementOptionsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 186C894B17EE521900CF3ECC /* LengthMeasurementOptionsTableViewController.m */; };
 		188C06CA180F2D4D003C7FFC /* LoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 188C06C9180F2D4D003C7FFC /* LoadingView.m */; };
 		188ED2BE18A3428700F96E4B /* AllMethodsSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = 188ED2BD18A3428700F96E4B /* AllMethodsSwitch.m */; };
+		188FEBFA190A016C00A694A2 /* ricepaper_v3_@2X.png in Resources */ = {isa = PBXBuildFile; fileRef = 188FEBF8190A016C00A694A2 /* ricepaper_v3_@2X.png */; };
+		188FEBFB190A016C00A694A2 /* ricepaper_v3.png in Resources */ = {isa = PBXBuildFile; fileRef = 188FEBF9190A016C00A694A2 /* ricepaper_v3.png */; };
 		189ABA7818F4359E00093BE7 /* funnel-mini.png in Resources */ = {isa = PBXBuildFile; fileRef = 189ABA7618F4359E00093BE7 /* funnel-mini.png */; };
 		189ABA7918F4359E00093BE7 /* funnel-mini@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 189ABA7718F4359E00093BE7 /* funnel-mini@2x.png */; };
 		189ABA7C18F608B100093BE7 /* camera-mini-blue.png in Resources */ = {isa = PBXBuildFile; fileRef = 189ABA7A18F608B100093BE7 /* camera-mini-blue.png */; };
@@ -212,6 +218,13 @@
 		1844C010180AEE4A0064BC19 /* MethodList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MethodList.m; path = Models/MethodList.m; sourceTree = "<group>"; };
 		1846418717EFCEA10080D7FF /* Fish.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Fish.h; path = Models/Fish.h; sourceTree = "<group>"; };
 		1846418817EFCEA10080D7FF /* Fish.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Fish.m; path = Models/Fish.m; sourceTree = "<group>"; };
+		18493D401911C7A500E8D72E /* CatchUpdatedNavigationControllerProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CatchUpdatedNavigationControllerProtocol.h; sourceTree = "<group>"; };
+		18493D41191581B500E8D72E /* CatchUpdatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CatchUpdatedView.h; path = Views/CatchUpdatedView.h; sourceTree = "<group>"; };
+		18493D42191581B500E8D72E /* CatchUpdatedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CatchUpdatedView.m; path = Views/CatchUpdatedView.m; sourceTree = "<group>"; };
+		18493D47191EEDF800E8D72E /* ThemeColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ThemeColors.h; path = Models/ThemeColors.h; sourceTree = "<group>"; };
+		18493D48191EEDF800E8D72E /* ThemeColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ThemeColors.m; path = Models/ThemeColors.m; sourceTree = "<group>"; };
+		18493D4E191EF2AA00E8D72E /* add-catch-button-green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "add-catch-button-green.png"; sourceTree = "<group>"; };
+		18493D4F191EF2AA00E8D72E /* add-catch-button-green@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "add-catch-button-green@2x.png"; sourceTree = "<group>"; };
 		18534DA718142CE4007F046A /* LeaderboardTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LeaderboardTableViewCell.h; path = ViewControllers/LeaderboardTableViewCell.h; sourceTree = "<group>"; };
 		18534DA818142CE4007F046A /* LeaderboardTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LeaderboardTableViewCell.m; path = ViewControllers/LeaderboardTableViewCell.m; sourceTree = "<group>"; };
 		18534DB01814498A007F046A /* LeaderboardTableViewCellFirst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LeaderboardTableViewCellFirst.h; path = ViewControllers/LeaderboardTableViewCellFirst.h; sourceTree = "<group>"; };
@@ -237,6 +250,8 @@
 		188ED2BC18A3428700F96E4B /* AllMethodsSwitch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AllMethodsSwitch.h; path = Models/AllMethodsSwitch.h; sourceTree = "<group>"; };
 		188ED2BD18A3428700F96E4B /* AllMethodsSwitch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AllMethodsSwitch.m; path = Models/AllMethodsSwitch.m; sourceTree = "<group>"; };
 		188ED2BF18A3515B00F96E4B /* FishingFilterProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FishingFilterProtocol.h; sourceTree = "<group>"; };
+		188FEBF8190A016C00A694A2 /* ricepaper_v3_@2X.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ricepaper_v3_@2X.png"; sourceTree = "<group>"; };
+		188FEBF9190A016C00A694A2 /* ricepaper_v3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ricepaper_v3.png; sourceTree = "<group>"; };
 		189ABA7618F4359E00093BE7 /* funnel-mini.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "funnel-mini.png"; sourceTree = "<group>"; };
 		189ABA7718F4359E00093BE7 /* funnel-mini@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "funnel-mini@2x.png"; sourceTree = "<group>"; };
 		189ABA7A18F608B100093BE7 /* camera-mini-blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera-mini-blue.png"; sourceTree = "<group>"; };
@@ -340,6 +355,7 @@
 			isa = PBXGroup;
 			children = (
 				09ABC07713A1D52D009C3FCF /* TopFish */,
+				18A7DBAA17B852CB00471456 /* External Libraries */,
 				09ABC07013A1D52D009C3FCF /* Frameworks */,
 				09ABC06E13A1D52D009C3FCF /* Products */,
 			);
@@ -381,11 +397,10 @@
 		09ABC07713A1D52D009C3FCF /* TopFish */ = {
 			isa = PBXGroup;
 			children = (
+				18A7DB9617B6BAE200471456 /* Models */,
 				18D2F6131879C82700FC5B4C /* Protocols */,
 				18DC2BBA180B7FEF00DA95C3 /* Views */,
-				18A7DBAA17B852CB00471456 /* External Libraries */,
 				18A7DB9C17B6DEFD00471456 /* ViewControllers */,
-				18A7DB9617B6BAE200471456 /* Models */,
 				09ABC08013A1D52D009C3FCF /* TopFishAppDelegate.h */,
 				09ABC08113A1D52D009C3FCF /* TopFishAppDelegate.m */,
 				09ABC08613A1D52E009C3FCF /* TopFishViewController.h */,
@@ -401,6 +416,10 @@
 		09ABC07813A1D52D009C3FCF /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				18493D4E191EF2AA00E8D72E /* add-catch-button-green.png */,
+				18493D4F191EF2AA00E8D72E /* add-catch-button-green@2x.png */,
+				188FEBF8190A016C00A694A2 /* ricepaper_v3_@2X.png */,
+				188FEBF9190A016C00A694A2 /* ricepaper_v3.png */,
 				189ABA9218F60A4600093BE7 /* sticky-note-mini-blue.png */,
 				189ABA9318F60A4600093BE7 /* sticky-note-mini-blue@2x.png */,
 				189ABA8E18F609AF00093BE7 /* hand-mini-blue.png */,
@@ -604,6 +623,7 @@
 			children = (
 			);
 			name = "External Libraries";
+			path = ParseStarterProject;
 			sourceTree = "<group>";
 		};
 		18B1012C1808DE1000330ECB /* Login */ = {
@@ -635,6 +655,7 @@
 			children = (
 				18D2F6141879C82700FC5B4C /* CatchMapDelegate.h */,
 				188ED2BF18A3515B00F96E4B /* FishingFilterProtocol.h */,
+				18493D401911C7A500E8D72E /* CatchUpdatedNavigationControllerProtocol.h */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -644,6 +665,8 @@
 			children = (
 				18DC2BBB180B802B00DA95C3 /* CatchPhotoDetailView.h */,
 				18DC2BBC180B802B00DA95C3 /* CatchPhotoDetailView.m */,
+				18493D41191581B500E8D72E /* CatchUpdatedView.h */,
+				18493D42191581B500E8D72E /* CatchUpdatedView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -657,6 +680,8 @@
 				18DE0A2018274EE700F6C607 /* ThemedTableViewController.m */,
 				18BB471D18F8C3FB00B0EDB5 /* ThemedNavigationController.h */,
 				18BB471E18F8C3FB00B0EDB5 /* ThemedNavigationController.m */,
+				18493D47191EEDF800E8D72E /* ThemeColors.h */,
+				18493D48191EEDF800E8D72E /* ThemeColors.m */,
 			);
 			name = Theme;
 			sourceTree = "<group>";
@@ -722,6 +747,7 @@
 				18251161181CD78400D5909B /* AppIcon76x76@2x.png in Resources */,
 				18251144181C867500D5909B /* sticky-note-mini@2x.png in Resources */,
 				09ABC07C13A1D52D009C3FCF /* InfoPlist.strings in Resources */,
+				188FEBFB190A016C00A694A2 /* ricepaper_v3.png in Resources */,
 				189ABA8C18F6092800093BE7 /* circle-overlapping-mini-blue.png in Resources */,
 				18251134181C829500D5909B /* circle-overlapping-mini@2x.png in Resources */,
 				18251146181C867500D5909B /* trophy-mini-grey@2x.png in Resources */,
@@ -743,6 +769,7 @@
 				1825115C181CD78400D5909B /* AppIcon40x40.png in Resources */,
 				1825115D181CD78400D5909B /* Icon~iphone.png in Resources */,
 				1825112E181C7E7500D5909B /* weight-mini@2x.png in Resources */,
+				18493D51191EF2AA00E8D72E /* add-catch-button-green@2x.png in Resources */,
 				18251127181C7E7500D5909B /* camera-mini.png in Resources */,
 				1825112D181C7E7500D5909B /* weight-mini.png in Resources */,
 				1825113E181C830600D5909B /* map-pin-down-mini@2x.png in Resources */,
@@ -751,6 +778,7 @@
 				C4C51B581613CE0800959FDC /* Default-568h@2x.png in Resources */,
 				1825115E181CD78400D5909B /* AppIcon60x60.png in Resources */,
 				1825114A181C990200D5909B /* first-place-badge@2x.png in Resources */,
+				18493D50191EF2AA00E8D72E /* add-catch-button-green.png in Resources */,
 				189ABA8118F608D700093BE7 /* image-mini-blue@2x.png in Resources */,
 				189ABA8818F6090D00093BE7 /* weight-mini-blue.png in Resources */,
 				189ABA8018F608D700093BE7 /* image-mini-blue.png in Resources */,
@@ -767,6 +795,7 @@
 				189ABA7818F4359E00093BE7 /* funnel-mini.png in Resources */,
 				18251133181C829500D5909B /* circle-overlapping-mini.png in Resources */,
 				189ABA7918F4359E00093BE7 /* funnel-mini@2x.png in Resources */,
+				188FEBFA190A016C00A694A2 /* ricepaper_v3_@2X.png in Resources */,
 				189ABA7C18F608B100093BE7 /* camera-mini-blue.png in Resources */,
 				18251115181B86FB00D5909B /* add-catch-button.png in Resources */,
 				1825115A181CD78400D5909B /* AppIcon29x29.png in Resources */,
@@ -818,8 +847,10 @@
 				18A80C90180F6AC60026FF85 /* CatchPhotoScrollViewController.m in Sources */,
 				18534DA918142CE4007F046A /* LeaderboardTableViewCell.m in Sources */,
 				18DB96F917CA518800BFD184 /* AddCatchMapLocationViewController.m in Sources */,
+				18493D49191EEDF800E8D72E /* ThemeColors.m in Sources */,
 				18DB96FC17CBB92100BFD184 /* CatchMapAnnotation.m in Sources */,
 				185E58BC17D529BA006375B3 /* AddCatchNavigationController.m in Sources */,
+				18493D43191581B500E8D72E /* CatchUpdatedView.m in Sources */,
 				185E58BF17D52EF9006375B3 /* CatchAddedViewController.m in Sources */,
 				18DE0A1D18274D6300F6C607 /* ThemedPFQueryTableViewController.m in Sources */,
 				186C894C17EE521900CF3ECC /* LengthMeasurementOptionsTableViewController.m in Sources */,

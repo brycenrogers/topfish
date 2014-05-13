@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "MethodList.h"
+#import "ThemedTableViewController.h"
 
-@interface MethodListTableViewController : UITableViewController
+@interface MethodListTableViewController : ThemedTableViewController
 
 @property (nonatomic, strong) NSMutableArray *flyFishingMethodList;
 @property (nonatomic, strong) NSMutableArray *spinFishingMethodList;

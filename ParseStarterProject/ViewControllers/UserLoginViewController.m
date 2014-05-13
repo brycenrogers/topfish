@@ -135,6 +135,10 @@
     [av show];
 }
 
+- (IBAction)cancelButton:(UIBarButtonItem *)sender {
+    [self.parentViewController dismissViewControllerAnimated:YES completion:nil];
+}
+
 - (void)buildLoadingView {
     if (!loadingOverlay) {
         UIView *loadingOverlayView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 568)];

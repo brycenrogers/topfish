@@ -52,11 +52,11 @@
     
     UIView *badge = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 20, 61)];
     badge.tag = 1;
-    badge.backgroundColor = [UIColor whiteColor];
+    badge.backgroundColor = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"ricepaper_v3.png"]];
     
     UILabel *number = [[UILabel alloc] initWithFrame:CGRectMake(2, 28, 15, 10)];
     NSAttributedString *num = [[NSAttributedString alloc] initWithString:placementNumber
-                                                              attributes:@{NSFontAttributeName: [UIFont fontWithName:@"Arial" size:12.0]}];
+                                                              attributes:@{NSFontAttributeName: [UIFont fontWithName:@"Arial-BoldMT" size:12.0]}];
 
     number.attributedText = num;
     number.textAlignment = NSTextAlignmentCenter;

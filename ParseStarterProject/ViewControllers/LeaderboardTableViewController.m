@@ -35,9 +35,16 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     if (self.selectedMethodFilter != nil || self.selectedSpeciesFilter != nil) {
         [self showFilteredLayer];
     }
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [self hideFilteredLayer];
 }
 
 - (void)viewDidLoad
@@ -229,7 +236,6 @@
     {
         FilterTableViewController *filterTVC = (FilterTableViewController *)[segue destinationViewController];
         filterTVC.delegate = self;
-        [self hideFilteredLayer];
     }
 }
 

@@ -7,6 +7,7 @@
 //
 
 #import "ThemedPFQueryTableViewController.h"
+#import "ThemeColors.h"
 
 @interface ThemedPFQueryTableViewController ()
 
@@ -28,14 +29,18 @@
     [super viewDidLoad];
     [self setSeparatorColor];
     [self setBackgroundColor];
+    self.view.tintColor = [ThemeColors blueColor];
 }
 
 - (void)setSeparatorColor {
-    [self.tableView setSeparatorColor:[UIColor colorWithRed:(183.0f/255.0f) green:(147.0f/255.0f) blue:(101.0f/255.0f) alpha:0.3f]];
+    [self.tableView setSeparatorColor:[UIColor colorWithRed:(183.0f/255.0f)
+                                                      green:(147.0f/255.0f)
+                                                       blue:(101.0f/255.0f)
+                                                      alpha:0.3f]];
 }
 
 - (void)setBackgroundColor {
-    self.tableView.backgroundColor = [UIColor colorWithRed:(239.0f/255.0f) green:(236.0f/255.0f) blue:(225.0f/255.0f) alpha:1.0f];
+    self.tableView.backgroundColor = [ThemeColors backgroundImage];
 }
 
 - (void)didReceiveMemoryWarning

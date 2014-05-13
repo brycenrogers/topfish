@@ -20,5 +20,6 @@
 - (IBAction)loginButton:(UIButton *)sender;
 - (IBAction)signupButton:(UIButton *)sender;
 - (IBAction)forgotPasswordButton:(UIButton *)sender;
+- (IBAction)cancelButton:(UIBarButtonItem *)sender;
 
 @end

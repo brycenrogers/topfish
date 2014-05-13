@@ -7,6 +7,7 @@
 //
 
 #import "LeaderboardNavigationController.h"
+#import "CatchUpdatedView.h"
 
 @interface LeaderboardNavigationController ()
 
@@ -28,14 +29,17 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    //self.navigationBar.barTintColor = [UIColor colorWithRed:(22.0f/255.0f) green:(159.0f/255.0f) blue:(46.0f/255.0f) alpha:0.75f];
-    //self.navigationBar.barTintColor = [UIColor colorWithRed:(239.0f/255.0f) green:(236.0f/255.0f) blue:(225.0f/255.0f) alpha:1.0f];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)showCatchUpdatedMessage
+{
+    [CatchUpdatedView animateCatchUpdatedViewforView:self.view];
 }
 
 @end

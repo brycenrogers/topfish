@@ -13,6 +13,8 @@
 #import "CatchPhotoScrollViewController.h"
 #import "AddCatchMapLocationViewController.h"
 #import "CatchesTableViewController.h"
+#import "CatchesNavigationController.h"
+#import "ThemeColors.h"
 
 @interface CatchDetailTableViewController ()
 
@@ -28,8 +30,11 @@ viewOnMapButton,
 lengthLabel,
 weightLabel,
 methodLabel,
-notesLabel,
-gestureRecognizer;
+gestureRecognizer,
+editButton,
+deleteButton,
+fromSelectedCatchUsersCatches,
+catchNotesLabel;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -44,22 +49,7 @@ gestureRecognizer;
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    [self.caughtByButton setTitle:selectedCatch.user.username forState:UIControlStateNormal];
-    self.speciesLabel.text = selectedCatch.species;
-    self.rankedCatchLabel.text = [self rankedCatchToString];
-    self.lengthLabel.text = [self catchLengthToString];
-    self.weightLabel.text = [self catchWeightToString];
-    self.methodLabel.text = selectedCatch.method;
-    self.notesLabel.attributedText = [self buildNotesString];
-    
-    if (selectedCatch.photo) {
-        PFFile *imageFile = [selectedCatch objectForKey:@"photo"];
-        [imageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
-            UIImage *photo = [UIImage imageWithData:data];
-            self.catchImageView.image = photo;
-        }];
-    }
-    
+    [self refreshViewForSelectedCatch];
     [self buildSingleTapGestureRecognizer];
     [self setupViewOnMapButton];
 }
@@ -74,13 +64,130 @@ gestureRecognizer;
     }
 }
 
+- (void)editButtonClicked
+{
+    [self performSegueWithIdentifier:@"editCatchSegue" sender:nil];
+}
+
+- (void)deleteButtonClicked
+{
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Delete Catch"
+                                                    message:@"Are you sure you want to delete this catch?"
+                                                   delegate:self
+                                          cancelButtonTitle:@"Cancel"
+                                          otherButtonTitles:@"Delete", nil];
+    [alert show];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 1) {
+        [selectedCatch deleteInBackground];
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    // Check to see if the catch has been updated recently, if so, reload it's data
+    UINavigationController<CatchUpdatedNavigationControllerProtocol> *cnc = (UINavigationController<CatchUpdatedNavigationControllerProtocol> *)self.navigationController;
+    if (cnc.catchUpdated) {
+        [self updateObject];
+    }
+    
+    [self setupEditControlsForOwner];
+}
+
+- (void)refreshRankedCatchLabel
+{
+    rankedCatchLabel.textColor = [UIColor whiteColor];
+    rankedCatchLabel.text = [self rankedCatchToString];
+    if (selectedCatch.rankedCatch) {
+        rankedCatchLabel.backgroundColor = [[ThemeColors yellowColor] colorWithAlphaComponent:1.0f];
+    } else {
+        rankedCatchLabel.backgroundColor = [[ThemeColors yellowColor] colorWithAlphaComponent:0.5f];
+    }
+}
+
+- (void)refreshViewForSelectedCatch
+{
+    [self.caughtByButton setTitle:selectedCatch.user.username forState:UIControlStateNormal];
+    [self refreshRankedCatchLabel];
+    self.speciesLabel.text = selectedCatch.species;
+    self.lengthLabel.text = [self catchLengthToString];
+    self.weightLabel.text = [self catchWeightToString];
+    self.methodLabel.text = selectedCatch.method;
+    self.catchNotesLabel.attributedText = [self buildNotesString];
+    [self setupViewOnMapButton];
+    if (selectedCatch.photo) {
+        PFFile *imageFile = [selectedCatch objectForKey:@"photo"];
+        [imageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+            UIImage *photo = [UIImage imageWithData:data];
+            self.catchImageView.image = photo;
+        }];
+    } else {
+        catchImageView.image = [UIImage imageNamed:@"fish-default-photo.png"];
+    }
+}
+
+- (void)updateObject
+{
+    PFQuery *query = [Catch query];
+    [query includeKey:@"user"];
+    [query getObjectInBackgroundWithId:selectedCatch.objectId block:^(PFObject *object, NSError *error) {
+        Catch *catchObject = (Catch *)object;
+        selectedCatch = catchObject;
+        [self refreshViewForSelectedCatch];
+    }];
+}
+
+- (void)setupEditControlsForOwner
+{
+    PFUser *currentUser = [PFUser currentUser];
+    if ([currentUser.username isEqualToString:selectedCatch.user.username]) {
+        if (editButton == nil) {
+            UIButton *btn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+            [btn addTarget:self action:@selector(editButtonClicked) forControlEvents:UIControlEventTouchUpInside];
+            btn.frame = CGRectMake(224.0, 75.0, 60.0, 30.0);
+            [btn setTitle:@"Edit" forState:UIControlStateNormal];
+            [btn setBackgroundColor:[ThemeColors orangeColor]];
+            [btn setTintColor:[UIColor whiteColor]];
+            editButton = btn;
+            NSIndexPath *index = [NSIndexPath indexPathForRow:1 inSection:0];
+            [[self.tableView cellForRowAtIndexPath:index].contentView addSubview:editButton];
+        }
+        editButton.hidden = NO;
+        if (deleteButton == nil) {
+            UIButton *btn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+            [btn addTarget:self action:@selector(deleteButtonClicked) forControlEvents:UIControlEventTouchUpInside];
+            btn.frame = CGRectMake(36.0, 75.0, 60.0, 30.0);
+            [btn setTitle:@"Delete" forState:UIControlStateNormal];
+            [btn setBackgroundColor:[ThemeColors redColor]];
+            [btn setTintColor:[UIColor whiteColor]];
+            deleteButton = btn;
+            NSIndexPath *index = [NSIndexPath indexPathForRow:1 inSection:0];
+            [[self.tableView cellForRowAtIndexPath:index].contentView addSubview:deleteButton];
+        }
+        deleteButton.hidden = NO;
+    } else {
+        if (editButton != nil) {
+            editButton.hidden = YES;
+        }
+        if (deleteButton != nil) {
+            deleteButton.hidden = YES;
+        }
+    }
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.row == 0 && gradient == nil) {
         [self setGradient];
     }
     if (indexPath.row == 2) {
         UITableViewCell *theCell = [super tableView:tableView cellForRowAtIndexPath:indexPath];
-        theCell.imageView.image = [UIImage imageNamed:@"map-pin-mini.png"];
+        theCell.imageView.image = [UIImage imageNamed:@"map-pin-area-mini-grey.png"];
         return theCell;
     }
     if (indexPath.row == 3) {
@@ -156,23 +263,6 @@ gestureRecognizer;
     // Dispose of any resources that can be recreated.
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    // Adjust the Notes Cell and Label element heights for Catches with Notes
-    if (indexPath.section == 3 && indexPath.row == 0 && selectedCatch.notes.length > 20) {
-        CGSize constraint = CGSizeMake(180.0f, MAXFLOAT);
-        NSAttributedString *attNotes = [[NSAttributedString alloc] initWithString:selectedCatch.notes attributes:@{NSFontAttributeName: self.notesLabel.font}];
-        CGRect rect = [attNotes boundingRectWithSize:constraint options:NSStringDrawingUsesLineFragmentOrigin context:nil];
-        self.notesLabel.frame = CGRectMake(95, 5, 200.0f, rect.size.height);
-
-        // A little extra padding
-        return rect.size.height + 10;
-    }
-    
-    // if there are no Notes, or it's a different row, don't override
-    return [super tableView:tableView heightForRowAtIndexPath:indexPath];
-}
-
 - (void)buildSingleTapGestureRecognizer {
     UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(singleTapDetected)];
     singleTap.numberOfTapsRequired = 1;
@@ -190,19 +280,31 @@ gestureRecognizer;
     if ([[segue identifier] isEqualToString:@"showCatchPhotoScrollViewFromDetails"])
     {
         CatchPhotoScrollViewController *cpsvc = [segue destinationViewController];
-        cpsvc.selectedCatch = self.selectedCatch;
-        cpsvc.photo = self.catchImageView.image;
+        cpsvc.selectedCatch = selectedCatch;
+        cpsvc.photo = catchImageView.image;
     }
     if ([[segue identifier] isEqualToString:@"showOnMapFromDetails"])
     {
         AddCatchMapLocationViewController *acmlvc = [segue destinationViewController];
         acmlvc.delegate = self;
-        acmlvc.locationCoordinate = CLLocationCoordinate2DMake(self.selectedCatch.location.latitude, self.selectedCatch.location.longitude);
+        acmlvc.locationCoordinate = CLLocationCoordinate2DMake(selectedCatch.location.latitude, selectedCatch.location.longitude);
     }
     if ([[segue identifier] isEqualToString:@"showCatchesFromUser"])
     {
         CatchesTableViewController *ctvc = [segue destinationViewController];
-        ctvc.selectedCatch = self.selectedCatch;
+        ctvc.selectedCatch = selectedCatch;
+        ctvc.user = selectedCatch.user;
+    }
+    if ([[segue identifier] isEqualToString:@"showCatchNotesFromDetails"]) {
+        AddCatchNotesViewController *acnvc = [segue destinationViewController];
+        acnvc.delegate = self;
+        acnvc.viewMode = YES;
+    }
+    if ([[segue identifier] isEqualToString:@"editCatchSegue"]) {
+        AddCatchInfoTableViewController *acitvc = [segue destinationViewController];
+        acitvc.selectedCatch = selectedCatch;
+        acitvc.selectedCatchObjectId = selectedCatch.objectId;
+        acitvc.title = @"Edit Catch";
     }
 }
 
@@ -215,15 +317,15 @@ gestureRecognizer;
     if ([selectedCatch.user.username isEqualToString:currentUser.username]) {
         [self.tabBarController setSelectedIndex:3];
         [[self.tabBarController.viewControllers objectAtIndex:3] popToRootViewControllerAnimated:YES];
+    } else if (fromSelectedCatchUsersCatches) {
+        [self.navigationController popViewControllerAnimated:YES];
     } else {
         [self performSegueWithIdentifier:@"showCatchesFromUser" sender:nil];
     }
     
 }
 
-- (void)changeLocationFieldIconToColor:(NSString *)color
-{
-    
-}
+- (void)changeLocationFieldIconToColor:(NSString *)color {}
+- (void)changeNotesFieldIconToColor:(NSString *)color {}
 
 @end

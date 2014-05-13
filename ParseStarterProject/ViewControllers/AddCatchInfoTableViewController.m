@@ -18,6 +18,8 @@
 #import "SpeciesListTableViewController.h"
 #import "WeightMeasurementOptionsTableViewController.h"
 #import "LengthMeasurementOptionsTableViewController.h"
+#import "CatchesNavigationController.h"
+#import "ThemeColors.h"
 
 @interface AddCatchInfoTableViewController ()
 
@@ -38,8 +40,12 @@ catchNotesLabel,
 catchAnnotationCoordinate,
 notesText,
 selectedCatch,
+selectedCatchQueryObject,
 takePhotoButton,
-choosePhotoButton;
+choosePhotoButton,
+catchPhoto,
+selectedCatchObjectId,
+photoUpdated;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -56,12 +62,35 @@ choosePhotoButton;
 	// Do any additional setup after loading the view.
     catchLengthField.delegate = self;
     catchWeightField.delegate = self;
-    catchPhoto = nil;
-    rankedCatchSwitch.selected = YES;
-    catchAnnotationCoordinate = kCLLocationCoordinate2DInvalid;
-    selectedPhoto.contentMode = UIViewContentModeScaleAspectFit;
     defaultFishPhoto = [UIImage imageNamed:@"fish-default-photo.png"];
-    selectedPhoto.image = defaultFishPhoto;
+    
+    if (selectedCatchObjectId == nil) {
+        catchPhoto = nil;
+        rankedCatchSwitch.selected = YES;
+        catchAnnotationCoordinate = kCLLocationCoordinate2DInvalid;
+        selectedPhoto.image = defaultFishPhoto;
+    } else {
+        // If we are editing, the object ID will be set, so get that object
+        PFQuery *query = [Catch query];
+        [query whereKey:@"objectId" equalTo:selectedCatchObjectId];
+        [query getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
+            if (!error) {
+                // The find succeeded.
+                selectedCatchQueryObject = (Catch *)object;
+            } else {
+                // Log details of the failure
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Network Error"
+                                                                message:@"Could not find catch. Network error occured."
+                                                               delegate:self
+                                                      cancelButtonTitle:@"OK"
+                                                      otherButtonTitles:nil, nil];
+                [alert show];
+            }
+        }];
+    }
+    
+    selectedPhoto.contentMode = UIViewContentModeScaleAspectFill;
+    photoUpdated = NO;
     
     // Buttons
     takePhotoButton.layer.borderWidth=1.0f;
@@ -71,17 +100,75 @@ choosePhotoButton;
     choosePhotoButton.layer.borderColor=[[UIColor colorWithRed:(183.0f/255.0f) green:(147.0f/255.0f) blue:(101.0f/255.0f) alpha:0.3f] CGColor];
     choosePhotoButton.layer.cornerRadius=6.0f;
     
+    [rankedCatchSwitch setOnTintColor:[ThemeColors blueColor]];
     [rankedCatchSwitch addTarget:self action:@selector(changeRankedCatchSwitch:) forControlEvents:UIControlEventValueChanged];
     
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(onKeyboardHide) name:UIKeyboardWillHideNotification object:nil];
     [self buildDismissKeyboardAccessoryView];
 }
 
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
+- (void)onKeyboardHide {
+    if (![catchLengthField.text isEqualToString:@""]) {
+        [self changeCatchLengthFieldIconToColor:@"blue"];
+    } else {
+        [self changeCatchLengthFieldIconToColor:@"grey"];
+    }
+    if (![catchWeightField.text isEqualToString:@""]) {
+        [self changeCatchWeightFieldIconToColor:@"blue"];
+    } else {
+        [self changeCatchWeightFieldIconToColor:@"grey"];
+    }
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     
     if (CLLocationCoordinate2DIsValid(self.catchAnnotationCoordinate)) {
         self.selectedLocationLabel.text = @"Location Selected";
     }
+    
+    [self setupSelectedCatch];
+}
+
+- (void)setupSelectedCatch
+{
+    if (selectedCatch != nil && selectedCatchObjectId != nil) {
+        catchLengthField.text = [NSString stringWithFormat:@"%d", selectedCatch.length];
+        catchWeightField.text = [NSString stringWithFormat:@"%d", selectedCatch.weight];
+        if (selectedCatch.photo) {
+            PFFile *imageFile = [selectedCatch objectForKey:@"photo"];
+            [imageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+                UIImage *photo = [UIImage imageWithData:data];
+                selectedPhoto.image = photo;
+                catchPhoto = photo;
+                [self changePhotoFieldIconToColor:@"blue"];
+            }];
+        } else {
+            selectedPhoto.image = defaultFishPhoto;
+        }
+        catchNotesLabel.text = selectedCatch.notes;
+        CLLocationCoordinate2D loc = CLLocationCoordinate2DMake(selectedCatch.location.latitude, selectedCatch.location.longitude);
+        if ((selectedCatch.location.latitude == -90.0 &&
+            selectedCatch.location.longitude == 0) ||
+            !CLLocationCoordinate2DIsValid(loc)) {
+            catchAnnotationCoordinate = kCLLocationCoordinate2DInvalid;
+            selectedLocationLabel.text = @"Select Location";
+        } else {
+            catchAnnotationCoordinate = loc;
+            selectedLocationLabel.text = @"Location Selected";
+        }
+        selectedLocationLabel.textColor = [UIColor blackColor];
+        selectedSpeciesLabel.text = selectedCatch.species;
+        selectedMethodLabel.text = selectedCatch.method;
+        
+        if (selectedCatch.rankedCatch) {
+            rankedCatchSwitch.on = YES;
+        } else {
+            rankedCatchSwitch.on = NO;
+        }
+    }
+    
+    selectedCatch = nil;
 }
 
 - (void)changeRankedCatchSwitch:(id)sender {
@@ -177,16 +264,6 @@ choosePhotoButton;
 
 - (void)removeKeyboard {
     [self.view endEditing:YES];
-    if ([catchLengthField.text isEqualToString:@""]) {
-        [self changeCatchLengthFieldIconToColor:@"grey"];
-    } else {
-        [self changeCatchLengthFieldIconToColor:@"blue"];
-    }
-    if ([catchWeightField.text isEqualToString:@""]) {
-        [self changeCatchWeightFieldIconToColor:@"grey"];
-    } else {
-        [self changeCatchWeightFieldIconToColor:@"blue"];
-    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -216,7 +293,7 @@ choosePhotoButton;
 }
 
 - (IBAction)saveCatch:(UIButton *)sender {
-    [self addNewCatch];
+    [self saveCatch];
 }
 
 - (void)selectFishingMethod {
@@ -232,26 +309,88 @@ choosePhotoButton;
     return YES;
 }
 
-- (void)addNewCatch {
+- (void)saveWithCatchPhoto:(Catch *)catchObject {
+    NSData *imageData = UIImageJPEGRepresentation(catchPhoto, 0.6);
+    PFFile *imageFile = [PFFile fileWithName:
+                         [NSString stringWithFormat:@"%@_%f.jpg", catchObject.user.username, [[NSDate date] timeIntervalSince1970]]
+                                        data:imageData];
+    
+    [self buildLoadingView];
+    
+    [imageFile saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if (succeeded) {
+            catchObject.photo = imageFile;
+            [catchObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                [loadingOverlay removeFromSuperview];
+                if (succeeded) {
+                    self.selectedCatch = catchObject;
+                    
+                    if (selectedCatchObjectId == nil) {
+                        // Move to CatchAddedViewController to show success message
+                        // Clear the form
+                        [self clearNewCatchForm];
+                        [self performSegueWithIdentifier:@"catchAddedVC" sender:nil];
+                    } else {
+                        // Editing Catch
+                        CatchesNavigationController *parentNC = (CatchesNavigationController *)[self parentViewController];
+                        parentNC.catchUpdated = YES;
+                        [parentNC showCatchUpdatedMessage];
+                        [self.navigationController popViewControllerAnimated:YES];
+                    }
+                } else {
+                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Network Error"
+                                                                    message:@"Could not save catch. Network error occured."
+                                                                   delegate:self
+                                                          cancelButtonTitle:@"OK"
+                                                          otherButtonTitles:nil, nil];
+                    [alert show];
+                }
+                
+            }];
+        } else {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Network Error"
+                                                            message:@"Could not save catch. Network error occured."
+                                                           delegate:self
+                                                  cancelButtonTitle:@"OK"
+                                                  otherButtonTitles:nil, nil];
+            [alert show];
+        }
+        
+    } progressBlock:^(int percentDone) {
+        [uploadProgressView setProgress:percentDone animated:YES];
+    }];
+}
+
+- (void)saveCatch {
     if (![self validateForm]) {
         return;
     }
     
-    Catch *brandNewCatch = [Catch object];
-    brandNewCatch.length = [catchLengthField.text doubleValue];
-    brandNewCatch.weight = [catchWeightField.text doubleValue];
-    brandNewCatch.lengthMeasurement = self.selectedLengthMeasurementLabel.text;
-    brandNewCatch.weightMeasurement = self.selectedWeightMeasurementLabel.text;
-    brandNewCatch.method = selectedMethodLabel.text;
-    brandNewCatch.notes = catchNotesLabel.text;
-    brandNewCatch.rankedCatch = rankedCatchSwitch.on;
-    brandNewCatch.user = [PFUser currentUser];
+    Catch *catchObject = [Catch object];
+    
+    if (selectedCatchQueryObject != nil) {
+        catchObject = selectedCatchQueryObject;
+    }
+    
+    catchObject.length = [catchLengthField.text doubleValue];
+    catchObject.weight = [catchWeightField.text doubleValue];
+    catchObject.lengthMeasurement = self.selectedLengthMeasurementLabel.text;
+    catchObject.weightMeasurement = self.selectedWeightMeasurementLabel.text;
+    catchObject.method = selectedMethodLabel.text;
+    catchObject.rankedCatch = rankedCatchSwitch.on;
+    catchObject.user = [PFUser currentUser];
     
     if (![selectedSpeciesLabel.text isEqualToString:@"Select Species"]) {
-        brandNewCatch.species = self.selectedSpeciesLabel.text;
+        catchObject.species = self.selectedSpeciesLabel.text;
     }
     if (![selectedMethodLabel.text isEqualToString:@"Select Method"]) {
-        brandNewCatch.method = self.selectedMethodLabel.text;
+        catchObject.method = self.selectedMethodLabel.text;
+    }
+    
+    if ([catchNotesLabel.text isEqualToString:@"Add Notes"]) {
+        catchObject.notes = nil;
+    } else {
+        catchObject.notes = catchNotesLabel.text;
     }
     
     // Sets a default location coordinate if none was selected
@@ -259,63 +398,36 @@ choosePhotoButton;
         catchAnnotationCoordinate = CLLocationCoordinate2DMake(-90.00, 0.0);
     }
     
-    brandNewCatch.location = [PFGeoPoint geoPointWithLatitude:catchAnnotationCoordinate.latitude
+    catchObject.location = [PFGeoPoint geoPointWithLatitude:catchAnnotationCoordinate.latitude
                                                     longitude:catchAnnotationCoordinate.longitude];
     
-    // Update the NavigationController's catchAdded property to YES so it knows to go back to the root view next appearance
-    AddCatchNavigationController *parentNC = (AddCatchNavigationController *)[self parentViewController];
-    [parentNC setCatchAdded:YES];
-        
-    if (catchPhoto != nil) {
-        NSData *imageData = UIImageJPEGRepresentation(catchPhoto, 0.6);
-        PFFile *imageFile = [PFFile fileWithName:
-                             [NSString stringWithFormat:@"%@_%f.jpg", brandNewCatch.user.username, [[NSDate date] timeIntervalSince1970]]
-                                            data:imageData];
-        
-        [self buildLoadingView];
-        
-        
-        [imageFile saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-            if (succeeded) {
-            brandNewCatch.photo = imageFile;
-            [brandNewCatch saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-                [loadingOverlay removeFromSuperview];
-                if (succeeded) {
-                    self.selectedCatch = brandNewCatch;
-                    
-                    // Move to CatchAddedViewController to show success message
-                    [self performSegueWithIdentifier:@"catchAddedVC" sender:nil];
-                } else {
-                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Network Error"
-                                                                    message:@"Could not save catch. Network error occured."
-                                                                   delegate:self
-                                                          cancelButtonTitle:nil
-                                                          otherButtonTitles:nil, nil];
-                    [alert show];
-                }
-                
-            }];
-            } else {
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Network Error"
-                                                                message:@"Could not save catch. Network error occured."
-                                                               delegate:self
-                                                      cancelButtonTitle:nil
-                                                      otherButtonTitles:nil, nil];
-                [alert show];
-            }
-            
-        } progressBlock:^(int percentDone) {
-            [uploadProgressView setProgress:percentDone animated:YES];
-        }];
-    } else {
-        [brandNewCatch saveEventually];
-        self.selectedCatch = brandNewCatch;
-        
-        // Move to CatchAddedViewController to show success message
-        [self performSegueWithIdentifier:@"catchAddedVC" sender:nil];
+    if (selectedCatchObjectId == nil) {
+        // New Catch
+        // Update the NavigationController's catchAdded property to YES so it knows to go back to the root view next appearance
+        AddCatchNavigationController *parentNC = (AddCatchNavigationController *)[self parentViewController];
+        [parentNC setCatchAdded:YES];
     }
-    // Clear the form
-    [self clearNewCatchForm];
+        
+    if ((catchPhoto != nil && selectedCatchObjectId == nil) ||
+        (selectedCatchObjectId != nil && photoUpdated)) {
+        [self saveWithCatchPhoto:catchObject];
+    } else {
+        [catchObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+            selectedCatch = catchObject;
+            if (selectedCatchObjectId == nil) {
+                // Move to CatchAddedViewController to show success message
+                // Clear the form
+                [self clearNewCatchForm];
+                [self performSegueWithIdentifier:@"catchAddedVC" sender:nil];
+            } else {
+                // Editing Catch
+                CatchesNavigationController *parentNC = (CatchesNavigationController *)[self parentViewController];
+                parentNC.catchUpdated = YES;
+                [parentNC showCatchUpdatedMessage];
+                [self.navigationController popViewControllerAnimated:YES];
+            }
+        }];
+    }
 }
 
 - (void)buildLoadingView {
@@ -323,8 +435,8 @@ choosePhotoButton;
     loadingOverlayView.backgroundColor = [UIColor colorWithWhite:0 alpha:.75];
     loadingOverlay = loadingOverlayView;
 
-    UILabel *uploadingTextLabel = [[UILabel alloc] initWithFrame:CGRectMake(50, 200, 300, 30)];
-    uploadingTextLabel.text = @"Uploading Photo and Saving...";
+    UILabel *uploadingTextLabel = [[UILabel alloc] initWithFrame:CGRectMake(110, 210, 300, 30)];
+    uploadingTextLabel.text = @"Saving Catch";
     uploadingTextLabel.textColor = [UIColor whiteColor];
     uploadingTextLabel.backgroundColor = [UIColor colorWithWhite:0 alpha:0];
     [loadingOverlay addSubview:uploadingTextLabel];
@@ -414,7 +526,7 @@ choosePhotoButton;
 {
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
     if (alertView.tag == 2) {
-        indexPath = [NSIndexPath indexPathForRow:4 inSection:0];
+        indexPath = [NSIndexPath indexPathForRow:3 inSection:0];
     } else if (alertView.tag == 3) {
         indexPath = [NSIndexPath indexPathForRow:5 inSection:0];
     }
@@ -572,7 +684,7 @@ choosePhotoButton;
         [self showNotesModal];
     }
     if (sec == 1 && row == 0) {
-        [self addNewCatch];
+        [self saveCatch];
     }
 }
 
@@ -619,9 +731,11 @@ choosePhotoButton;
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
     
     UIImage *chosenImage = info[UIImagePickerControllerEditedImage];
-    self.selectedPhoto.image = chosenImage;
+    selectedPhoto.image = chosenImage;
     catchPhoto = chosenImage;
-    
+    if (selectedCatchObjectId != nil) {
+        self.photoUpdated = YES;
+    }
     [self changePhotoFieldIconToColor:@"blue"];
     [picker dismissViewControllerAnimated:YES completion:nil];
 }

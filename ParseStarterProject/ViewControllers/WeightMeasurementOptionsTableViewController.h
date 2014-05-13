@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ThemedTableViewController.h"
 
 @protocol WeightMeasurementSelector <NSObject>
 
@@ -14,7 +15,7 @@
 
 @end
 
-@interface WeightMeasurementOptionsTableViewController : UITableViewController
+@interface WeightMeasurementOptionsTableViewController : ThemedTableViewController
 
 @property (nonatomic, assign) id<WeightMeasurementSelector> delegate;
 

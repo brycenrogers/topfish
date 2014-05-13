@@ -8,7 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "ThemedNavigationController.h"
+#import "CatchUpdatedNavigationControllerProtocol.h"
 
 @interface CatchesNavigationController : ThemedNavigationController
+<CatchUpdatedNavigationControllerProtocol>
+
+@property (nonatomic) BOOL catchUpdated;
+
+- (void)showCatchUpdatedMessage;
 
 @end

@@ -7,12 +7,15 @@
 //
 
 #import "CatchesNavigationController.h"
+#import "CatchUpdatedView.h"
 
 @interface CatchesNavigationController ()
 
 @end
 
 @implementation CatchesNavigationController
+
+@synthesize catchUpdated;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -33,6 +36,11 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)showCatchUpdatedMessage
+{
+    [CatchUpdatedView animateCatchUpdatedViewforView:self.view];
 }
 
 @end
