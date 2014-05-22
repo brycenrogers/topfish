@@ -21,6 +21,9 @@
 		09ABC08213A1D52D009C3FCF /* TopFishAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 09ABC08113A1D52D009C3FCF /* TopFishAppDelegate.m */; };
 		09ABC08813A1D52E009C3FCF /* TopFishViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09ABC08713A1D52E009C3FCF /* TopFishViewController.m */; };
 		09BEF34C13D51C3F001BBCDB /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09BEF34B13D51C3F001BBCDB /* Security.framework */; };
+		180D50941925A344006DBE98 /* NotLoggedInCatchesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 180D50931925A344006DBE98 /* NotLoggedInCatchesViewController.m */; };
+		180D50971925A38D006DBE98 /* ThemedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 180D50961925A38D006DBE98 /* ThemedViewController.m */; };
+		180D509A1925B3AE006DBE98 /* LoginNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 180D50991925B3AE006DBE98 /* LoginNavigationController.m */; };
 		1818F01117D7FD8F00EF425C /* LeaderboardTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1818F01017D7FD8F00EF425C /* LeaderboardTableViewController.m */; };
 		1818F01517D8046F00EF425C /* CatchesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1818F01417D8046F00EF425C /* CatchesTableViewController.m */; };
 		1818F01717D80C8500EF425C /* fish-default-photo.png in Resources */ = {isa = PBXBuildFile; fileRef = 1818F01617D80C8500EF425C /* fish-default-photo.png */; };
@@ -110,6 +113,7 @@
 		189ABA9918F60AB200093BE7 /* trophy-mini-blue@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 189ABA9718F60AB200093BE7 /* trophy-mini-blue@2x.png */; };
 		189ABA9C18F61B7C00093BE7 /* map-pin-area-mini-blue.png in Resources */ = {isa = PBXBuildFile; fileRef = 189ABA9A18F61B7C00093BE7 /* map-pin-area-mini-blue.png */; };
 		189ABA9D18F61B7C00093BE7 /* map-pin-area-mini-blue@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 189ABA9B18F61B7C00093BE7 /* map-pin-area-mini-blue@2x.png */; };
+		18A009F219297CB400FBCFBC /* CatchMapAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A009F119297CB400FBCFBC /* CatchMapAnnotationView.m */; };
 		18A25CF217EFAFB6007A43F6 /* SpeciesList.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A25CF117EFAFB6007A43F6 /* SpeciesList.m */; };
 		18A25CF617EFB662007A43F6 /* SpeciesListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A25CF517EFB662007A43F6 /* SpeciesListTableViewController.m */; };
 		18A7DB9917B6BB2900471456 /* Catch.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A7DB9817B6BB2900471456 /* Catch.m */; };
@@ -160,6 +164,13 @@
 		09ABC08613A1D52E009C3FCF /* TopFishViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TopFishViewController.h; sourceTree = "<group>"; };
 		09ABC08713A1D52E009C3FCF /* TopFishViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TopFishViewController.m; sourceTree = "<group>"; };
 		09BEF34B13D51C3F001BBCDB /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		180D50911923150F006DBE98 /* LoginUserDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginUserDelegate.h; sourceTree = "<group>"; };
+		180D50921925A344006DBE98 /* NotLoggedInCatchesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NotLoggedInCatchesViewController.h; path = ViewControllers/NotLoggedInCatchesViewController.h; sourceTree = "<group>"; };
+		180D50931925A344006DBE98 /* NotLoggedInCatchesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NotLoggedInCatchesViewController.m; path = ViewControllers/NotLoggedInCatchesViewController.m; sourceTree = "<group>"; };
+		180D50951925A38D006DBE98 /* ThemedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ThemedViewController.h; path = ViewControllers/ThemedViewController.h; sourceTree = "<group>"; };
+		180D50961925A38D006DBE98 /* ThemedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ThemedViewController.m; path = ViewControllers/ThemedViewController.m; sourceTree = "<group>"; };
+		180D50981925B3AE006DBE98 /* LoginNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginNavigationController.h; path = NavigationControllers/LoginNavigationController.h; sourceTree = "<group>"; };
+		180D50991925B3AE006DBE98 /* LoginNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginNavigationController.m; path = NavigationControllers/LoginNavigationController.m; sourceTree = "<group>"; };
 		1818F00F17D7FD8F00EF425C /* LeaderboardTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LeaderboardTableViewController.h; path = ViewControllers/LeaderboardTableViewController.h; sourceTree = "<group>"; };
 		1818F01017D7FD8F00EF425C /* LeaderboardTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LeaderboardTableViewController.m; path = ViewControllers/LeaderboardTableViewController.m; sourceTree = "<group>"; };
 		1818F01317D8046F00EF425C /* CatchesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CatchesTableViewController.h; path = ViewControllers/CatchesTableViewController.h; sourceTree = "<group>"; };
@@ -272,6 +283,8 @@
 		189ABA9718F60AB200093BE7 /* trophy-mini-blue@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "trophy-mini-blue@2x.png"; sourceTree = "<group>"; };
 		189ABA9A18F61B7C00093BE7 /* map-pin-area-mini-blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map-pin-area-mini-blue.png"; sourceTree = "<group>"; };
 		189ABA9B18F61B7C00093BE7 /* map-pin-area-mini-blue@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map-pin-area-mini-blue@2x.png"; sourceTree = "<group>"; };
+		18A009F019297CB400FBCFBC /* CatchMapAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CatchMapAnnotationView.h; path = Views/CatchMapAnnotationView.h; sourceTree = "<group>"; };
+		18A009F119297CB400FBCFBC /* CatchMapAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CatchMapAnnotationView.m; path = Views/CatchMapAnnotationView.m; sourceTree = "<group>"; };
 		18A25CF017EFAFB6007A43F6 /* SpeciesList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpeciesList.h; path = Models/SpeciesList.h; sourceTree = "<group>"; };
 		18A25CF117EFAFB6007A43F6 /* SpeciesList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpeciesList.m; path = Models/SpeciesList.m; sourceTree = "<group>"; };
 		18A25CF417EFB662007A43F6 /* SpeciesListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpeciesListTableViewController.h; path = ViewControllers/SpeciesListTableViewController.h; sourceTree = "<group>"; };
@@ -629,6 +642,8 @@
 		18B1012C1808DE1000330ECB /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				180D50981925B3AE006DBE98 /* LoginNavigationController.h */,
+				180D50991925B3AE006DBE98 /* LoginNavigationController.m */,
 				18B1012D1808DE5300330ECB /* UserLoginViewController.h */,
 				18B1012E1808DE5300330ECB /* UserLoginViewController.m */,
 				18B101301808DED800330ECB /* UserSignupViewController.h */,
@@ -646,6 +661,8 @@
 				18D2F5841818AB8800E11C6D /* CatchesNavigationController.m */,
 				18251166181CDE8E00D5909B /* CatchTableViewCell.h */,
 				18251167181CDE8E00D5909B /* CatchTableViewCell.m */,
+				180D50921925A344006DBE98 /* NotLoggedInCatchesViewController.h */,
+				180D50931925A344006DBE98 /* NotLoggedInCatchesViewController.m */,
 			);
 			name = Catches;
 			sourceTree = "<group>";
@@ -656,6 +673,7 @@
 				18D2F6141879C82700FC5B4C /* CatchMapDelegate.h */,
 				188ED2BF18A3515B00F96E4B /* FishingFilterProtocol.h */,
 				18493D401911C7A500E8D72E /* CatchUpdatedNavigationControllerProtocol.h */,
+				180D50911923150F006DBE98 /* LoginUserDelegate.h */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -667,6 +685,8 @@
 				18DC2BBC180B802B00DA95C3 /* CatchPhotoDetailView.m */,
 				18493D41191581B500E8D72E /* CatchUpdatedView.h */,
 				18493D42191581B500E8D72E /* CatchUpdatedView.m */,
+				18A009F019297CB400FBCFBC /* CatchMapAnnotationView.h */,
+				18A009F119297CB400FBCFBC /* CatchMapAnnotationView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -682,6 +702,8 @@
 				18BB471E18F8C3FB00B0EDB5 /* ThemedNavigationController.m */,
 				18493D47191EEDF800E8D72E /* ThemeColors.h */,
 				18493D48191EEDF800E8D72E /* ThemeColors.m */,
+				180D50951925A38D006DBE98 /* ThemedViewController.h */,
+				180D50961925A38D006DBE98 /* ThemedViewController.m */,
 			);
 			name = Theme;
 			sourceTree = "<group>";
@@ -854,10 +876,14 @@
 				185E58BF17D52EF9006375B3 /* CatchAddedViewController.m in Sources */,
 				18DE0A1D18274D6300F6C607 /* ThemedPFQueryTableViewController.m in Sources */,
 				186C894C17EE521900CF3ECC /* LengthMeasurementOptionsTableViewController.m in Sources */,
+				18A009F219297CB400FBCFBC /* CatchMapAnnotationView.m in Sources */,
 				185E58C217D5405C006375B3 /* AddCatchNotesViewController.m in Sources */,
 				185E58C517D560DC006375B3 /* CatchPhoto.m in Sources */,
 				185BA39D17EF45DF001E2481 /* WeightMeasurementOptionsTableViewController.m in Sources */,
+				180D50971925A38D006DBE98 /* ThemedViewController.m in Sources */,
+				180D509A1925B3AE006DBE98 /* LoginNavigationController.m in Sources */,
 				185E58C917D6C60C006375B3 /* CatchesMapViewController.m in Sources */,
+				180D50941925A344006DBE98 /* NotLoggedInCatchesViewController.m in Sources */,
 				18DC2BB9180B7CA100DA95C3 /* CatchDetailTableViewController.m in Sources */,
 				185E58CD17D6E470006375B3 /* LeaderboardNavigationController.m in Sources */,
 				18B101321808DED800330ECB /* UserSignupViewController.m in Sources */,

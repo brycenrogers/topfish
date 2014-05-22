@@ -8,6 +8,8 @@
 
 #import "CatchesNavigationController.h"
 #import "CatchUpdatedView.h"
+#import "NotLoggedInCatchesViewController.h"
+#import "CatchesTableViewController.h"
 
 @interface CatchesNavigationController ()
 
@@ -15,7 +17,7 @@
 
 @implementation CatchesNavigationController
 
-@synthesize catchUpdated;
+@synthesize catchUpdated, loggedInUser;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -30,6 +32,15 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    if ([PFAnonymousUtils isLinkedWithUser:[PFUser currentUser]]) {
+        [self setViewControllers:@[[self.storyboard instantiateViewControllerWithIdentifier:@"NotLoggedInCatchesVC"]] animated:YES];
+    } else {
+        [self setViewControllers:@[[self.storyboard instantiateViewControllerWithIdentifier:@"CatchesTVC"]] animated:YES];
+    }
 }
 
 - (void)didReceiveMemoryWarning

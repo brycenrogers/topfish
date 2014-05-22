@@ -11,6 +11,7 @@
 #import "CatchDetailTableViewController.h"
 #import "CatchTableViewCell.h"
 #import "ThemeColors.h"
+#import "UserLoginViewController.h"
 
 @interface CatchesTableViewController ()
 
@@ -20,10 +21,9 @@
 
 @synthesize selectedCatch,
 user,
+loggedInUser,
 noResultsLabel,
 addLabel,
-loginButton,
-loginLabel,
 selectedTabBarIndex,
 userInfoView,
 userInfoViewLabel;
@@ -45,7 +45,7 @@ userInfoViewLabel;
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     [self.tableView registerClass:[CatchTableViewCell class] forCellReuseIdentifier:@"CatchesCell"];
-    
+
     UILabel *noResultsLbl = [[UILabel alloc] initWithFrame:CGRectMake(85.0, 200.0, 180.0, 40.0)];
     noResultsLbl.text = @"No catches found";
     noResultsLbl.hidden = YES;
@@ -58,59 +58,45 @@ userInfoViewLabel;
     addLabel = addLbl;
     [self.view addSubview:addLabel];
     
-    UILabel *loginLbl = [[UILabel alloc] initWithFrame:CGRectMake(70.0, 200.0, 240.0, 40.0)];
-    loginLbl.text = @"Login to Add Catches!";
-    loginLbl.hidden = YES;
-    loginLabel = loginLbl;
-    [self.view addSubview:loginLabel];
-    
-    UIButton *loginBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [loginBtn setTitle:@"Login or Signup" forState:UIControlStateNormal];
-    [loginBtn addTarget:self
-                 action:@selector(clickLoginButton:)
-       forControlEvents:UIControlEventTouchUpInside];
-    [loginBtn setFrame:CGRectMake(80.0, 250.0, 150.0, 40.0)];
-    [loginBtn.titleLabel setTextAlignment:NSTextAlignmentCenter];
-    loginBtn.hidden = YES;
-    loginButton = loginBtn;
-    [self.view addSubview:loginButton];
-
     [self updateUserInfoView];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    [super viewWillAppear:animated];
-    
     [self.tabBarController setDelegate:self];
+    // Unselect the selected row if any
+	NSIndexPath *selection = [self.tableView indexPathForSelectedRow];
+	if (selection) {
+		[self.tableView deselectRowAtIndexPath:selection animated:YES];
+    }
+}
+
+- (void)objectsDidLoad:(NSError *)error {
+    [super objectsDidLoad:error];
     
-    // Check for login
-    if ([self.tabBarController selectedIndex] == 3) {
+    if ([self selectedTabBarIndex] == 3) {
         user = [PFUser currentUser];
     }
     
-    if (user == nil || [user.username isEqualToString:@"notLoggedInUser"]) {
-        
-        if ([PFUser currentUser].username != user.username && [PFUser currentUser] != nil) {
-            user = [PFUser currentUser];
-            loginButton.hidden = YES;
-            loginLabel.hidden = YES;
+    // If the current user is equal to the requested user (viewing their own catches)
+    if ([[PFUser currentUser].username isEqualToString:user.username]) {
+            
+        // User is logged in but has not added any catches
+        if(self.objects.count == 0) {
+            addLabel.hidden = NO;
+            noResultsLabel.hidden = NO;
         } else {
-            loginButton.hidden = NO;
-            loginLabel.hidden = NO;
+            // Reset all buttons
+            addLabel.hidden = YES;
+            noResultsLabel.hidden = YES;
         }
         
     } else {
-        loginButton.hidden = YES;
-        loginLabel.hidden = YES;
-        if ([PFUser currentUser].username != user.username && [PFUser currentUser] != nil) {
-            [self updateUserInfoView];
-        } else {
-            userInfoView = nil;
-        }
+        
+        // Reset all buttons
+        addLabel.hidden = YES;
+        noResultsLabel.hidden = YES;
     }
-
-    [self loadObjects];
 }
 
 - (void)updateUserInfoView
@@ -123,21 +109,13 @@ userInfoViewLabel;
         uInfoLabel.textColor = [ThemeColors greenColor];
         uInfoLabel.frame = CGRectMake(0, 5, self.view.frame.size.width, 25);
         uInfoLabel.textAlignment = NSTextAlignmentCenter;
-        //    UIView *bottomLineView = [[UIView alloc] initWithFrame:CGRectMake(0, 34, self.view.frame.size.width, 1)];
-        //    bottomLineView.backgroundColor = [UIColor blackColor];
-        //    bottomLineView.alpha = 0.25;
-        //    [uInfoView addSubview:bottomLineView];
         [uInfoView addSubview:uInfoLabel];
         userInfoView = uInfoView;
         userInfoViewLabel = uInfoLabel;
         [self.view addSubview:userInfoView];
     }
     
-    if (user == nil || [user.username isEqualToString:@"notLoggedInUser"]) {
-        userInfoViewLabel.text = nil;
-    } else {
-        userInfoViewLabel.text = user.username;
-    }
+    userInfoViewLabel.text = user.username;
 }
 
 - (void)tabBarController:(UITabBarController *)theTabBarController didSelectViewController:(UIViewController *)viewController {
@@ -147,9 +125,7 @@ userInfoViewLabel;
 
 - (void)viewWillDisappear:(BOOL)animated
 {
-    [super viewWillDisappear:animated];
     [self.tabBarController setDelegate:nil];
-    userInfoView.alpha = 0;
 }
 
 - (void)didReceiveMemoryWarning
@@ -158,18 +134,8 @@ userInfoViewLabel;
     // Dispose of any resources that can be recreated.
 }
 
-- (void)objectsDidLoad:(NSError *)error {
-    [super objectsDidLoad:error];
-    [self loadNoResultsView];
-    if (userInfoView != nil && userInfoView.alpha != 1) {
-        [UIView animateWithDuration:.2 delay:0.0 options:UIViewAnimationOptionCurveEaseIn animations:^{
-            userInfoView.alpha = 1;
-        } completion:nil];
-    }
-}
-
 - (void)loadNoResultsView {
-    if ([self.objects count] == 0 && loginLabel.hidden == YES) {
+    if ([self.objects count] == 0) {
         noResultsLabel.hidden = NO;
         if ([PFUser currentUser].username == user.username) {
             addLabel.hidden = NO;
@@ -184,19 +150,7 @@ userInfoViewLabel;
 
 - (PFQuery *)queryForTable {
     [self updateUserInfoView];
-    PFUser *currentUser = [PFUser currentUser];
-//    if (currentUser == nil && user == nil) {
-//        PFQuery *userQuery = [PFUser query];
-//        [userQuery whereKey:@"username" equalTo:@"notLoggedInUser"];
-//        [userQuery getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
-//            if (!error) {
-//                user = (PFUser *)object;
-//            }
-//        }];
-//    }
-    if (user == nil || (currentUser.username != user.username &&
-                        selectedTabBarIndex == 3 &&
-                        ![user.username isEqualToString:@"notLoggedInUser"])) {
+    if (user == nil || selectedTabBarIndex == 3 || self.tabBarController.selectedIndex == 3) {
         user = [PFUser currentUser];
     }
     PFQuery *query = [Catch query];
@@ -265,51 +219,11 @@ userInfoViewLabel;
             catchDetailVC.fromSelectedCatchUsersCatches = NO;
         }
     }
+    if ([[segue identifier] isEqualToString:@"userLoginFormSegue"])
+    {
+        UserLoginViewController *userLoginVC = [segue destinationViewController];
+        userLoginVC.delegate = self;
+    }
 }
-
-- (void)clickLoginButton:(UIBarButtonItem *)sender
-{
-    [self performSegueWithIdentifier:@"userLoginFormSegue" sender:nil];
-}
-
-//- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
-//{
-//    if (userInfoView != nil && userInfoView.alpha != 0) {
-//        [UIView animateWithDuration:0.2 delay:0.0 options:UIViewAnimationOptionCurveEaseIn animations:^{
-//            userInfoView.alpha = 0;
-//        } completion:nil];
-//    }
-//}
-//
-//- (void)scrollViewDidScrollToTop:(UIScrollView *)scrollView
-//{
-//    if (userInfoView != nil && userInfoView.alpha != 1) {
-//        [UIView animateWithDuration:.2 delay:0.0 options:UIViewAnimationOptionCurveEaseIn animations:^{
-//            userInfoView.alpha = 1;
-//        } completion:nil];
-//    }
-//}
-//
-//-(void)scrollViewDidScroll: (UIScrollView*)scrollView
-//{
-//    float scrollViewHeight = scrollView.frame.size.height;
-//    float scrollContentSizeHeight = scrollView.contentSize.height;
-//    float scrollOffset = scrollView.contentOffset.y;
-//    
-//    if (scrollOffset == 0)
-//    {
-//        // then we are at the top
-//        if (userInfoView != nil && userInfoView.alpha != 1) {
-//            [UIView animateWithDuration:.2 delay:0.0 options:UIViewAnimationOptionCurveEaseIn animations:^{
-//                userInfoView.alpha = 1;
-//            } completion:nil];
-//        }
-//    }
-//    else if (scrollOffset + scrollViewHeight == scrollContentSizeHeight)
-//    {
-//        // then we are at the end
-//    }
-//}
-
 
 @end

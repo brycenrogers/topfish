@@ -7,8 +7,11 @@
 //
 
 #import "CatchMapAnnotation.h"
+#import "CatchMapAnnotationView.h"
 
 @implementation CatchMapAnnotation
+
+@synthesize calloutView, catch;
 
 - (void)setCoordinate:(CLLocationCoordinate2D)newCoordinate
 {
@@ -19,6 +22,16 @@
 - (void)setTitle:(NSString *)title {
     _title = title;
     return;
+}
+
+- (void)setSubtitle:(NSString *)subtitle {
+    _subtitle = subtitle;
+    return;
+}
+
+- (void)setSelected:(BOOL)selected
+{
+    [super setSelected:selected];
 }
 
 @end

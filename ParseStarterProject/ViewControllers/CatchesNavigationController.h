@@ -9,11 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "ThemedNavigationController.h"
 #import "CatchUpdatedNavigationControllerProtocol.h"
+#import "LoginUserDelegate.h"
 
 @interface CatchesNavigationController : ThemedNavigationController
-<CatchUpdatedNavigationControllerProtocol>
+<CatchUpdatedNavigationControllerProtocol, LoginUserDelegate>
 
 @property (nonatomic) BOOL catchUpdated;
+@property (nonatomic, strong) PFUser *loggedInUser;
 
 - (void)showCatchUpdatedMessage;
 

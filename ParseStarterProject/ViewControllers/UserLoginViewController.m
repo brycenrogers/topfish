@@ -14,6 +14,8 @@
 
 @implementation UserLoginViewController
 
+@synthesize delegate;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -35,6 +37,7 @@
 	// Do any additional setup after loading the view.
     self.usernameField.delegate = self;
     self.passwordField.delegate = self;
+    delegate = (UINavigationController<LoginUserDelegate> *)self.navigationController.delegate;
 }
 
 - (void)didReceiveMemoryWarning
@@ -79,6 +82,7 @@
                                     block:^(PFUser *user, NSError *error) {
                                         if (user) {
                                             // Do stuff after successful login.
+                                            delegate.loggedInUser = user;
                                             [self.parentViewController dismissViewControllerAnimated:YES completion:nil];
                                         } else {
                                             // The login failed. Check error to see why.

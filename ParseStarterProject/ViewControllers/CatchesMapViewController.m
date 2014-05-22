@@ -53,36 +53,57 @@
     if (!CLLocationCoordinate2DIsValid(currentUserLocation)) {
         MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(self.mapView.userLocation.coordinate, 18000, 18000);
         [self.mapView setRegion:[self.mapView regionThatFits:region] animated:YES];
-        [self placeCatchAnnotationOnMap:self.mapView.userLocation.coordinate];
+        //[self placeCatchAnnotationOnMap:self.mapView.userLocation.coordinate withImageView:nil];
         self.selectedGeopoint = [PFGeoPoint geoPointWithLocation:userLocation.location];
         currentUserLocation = userLocation.coordinate;
     }
 }
 
-- (void)placeCatchAnnotationOnMap:(CLLocationCoordinate2D)coordinate {
+- (void)placeCatchAnnotationOnMap:(Catch *)catch {
+    
+    CLLocationCoordinate2D loc = CLLocationCoordinate2DMake(catch.location.latitude, catch.location.longitude);
     CatchMapAnnotation *catchAnnot = [[CatchMapAnnotation alloc] init];
-    catchAnnot.coordinate = coordinate;
-    catchAnnot.animatesDrop = NO;
-    //[self.mapView removeAnnotations:self.mapView.annotations];
+    catchAnnot.coordinate = loc;
+    [catchAnnot setTitle:catch.species];
+    catchAnnot.catch = catch;
+    
     [self.mapView addAnnotation:catchAnnot];
 }
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation
 {
-    MKPinAnnotationView*pinView=nil;
-    if(annotation != self.mapView.userLocation)
-    {
-        static NSString *defaultPin = @"AddCatchMapAnnotation";
-        pinView=(MKPinAnnotationView*)[self.mapView dequeueReusableAnnotationViewWithIdentifier:defaultPin];
-        if(pinView==nil)
-            pinView=[[MKPinAnnotationView alloc]initWithAnnotation:annotation reuseIdentifier:defaultPin];
-        pinView.pinColor = MKPinAnnotationColorRed;
-        pinView.canShowCallout = YES;
-        pinView.animatesDrop = NO;
-    }
-    else
-    {
-        [self.mapView.userLocation setTitle:@"You are Here!"];
+    static NSString *defaultPin = @"AddCatchMapAnnotation";
+    MKPinAnnotationView *pinView = nil;
+    CatchMapAnnotation *annot = (CatchMapAnnotation *)annotation;
+    if (!pinView) {
+        if(annotation != self.mapView.userLocation)
+        {
+            pinView = (MKPinAnnotationView *)[self.mapView dequeueReusableAnnotationViewWithIdentifier:defaultPin];
+            
+            if (pinView == nil) {
+                pinView = [[MKPinAnnotationView alloc] initWithAnnotation:annot reuseIdentifier:defaultPin];
+            }
+            
+            pinView.pinColor = MKPinAnnotationColorRed;
+            pinView.canShowCallout = YES;
+            pinView.animatesDrop = NO;
+            
+            UIButton *rightButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+            [rightButton addTarget:nil action:nil forControlEvents:UIControlEventTouchUpInside];
+            pinView.rightCalloutAccessoryView = rightButton;
+            
+            PFImageView *fishPhotoImageView = [[PFImageView alloc] init];
+            fishPhotoImageView.image = [UIImage imageNamed:@"fish-default-photo.png"]; // placeholder image
+            fishPhotoImageView.file = annot.catch.photo;
+            [fishPhotoImageView loadInBackground];
+            fishPhotoImageView.frame = CGRectMake(0, 0, 30.0, 30.0);
+            
+            pinView.leftCalloutAccessoryView = fishPhotoImageView;
+        }
+        else
+        {
+            [self.mapView.userLocation setTitle:@"You are Here!"];
+        }
     }
     return pinView;
 }
@@ -105,8 +126,7 @@
         return;
     }
     for (Catch *catchObject in self.catches) {
-        CLLocationCoordinate2D loc = CLLocationCoordinate2DMake(catchObject.location.latitude, catchObject.location.longitude);
-        [self placeCatchAnnotationOnMap:loc];
+        [self placeCatchAnnotationOnMap:catchObject];
     }
 }
 

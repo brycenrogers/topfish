@@ -7,6 +7,7 @@
 //
 
 #import <Parse/Parse.h>
+#import "LoginUserDelegate.h"
 
 @interface UserLoginViewController : UIViewController<UITextFieldDelegate, UIAlertViewDelegate>
 {
@@ -16,6 +17,7 @@
 
 @property (weak, nonatomic) IBOutlet UITextField *usernameField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordField;
+@property (weak, nonatomic) id<LoginUserDelegate> delegate;
 
 - (IBAction)loginButton:(UIButton *)sender;
 - (IBAction)signupButton:(UIButton *)sender;

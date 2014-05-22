@@ -16,6 +16,7 @@
 #import "LengthMeasurementOptionsTableViewController.h"
 #import "ThemedTableViewController.h"
 #import "CatchMapDelegate.h"
+#import "LoginUserDelegate.h"
 
 @interface AddCatchInfoTableViewController :
 ThemedTableViewController<UITextFieldDelegate,
@@ -27,7 +28,8 @@ MethodListSelector,
 CatchNotesDelegate,
 WeightMeasurementSelector,
 LengthMeasurementSelector,
-CatchMapDelegate>
+CatchMapDelegate,
+LoginUserDelegate>
 {
     UIToolbar *dismissView;
     UIView *loadingOverlay;
@@ -53,6 +55,7 @@ CatchMapDelegate>
 @property (nonatomic) CLLocationCoordinate2D catchAnnotationCoordinate;
 @property (nonatomic) NSString *notesText;
 @property (nonatomic) BOOL photoUpdated;
+@property (nonatomic, strong) PFUser *loggedInUser;
 
 - (IBAction)clickTakePhotoButton:(UIButton *)sender;
 - (IBAction)clickChoosePhotoButton:(UIButton *)sender;

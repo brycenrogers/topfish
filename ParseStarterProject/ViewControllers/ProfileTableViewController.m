@@ -15,7 +15,7 @@
 
 @implementation ProfileTableViewController
 
-@synthesize loginLogoutButton;
+@synthesize loginLogoutButton, loggedInUser, usernameRowCell, emailRowCell;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -48,7 +48,7 @@
 }
 
 - (void)setLoginLogoutButtonLabel {
-    if ([PFUser currentUser] == nil || [[PFUser currentUser].username isEqualToString:@"notLoggedInUser"]) {
+    if ([PFAnonymousUtils isLinkedWithUser:[PFUser currentUser]]) {
         [loginLogoutButton setTitle:@"Login or Signup" forState:UIControlStateNormal];
     } else {
         [loginLogoutButton setTitle:@"Logout" forState:UIControlStateNormal];
@@ -60,12 +60,12 @@
     PFUser *user = [PFUser currentUser];
     NSString *username = user.username;
     NSString *email = user.email;
-    if (user != nil && ![user.username isEqualToString:@"notLoggedInUser"]) {
-        [self.usernameRowCell.textLabel setText:username];
-        [self.emailRowCell.textLabel setText:email];
+    if (![PFAnonymousUtils isLinkedWithUser:[PFUser currentUser]]) {
+        usernameRowCell.textLabel.text = username;
+        emailRowCell.textLabel.text = email;
     } else {
-        self.usernameRowCell.textLabel.text = @"";
-        self.emailRowCell.textLabel.text = @"";
+        usernameRowCell.textLabel.text = @"";
+        emailRowCell.textLabel.text = @"";
     }
 }
 

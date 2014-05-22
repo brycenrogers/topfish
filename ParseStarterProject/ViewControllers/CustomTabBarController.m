@@ -112,11 +112,26 @@
 }
 
 - (void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item {
-    if ([item.title isEqualToString:@"Leaderboard"]) {
-        NSArray *vcArray = [self viewControllers];
-        LeaderboardNavigationController *lbnc = (LeaderboardNavigationController *)[vcArray objectAtIndex:0];
-        [lbnc popToRootViewControllerAnimated:YES];
-    }
+//    if ([item.title isEqualToString:@"Leaderboard"]) {
+//        NSArray *vcArray = [self viewControllers];
+//        LeaderboardNavigationController *lbnc = (LeaderboardNavigationController *)[vcArray objectAtIndex:0];
+//        [lbnc popToRootViewControllerAnimated:YES];
+//    }
+}
+
+- (BOOL)shouldAutorotate
+{
+    return UIInterfaceOrientationMaskPortrait;
+}
+
+- (NSUInteger)supportedInterfaceOrientations
+{
+    return UIInterfaceOrientationMaskPortrait;
+}
+
+- (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation
+{
+    return UIInterfaceOrientationPortrait;
 }
 
 @end

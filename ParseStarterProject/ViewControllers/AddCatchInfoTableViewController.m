@@ -20,6 +20,7 @@
 #import "LengthMeasurementOptionsTableViewController.h"
 #import "CatchesNavigationController.h"
 #import "ThemeColors.h"
+#import "LoginNavigationController.h"
 
 @interface AddCatchInfoTableViewController ()
 
@@ -45,7 +46,8 @@ takePhotoButton,
 choosePhotoButton,
 catchPhoto,
 selectedCatchObjectId,
-photoUpdated;
+photoUpdated,
+loggedInUser;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -450,6 +452,10 @@ photoUpdated;
 }
 
 - (BOOL)validateForm {
+    if ([PFAnonymousUtils isLinkedWithUser:[PFUser currentUser]]) {
+        [self showAlertForField:nil withMessage:@"You need to login to add this catch" andTag:4];
+        return NO;
+    }
     if (![self validateCatchLength]) {
         [self showAlertForField:catchLengthField
                     withMessage:@"Please enter the length of your catch" andTag:2];
@@ -527,13 +533,21 @@ photoUpdated;
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
     if (alertView.tag == 2) {
         indexPath = [NSIndexPath indexPathForRow:3 inSection:0];
-    } else if (alertView.tag == 3) {
+    }
+    
+    if (alertView.tag == 3) {
         indexPath = [NSIndexPath indexPathForRow:5 inSection:0];
     }
     
-    [self.tableView scrollToRowAtIndexPath:indexPath
-                          atScrollPosition:UITableViewScrollPositionTop
-                                  animated:YES];
+    if (alertView.tag != 4) {
+        [self.tableView scrollToRowAtIndexPath:indexPath
+                              atScrollPosition:UITableViewScrollPositionTop
+                                      animated:YES];
+    }
+    
+    if (alertView.tag == 4) {
+        [self performSegueWithIdentifier:@"showUserLoginSegue" sender:nil];
+    }
 }
 
 - (void)showLocationModal {
@@ -578,18 +592,28 @@ photoUpdated;
     {
         CatchAddedViewController *cavc = [segue destinationViewController];
         cavc.selectedCatch = self.selectedCatch;
+        return;
     }
     
     if ([[segue identifier] isEqualToString:@"selectWeightMeasurementFromAdd"])
     {
         WeightMeasurementOptionsTableViewController *wmotvc = [segue destinationViewController];
         wmotvc.delegate = self;
+        return;
     }
     
     if ([[segue identifier] isEqualToString:@"selectLengthMeasurementFromAdd"])
     {
         LengthMeasurementOptionsTableViewController *lmotvc = [segue destinationViewController];
         lmotvc.delegate = self;
+        return;
+    }
+    
+    if ([[segue identifier] isEqualToString:@"showUserLoginSegue"])
+    {
+        LoginNavigationController *lNC = [segue destinationViewController];
+        lNC.delegate = self;
+        return;
     }
 }
 

@@ -208,6 +208,11 @@ catchNotesLabel;
     if (indexPath.row == 6) {
         UITableViewCell *theCell = [super tableView:tableView cellForRowAtIndexPath:indexPath];
         theCell.imageView.image = [UIImage imageNamed:@"sticky-note-mini.png"];
+        if ([catchNotesLabel.text isEqualToString:@"None"]) {
+            theCell.accessoryType = UITableViewCellAccessoryNone;
+        } else {
+            theCell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        }
         return theCell;
     }
     return [super tableView:tableView cellForRowAtIndexPath:indexPath];
@@ -282,29 +287,34 @@ catchNotesLabel;
         CatchPhotoScrollViewController *cpsvc = [segue destinationViewController];
         cpsvc.selectedCatch = selectedCatch;
         cpsvc.photo = catchImageView.image;
+        return;
     }
     if ([[segue identifier] isEqualToString:@"showOnMapFromDetails"])
     {
         AddCatchMapLocationViewController *acmlvc = [segue destinationViewController];
         acmlvc.delegate = self;
         acmlvc.locationCoordinate = CLLocationCoordinate2DMake(selectedCatch.location.latitude, selectedCatch.location.longitude);
+        return;
     }
     if ([[segue identifier] isEqualToString:@"showCatchesFromUser"])
     {
         CatchesTableViewController *ctvc = [segue destinationViewController];
         ctvc.selectedCatch = selectedCatch;
         ctvc.user = selectedCatch.user;
+        return;
     }
     if ([[segue identifier] isEqualToString:@"showCatchNotesFromDetails"]) {
         AddCatchNotesViewController *acnvc = [segue destinationViewController];
         acnvc.delegate = self;
         acnvc.viewMode = YES;
+        return;
     }
     if ([[segue identifier] isEqualToString:@"editCatchSegue"]) {
         AddCatchInfoTableViewController *acitvc = [segue destinationViewController];
         acitvc.selectedCatch = selectedCatch;
         acitvc.selectedCatchObjectId = selectedCatch.objectId;
         acitvc.title = @"Edit Catch";
+        return;
     }
 }
 

@@ -8,12 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import "ThemedTableViewController.h"
+#import "LoginUserDelegate.h"
 
-@interface ProfileTableViewController : ThemedTableViewController
+@interface ProfileTableViewController : ThemedTableViewController<LoginUserDelegate>
 
-@property (weak, nonatomic) IBOutlet UITableViewCell *usernameRowCell;
-@property (weak, nonatomic) IBOutlet UITableViewCell *emailRowCell;
-@property (weak, nonatomic) IBOutlet UIButton *loginLogoutButton;
+@property (strong, nonatomic) IBOutlet UITableViewCell *usernameRowCell;
+@property (strong, nonatomic) IBOutlet UITableViewCell *emailRowCell;
+@property (strong, nonatomic) IBOutlet UIButton *loginLogoutButton;
+@property (strong, nonatomic) PFUser *loggedInUser;
 
 - (IBAction)loginLogoutButtonClicked:(UIButton *)sender;
 

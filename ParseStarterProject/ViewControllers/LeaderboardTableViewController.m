@@ -35,15 +35,18 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
     if (self.selectedMethodFilter != nil || self.selectedSpeciesFilter != nil) {
         [self showFilteredLayer];
+    }
+    // Unselect the selected row if any
+	NSIndexPath *selection = [self.tableView indexPathForSelectedRow];
+	if (selection) {
+		[self.tableView deselectRowAtIndexPath:selection animated:YES];
     }
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
-    [super viewWillDisappear:animated];
     [self hideFilteredLayer];
 }
 

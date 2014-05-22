@@ -30,6 +30,12 @@
     [self setSeparatorColor];
     [self setBackgroundColor];
     self.view.tintColor = [ThemeColors blueColor];
+    
+    [[UIApplication sharedApplication] setStatusBarHidden:NO];
+    
+    [[UIApplication sharedApplication] setStatusBarOrientation:UIInterfaceOrientationPortrait];
+    
+    [super willRotateToInterfaceOrientation:UIInterfaceOrientationPortrait duration:0];
 }
 
 - (void)setSeparatorColor {
