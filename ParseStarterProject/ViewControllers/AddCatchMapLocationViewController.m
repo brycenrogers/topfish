@@ -116,16 +116,15 @@
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation
 {
-    MKPinAnnotationView*pinView=nil;
+    MKPinAnnotationView *pinView = nil;
     if(annotation != self.mapView.userLocation)
     {
         static NSString *defaultPin = @"AddCatchMapAnnotation";
-        pinView=(MKPinAnnotationView*)[self.mapView dequeueReusableAnnotationViewWithIdentifier:defaultPin];
-        if(pinView==nil)
-            pinView=[[MKPinAnnotationView alloc]initWithAnnotation:annotation reuseIdentifier:defaultPin];
-        pinView.pinColor = MKPinAnnotationColorRed;
-        pinView.canShowCallout = YES;
-        pinView.animatesDrop = YES;
+        pinView = (MKPinAnnotationView *)[self.mapView dequeueReusableAnnotationViewWithIdentifier:defaultPin];
+        if(pinView == nil) {
+            pinView = [[MKPinAnnotationView alloc]initWithAnnotation:annotation reuseIdentifier:defaultPin];
+        }
+        pinView.image = [UIImage imageNamed:@"fish-pin.png"];
     }
     else
     {

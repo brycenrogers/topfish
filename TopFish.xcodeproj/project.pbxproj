@@ -73,7 +73,16 @@
 		18251163181CD78400D5909B /* iTunesArtwork@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18251159181CD78400D5909B /* iTunesArtwork@2x.png */; };
 		18251165181CD89400D5909B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18251164181CD89400D5909B /* Images.xcassets */; };
 		18251168181CDE8E00D5909B /* CatchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18251167181CDE8E00D5909B /* CatchTableViewCell.m */; };
+		1829162D1932C0740063D4D2 /* CatchesMapNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1829162C1932C0740063D4D2 /* CatchesMapNavigationController.m */; };
+		182916321933D48D0063D4D2 /* multiply-symbol-mini-white.png in Resources */ = {isa = PBXBuildFile; fileRef = 1829162E1933D48D0063D4D2 /* multiply-symbol-mini-white.png */; };
+		182916331933D48D0063D4D2 /* multiply-symbol-mini-white@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1829162F1933D48D0063D4D2 /* multiply-symbol-mini-white@2x.png */; };
+		182916341933D48D0063D4D2 /* write-box-mini-white.png in Resources */ = {isa = PBXBuildFile; fileRef = 182916301933D48D0063D4D2 /* write-box-mini-white.png */; };
+		182916351933D48D0063D4D2 /* write-box-mini-white@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 182916311933D48D0063D4D2 /* write-box-mini-white@2x.png */; };
+		182916381933E5790063D4D2 /* pen-mini-white.png in Resources */ = {isa = PBXBuildFile; fileRef = 182916361933E5790063D4D2 /* pen-mini-white.png */; };
+		182916391933E5790063D4D2 /* pen-mini-white@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 182916371933E5790063D4D2 /* pen-mini-white@2x.png */; };
+		1829163C1933EAEC0063D4D2 /* BSVote.m in Sources */ = {isa = PBXBuildFile; fileRef = 1829163B1933EAEC0063D4D2 /* BSVote.m */; };
 		1844C011180AEE4A0064BC19 /* MethodList.m in Sources */ = {isa = PBXBuildFile; fileRef = 1844C010180AEE4A0064BC19 /* MethodList.m */; };
+		18463C901932BCCD0042EDE4 /* fish-pin.png in Resources */ = {isa = PBXBuildFile; fileRef = 18463C8F1932BCCD0042EDE4 /* fish-pin.png */; };
 		1846418917EFCEA10080D7FF /* Fish.m in Sources */ = {isa = PBXBuildFile; fileRef = 1846418817EFCEA10080D7FF /* Fish.m */; };
 		18493D43191581B500E8D72E /* CatchUpdatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18493D42191581B500E8D72E /* CatchUpdatedView.m */; };
 		18493D49191EEDF800E8D72E /* ThemeColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 18493D48191EEDF800E8D72E /* ThemeColors.m */; };
@@ -225,8 +234,19 @@
 		18251164181CD89400D5909B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = TopFish/Images.xcassets; sourceTree = SOURCE_ROOT; };
 		18251166181CDE8E00D5909B /* CatchTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CatchTableViewCell.h; path = ViewControllers/CatchTableViewCell.h; sourceTree = "<group>"; };
 		18251167181CDE8E00D5909B /* CatchTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CatchTableViewCell.m; path = ViewControllers/CatchTableViewCell.m; sourceTree = "<group>"; };
+		1829162B1932C0740063D4D2 /* CatchesMapNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CatchesMapNavigationController.h; path = NavigationControllers/CatchesMapNavigationController.h; sourceTree = "<group>"; };
+		1829162C1932C0740063D4D2 /* CatchesMapNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CatchesMapNavigationController.m; path = NavigationControllers/CatchesMapNavigationController.m; sourceTree = "<group>"; };
+		1829162E1933D48D0063D4D2 /* multiply-symbol-mini-white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "multiply-symbol-mini-white.png"; sourceTree = "<group>"; };
+		1829162F1933D48D0063D4D2 /* multiply-symbol-mini-white@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "multiply-symbol-mini-white@2x.png"; sourceTree = "<group>"; };
+		182916301933D48D0063D4D2 /* write-box-mini-white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "write-box-mini-white.png"; sourceTree = "<group>"; };
+		182916311933D48D0063D4D2 /* write-box-mini-white@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "write-box-mini-white@2x.png"; sourceTree = "<group>"; };
+		182916361933E5790063D4D2 /* pen-mini-white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pen-mini-white.png"; sourceTree = "<group>"; };
+		182916371933E5790063D4D2 /* pen-mini-white@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pen-mini-white@2x.png"; sourceTree = "<group>"; };
+		1829163A1933EAEC0063D4D2 /* BSVote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BSVote.h; path = Models/BSVote.h; sourceTree = "<group>"; };
+		1829163B1933EAEC0063D4D2 /* BSVote.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BSVote.m; path = Models/BSVote.m; sourceTree = "<group>"; };
 		1844C00F180AEE4A0064BC19 /* MethodList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MethodList.h; path = Models/MethodList.h; sourceTree = "<group>"; };
 		1844C010180AEE4A0064BC19 /* MethodList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MethodList.m; path = Models/MethodList.m; sourceTree = "<group>"; };
+		18463C8F1932BCCD0042EDE4 /* fish-pin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fish-pin.png"; sourceTree = "<group>"; };
 		1846418717EFCEA10080D7FF /* Fish.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Fish.h; path = Models/Fish.h; sourceTree = "<group>"; };
 		1846418817EFCEA10080D7FF /* Fish.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Fish.m; path = Models/Fish.m; sourceTree = "<group>"; };
 		18493D401911C7A500E8D72E /* CatchUpdatedNavigationControllerProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CatchUpdatedNavigationControllerProtocol.h; sourceTree = "<group>"; };
@@ -429,6 +449,13 @@
 		09ABC07813A1D52D009C3FCF /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				182916361933E5790063D4D2 /* pen-mini-white.png */,
+				182916371933E5790063D4D2 /* pen-mini-white@2x.png */,
+				1829162E1933D48D0063D4D2 /* multiply-symbol-mini-white.png */,
+				1829162F1933D48D0063D4D2 /* multiply-symbol-mini-white@2x.png */,
+				182916301933D48D0063D4D2 /* write-box-mini-white.png */,
+				182916311933D48D0063D4D2 /* write-box-mini-white@2x.png */,
+				18463C8F1932BCCD0042EDE4 /* fish-pin.png */,
 				18493D4E191EF2AA00E8D72E /* add-catch-button-green.png */,
 				18493D4F191EF2AA00E8D72E /* add-catch-button-green@2x.png */,
 				188FEBF8190A016C00A694A2 /* ricepaper_v3_@2X.png */,
@@ -532,6 +559,8 @@
 			children = (
 				185E58C717D6C60C006375B3 /* CatchesMapViewController.h */,
 				185E58C817D6C60C006375B3 /* CatchesMapViewController.m */,
+				1829162B1932C0740063D4D2 /* CatchesMapNavigationController.h */,
+				1829162C1932C0740063D4D2 /* CatchesMapNavigationController.m */,
 			);
 			name = Map;
 			sourceTree = "<group>";
@@ -543,8 +572,6 @@
 				185E58CC17D6E470006375B3 /* LeaderboardNavigationController.m */,
 				1818F00F17D7FD8F00EF425C /* LeaderboardTableViewController.h */,
 				1818F01017D7FD8F00EF425C /* LeaderboardTableViewController.m */,
-				18C1C0B1180A193C002AE1F8 /* FilterTableViewController.h */,
-				18C1C0B2180A193C002AE1F8 /* FilterTableViewController.m */,
 				18534DA718142CE4007F046A /* LeaderboardTableViewCell.h */,
 				18534DA818142CE4007F046A /* LeaderboardTableViewCell.m */,
 				18534DB01814498A007F046A /* LeaderboardTableViewCellFirst.h */,
@@ -579,17 +606,19 @@
 		18A25CF317EFB644007A43F6 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				18DE0A1E18274EC200F6C607 /* Theme */,
-				18A25CF417EFB662007A43F6 /* SpeciesListTableViewController.h */,
-				18A25CF517EFB662007A43F6 /* SpeciesListTableViewController.m */,
-				18C1C0AE180A18B9002AE1F8 /* MethodListTableViewController.h */,
-				18C1C0AF180A18B9002AE1F8 /* MethodListTableViewController.m */,
 				18DC2BB7180B7CA100DA95C3 /* CatchDetailTableViewController.h */,
 				18DC2BB8180B7CA100DA95C3 /* CatchDetailTableViewController.m */,
-				188C06C8180F2D4D003C7FFC /* LoadingView.h */,
-				188C06C9180F2D4D003C7FFC /* LoadingView.m */,
 				18A80C8E180F6AC60026FF85 /* CatchPhotoScrollViewController.h */,
 				18A80C8F180F6AC60026FF85 /* CatchPhotoScrollViewController.m */,
+				18C1C0B1180A193C002AE1F8 /* FilterTableViewController.h */,
+				18C1C0B2180A193C002AE1F8 /* FilterTableViewController.m */,
+				188C06C8180F2D4D003C7FFC /* LoadingView.h */,
+				188C06C9180F2D4D003C7FFC /* LoadingView.m */,
+				18C1C0AE180A18B9002AE1F8 /* MethodListTableViewController.h */,
+				18C1C0AF180A18B9002AE1F8 /* MethodListTableViewController.m */,
+				18A25CF417EFB662007A43F6 /* SpeciesListTableViewController.h */,
+				18A25CF517EFB662007A43F6 /* SpeciesListTableViewController.m */,
+				18DE0A1E18274EC200F6C607 /* Theme */,
 			);
 			name = Shared;
 			sourceTree = "<group>";
@@ -611,6 +640,8 @@
 				1844C010180AEE4A0064BC19 /* MethodList.m */,
 				188ED2BC18A3428700F96E4B /* AllMethodsSwitch.h */,
 				188ED2BD18A3428700F96E4B /* AllMethodsSwitch.m */,
+				1829163A1933EAEC0063D4D2 /* BSVote.h */,
+				1829163B1933EAEC0063D4D2 /* BSVote.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -763,6 +794,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				182916381933E5790063D4D2 /* pen-mini-white.png in Resources */,
 				189ABA9C18F61B7C00093BE7 /* map-pin-area-mini-blue.png in Resources */,
 				1825112C181C7E7500D5909B /* ruler-mini@2x.png in Resources */,
 				18251165181CD89400D5909B /* Images.xcassets in Resources */,
@@ -787,9 +819,11 @@
 				18251160181CD78400D5909B /* AppIcon76x76.png in Resources */,
 				189ABA9818F60AB200093BE7 /* trophy-mini-blue.png in Resources */,
 				18251163181CD78400D5909B /* iTunesArtwork@2x.png in Resources */,
+				182916321933D48D0063D4D2 /* multiply-symbol-mini-white.png in Resources */,
 				09144A7313C2997E00388B00 /* Entitlements.plist in Resources */,
 				1825115C181CD78400D5909B /* AppIcon40x40.png in Resources */,
 				1825115D181CD78400D5909B /* Icon~iphone.png in Resources */,
+				18463C901932BCCD0042EDE4 /* fish-pin.png in Resources */,
 				1825112E181C7E7500D5909B /* weight-mini@2x.png in Resources */,
 				18493D51191EF2AA00E8D72E /* add-catch-button-green@2x.png in Resources */,
 				18251127181C7E7500D5909B /* camera-mini.png in Resources */,
@@ -798,6 +832,7 @@
 				C4C51B571613CE0800959FDC /* Default.png in Resources */,
 				189ABA8518F608F400093BE7 /* ruler-mini-blue@2x.png in Resources */,
 				C4C51B581613CE0800959FDC /* Default-568h@2x.png in Resources */,
+				182916351933D48D0063D4D2 /* write-box-mini-white@2x.png in Resources */,
 				1825115E181CD78400D5909B /* AppIcon60x60.png in Resources */,
 				1825114A181C990200D5909B /* first-place-badge@2x.png in Resources */,
 				18493D50191EF2AA00E8D72E /* add-catch-button-green.png in Resources */,
@@ -809,6 +844,7 @@
 				18251136181C829500D5909B /* hand-mini@2x.png in Resources */,
 				189ABA7D18F608B100093BE7 /* camera-mini-blue@2x.png in Resources */,
 				1825115B181CD78400D5909B /* Icon@2x.png in Resources */,
+				182916341933D48D0063D4D2 /* write-box-mini-white.png in Resources */,
 				C4C51B591613CE0800959FDC /* Default@2x.png in Resources */,
 				189ABA9018F609AF00093BE7 /* hand-mini-blue.png in Resources */,
 				189ABA9518F60A4600093BE7 /* sticky-note-mini-blue@2x.png in Resources */,
@@ -828,7 +864,9 @@
 				1825113C181C830600D5909B /* map-pin-area-mini-grey@2x.png in Resources */,
 				1825113B181C830600D5909B /* map-pin-area-mini-grey.png in Resources */,
 				18251129181C7E7500D5909B /* image-mini.png in Resources */,
+				182916391933E5790063D4D2 /* pen-mini-white@2x.png in Resources */,
 				18251143181C867500D5909B /* sticky-note-mini.png in Resources */,
+				182916331933D48D0063D4D2 /* multiply-symbol-mini-white@2x.png in Resources */,
 				18251116181B86FB00D5909B /* add-catch-button@2x.png in Resources */,
 				1825112B181C7E7500D5909B /* ruler-mini.png in Resources */,
 				189ABA8418F608F400093BE7 /* ruler-mini-blue.png in Resources */,
@@ -865,6 +903,7 @@
 				18A25CF217EFAFB6007A43F6 /* SpeciesList.m in Sources */,
 				18DB96F017C9884900BFD184 /* CustomTabBarController.m in Sources */,
 				1844C011180AEE4A0064BC19 /* MethodList.m in Sources */,
+				1829163C1933EAEC0063D4D2 /* BSVote.m in Sources */,
 				18D2F5851818AB8800E11C6D /* CatchesNavigationController.m in Sources */,
 				18A80C90180F6AC60026FF85 /* CatchPhotoScrollViewController.m in Sources */,
 				18534DA918142CE4007F046A /* LeaderboardTableViewCell.m in Sources */,
@@ -879,6 +918,7 @@
 				18A009F219297CB400FBCFBC /* CatchMapAnnotationView.m in Sources */,
 				185E58C217D5405C006375B3 /* AddCatchNotesViewController.m in Sources */,
 				185E58C517D560DC006375B3 /* CatchPhoto.m in Sources */,
+				1829162D1932C0740063D4D2 /* CatchesMapNavigationController.m in Sources */,
 				185BA39D17EF45DF001E2481 /* WeightMeasurementOptionsTableViewController.m in Sources */,
 				180D50971925A38D006DBE98 /* ThemedViewController.m in Sources */,
 				180D509A1925B3AE006DBE98 /* LoginNavigationController.m in Sources */,

@@ -23,6 +23,7 @@ CatchNotesDelegate>
 @property (retain, nonatomic) UITapGestureRecognizer *gestureRecognizer;
 
 @property (nonatomic, strong) Catch *selectedCatch;
+@property (strong, nonatomic) NSMutableArray *selectedCatchBSVotes;
 @property (weak, nonatomic) IBOutlet UIImageView *catchImageView;
 @property (weak, nonatomic) IBOutlet UILabel *speciesLabel;
 @property (weak, nonatomic) IBOutlet UIButton *caughtByButton;
@@ -36,7 +37,9 @@ CatchNotesDelegate>
 @property (nonatomic) BOOL fromSelectedCatchUsersCatches;
 @property (weak, nonatomic) IBOutlet UILabel *catchNotesLabel;
 @property (nonatomic) CLLocationCoordinate2D catchAnnotationCoordinate;
+@property (weak, nonatomic) IBOutlet UIButton *callBSButton;
 
 - (void)changeNotesFieldIconToColor:(NSString *)color;
+- (IBAction)pressCallBSButton:(UIButton *)sender;
 
 @end

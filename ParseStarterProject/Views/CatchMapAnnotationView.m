@@ -7,24 +7,43 @@
 //
 
 #import "CatchMapAnnotationView.h"
+#import <MapKit/MapKit.h>
 
 @implementation CatchMapAnnotationView
 
-- (id)initWithFrame:(CGRect)frame
+@synthesize selectedCatch;
+
+- (id)initWithAnnotation:(id <MKAnnotation>)annotation reuseIdentifier:(NSString *)reuseIdentifier catch:(Catch *)catch
 {
-    self = [super initWithFrame:frame];
+    self = [super initWithAnnotation:annotation reuseIdentifier:reuseIdentifier];
     if (self) {
         // Initialization code
-        [self showDetails];
+        self.canShowCallout = YES;
+        self.selectedCatch = catch;
+        
+        UIButton *rightButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+        self.rightCalloutAccessoryView = rightButton;
+        
+        PFImageView *fishPhotoImageView = [[PFImageView alloc] init];
+        fishPhotoImageView.image = [UIImage imageNamed:@"fish-default-photo.png"];
+        fishPhotoImageView.file = catch.photo;
+        [fishPhotoImageView loadInBackground];
+        fishPhotoImageView.frame = CGRectMake(0, 0, 40.0, 30.0);
+        fishPhotoImageView.contentMode = UIViewContentModeScaleAspectFit;
+        
+        self.leftCalloutAccessoryView = fishPhotoImageView;
+        self.image = [UIImage imageNamed:@"fish-pin.png"];
+        self.calloutOffset = CGPointMake(1, 0);
+        
+        self.alpha = 0.5;
     }
     return self;
 }
 
-- (void)showDetails
+- (void)setRightCalloutAccessoryViewSelector:(SEL)selector
 {
-    UILabel *lbl = [UILabel new];
-    lbl.text = @"Test";
-    [self addSubview:lbl];
+    UIButton *rightCalloutButton = (UIButton *)self.rightCalloutAccessoryView;
+    [rightCalloutButton addTarget:nil action:selector forControlEvents:UIControlEventTouchUpInside];
 }
 
 /*

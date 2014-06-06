@@ -2,6 +2,7 @@
 #import "TopFishAppDelegate.h"
 #import "TopFishViewController.h"
 #import "Catch.h"
+#import "BSVote.h"
 
 @implementation TopFishAppDelegate
 
@@ -12,6 +13,7 @@
     
     // Register Subclasses (must go before setting the Parse application ID)
     [Catch registerSubclass];
+    [BSVote registerSubclass];
     
     // ****************************************************************************
     // Uncomment and fill in with your Parse credentials:

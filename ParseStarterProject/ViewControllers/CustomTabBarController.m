@@ -61,7 +61,7 @@
     }
     
     if ([title isEqual: @"Map"]) {
-        viewController = [storyboard instantiateViewControllerWithIdentifier:@"MapVC"];
+        viewController = [storyboard instantiateViewControllerWithIdentifier:@"MapNC"];
     }
     
     if ([title isEqual: @"Add Catch"]) {

@@ -15,6 +15,7 @@
 #import "CatchesTableViewController.h"
 #import "CatchesNavigationController.h"
 #import "ThemeColors.h"
+#import "BSVote.h"
 
 @interface CatchDetailTableViewController ()
 
@@ -23,6 +24,7 @@
 @implementation CatchDetailTableViewController
 
 @synthesize selectedCatch,
+selectedCatchBSVotes,
 catchImageView,
 caughtByButton,
 rankedCatchLabel,
@@ -76,14 +78,20 @@ catchNotesLabel;
                                                    delegate:self
                                           cancelButtonTitle:@"Cancel"
                                           otherButtonTitles:@"Delete", nil];
+    alert.tag = 1;
     [alert show];
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    if (buttonIndex == 1) {
+    if (alertView.tag == 1) {
         [selectedCatch deleteInBackground];
         [self.navigationController popViewControllerAnimated:YES];
+        return;
+    }
+    if (alertView.tag == 2) {
+        [self castBSVote];
+        return;
     }
 }
 
@@ -100,10 +108,25 @@ catchNotesLabel;
     [self setupEditControlsForOwner];
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    // Get BS Votes if current user is not anonymous
+    if (![PFAnonymousUtils isLinkedWithUser:[PFUser currentUser]]) {
+        PFQuery *query = [BSVote query];
+        [query whereKey:@"catch" equalTo:selectedCatch];
+        [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+            if (!error) {
+                selectedCatchBSVotes = [NSMutableArray arrayWithArray:objects];
+            }
+        }];
+    }
+}
+
 - (void)refreshRankedCatchLabel
 {
+    rankedCatchLabel.frame = CGRectMake(95, 75, 130, 30);
     rankedCatchLabel.textColor = [UIColor whiteColor];
     rankedCatchLabel.text = [self rankedCatchToString];
+    rankedCatchLabel.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:15];
     if (selectedCatch.rankedCatch) {
         rankedCatchLabel.backgroundColor = [[ThemeColors yellowColor] colorWithAlphaComponent:1.0f];
     } else {
@@ -150,8 +173,8 @@ catchNotesLabel;
         if (editButton == nil) {
             UIButton *btn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
             [btn addTarget:self action:@selector(editButtonClicked) forControlEvents:UIControlEventTouchUpInside];
-            btn.frame = CGRectMake(224.0, 75.0, 60.0, 30.0);
-            [btn setTitle:@"Edit" forState:UIControlStateNormal];
+            btn.frame = CGRectMake(224.0, 75.0, 30.0, 30.0);
+            [btn setImage:[UIImage imageNamed:@"pen-mini-white.png"] forState:UIControlStateNormal];
             [btn setBackgroundColor:[ThemeColors orangeColor]];
             [btn setTintColor:[UIColor whiteColor]];
             editButton = btn;
@@ -162,8 +185,8 @@ catchNotesLabel;
         if (deleteButton == nil) {
             UIButton *btn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
             [btn addTarget:self action:@selector(deleteButtonClicked) forControlEvents:UIControlEventTouchUpInside];
-            btn.frame = CGRectMake(36.0, 75.0, 60.0, 30.0);
-            [btn setTitle:@"Delete" forState:UIControlStateNormal];
+            btn.frame = CGRectMake(66.0, 75.0, 30.0, 30.0);
+            [btn setImage:[UIImage imageNamed:@"multiply-symbol-mini-white.png"] forState:UIControlStateNormal];
             [btn setBackgroundColor:[ThemeColors redColor]];
             [btn setTintColor:[UIColor whiteColor]];
             deleteButton = btn;
@@ -337,5 +360,59 @@ catchNotesLabel;
 
 - (void)changeLocationFieldIconToColor:(NSString *)color {}
 - (void)changeNotesFieldIconToColor:(NSString *)color {}
+
+- (IBAction)pressCallBSButton:(UIButton *)sender {
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Call BS on this Catch!"
+                                                    message:@"If a catch receives enough BS calls, it will be removed from the Leaderboards. Are you sure you want to call BS on this catch?"
+                                                   delegate:self
+                                          cancelButtonTitle:@"Cancel"
+                                          otherButtonTitles:@"Yes, Call BS!", nil];
+    alert.tag = 2;
+    [alert show];
+}
+
+- (void)castBSVote
+{
+    BOOL alreadyVoted = NO;
+    // Check to see if they own any of the BS Votes for the Catch
+    if (selectedCatchBSVotes != nil && [selectedCatchBSVotes count] != 0) {
+        for (BSVote *vote in selectedCatchBSVotes) {
+            if (vote.user.objectId == [PFUser currentUser].objectId) {
+                alreadyVoted = YES;
+                [self showAlreadyVotedAlert];
+            }
+        }
+    }
+    if (!alreadyVoted) {
+        if ([selectedCatch canCastBSVote]) {
+            // Create a BS Vote
+            selectedCatch.BSCount++;
+            BSVote *newBSVote = [[BSVote alloc] init];
+            newBSVote.user = [PFUser currentUser];
+            newBSVote.catch = selectedCatch;
+            [newBSVote saveInBackground];
+            [selectedCatchBSVotes addObject:newBSVote];
+        } else {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@""
+                                                            message:@"You cannot call BS on this catch"
+                                                           delegate:self
+                                                  cancelButtonTitle:@"OK"
+                                                  otherButtonTitles:nil];
+            alert.tag = 50;
+            [alert show];
+        }
+    }
+}
+
+- (void)showAlreadyVotedAlert
+{
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@""
+                                                    message:@"You already called BS on this catch!"
+                                                   delegate:self
+                                          cancelButtonTitle:@"OK"
+                                          otherButtonTitles:nil];
+    alert.tag = 3;
+    [alert show];
+}
 
 @end

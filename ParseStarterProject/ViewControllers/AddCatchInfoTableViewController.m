@@ -369,6 +369,8 @@ loggedInUser;
     }
     
     Catch *catchObject = [Catch object];
+    [catchObject.ACL setPublicWriteAccess:YES];
+    [catchObject.ACL setPublicReadAccess:YES];
     
     if (selectedCatchQueryObject != nil) {
         catchObject = selectedCatchQueryObject;
@@ -406,6 +408,7 @@ loggedInUser;
     if (selectedCatchObjectId == nil) {
         // New Catch
         // Update the NavigationController's catchAdded property to YES so it knows to go back to the root view next appearance
+        catchObject.BSCount = 0;
         AddCatchNavigationController *parentNC = (AddCatchNavigationController *)[self parentViewController];
         [parentNC setCatchAdded:YES];
     }
@@ -452,6 +455,10 @@ loggedInUser;
 }
 
 - (BOOL)validateForm {
+    if (![self validateRankedCatch]) {
+        [self showAlertForField:nil withMessage:@"You cannot rank this catch because BS has been called on it too many times! If the catch info is wrong, create a new catch." andTag:5];
+        return NO;
+    }
     if ([PFAnonymousUtils isLinkedWithUser:[PFUser currentUser]]) {
         [self showAlertForField:nil withMessage:@"You need to login to add this catch" andTag:4];
         return NO;
@@ -489,6 +496,15 @@ loggedInUser;
 - (BOOL)validateCatchPhoto {
     if (rankedCatchSwitch.on) {
         if (catchPhoto == nil) {
+            return NO;
+        }
+    }
+    return YES;
+}
+
+- (BOOL)validateRankedCatch {
+    if (rankedCatchSwitch.on && selectedCatchQueryObject != nil) {
+        if ([selectedCatchQueryObject BSCountLimitReached]) {
             return NO;
         }
     }
@@ -693,8 +709,8 @@ loggedInUser;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    int row = indexPath.row;
-    int sec = indexPath.section;
+    NSInteger row = indexPath.row;
+    NSInteger sec = indexPath.section;
     if (sec == 0 && row == 5) {
         [self selectSpecies];
     }

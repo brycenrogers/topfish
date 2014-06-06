@@ -1,0 +1,14 @@
+{
+    "applications": {
+        "TopFish": {
+            "applicationId": "TrlIuUXUHR2J3B8SBRFO9uaE14ivibSUBFQOih0Z", 
+            "masterKey": "C9xs8b6QtJlOpZUbVHFnHBkD8g90ZE5FjNqrHbms"
+        }, 
+        "_default": {
+            "link": "TopFish"
+        }
+    }, 
+    "global": {
+        "parseVersion": "1.2.18"
+    }
+}

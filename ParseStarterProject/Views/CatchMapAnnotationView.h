@@ -7,7 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MapKit/MapKit.h>
+#import "Catch.h"
 
-@interface CatchMapAnnotationView : UIView
+@interface CatchMapAnnotationView : MKAnnotationView
+
+@property (nonatomic, strong) Catch *selectedCatch;
+
+- (id)initWithAnnotation:(id <MKAnnotation>)annotation reuseIdentifier:(NSString *)reuseIdentifier catch:(Catch *)catch;
+- (void)setRightCalloutAccessoryViewSelector:(SEL)selector;
 
 @end
