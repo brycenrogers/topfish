@@ -11,6 +11,8 @@
 
 @interface ThemedPFQueryTableViewController : PFQueryTableViewController
 
+@property (nonatomic, strong) UIImageView *iconImage;
+
 - (void)setSeparatorColor;
 - (void)setBackgroundColor;
 

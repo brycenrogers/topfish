@@ -14,7 +14,7 @@
 
 @implementation UserLoginViewController
 
-@synthesize delegate;
+@synthesize delegate, logoImageView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -38,6 +38,11 @@
     self.usernameField.delegate = self;
     self.passwordField.delegate = self;
     delegate = (UINavigationController<LoginUserDelegate> *)self.navigationController.delegate;
+    
+    // Setup logo image
+    logoImageView.image = [UIImage imageNamed:@"topfish-logo.png"];
+    logoImageView.contentMode = UIViewContentModeScaleAspectFit;
+    logoImageView.alpha = 0.25;
 }
 
 - (void)didReceiveMemoryWarning
@@ -125,6 +130,7 @@
 }
 
 - (IBAction)signupButton:(UIButton *)sender {
+    [self performSegueWithIdentifier:@"showSignup" sender:nil];
 }
 
 - (IBAction)forgotPasswordButton:(UIButton *)sender {
@@ -141,6 +147,10 @@
 
 - (IBAction)cancelButton:(UIBarButtonItem *)sender {
     [self.parentViewController dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (IBAction)signupButtonHeader:(UIBarButtonItem *)sender {
+    [self performSegueWithIdentifier:@"showSignup" sender:nil];
 }
 
 - (void)buildLoadingView {

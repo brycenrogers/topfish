@@ -36,7 +36,8 @@ gestureRecognizer,
 editButton,
 deleteButton,
 fromSelectedCatchUsersCatches,
-catchNotesLabel;
+catchNotesLabel,
+callBSButton;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -89,7 +90,7 @@ catchNotesLabel;
         [self.navigationController popViewControllerAnimated:YES];
         return;
     }
-    if (alertView.tag == 2) {
+    if (alertView.tag == 2 && buttonIndex == 1) {
         [self castBSVote];
         return;
     }
@@ -194,6 +195,7 @@ catchNotesLabel;
             [[self.tableView cellForRowAtIndexPath:index].contentView addSubview:deleteButton];
         }
         deleteButton.hidden = NO;
+        callBSButton.hidden = YES;
     } else {
         if (editButton != nil) {
             editButton.hidden = YES;
@@ -201,6 +203,7 @@ catchNotesLabel;
         if (deleteButton != nil) {
             deleteButton.hidden = YES;
         }
+        callBSButton.hidden = NO;
     }
 }
 
@@ -258,13 +261,13 @@ catchNotesLabel;
 }
 
 - (NSMutableString *)catchLengthToString {
-    NSMutableString *lengthString = [NSMutableString stringWithFormat:@"%d ", selectedCatch.length];
+    NSMutableString *lengthString = [NSMutableString stringWithFormat:@"%.02f ", selectedCatch.length];
     [lengthString appendString:selectedCatch.lengthMeasurement];
     return lengthString;
 }
 
 - (NSMutableString *)catchWeightToString {
-    NSMutableString *weightString = [NSMutableString stringWithFormat:@"%d ", selectedCatch.weight];
+    NSMutableString *weightString = [NSMutableString stringWithFormat:@"%.02f ", selectedCatch.weight];
     [weightString appendString:selectedCatch.weightMeasurement];
     return weightString;
 }
@@ -377,8 +380,9 @@ catchNotesLabel;
     // Check to see if they own any of the BS Votes for the Catch
     if (selectedCatchBSVotes != nil && [selectedCatchBSVotes count] != 0) {
         for (BSVote *vote in selectedCatchBSVotes) {
-            if (vote.user.objectId == [PFUser currentUser].objectId) {
+            if ([vote.user.objectId isEqualToString:[PFUser currentUser].objectId]) {
                 alreadyVoted = YES;
+                
                 [self showAlreadyVotedAlert];
             }
         }
@@ -392,6 +396,7 @@ catchNotesLabel;
             newBSVote.catch = selectedCatch;
             [newBSVote saveInBackground];
             [selectedCatchBSVotes addObject:newBSVote];
+            [self showCatchUpdatedMessage];
         } else {
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@""
                                                             message:@"You cannot call BS on this catch"
@@ -413,6 +418,44 @@ catchNotesLabel;
                                           otherButtonTitles:nil];
     alert.tag = 3;
     [alert show];
+}
+
+// BS Vote cast animation
+
+- (void)showCatchUpdatedMessage
+{
+    [self animateBSVoteCastView:self.navigationController.view];
+}
+
+- (UIView *)getBSVoteCastView
+{
+    UIView *voteCastView = [[UIView alloc] init];
+    voteCastView.backgroundColor = [ThemeColors redColor];
+    voteCastView.frame = CGRectMake(0, -64.0, 320.0, 64.0);
+    voteCastView.alpha = 0.5;
+    UILabel *catchUpdatedLabel = [[UILabel alloc] init];
+    catchUpdatedLabel.text = @"You called BS!";
+    catchUpdatedLabel.frame = CGRectMake(0.0, 10.0, voteCastView.frame.size.width, voteCastView.frame.size.height);
+    catchUpdatedLabel.textAlignment = NSTextAlignmentCenter;
+    catchUpdatedLabel.textColor = [UIColor whiteColor];
+    [voteCastView addSubview:catchUpdatedLabel];
+    return voteCastView;
+}
+
+- (void)animateBSVoteCastView:(UIView *)view
+{
+    UIView *cv = [self getBSVoteCastView];
+    [UIView animateWithDuration:.5 delay:0.0 options:UIViewAnimationOptionCurveEaseIn animations:^{
+        cv.frame = CGRectMake(0, 0, 320, 64);
+        cv.alpha = 1;
+    } completion:^(BOOL finished) {
+        [UIView animateWithDuration:.5 delay:2.0 options:UIViewAnimationOptionCurveEaseIn animations:^{
+            cv.frame = CGRectMake(0, -64, 320, 64);
+            cv.alpha = 0.5;
+        } completion:^(BOOL finished) {
+        }];
+    }];
+    [view addSubview:cv];
 }
 
 @end

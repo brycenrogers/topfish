@@ -18,10 +18,12 @@
 @property (weak, nonatomic) IBOutlet UITextField *usernameField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordField;
 @property (weak, nonatomic) id<LoginUserDelegate> delegate;
+@property (strong, nonatomic) IBOutlet UIImageView *logoImageView;
 
 - (IBAction)loginButton:(UIButton *)sender;
 - (IBAction)signupButton:(UIButton *)sender;
 - (IBAction)forgotPasswordButton:(UIButton *)sender;
 - (IBAction)cancelButton:(UIBarButtonItem *)sender;
+- (IBAction)signupButtonHeader:(UIBarButtonItem *)sender;
 
 @end

@@ -135,8 +135,8 @@ loggedInUser;
 - (void)setupSelectedCatch
 {
     if (selectedCatch != nil && selectedCatchObjectId != nil) {
-        catchLengthField.text = [NSString stringWithFormat:@"%d", selectedCatch.length];
-        catchWeightField.text = [NSString stringWithFormat:@"%d", selectedCatch.weight];
+        catchLengthField.text = [NSString stringWithFormat:@"%.02f", selectedCatch.length];
+        catchWeightField.text = [NSString stringWithFormat:@"%.02f", selectedCatch.weight];
         if (selectedCatch.photo) {
             PFFile *imageFile = [selectedCatch objectForKey:@"photo"];
             [imageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
@@ -347,7 +347,6 @@ loggedInUser;
                                                           otherButtonTitles:nil, nil];
                     [alert show];
                 }
-                
             }];
         } else {
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Network Error"
@@ -376,8 +375,8 @@ loggedInUser;
         catchObject = selectedCatchQueryObject;
     }
     
-    catchObject.length = [catchLengthField.text doubleValue];
-    catchObject.weight = [catchWeightField.text doubleValue];
+    catchObject.length = [catchLengthField.text floatValue];
+    catchObject.weight = [catchWeightField.text floatValue];
     catchObject.lengthMeasurement = self.selectedLengthMeasurementLabel.text;
     catchObject.weightMeasurement = self.selectedWeightMeasurementLabel.text;
     catchObject.method = selectedMethodLabel.text;
@@ -396,6 +395,12 @@ loggedInUser;
     } else {
         catchObject.notes = catchNotesLabel.text;
     }
+    
+    // Get score
+    catchObject.score = [Catch computeScoreForLength:catchObject.length
+                                   lengthMeasurement:catchObject.lengthMeasurement
+                                              weight:catchObject.weight
+                                   weightMeasurement:catchObject.weightMeasurement];
     
     // Sets a default location coordinate if none was selected
     if (!CLLocationCoordinate2DIsValid(catchAnnotationCoordinate)) {
@@ -742,9 +747,6 @@ loggedInUser;
     
     UIImagePickerController *mediaUI = [[UIImagePickerController alloc] init];
     mediaUI.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
-    
-    //mediaUI.mediaTypes = [UIImagePickerController availableMediaTypesForSourceType:UIImagePickerControllerSourceTypeSavedPhotosAlbum];
-    
     mediaUI.mediaTypes = [[NSArray alloc] initWithObjects:(NSString *)kUTTypeImage, nil];
     mediaUI.allowsEditing = YES;
     mediaUI.delegate = self;

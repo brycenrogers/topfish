@@ -132,6 +132,8 @@
 		18B1012F1808DE5300330ECB /* UserLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B1012E1808DE5300330ECB /* UserLoginViewController.m */; };
 		18B101321808DED800330ECB /* UserSignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B101311808DED800330ECB /* UserSignupViewController.m */; };
 		18BB471F18F8C3FB00B0EDB5 /* ThemedNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BB471E18F8C3FB00B0EDB5 /* ThemedNavigationController.m */; };
+		18C17D4619436C8200C32389 /* ThemeFonts.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C17D4519436C8200C32389 /* ThemeFonts.m */; };
+		18C17D49194403AC00C32389 /* ArrowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C17D48194403AC00C32389 /* ArrowView.m */; };
 		18C1C0B0180A18B9002AE1F8 /* MethodListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C1C0AF180A18B9002AE1F8 /* MethodListTableViewController.m */; };
 		18C1C0B3180A193C002AE1F8 /* FilterTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C1C0B2180A193C002AE1F8 /* FilterTableViewController.m */; };
 		18D2F5851818AB8800E11C6D /* CatchesNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D2F5841818AB8800E11C6D /* CatchesNavigationController.m */; };
@@ -144,6 +146,8 @@
 		18DC2BBD180B802B00DA95C3 /* CatchPhotoDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DC2BBC180B802B00DA95C3 /* CatchPhotoDetailView.m */; };
 		18DE0A1D18274D6300F6C607 /* ThemedPFQueryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DE0A1C18274D6300F6C607 /* ThemedPFQueryTableViewController.m */; };
 		18DE0A2118274EE700F6C607 /* ThemedTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DE0A2018274EE700F6C607 /* ThemedTableViewController.m */; };
+		18F8D03E194564B800593ADA /* icon-silhouette.png in Resources */ = {isa = PBXBuildFile; fileRef = 18F8D03D194564B800593ADA /* icon-silhouette.png */; };
+		18F8D0401946437100593ADA /* topfish-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 18F8D03F1946437100593ADA /* topfish-logo.png */; };
 		2FCDD6B014A573F500295AAC /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FCDD6AF14A573F500295AAC /* QuartzCore.framework */; };
 		4998650515BF305000803E05 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4998650415BF305000803E05 /* StoreKit.framework */; };
 		743D7B6D157DA60100084B67 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 743D7B6C157DA60100084B67 /* CoreGraphics.framework */; };
@@ -322,6 +326,10 @@
 		18B101311808DED800330ECB /* UserSignupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserSignupViewController.m; path = ViewControllers/UserSignupViewController.m; sourceTree = "<group>"; };
 		18BB471D18F8C3FB00B0EDB5 /* ThemedNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ThemedNavigationController.h; path = NavigationControllers/ThemedNavigationController.h; sourceTree = "<group>"; };
 		18BB471E18F8C3FB00B0EDB5 /* ThemedNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ThemedNavigationController.m; path = NavigationControllers/ThemedNavigationController.m; sourceTree = "<group>"; };
+		18C17D4419436C8200C32389 /* ThemeFonts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ThemeFonts.h; path = Models/ThemeFonts.h; sourceTree = "<group>"; };
+		18C17D4519436C8200C32389 /* ThemeFonts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ThemeFonts.m; path = Models/ThemeFonts.m; sourceTree = "<group>"; };
+		18C17D47194403AC00C32389 /* ArrowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ArrowView.h; path = Views/ArrowView.h; sourceTree = "<group>"; };
+		18C17D48194403AC00C32389 /* ArrowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ArrowView.m; path = Views/ArrowView.m; sourceTree = "<group>"; };
 		18C1C0AE180A18B9002AE1F8 /* MethodListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MethodListTableViewController.h; path = ViewControllers/MethodListTableViewController.h; sourceTree = "<group>"; };
 		18C1C0AF180A18B9002AE1F8 /* MethodListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MethodListTableViewController.m; path = ViewControllers/MethodListTableViewController.m; sourceTree = "<group>"; };
 		18C1C0B1180A193C002AE1F8 /* FilterTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FilterTableViewController.h; path = ViewControllers/FilterTableViewController.h; sourceTree = "<group>"; };
@@ -346,6 +354,8 @@
 		18DE0A1C18274D6300F6C607 /* ThemedPFQueryTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ThemedPFQueryTableViewController.m; path = ViewControllers/ThemedPFQueryTableViewController.m; sourceTree = "<group>"; };
 		18DE0A1F18274EE700F6C607 /* ThemedTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ThemedTableViewController.h; path = ViewControllers/ThemedTableViewController.h; sourceTree = "<group>"; };
 		18DE0A2018274EE700F6C607 /* ThemedTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ThemedTableViewController.m; path = ViewControllers/ThemedTableViewController.m; sourceTree = "<group>"; };
+		18F8D03D194564B800593ADA /* icon-silhouette.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-silhouette.png"; sourceTree = "<group>"; };
+		18F8D03F1946437100593ADA /* topfish-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "topfish-logo.png"; sourceTree = "<group>"; };
 		2FCDD6AF14A573F500295AAC /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		4998650415BF305000803E05 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		6332375315E438E900AE2736 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
@@ -449,79 +459,81 @@
 		09ABC07813A1D52D009C3FCF /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				182916361933E5790063D4D2 /* pen-mini-white.png */,
-				182916371933E5790063D4D2 /* pen-mini-white@2x.png */,
-				1829162E1933D48D0063D4D2 /* multiply-symbol-mini-white.png */,
-				1829162F1933D48D0063D4D2 /* multiply-symbol-mini-white@2x.png */,
-				182916301933D48D0063D4D2 /* write-box-mini-white.png */,
-				182916311933D48D0063D4D2 /* write-box-mini-white@2x.png */,
-				18463C8F1932BCCD0042EDE4 /* fish-pin.png */,
+				18F8D03D194564B800593ADA /* icon-silhouette.png */,
 				18493D4E191EF2AA00E8D72E /* add-catch-button-green.png */,
 				18493D4F191EF2AA00E8D72E /* add-catch-button-green@2x.png */,
-				188FEBF8190A016C00A694A2 /* ricepaper_v3_@2X.png */,
-				188FEBF9190A016C00A694A2 /* ricepaper_v3.png */,
-				189ABA9218F60A4600093BE7 /* sticky-note-mini-blue.png */,
-				189ABA9318F60A4600093BE7 /* sticky-note-mini-blue@2x.png */,
-				189ABA8E18F609AF00093BE7 /* hand-mini-blue.png */,
-				189ABA8F18F609AF00093BE7 /* hand-mini-blue@2x.png */,
-				189ABA9A18F61B7C00093BE7 /* map-pin-area-mini-blue.png */,
-				189ABA9B18F61B7C00093BE7 /* map-pin-area-mini-blue@2x.png */,
+				18251113181B86FB00D5909B /* add-catch-button.png */,
+				18251114181B86FB00D5909B /* add-catch-button@2x.png */,
+				189ABA7A18F608B100093BE7 /* camera-mini-blue.png */,
+				189ABA7B18F608B100093BE7 /* camera-mini-blue@2x.png */,
+				1825111F181C7E7500D5909B /* camera-mini.png */,
+				18251120181C7E7500D5909B /* camera-mini@2x.png */,
 				189ABA8A18F6092800093BE7 /* circle-overlapping-mini-blue.png */,
 				189ABA8B18F6092800093BE7 /* circle-overlapping-mini-blue@2x.png */,
-				189ABA8618F6090D00093BE7 /* weight-mini-blue.png */,
-				189ABA8718F6090D00093BE7 /* weight-mini-blue@2x.png */,
-				189ABA8218F608F400093BE7 /* ruler-mini-blue.png */,
-				189ABA8318F608F400093BE7 /* ruler-mini-blue@2x.png */,
+				1825112F181C829500D5909B /* circle-overlapping-mini.png */,
+				18251130181C829500D5909B /* circle-overlapping-mini@2x.png */,
+				C4C51B551613CE0800959FDC /* Default-568h@2x.png */,
+				C4C51B541613CE0800959FDC /* Default.png */,
+				C4C51B561613CE0800959FDC /* Default@2x.png */,
+				09144A7213C2997E00388B00 /* Entitlements.plist */,
+				18251147181C97CA00D5909B /* first-place-badge.png */,
+				18251149181C990200D5909B /* first-place-badge@2x.png */,
+				1818F01617D80C8500EF425C /* fish-default-photo.png */,
+				18463C8F1932BCCD0042EDE4 /* fish-pin.png */,
+				189ABA7618F4359E00093BE7 /* funnel-mini.png */,
+				189ABA7718F4359E00093BE7 /* funnel-mini@2x.png */,
+				189ABA8E18F609AF00093BE7 /* hand-mini-blue.png */,
+				189ABA8F18F609AF00093BE7 /* hand-mini-blue@2x.png */,
+				18F8D03F1946437100593ADA /* topfish-logo.png */,
+				18251131181C829500D5909B /* hand-mini.png */,
+				18251132181C829500D5909B /* hand-mini@2x.png */,
+				1825114F181CD77300D5909B /* Icons */,
 				189ABA7E18F608D700093BE7 /* image-mini-blue.png */,
 				189ABA7F18F608D700093BE7 /* image-mini-blue@2x.png */,
-				1825114F181CD77300D5909B /* Icons */,
+				18251121181C7E7500D5909B /* image-mini.png */,
+				18251122181C7E7500D5909B /* image-mini@2x.png */,
+				09ABC07A13A1D52D009C3FCF /* InfoPlist.strings */,
+				09ABC07E13A1D52D009C3FCF /* main.m */,
+				1825110B181B7B4900D5909B /* man-mini.png */,
+				1825110C181B7B4900D5909B /* man-mini@2x.png */,
+				189ABA9A18F61B7C00093BE7 /* map-pin-area-mini-blue.png */,
+				189ABA9B18F61B7C00093BE7 /* map-pin-area-mini-blue@2x.png */,
+				18251137181C830600D5909B /* map-pin-area-mini-grey.png */,
+				18251138181C830600D5909B /* map-pin-area-mini-grey@2x.png */,
+				18251107181B799A00D5909B /* map-pin-area-mini@2x.png */,
+				18251139181C830600D5909B /* map-pin-down-mini.png */,
+				1825113A181C830600D5909B /* map-pin-down-mini@2x.png */,
 				1825114B181CB60E00D5909B /* map-pin-mini.png */,
 				1825114C181CB60E00D5909B /* map-pin-mini@2x.png */,
-				18251149181C990200D5909B /* first-place-badge@2x.png */,
-				18251147181C97CA00D5909B /* first-place-badge.png */,
+				1829162E1933D48D0063D4D2 /* multiply-symbol-mini-white.png */,
+				1829162F1933D48D0063D4D2 /* multiply-symbol-mini-white@2x.png */,
+				182916361933E5790063D4D2 /* pen-mini-white.png */,
+				182916371933E5790063D4D2 /* pen-mini-white@2x.png */,
+				188FEBF9190A016C00A694A2 /* ricepaper_v3.png */,
+				188FEBF8190A016C00A694A2 /* ricepaper_v3_@2X.png */,
+				189ABA8218F608F400093BE7 /* ruler-mini-blue.png */,
+				189ABA8318F608F400093BE7 /* ruler-mini-blue@2x.png */,
+				18251123181C7E7500D5909B /* ruler-mini.png */,
+				18251124181C7E7500D5909B /* ruler-mini@2x.png */,
+				1825110F181B843C00D5909B /* shopping-bag-mini.png */,
+				18251110181B843C00D5909B /* shopping-bag-mini@2x.png */,
+				189ABA9218F60A4600093BE7 /* sticky-note-mini-blue.png */,
+				189ABA9318F60A4600093BE7 /* sticky-note-mini-blue@2x.png */,
 				1825113F181C867500D5909B /* sticky-note-mini.png */,
 				18251140181C867500D5909B /* sticky-note-mini@2x.png */,
+				09ABC07913A1D52D009C3FCF /* TopFish-Info.plist */,
+				09ABC07D13A1D52D009C3FCF /* TopFish-Prefix.pch */,
 				189ABA9618F60AB200093BE7 /* trophy-mini-blue.png */,
 				189ABA9718F60AB200093BE7 /* trophy-mini-blue@2x.png */,
 				18251141181C867500D5909B /* trophy-mini-grey.png */,
 				18251142181C867500D5909B /* trophy-mini-grey@2x.png */,
-				18251137181C830600D5909B /* map-pin-area-mini-grey.png */,
-				18251138181C830600D5909B /* map-pin-area-mini-grey@2x.png */,
-				18251139181C830600D5909B /* map-pin-down-mini.png */,
-				189ABA7A18F608B100093BE7 /* camera-mini-blue.png */,
-				189ABA7B18F608B100093BE7 /* camera-mini-blue@2x.png */,
-				1825113A181C830600D5909B /* map-pin-down-mini@2x.png */,
-				1825112F181C829500D5909B /* circle-overlapping-mini.png */,
-				18251130181C829500D5909B /* circle-overlapping-mini@2x.png */,
-				189ABA7618F4359E00093BE7 /* funnel-mini.png */,
-				189ABA7718F4359E00093BE7 /* funnel-mini@2x.png */,
-				18251131181C829500D5909B /* hand-mini.png */,
-				18251132181C829500D5909B /* hand-mini@2x.png */,
-				1825111F181C7E7500D5909B /* camera-mini.png */,
-				18251120181C7E7500D5909B /* camera-mini@2x.png */,
-				18251121181C7E7500D5909B /* image-mini.png */,
-				18251122181C7E7500D5909B /* image-mini@2x.png */,
-				18251123181C7E7500D5909B /* ruler-mini.png */,
-				18251124181C7E7500D5909B /* ruler-mini@2x.png */,
+				18251108181B799A00D5909B /* trophy-mini@2x.png */,
+				189ABA8618F6090D00093BE7 /* weight-mini-blue.png */,
+				189ABA8718F6090D00093BE7 /* weight-mini-blue@2x.png */,
 				18251125181C7E7500D5909B /* weight-mini.png */,
 				18251126181C7E7500D5909B /* weight-mini@2x.png */,
-				18251113181B86FB00D5909B /* add-catch-button.png */,
-				18251114181B86FB00D5909B /* add-catch-button@2x.png */,
-				1825110F181B843C00D5909B /* shopping-bag-mini.png */,
-				18251110181B843C00D5909B /* shopping-bag-mini@2x.png */,
-				1825110B181B7B4900D5909B /* man-mini.png */,
-				1825110C181B7B4900D5909B /* man-mini@2x.png */,
-				18251107181B799A00D5909B /* map-pin-area-mini@2x.png */,
-				18251108181B799A00D5909B /* trophy-mini@2x.png */,
-				1818F01617D80C8500EF425C /* fish-default-photo.png */,
-				C4C51B541613CE0800959FDC /* Default.png */,
-				C4C51B561613CE0800959FDC /* Default@2x.png */,
-				C4C51B551613CE0800959FDC /* Default-568h@2x.png */,
-				09ABC07913A1D52D009C3FCF /* TopFish-Info.plist */,
-				09144A7213C2997E00388B00 /* Entitlements.plist */,
-				09ABC07A13A1D52D009C3FCF /* InfoPlist.strings */,
-				09ABC07D13A1D52D009C3FCF /* TopFish-Prefix.pch */,
-				09ABC07E13A1D52D009C3FCF /* main.m */,
+				182916301933D48D0063D4D2 /* write-box-mini-white.png */,
+				182916311933D48D0063D4D2 /* write-box-mini-white@2x.png */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -718,6 +730,8 @@
 				18493D42191581B500E8D72E /* CatchUpdatedView.m */,
 				18A009F019297CB400FBCFBC /* CatchMapAnnotationView.h */,
 				18A009F119297CB400FBCFBC /* CatchMapAnnotationView.m */,
+				18C17D47194403AC00C32389 /* ArrowView.h */,
+				18C17D48194403AC00C32389 /* ArrowView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -735,6 +749,8 @@
 				18493D48191EEDF800E8D72E /* ThemeColors.m */,
 				180D50951925A38D006DBE98 /* ThemedViewController.h */,
 				180D50961925A38D006DBE98 /* ThemedViewController.m */,
+				18C17D4419436C8200C32389 /* ThemeFonts.h */,
+				18C17D4519436C8200C32389 /* ThemeFonts.m */,
 			);
 			name = Theme;
 			sourceTree = "<group>";
@@ -802,6 +818,7 @@
 				18251144181C867500D5909B /* sticky-note-mini@2x.png in Resources */,
 				09ABC07C13A1D52D009C3FCF /* InfoPlist.strings in Resources */,
 				188FEBFB190A016C00A694A2 /* ricepaper_v3.png in Resources */,
+				18F8D03E194564B800593ADA /* icon-silhouette.png in Resources */,
 				189ABA8C18F6092800093BE7 /* circle-overlapping-mini-blue.png in Resources */,
 				18251134181C829500D5909B /* circle-overlapping-mini@2x.png in Resources */,
 				18251146181C867500D5909B /* trophy-mini-grey@2x.png in Resources */,
@@ -862,6 +879,7 @@
 				18251111181B843C00D5909B /* shopping-bag-mini.png in Resources */,
 				18A7DB9B17B6DA1C00471456 /* MainStoryboard.storyboard in Resources */,
 				1825113C181C830600D5909B /* map-pin-area-mini-grey@2x.png in Resources */,
+				18F8D0401946437100593ADA /* topfish-logo.png in Resources */,
 				1825113B181C830600D5909B /* map-pin-area-mini-grey.png in Resources */,
 				18251129181C7E7500D5909B /* image-mini.png in Resources */,
 				182916391933E5790063D4D2 /* pen-mini-white@2x.png in Resources */,
@@ -887,6 +905,7 @@
 			files = (
 				18BB471F18F8C3FB00B0EDB5 /* ThemedNavigationController.m in Sources */,
 				18DE0A2118274EE700F6C607 /* ThemedTableViewController.m in Sources */,
+				18C17D49194403AC00C32389 /* ArrowView.m in Sources */,
 				18534DB21814498A007F046A /* LeaderboardTableViewCellFirst.m in Sources */,
 				09ABC07F13A1D52D009C3FCF /* main.m in Sources */,
 				188C06CA180F2D4D003C7FFC /* LoadingView.m in Sources */,
@@ -923,6 +942,7 @@
 				180D50971925A38D006DBE98 /* ThemedViewController.m in Sources */,
 				180D509A1925B3AE006DBE98 /* LoginNavigationController.m in Sources */,
 				185E58C917D6C60C006375B3 /* CatchesMapViewController.m in Sources */,
+				18C17D4619436C8200C32389 /* ThemeFonts.m in Sources */,
 				180D50941925A344006DBE98 /* NotLoggedInCatchesViewController.m in Sources */,
 				18DC2BB9180B7CA100DA95C3 /* CatchDetailTableViewController.m in Sources */,
 				185E58CD17D6E470006375B3 /* LeaderboardNavigationController.m in Sources */,

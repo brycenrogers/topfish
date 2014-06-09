@@ -8,6 +8,7 @@
 
 #import "AddCatchNotesViewController.h"
 #import "AddCatchInfoTableViewController.h"
+#import "ThemeFonts.h"
 
 @interface AddCatchNotesViewController ()
 
@@ -37,11 +38,6 @@
     
     if (!viewMode) {
         [textView becomeFirstResponder];
-//        dismissView = [[UIToolbar alloc] initWithFrame:CGRectMake(0.0, 0.0, self.view.bounds.size.width, 44.0)];
-//        UIBarButtonItem *extraSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
-//        UIBarButtonItem *doneBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneButton:)];
-//        dismissView.items = [NSArray arrayWithObjects:extraSpace, doneBtn, nil];
-//        textView.inputAccessoryView = dismissView;
     }
     
     [[NSNotificationCenter defaultCenter]

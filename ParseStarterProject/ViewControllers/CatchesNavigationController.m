@@ -17,7 +17,7 @@
 
 @implementation CatchesNavigationController
 
-@synthesize catchUpdated, loggedInUser;
+@synthesize catchUpdated, loggedInUser, doNotUpdateView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -36,6 +36,10 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    if (doNotUpdateView) {
+        doNotUpdateView = NO;
+        return;
+    }
     if ([PFAnonymousUtils isLinkedWithUser:[PFUser currentUser]]) {
         [self setViewControllers:@[[self.storyboard instantiateViewControllerWithIdentifier:@"NotLoggedInCatchesVC"]] animated:YES];
     } else {

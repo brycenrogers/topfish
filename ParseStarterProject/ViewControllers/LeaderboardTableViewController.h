@@ -22,6 +22,7 @@
 @property (nonatomic, strong) NSString *selectedSpeciesFilter;
 @property (nonatomic, strong) NSString *selectedMethodFilter;
 @property (nonatomic, strong) UIView *noResultsView;
+@property (nonatomic, strong) UILabel *noResultsLabel;
 @property (nonatomic, strong) CAShapeLayer *filteredLayer;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *filterButton;
 

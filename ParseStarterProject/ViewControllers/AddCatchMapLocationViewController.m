@@ -10,6 +10,8 @@
 #import "CatchMapAnnotation.h"
 #import "AddCatchInfoTableViewController.h"
 #import "CustomTabBarController.h"
+#import "CatchesTableViewController.h"
+#import "CatchesNavigationController.h"
 
 #define METERS_PER_MILE 1609.344
 
@@ -19,7 +21,7 @@
 
 @implementation AddCatchMapLocationViewController
 
-@synthesize delegate, catchAnnotation, locationCoordinate;
+@synthesize delegate, catchAnnotation, locationCoordinate, canDropAnnotation, holdToDropPinLabel;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -36,8 +38,16 @@
     
     // Setup longpress gesture recognizer
     UILongPressGestureRecognizer *longpress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)];
-    longpress.minimumPressDuration = 0.75;
+    longpress.minimumPressDuration = 0.5;
     [self.mapView addGestureRecognizer:longpress];
+    
+    if ([delegate isKindOfClass:[AddCatchInfoTableViewController class]]) {
+        canDropAnnotation = YES;
+        holdToDropPinLabel.hidden = NO;
+    } else {
+        canDropAnnotation = NO;
+        holdToDropPinLabel.hidden = YES;
+    }
     
     self.mapView.delegate = self;
 }
@@ -79,6 +89,10 @@
     } else {
         [self.delegate changeLocationFieldIconToColor:@"blue"];
     }
+    if ([self.delegate.navigationController isKindOfClass:[CatchesNavigationController class]]) {
+        CatchesNavigationController *cnc = (CatchesNavigationController *)self.delegate.navigationController;
+        cnc.doNotUpdateView = YES;
+    }
     [self dismissViewControllerAnimated:TRUE completion:nil];
 }
 
@@ -98,13 +112,15 @@
         return;
     }
     
-    CGPoint touchPoint = [gestureRecognizer locationInView:self.mapView];
-    CLLocationCoordinate2D touchMapCoordinate = [self.mapView convertPoint:touchPoint toCoordinateFromView:self.mapView];
-    
-    [self placeCatchAnnotationOnMap:touchMapCoordinate];
+    if (canDropAnnotation) {
+        CGPoint touchPoint = [gestureRecognizer locationInView:self.mapView];
+        CLLocationCoordinate2D touchMapCoordinate = [self.mapView convertPoint:touchPoint toCoordinateFromView:self.mapView];
+        
+        [self placeCatchAnnotationOnMap:touchMapCoordinate];
+    }
 }
 
-- (void)placeCatchAnnotationOnMap:(CLLocationCoordinate2D)coordinate {    
+- (void)placeCatchAnnotationOnMap:(CLLocationCoordinate2D)coordinate {
     CatchMapAnnotation *catchAnnot = [[CatchMapAnnotation alloc] init];
     catchAnnot.coordinate = coordinate;
     catchAnnot.animatesDrop = YES;
@@ -131,6 +147,23 @@
         [self.mapView.userLocation setTitle:@"You are Here!"];
     }
     return pinView;
+}
+
+// Lock rotation
+
+- (BOOL)shouldAutorotate
+{
+    return UIInterfaceOrientationMaskPortrait;
+}
+
+- (NSUInteger)supportedInterfaceOrientations
+{
+    return UIInterfaceOrientationMaskPortrait;
+}
+
+- (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation
+{
+    return UIInterfaceOrientationPortrait;
 }
 
 @end

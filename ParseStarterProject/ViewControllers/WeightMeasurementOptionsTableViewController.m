@@ -38,8 +38,8 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    int row = indexPath.row;
-    int sec = indexPath.section;
+    NSInteger row = indexPath.row;
+    NSInteger sec = indexPath.section;
     if (sec == 0 && row == 0) {
         self.delegate.selectedWeightMeasurementLabel.text = @"g.";
     }
@@ -49,7 +49,22 @@
     if (sec == 0 && row == 2) {
         self.delegate.selectedWeightMeasurementLabel.text = @"lbs.";
     }
-    [self.navigationController popToViewController:(UIViewController *)self.delegate animated:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (BOOL)shouldAutorotate
+{
+    return UIInterfaceOrientationMaskPortrait;
+}
+
+- (NSUInteger)supportedInterfaceOrientations
+{
+    return UIInterfaceOrientationMaskPortrait;
+}
+
+- (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation
+{
+    return UIInterfaceOrientationPortrait;
 }
 
 @end

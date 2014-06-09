@@ -18,6 +18,8 @@
 @property (weak, nonatomic) UITableViewController<CatchMapDelegate> *delegate;
 @property (nonatomic) CLLocationCoordinate2D locationCoordinate;
 @property (weak, nonatomic) CatchMapAnnotation *catchAnnotation;
+@property (nonatomic) BOOL canDropAnnotation;
+@property (strong, nonatomic) IBOutlet UILabel *holdToDropPinLabel;
 
 - (IBAction)doneButton:(UIBarButtonItem *)sender;
 

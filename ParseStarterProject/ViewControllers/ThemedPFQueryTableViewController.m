@@ -15,6 +15,8 @@
 
 @implementation ThemedPFQueryTableViewController
 
+@synthesize iconImage;
+
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
@@ -36,6 +38,16 @@
     [[UIApplication sharedApplication] setStatusBarOrientation:UIInterfaceOrientationPortrait];
     
     [super willRotateToInterfaceOrientation:UIInterfaceOrientationPortrait duration:0];
+    
+    // Setup icon image
+    UIImage *iconImg = [UIImage imageNamed:@"icon-silhouette.png"];
+    iconImage = [UIImageView new];
+    iconImage.image = iconImg;
+    iconImage.frame = CGRectMake(70, 60, (iconImg.size.width*0.75), (iconImg.size.height*0.75));
+    iconImage.alpha = 0.1;
+    iconImage.contentMode = UIViewContentModeScaleAspectFit;
+    iconImage.hidden = YES;
+    [self.view addSubview:iconImage];
 }
 
 - (void)setSeparatorColor {
@@ -54,5 +66,6 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 
 @end

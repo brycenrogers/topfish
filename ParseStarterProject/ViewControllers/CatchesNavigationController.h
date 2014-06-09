@@ -16,6 +16,7 @@
 
 @property (nonatomic) BOOL catchUpdated;
 @property (nonatomic, strong) PFUser *loggedInUser;
+@property (nonatomic) BOOL doNotUpdateView;
 
 - (void)showCatchUpdatedMessage;
 

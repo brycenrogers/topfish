@@ -12,12 +12,11 @@
 
 + (NSString *)parseClassName;
 
-@property int length;
-@property int weight;
+@property float length;
+@property float weight;
 @property (retain) NSString *lengthMeasurement;
 @property (retain) NSString *weightMeasurement;
-@property int baselineLength;
-@property int baselineHeight;
+@property float score;
 @property (retain) NSString *species;
 @property (retain) NSString *method;
 @property (retain) NSString *notes;
@@ -32,5 +31,9 @@
 - (BOOL)canCastBSVote;
 
 + (int)getBSCountLimit;
++ (int)computeScoreForLength:(float)length
+           lengthMeasurement:(NSString *)lengthMeasurement
+                      weight:(float)weight
+           weightMeasurement:(NSString *)weightMeasurement;
 
 @end

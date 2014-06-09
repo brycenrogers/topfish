@@ -46,15 +46,19 @@ userInfoViewLabel;
 	// Do any additional setup after loading the view.
     [self.tableView registerClass:[CatchTableViewCell class] forCellReuseIdentifier:@"CatchesCell"];
 
-    UILabel *noResultsLbl = [[UILabel alloc] initWithFrame:CGRectMake(85.0, 200.0, 180.0, 40.0)];
+    UIFont *boldFont = [UIFont boldSystemFontOfSize:17.0];
+    UILabel *noResultsLbl = [[UILabel alloc] initWithFrame:CGRectMake(0, 225.0, self.view.frame.size.width, 40.0)];
     noResultsLbl.text = @"No catches found";
+    noResultsLbl.font = boldFont;
     noResultsLbl.hidden = YES;
+    noResultsLbl.textAlignment = NSTextAlignmentCenter;
     noResultsLabel = noResultsLbl;
     [self.view addSubview:noResultsLabel];
     
-    UILabel *addLbl = [[UILabel alloc] initWithFrame:CGRectMake(80.0, 230.0, 180.0, 40.0)];
+    UILabel *addLbl = [[UILabel alloc] initWithFrame:CGRectMake(0, 255.0, self.view.frame.size.width, 40.0)];
     addLbl.text = @"Add some catches!";
     addLbl.hidden = YES;
+    addLbl.textAlignment = NSTextAlignmentCenter;
     addLabel = addLbl;
     [self.view addSubview:addLabel];
     
@@ -85,10 +89,12 @@ userInfoViewLabel;
         if(self.objects.count == 0) {
             addLabel.hidden = NO;
             noResultsLabel.hidden = NO;
+            [[super iconImage] setHidden:NO];
         } else {
             // Reset all buttons
             addLabel.hidden = YES;
             noResultsLabel.hidden = YES;
+            [[super iconImage] setHidden:YES];
         }
         
     } else {
@@ -96,6 +102,7 @@ userInfoViewLabel;
         // Reset all buttons
         addLabel.hidden = YES;
         noResultsLabel.hidden = YES;
+        [[super iconImage] setHidden:YES];
     }
 }
 

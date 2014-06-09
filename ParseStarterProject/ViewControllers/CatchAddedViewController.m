@@ -15,7 +15,7 @@
 
 @implementation CatchAddedViewController
 
-@synthesize selectedCatch;
+@synthesize selectedCatch, speciesLabel, catchImageView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -30,6 +30,18 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    [self buildSingleTapGestureRecognizer];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    speciesLabel.text = selectedCatch.species;
+    
+    catchImageView.image = [UIImage imageNamed:@"fish-default-photo.png"]; // placeholder image
+    catchImageView.file = selectedCatch.photo;
+    [catchImageView loadInBackground];
 }
 
 - (void)didReceiveMemoryWarning
@@ -38,18 +50,8 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)ViewProfileButton:(UIButton *)sender {
-    // Switch the tab bar item
-    [self.tabBarController setSelectedIndex:3];
-    
-    // Go to Profile view and transition into Catches segue
-    UINavigationController *profileNC = [[self.tabBarController viewControllers] objectAtIndex:3];
-    UITableViewController *profileVC = [[profileNC viewControllers] objectAtIndex:0];
-    [profileVC performSegueWithIdentifier:@"viewCatchesSegue" sender:nil];
-}
-
-- (IBAction)ViewLeaderboardButton:(UIButton *)sender {
-    [self.tabBarController setSelectedIndex:0];
+- (IBAction)addAnotherButton:(UIButton *)sender {
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (IBAction)viewCatchButton:(UIButton *)sender {
@@ -61,8 +63,25 @@
     if ([[segue identifier] isEqualToString:@"viewCatchDetailsFromAddCatch"])
     {
         CatchDetailTableViewController *cdtvc = [segue destinationViewController];
-        cdtvc.selectedCatch = self.selectedCatch;
+        cdtvc.selectedCatch = selectedCatch;
     }
+}
+
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch {
+    CGPoint touchLocation = [touch locationInView:self.view];
+    return !CGRectContainsPoint(self.catchImageView.frame, touchLocation);
+}
+
+- (void)buildSingleTapGestureRecognizer {
+    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(singleTapDetected)];
+    singleTap.numberOfTapsRequired = 1;
+    self.catchImageView.userInteractionEnabled = YES;
+    [self.catchImageView addGestureRecognizer:singleTap];
+}
+
+- (void)singleTapDetected{
+    // Trigger segue to CatchPhotoScrollViewController
+    [self performSegueWithIdentifier:@"viewCatchDetailsFromAddCatch" sender:nil];
 }
 
 @end

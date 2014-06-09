@@ -8,13 +8,16 @@
 
 #import <UIKit/UIKit.h>
 #import "Catch.h"
+#import <Parse/Parse.h>
+#import "ThemedViewController.h"
 
-@interface CatchAddedViewController : UIViewController
+@interface CatchAddedViewController : ThemedViewController<UIGestureRecognizerDelegate>
 
 @property (nonatomic, strong) Catch *selectedCatch;
+@property (strong, nonatomic) IBOutlet UILabel *speciesLabel;
+@property (strong, nonatomic) IBOutlet PFImageView *catchImageView;
 
-- (IBAction)ViewProfileButton:(UIButton *)sender;
-- (IBAction)ViewLeaderboardButton:(UIButton *)sender;
 - (IBAction)viewCatchButton:(UIButton *)sender;
+- (IBAction)addAnotherButton:(UIButton *)sender;
 
 @end

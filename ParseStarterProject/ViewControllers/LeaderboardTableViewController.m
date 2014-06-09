@@ -13,6 +13,7 @@
 #import "LeaderboardTableViewCell.h"
 #import "LeaderboardTableViewCellFirst.h"
 #import "FilterTableViewController.h"
+#import "ArrowView.h"
 
 @interface LeaderboardTableViewController ()
 
@@ -20,7 +21,13 @@
 
 @implementation LeaderboardTableViewController
 
-@synthesize selectedCatch, selectedMethodFilter, selectedSpeciesFilter, noResultsView, filterButton, filteredLayer;
+@synthesize selectedCatch,
+selectedMethodFilter,
+selectedSpeciesFilter,
+noResultsView,
+filterButton,
+filteredLayer,
+noResultsLabel;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -58,10 +65,13 @@
     [self.tableView registerClass:[LeaderboardTableViewCellFirst class] forCellReuseIdentifier:@"LeaderboardCellFirst"];
     self.paginationEnabled = NO;
     
-    UIView *noResultsV = [[UIView alloc] initWithFrame:CGRectMake(30, -100, 100, 100)];
+    UIView *noResultsV = [[UIView alloc] initWithFrame:CGRectMake(0, -40, self.view.frame.size.width, 100)];
+    UIFont *boldFont = [UIFont boldSystemFontOfSize:17.0];
     UILabel *noResults = [[UILabel alloc] initWithFrame:self.view.frame];
-    noResults.text = @"No fish found for selected filters";
-    noResultsView.backgroundColor = [UIColor redColor];
+    noResults.text = @"No catches found for selected filters";
+    noResults.textAlignment = NSTextAlignmentCenter;
+    noResults.font = boldFont;
+    self.noResultsLabel = noResults;
     self.noResultsView = noResultsV;
     [self.noResultsView addSubview:noResults];
     [self.view addSubview:self.noResultsView];
@@ -109,7 +119,7 @@
     if (self.selectedMethodFilter != nil) {
         [query whereKey:@"method" equalTo:self.selectedMethodFilter];
     }
-    [query orderByDescending:@"length"];
+    [query orderByDescending:@"score"];
     [query includeKey:@"user"];
     query.limit = 20;
     return query;
@@ -118,10 +128,21 @@
 - (void)objectsDidLoad:(NSError *)error {
     [super objectsDidLoad:error];
     if ([self.objects count] == 0) {
-        self.noResultsView.hidden = NO;
+        noResultsView.hidden = NO;
         [self.tableView setSeparatorColor:[UIColor clearColor]];
+        
+        // If there are no filters applied and no fish are found, change noResultsView text
+        if ((selectedMethodFilter == nil || [selectedMethodFilter isEqualToString:@""]) &&
+            (selectedSpeciesFilter == nil || [selectedSpeciesFilter isEqualToString:@""])) {
+            noResultsLabel.text = @"No catches have been added yet!";
+            [[super iconImage] setHidden:NO];
+        } else {
+            noResultsLabel.text = @"No catches found for selected filters";
+            [[super iconImage] setHidden:NO];
+        }
     } else {
-        self.noResultsView.hidden = YES;
+        noResultsView.hidden = YES;
+        [[super iconImage] setHidden:YES];
         [self setSeparatorColor];
     }
 }
