@@ -82,30 +82,30 @@
     float baselineLength = length;
     float baselineWeight = weight;
     
-    if (![lengthMeasurement isEqualToString:@"cm."]) {
+    if (![lengthMeasurement isEqualToString:@"in."]) {
         
         // Convert measurement to centimeters
-        if ([lengthMeasurement isEqualToString:@"in."]) {
-            baselineLength = length * 2.54; // 2.54 cm in 1 inch
+        if ([lengthMeasurement isEqualToString:@"cm."]) {
+            baselineLength = length / 2.54; // 2.54 cm in 1 inch
         }
     }
     
-    if (![weightMeasurement isEqualToString:@"g."]) {
+    if (![weightMeasurement isEqualToString:@"lbs."]) {
         
         // Convert measurement to grams
         if ([weightMeasurement isEqualToString:@"oz."]) {
-            baselineWeight = weight * 28.3495;
-        } else if ([weightMeasurement isEqualToString:@"lbs."]) {
-            baselineWeight = weight * 453.592;
+            baselineWeight = weight / 16.0;
+        } else if ([weightMeasurement isEqualToString:@"g."]) {
+            baselineWeight = weight / 453.592;
         }
     }
     
     // Now that baselines are set, calculate score
     // score = (baseline length * 5) + (baseline weight * 2) * 0.01
     
-    float score = ((baselineLength * 5) + (baselineWeight * .015)) * 0.01;
+    float score = ((baselineLength * 5) + (baselineWeight * 2));
     
-    return [[NSString stringWithFormat:@"%.2f",score]floatValue];
+    return [[NSString stringWithFormat:@"%.3f",score]floatValue];
 }
 
 @end

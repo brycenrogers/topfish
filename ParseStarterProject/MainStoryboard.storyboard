@@ -1266,7 +1266,7 @@
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" restorationIdentifier="CatchesCell" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CatchesCell" textLabel="jtD-oR-Lpw" detailTextLabel="Svu-4O-EAS" style="IBUITableViewCellStyleSubtitle" id="yLd-wS-oqT" customClass="LeaderboardTableViewCell">
-                                <rect key="frame" x="0.0" y="119" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="55" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="yLd-wS-oqT" id="G8B-rK-M0j">
                                     <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
@@ -1590,11 +1590,11 @@
         <segue reference="KFY-pa-lf1"/>
         <segue reference="R7U-K1-AnH"/>
         <segue reference="77Z-eG-1XR"/>
-        <segue reference="3jK-Ua-gAO"/>
-        <segue reference="WdJ-xP-ZlC"/>
         <segue reference="RIB-mm-YyM"/>
         <segue reference="ocG-Wj-rP4"/>
         <segue reference="DNm-BG-jdG"/>
+        <segue reference="b54-fx-TL9"/>
+        <segue reference="Fgq-cR-LaV"/>
         <segue reference="ECu-Ds-uRV"/>
     </inferredMetricsTieBreakers>
 </document>
