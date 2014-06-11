@@ -75,12 +75,6 @@
     [self setLoginLogoutButtonLabel];
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-//    if (indexPath.section == 2 && indexPath.row == 0) {
-//        [self logOut];
-//    }
-}
-
 - (IBAction)loginLogoutButtonClicked:(UIButton *)sender {
     if ([sender.titleLabel.text isEqualToString:@"Login or Signup"]) {
         [self performSegueWithIdentifier:@"showLoginSegue" sender:nil];

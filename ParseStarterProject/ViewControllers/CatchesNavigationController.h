@@ -19,5 +19,6 @@
 @property (nonatomic) BOOL doNotUpdateView;
 
 - (void)showCatchUpdatedMessage;
+- (void)showCatchDeletedMessage;
 
 @end

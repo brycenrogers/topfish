@@ -8,6 +8,7 @@
 
 #import "LeaderboardNavigationController.h"
 #import "CatchUpdatedView.h"
+#import "CatchDeletedView.h"
 
 @interface LeaderboardNavigationController ()
 
@@ -40,6 +41,11 @@
 - (void)showCatchUpdatedMessage
 {
     [CatchUpdatedView animateCatchUpdatedViewforView:self.view];
+}
+
+- (void)showCatchDeletedMessage
+{
+    [CatchDeletedView animateCatchDeletedViewforView:self.view];
 }
 
 @end

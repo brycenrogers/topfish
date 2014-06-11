@@ -100,12 +100,22 @@
         }
     }
     
+    if (baselineWeight == 0) {
+        baselineWeight = 1;
+    }
+    
+    if (baselineLength == 0) {
+        baselineLength = 1;
+    }
+    
     // Now that baselines are set, calculate score
     // score = (baseline length * 5) + (baseline weight * 2) * 0.01
     
-    float score = ((baselineLength * 5) + (baselineWeight * 2));
+    float score = ((baselineLength * 5.0) + (baselineWeight * 2.0));
     
-    return [[NSString stringWithFormat:@"%.3f",score]floatValue];
+    float scoreTruncated = [[NSString stringWithFormat:@"%.3f",score]floatValue];
+    
+    return scoreTruncated;
 }
 
 @end

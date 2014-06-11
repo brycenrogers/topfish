@@ -10,6 +10,7 @@
 #import "CatchUpdatedView.h"
 #import "NotLoggedInCatchesViewController.h"
 #import "CatchesTableViewController.h"
+#import "CatchDeletedView.h"
 
 @interface CatchesNavigationController ()
 
@@ -56,6 +57,11 @@
 - (void)showCatchUpdatedMessage
 {
     [CatchUpdatedView animateCatchUpdatedViewforView:self.view];
+}
+
+- (void)showCatchDeletedMessage
+{
+    [CatchDeletedView animateCatchDeletedViewforView:self.view];
 }
 
 @end

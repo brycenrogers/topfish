@@ -85,8 +85,14 @@ callBSButton;
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    if (alertView.tag == 1) {
-        [selectedCatch deleteInBackground];
+    if (alertView.tag == 1 && buttonIndex == 1) {
+        UINavigationController<CatchUpdatedNavigationControllerProtocol> *parentNC = (UINavigationController<CatchUpdatedNavigationControllerProtocol> *)self.navigationController;
+        parentNC.catchUpdated = YES;
+        [selectedCatch deleteInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+            if (succeeded) {
+                [parentNC showCatchDeletedMessage];
+            }
+        }];
         [self.navigationController popViewControllerAnimated:YES];
         return;
     }
@@ -396,7 +402,7 @@ callBSButton;
             newBSVote.catch = selectedCatch;
             [newBSVote saveInBackground];
             [selectedCatchBSVotes addObject:newBSVote];
-            [self showCatchUpdatedMessage];
+            [self showCastBSVoteMessage];
         } else {
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@""
                                                             message:@"You cannot call BS on this catch"
@@ -422,7 +428,7 @@ callBSButton;
 
 // BS Vote cast animation
 
-- (void)showCatchUpdatedMessage
+- (void)showCastBSVoteMessage
 {
     [self animateBSVoteCastView:self.navigationController.view];
 }

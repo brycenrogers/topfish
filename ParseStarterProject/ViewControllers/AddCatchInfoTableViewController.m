@@ -317,8 +317,6 @@ loggedInUser;
                          [NSString stringWithFormat:@"%@_%f.jpg", catchObject.user.username, [[NSDate date] timeIntervalSince1970]]
                                         data:imageData];
     
-    [self buildLoadingView];
-    
     [imageFile saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (succeeded) {
             catchObject.photo = imageFile;
@@ -396,11 +394,13 @@ loggedInUser;
         catchObject.notes = catchNotesLabel.text;
     }
     
-    // Get score
-    catchObject.score = [Catch computeScoreForLength:catchObject.length
-                                   lengthMeasurement:catchObject.lengthMeasurement
-                                              weight:catchObject.weight
-                                   weightMeasurement:catchObject.weightMeasurement];
+    // Get score if ranked
+    if (catchObject.rankedCatch) {
+        catchObject.score = [Catch computeScoreForLength:catchObject.length
+                                       lengthMeasurement:catchObject.lengthMeasurement
+                                                  weight:catchObject.weight
+                                       weightMeasurement:catchObject.weightMeasurement];
+    }
     
     // Sets a default location coordinate if none was selected
     if (!CLLocationCoordinate2DIsValid(catchAnnotationCoordinate)) {
@@ -420,27 +420,32 @@ loggedInUser;
         
     if ((catchPhoto != nil && selectedCatchObjectId == nil) ||
         (selectedCatchObjectId != nil && photoUpdated)) {
+        [self buildLoadingViewWithProgress:YES];
         [self saveWithCatchPhoto:catchObject];
     } else {
+        [self buildLoadingViewWithProgress:NO];
         [catchObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-            selectedCatch = catchObject;
-            if (selectedCatchObjectId == nil) {
-                // Move to CatchAddedViewController to show success message
-                // Clear the form
-                [self clearNewCatchForm];
-                [self performSegueWithIdentifier:@"catchAddedVC" sender:nil];
-            } else {
-                // Editing Catch
-                CatchesNavigationController *parentNC = (CatchesNavigationController *)[self parentViewController];
-                parentNC.catchUpdated = YES;
-                [parentNC showCatchUpdatedMessage];
-                [self.navigationController popViewControllerAnimated:YES];
+            if(succeeded) {
+                [loadingOverlay removeFromSuperview];
+                selectedCatch = catchObject;
+                if (selectedCatchObjectId == nil) {
+                    // Move to CatchAddedViewController to show success message
+                    // Clear the form
+                    [self clearNewCatchForm];
+                    [self performSegueWithIdentifier:@"catchAddedVC" sender:nil];
+                } else {
+                    // Editing Catch
+                    CatchesNavigationController *parentNC = (CatchesNavigationController *)[self parentViewController];
+                    parentNC.catchUpdated = YES;
+                    [parentNC showCatchUpdatedMessage];
+                    [self.navigationController popViewControllerAnimated:YES];
+                }
             }
         }];
     }
 }
 
-- (void)buildLoadingView {
+- (void)buildLoadingViewWithProgress:(BOOL)progress {
     UIView *loadingOverlayView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 568)];
     loadingOverlayView.backgroundColor = [UIColor colorWithWhite:0 alpha:.75];
     loadingOverlay = loadingOverlayView;
@@ -451,11 +456,13 @@ loggedInUser;
     uploadingTextLabel.backgroundColor = [UIColor colorWithWhite:0 alpha:0];
     [loadingOverlay addSubview:uploadingTextLabel];
     
-    UIProgressView *uploadProgress = [[UIProgressView alloc] initWithProgressViewStyle:UIProgressViewStyleDefault];
-    uploadProgress.frame = CGRectMake(80, 250, uploadProgress.frame.size.width, uploadProgress.frame.size.height);
-    uploadProgressView = uploadProgress;
+    if (progress) {
+        UIProgressView *uploadProgress = [[UIProgressView alloc] initWithProgressViewStyle:UIProgressViewStyleDefault];
+        uploadProgress.frame = CGRectMake(80, 250, uploadProgress.frame.size.width, uploadProgress.frame.size.height);
+        uploadProgressView = uploadProgress;
+        [loadingOverlay addSubview:uploadProgress];
+    }
     
-    [loadingOverlay addSubview:uploadProgress];
     [self.view.window addSubview:loadingOverlay];
 }
 
@@ -779,6 +786,12 @@ loggedInUser;
         self.photoUpdated = YES;
     }
     [self changePhotoFieldIconToColor:@"blue"];
+    
+    if ([self.navigationController isKindOfClass:[CatchesNavigationController class]]) {
+        CatchesNavigationController *nc = (CatchesNavigationController *)self.navigationController;
+        nc.doNotUpdateView = YES;
+    }
+    
     [picker dismissViewControllerAnimated:YES completion:nil];
 }
 

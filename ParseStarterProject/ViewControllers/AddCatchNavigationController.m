@@ -8,6 +8,7 @@
 
 #import "AddCatchNavigationController.h"
 #import "CatchUpdatedView.h"
+#import "CatchDeletedView.h"
 
 @interface AddCatchNavigationController ()
 
@@ -60,6 +61,11 @@
 - (void)showCatchUpdatedMessage
 {
     [CatchUpdatedView animateCatchUpdatedViewforView:self.view];
+}
+
+- (void)showCatchDeletedMessage
+{
+    [CatchDeletedView animateCatchDeletedViewforView:self.view];
 }
 
 @end

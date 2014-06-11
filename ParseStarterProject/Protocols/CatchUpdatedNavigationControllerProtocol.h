@@ -13,5 +13,6 @@
 @property (nonatomic) BOOL catchUpdated;
 
 - (void)showCatchUpdatedMessage;
+- (void)showCatchDeletedMessage;
 
 @end

@@ -148,8 +148,10 @@
 		18DE0A2118274EE700F6C607 /* ThemedTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DE0A2018274EE700F6C607 /* ThemedTableViewController.m */; };
 		18F8D03E194564B800593ADA /* icon-silhouette.png in Resources */ = {isa = PBXBuildFile; fileRef = 18F8D03D194564B800593ADA /* icon-silhouette.png */; };
 		18F8D0401946437100593ADA /* topfish-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 18F8D03F1946437100593ADA /* topfish-logo.png */; };
+		18F8D043194891CB00593ADA /* CatchDeletedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F8D042194891CB00593ADA /* CatchDeletedView.m */; };
+		18F8D0451948E7E800593ADA /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18F8D0441948E7E800593ADA /* StoreKit.framework */; };
+		18F8D0471948E7EA00593ADA /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18F8D0461948E7EA00593ADA /* GameKit.framework */; };
 		2FCDD6B014A573F500295AAC /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FCDD6AF14A573F500295AAC /* QuartzCore.framework */; };
-		4998650515BF305000803E05 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4998650415BF305000803E05 /* StoreKit.framework */; };
 		743D7B6D157DA60100084B67 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 743D7B6C157DA60100084B67 /* CoreGraphics.framework */; };
 		C4C51B571613CE0800959FDC /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = C4C51B541613CE0800959FDC /* Default.png */; };
 		C4C51B581613CE0800959FDC /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C4C51B551613CE0800959FDC /* Default-568h@2x.png */; };
@@ -356,8 +358,11 @@
 		18DE0A2018274EE700F6C607 /* ThemedTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ThemedTableViewController.m; path = ViewControllers/ThemedTableViewController.m; sourceTree = "<group>"; };
 		18F8D03D194564B800593ADA /* icon-silhouette.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-silhouette.png"; sourceTree = "<group>"; };
 		18F8D03F1946437100593ADA /* topfish-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "topfish-logo.png"; sourceTree = "<group>"; };
+		18F8D041194891CB00593ADA /* CatchDeletedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CatchDeletedView.h; path = Views/CatchDeletedView.h; sourceTree = "<group>"; };
+		18F8D042194891CB00593ADA /* CatchDeletedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CatchDeletedView.m; path = Views/CatchDeletedView.m; sourceTree = "<group>"; };
+		18F8D0441948E7E800593ADA /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		18F8D0461948E7EA00593ADA /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		2FCDD6AF14A573F500295AAC /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		4998650415BF305000803E05 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		6332375315E438E900AE2736 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		6372FF521613CC3C002132AF /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		6372FF551613CC42002132AF /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
@@ -375,14 +380,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				18DB96F617CA4FA400BFD184 /* MapKit.framework in Frameworks */,
+				18F8D0451948E7E800593ADA /* StoreKit.framework in Frameworks */,
 				DD952FCB16E7F5CF00470144 /* CoreLocation.framework in Frameworks */,
-				4998650515BF305000803E05 /* StoreKit.framework in Frameworks */,
 				743D7B6D157DA60100084B67 /* CoreGraphics.framework in Frameworks */,
 				2FCDD6B014A573F500295AAC /* QuartzCore.framework in Frameworks */,
 				099CCEAD13F9E3760039A464 /* libz.1.1.3.dylib in Frameworks */,
 				09BEF34C13D51C3F001BBCDB /* Security.framework in Frameworks */,
 				095ACE8613C68EA300566243 /* AudioToolbox.framework in Frameworks */,
 				092354B713A1D83C00DA740F /* MobileCoreServices.framework in Frameworks */,
+				18F8D0471948E7EA00593ADA /* GameKit.framework in Frameworks */,
 				092354B513A1D7F000DA740F /* SystemConfiguration.framework in Frameworks */,
 				092354B313A1D7EB00DA740F /* CFNetwork.framework in Frameworks */,
 				09ABC07213A1D52D009C3FCF /* UIKit.framework in Frameworks */,
@@ -415,6 +421,8 @@
 		09ABC07013A1D52D009C3FCF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				18F8D0461948E7EA00593ADA /* GameKit.framework */,
+				18F8D0441948E7E800593ADA /* StoreKit.framework */,
 				18DB96F517CA4FA400BFD184 /* MapKit.framework */,
 				6372FF571613CC47002132AF /* AdSupport.framework */,
 				6372FF551613CC42002132AF /* Social.framework */,
@@ -430,7 +438,6 @@
 				094AC9FF14367ACD008398F8 /* Parse.framework */,
 				2FCDD6AF14A573F500295AAC /* QuartzCore.framework */,
 				09BEF34B13D51C3F001BBCDB /* Security.framework */,
-				4998650415BF305000803E05 /* StoreKit.framework */,
 				092354B413A1D7F000DA740F /* SystemConfiguration.framework */,
 				09ABC07113A1D52D009C3FCF /* UIKit.framework */,
 			);
@@ -732,6 +739,8 @@
 				18A009F119297CB400FBCFBC /* CatchMapAnnotationView.m */,
 				18C17D47194403AC00C32389 /* ArrowView.h */,
 				18C17D48194403AC00C32389 /* ArrowView.m */,
+				18F8D041194891CB00593ADA /* CatchDeletedView.h */,
+				18F8D042194891CB00593ADA /* CatchDeletedView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -785,6 +794,14 @@
 				TargetAttributes = {
 					09ABC06C13A1D52D009C3FCF = {
 						DevelopmentTeam = 26LGK9R9JN;
+						SystemCapabilities = {
+							com.apple.GameCenter = {
+								enabled = 1;
+							};
+							com.apple.InAppPurchase = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -937,6 +954,7 @@
 				18A009F219297CB400FBCFBC /* CatchMapAnnotationView.m in Sources */,
 				185E58C217D5405C006375B3 /* AddCatchNotesViewController.m in Sources */,
 				185E58C517D560DC006375B3 /* CatchPhoto.m in Sources */,
+				18F8D043194891CB00593ADA /* CatchDeletedView.m in Sources */,
 				1829162D1932C0740063D4D2 /* CatchesMapNavigationController.m in Sources */,
 				185BA39D17EF45DF001E2481 /* WeightMeasurementOptionsTableViewController.m in Sources */,
 				180D50971925A38D006DBE98 /* ThemedViewController.m in Sources */,
@@ -995,7 +1013,7 @@
 				"INFOPLIST_FILE[sdk=*]" = "TopFish-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "0886F5A4-6B1A-45AF-9A86-AF0D5E9A8940";
+				PROVISIONING_PROFILE = "142B5B5A-CC82-4C6F-84CF-C3F344CD2794";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -1021,7 +1039,7 @@
 				"INFOPLIST_FILE[sdk=*]" = "TopFish-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				PROVISIONING_PROFILE = "0886F5A4-6B1A-45AF-9A86-AF0D5E9A8940";
+				PROVISIONING_PROFILE = "142B5B5A-CC82-4C6F-84CF-C3F344CD2794";
 				SDKROOT = iphoneos;
 			};
 			name = Release;
@@ -1034,6 +1052,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1046,6 +1065,7 @@
 				INFOPLIST_FILE = "ParseStarterProject/TopFish-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = TopFish;
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1058,6 +1078,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1069,6 +1090,7 @@
 				INFOPLIST_FILE = "ParseStarterProject/TopFish-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = TopFish;
+				PROVISIONING_PROFILE = "";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
 			};

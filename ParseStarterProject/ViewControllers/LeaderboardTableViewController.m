@@ -223,11 +223,11 @@ noResultsLabel;
         NSAttributedString *sizeStringAttributed = [[NSAttributedString alloc] initWithString:sizeString attributes:@{NSForegroundColorAttributeName: [UIColor grayColor],
                                                                                                                       NSFontAttributeName: [UIFont fontWithName:@"Helvetica" size:12.0]}];
         cell.sizeLabel.attributedText = sizeStringAttributed;
-        cell.placementString = [NSString stringWithFormat:@"%d", indexPath.row + 1];
+        cell.placementString = [NSString stringWithFormat:@"%ld", indexPath.row + 1];
         
         cell.imageView.frame = CGRectMake(0, 0, 88, 61);
         
-        [cell drawPlacementBadgeWithNumber:[NSString stringWithFormat:@"%d", indexPath.row + 1]];
+        [cell drawPlacementBadgeWithNumber:[NSString stringWithFormat:@"%ld", indexPath.row + 1]];
         
         return cell;
     }
