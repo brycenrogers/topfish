@@ -100,6 +100,10 @@ callBSButton;
         [self castBSVote];
         return;
     }
+    if (alertView.tag == 3 && buttonIndex == 1) {
+        [self castBSVote];
+        return;
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -378,6 +382,26 @@ callBSButton;
                                           otherButtonTitles:@"Yes, Call BS!", nil];
     alert.tag = 2;
     [alert show];
+}
+
+- (IBAction)pressFlagButton:(UIButton *)sender {
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Flag Content"
+                                                    message:@"You may flag content if it contains inappropriate photos or notes. Content that is flagged will be reviewed and removed within 24 hours if deemed inappropriate."
+                                                   delegate:self
+                                          cancelButtonTitle:@"Cancel"
+                                          otherButtonTitles:@"Flag Content", nil];
+    alert.tag = 3;
+    [alert show];
+}
+
+- (void)flagContent
+{
+    // User's catch goes into "flagged" mode
+    selectedCatch.flagged = YES;
+    
+    // User receives Push notification??
+    
+    // Moderator reviews offending content and decides
 }
 
 - (void)castBSVote

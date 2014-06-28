@@ -26,6 +26,7 @@
 @property (retain) PFGeoPoint *location;
 @property (retain) PFFile *photo;
 @property int BSCount;
+@property BOOL flagged;
 
 - (BOOL)BSCountLimitReached;
 - (BOOL)canCastBSVote;

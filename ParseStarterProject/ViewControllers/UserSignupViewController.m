@@ -14,6 +14,8 @@
 
 @implementation UserSignupViewController
 
+@synthesize loadingOverlay, usernameField, emailField, passwordField, passwordConfirmField;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -33,6 +35,10 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
+    usernameField.delegate = self;
+    emailField.delegate = self;
+    passwordField.delegate = self;
+    passwordConfirmField.delegate = self;
 }
 
 - (void)didReceiveMemoryWarning
@@ -84,6 +90,8 @@
 
 - (void)attemptSignup {
     
+    [self buildLoadingView];
+    
     NSString *errors = [self validationErrors];
     
     if (![errors isEqualToString:@""]) {
@@ -105,6 +113,7 @@
             // Show the errorString somewhere and let the user try again.
             [self showSignupError:@"Signup Error" withMessage:errorString];
         }
+        [self hideLoadingView];
     }];
 }
 
@@ -112,6 +121,38 @@
 
 - (IBAction)signupButton:(UIButton *)sender {
     [self attemptSignup];
+}
+
+- (IBAction)signupButtonHeader:(UIBarButtonItem *)sender {
+    [self performSegueWithIdentifier:@"showSignup" sender:nil];
+}
+
+- (void)buildLoadingView {
+    if (!loadingOverlay) {
+        UIView *loadingOverlayView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 568)];
+        loadingOverlayView.backgroundColor = [UIColor colorWithWhite:0 alpha:.75];
+        loadingOverlay = loadingOverlayView;
+        
+        UIActivityIndicatorView *aIV = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
+        aIV.frame = CGRectMake(0, 0, loadingOverlay.frame.size.width, loadingOverlay.frame.size.height);
+        [aIV startAnimating];
+        [loadingOverlay addSubview:aIV];
+        
+        [self.view.window addSubview:loadingOverlayView];
+    } else {
+        loadingOverlay.hidden = NO;
+    }
+}
+
+- (void)hideLoadingView {
+    if (loadingOverlay) {
+        loadingOverlay.hidden = YES;
+    }
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [self attemptSignup];
+    return YES;
 }
 
 @end

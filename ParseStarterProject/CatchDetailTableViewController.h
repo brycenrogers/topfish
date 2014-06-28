@@ -38,8 +38,10 @@ CatchNotesDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *catchNotesLabel;
 @property (nonatomic) CLLocationCoordinate2D catchAnnotationCoordinate;
 @property (weak, nonatomic) IBOutlet UIButton *callBSButton;
+@property (strong, nonatomic) IBOutlet UIButton *flagButton;
 
 - (void)changeNotesFieldIconToColor:(NSString *)color;
 - (IBAction)pressCallBSButton:(UIButton *)sender;
+- (IBAction)pressFlagButton:(UIButton *)sender;
 
 @end

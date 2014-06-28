@@ -16,6 +16,8 @@
 @property (strong, nonatomic) IBOutlet UITableViewCell *emailRowCell;
 @property (strong, nonatomic) IBOutlet UIButton *loginLogoutButton;
 @property (strong, nonatomic) PFUser *loggedInUser;
+@property (strong, nonatomic) IBOutlet UILabel *usernameLabel;
+@property (strong, nonatomic) IBOutlet UILabel *emailLabel;
 
 - (IBAction)loginLogoutButtonClicked:(UIButton *)sender;
 

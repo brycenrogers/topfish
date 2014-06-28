@@ -30,6 +30,7 @@
 @dynamic location;
 @dynamic photo;
 @dynamic BSCount;
+@dynamic flagged;
 
 + (int)getBSCountLimit
 {

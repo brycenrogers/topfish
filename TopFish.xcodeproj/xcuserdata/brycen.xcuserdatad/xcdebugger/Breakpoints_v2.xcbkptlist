@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ParseStarterProject/ViewControllers/ProfileTableViewController.m"
-            timestampString = "419992996.404818"
+            timestampString = "424922452.131455"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "60"
-            endingLineNumber = "60"
+            startingLineNumber = "67"
+            endingLineNumber = "67"
             landmarkName = "-setUsernameAndEmailLabels"
             landmarkType = "5">
          </BreakpointContent>
@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ParseStarterProject/ViewControllers/ProfileTableViewController.m"
-            timestampString = "419990351.92909"
+            timestampString = "424922452.131455"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "51"
-            endingLineNumber = "51"
+            startingLineNumber = "58"
+            endingLineNumber = "58"
             landmarkName = "-setLoginLogoutButtonLabel"
             landmarkType = "5">
          </BreakpointContent>
@@ -193,22 +193,6 @@
             startingLineNumber = "189"
             endingLineNumber = "189"
             landmarkName = "-updateCatchesOnMap"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ParseStarterProject/CatchDetailTableViewController.m"
-            timestampString = "424190912.486971"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "385"
-            endingLineNumber = "385"
-            landmarkName = "-castBSVote"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

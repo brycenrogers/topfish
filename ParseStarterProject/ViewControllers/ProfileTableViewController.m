@@ -15,7 +15,7 @@
 
 @implementation ProfileTableViewController
 
-@synthesize loginLogoutButton, loggedInUser, usernameRowCell, emailRowCell;
+@synthesize loginLogoutButton, loggedInUser, usernameRowCell, emailRowCell, usernameLabel, emailLabel;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -29,8 +29,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.usernameRowCell.textLabel.text = [[PFUser currentUser] username];
-    self.emailRowCell.textLabel.text = [[PFUser currentUser] email];
+    usernameLabel.text = [[PFUser currentUser] username];
+    emailLabel.text = [[PFUser currentUser] email];
     [loginLogoutButton.titleLabel setTextAlignment:NSTextAlignmentCenter];
 }
 
@@ -39,6 +39,13 @@
     [super viewWillAppear:animated];
     [self setUsernameAndEmailLabels];
     [self setLoginLogoutButtonLabel];
+    
+    NSIndexPath *usernameRowIndexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+    NSIndexPath *emailRowIndexPath = [NSIndexPath indexPathForRow:0 inSection:1];
+    
+    [self.tableView beginUpdates];
+    [self.tableView reloadRowsAtIndexPaths:@[usernameRowIndexPath, emailRowIndexPath] withRowAnimation:UITableViewRowAnimationNone];
+    [self.tableView endUpdates];
 }
 
 - (void)didReceiveMemoryWarning
@@ -61,11 +68,11 @@
     NSString *username = user.username;
     NSString *email = user.email;
     if (![PFAnonymousUtils isLinkedWithUser:[PFUser currentUser]]) {
-        usernameRowCell.textLabel.text = username;
-        emailRowCell.textLabel.text = email;
+        usernameLabel.text = username;
+        emailLabel.text = email;
     } else {
-        usernameRowCell.textLabel.text = @"";
-        emailRowCell.textLabel.text = @"";
+        usernameLabel.text = @"";
+        emailLabel.text = @"";
     }
 }
 
