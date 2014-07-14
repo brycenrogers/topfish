@@ -1,21 +1,20 @@
 //
-//  CatchesMapNavigationController.m
+//  TermsAndPrivacyViewController.m
 //  TopFish
 //
-//  Created by Brycen Rogers on 5/25/14.
+//  Created by Brycen Rogers on 7/13/14.
 //
 //
 
-#import "CatchesMapNavigationController.h"
-#import "CatchUpdatedView.h"
-#import "CatchDeletedView.h"
-#import "CatchReportedView.h"
+#import "TermsAndPrivacyViewController.h"
 
-@interface CatchesMapNavigationController ()
+@interface TermsAndPrivacyViewController ()
 
 @end
 
-@implementation CatchesMapNavigationController
+@implementation TermsAndPrivacyViewController
+
+@synthesize webView, doneButton, doneToolbar;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -30,27 +29,13 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://topfishapp.com/terms_and_privacy.html"]]];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-- (void)showCatchUpdatedMessage
-{
-    [CatchUpdatedView animateCatchUpdatedViewforView:self.view];
-}
-
-- (void)showCatchDeletedMessage
-{
-    [CatchDeletedView animateCatchDeletedViewforView:self.view];
-}
-
-- (void)showCatchReportedMessage
-{
-    [CatchReportedView animateCatchReportedViewforView:self.view];
 }
 
 /*
@@ -64,4 +49,7 @@
 }
 */
 
+- (IBAction)doneButtonClicked:(UIBarButtonItem *)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 @end

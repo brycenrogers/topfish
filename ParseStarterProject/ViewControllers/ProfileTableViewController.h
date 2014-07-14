@@ -18,6 +18,7 @@
 @property (strong, nonatomic) PFUser *loggedInUser;
 @property (strong, nonatomic) IBOutlet UILabel *usernameLabel;
 @property (strong, nonatomic) IBOutlet UILabel *emailLabel;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *reportedCatchesButton;
 
 - (IBAction)loginLogoutButtonClicked:(UIButton *)sender;
 

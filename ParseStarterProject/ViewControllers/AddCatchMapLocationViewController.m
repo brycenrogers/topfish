@@ -57,7 +57,7 @@
     if (self.locationCoordinate.latitude == 90.0 && self.locationCoordinate.longitude == 0.0) {
         return;
     }
-    MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(self.locationCoordinate, 1200, 1200);
+    MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(self.locationCoordinate, 3000, 3000);
     [self.mapView setRegion:[self.mapView regionThatFits:region] animated:YES];
     [self placeCatchAnnotationOnMap:self.locationCoordinate];
 }

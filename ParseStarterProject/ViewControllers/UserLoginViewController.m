@@ -7,6 +7,7 @@
 //
 
 #import "UserLoginViewController.h"
+#import "ThemeColors.h"
 
 @interface UserLoginViewController ()
 
@@ -14,7 +15,7 @@
 
 @implementation UserLoginViewController
 
-@synthesize delegate, logoImageView;
+@synthesize usernameField, passwordField, delegate, logoImageView, keyboardDoneView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -26,23 +27,42 @@
 }
 
 - (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-    [self.usernameField becomeFirstResponder];
     [self hideLoadingView];
 }
 
 - (void)viewDidLoad
 {
-    [super viewDidLoad];
+    self.view.backgroundColor = [ThemeColors backgroundImage];
+    
 	// Do any additional setup after loading the view.
-    self.usernameField.delegate = self;
-    self.passwordField.delegate = self;
+    usernameField.delegate = self;
+    passwordField.delegate = self;
     delegate = (UINavigationController<LoginUserDelegate> *)self.navigationController.delegate;
     
     // Setup logo image
     logoImageView.image = [UIImage imageNamed:@"topfish-logo.png"];
     logoImageView.contentMode = UIViewContentModeScaleAspectFit;
     logoImageView.alpha = 0.25;
+    
+    // Add Done button to Keyboard
+    usernameField.inputAccessoryView = [self inputAccessoryView];
+    passwordField.inputAccessoryView = [self inputAccessoryView];
+}
+
+- (UIView *)inputAccessoryView {
+    if (!keyboardDoneView) {
+        CGRect accessFrame = CGRectMake(0.0, 0.0, 320.0, 45.0);
+        keyboardDoneView = [[UIToolbar alloc] initWithFrame:accessFrame];
+        keyboardDoneView.barStyle = UIBarStyleDefault;
+        UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleBordered target:self action:@selector(doneButtonClicked)];
+        UIBarButtonItem *flexibleSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+        [keyboardDoneView setItems:[NSArray arrayWithObjects:flexibleSpace,doneButton,nil]];
+    }
+    return keyboardDoneView;
+}
+
+- (void)doneButtonClicked {
+    [[[UIApplication sharedApplication] keyWindow] endEditing:YES];
 }
 
 - (void)didReceiveMemoryWarning
@@ -73,6 +93,9 @@
 }
 
 - (void)attemptLogin {
+    
+    
+    [[[UIApplication sharedApplication] keyWindow] endEditing:YES];
     
     [self buildLoadingView];
     

@@ -8,6 +8,7 @@
 
 #import "ProfileTableViewController.h"
 #import <Parse/Parse.h>
+#import "UserReportedNotification.h"
 
 @interface ProfileTableViewController ()
 
@@ -15,7 +16,13 @@
 
 @implementation ProfileTableViewController
 
-@synthesize loginLogoutButton, loggedInUser, usernameRowCell, emailRowCell, usernameLabel, emailLabel;
+@synthesize loginLogoutButton,
+loggedInUser,
+usernameRowCell,
+emailRowCell,
+usernameLabel,
+emailLabel,
+reportedCatchesButton;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -46,6 +53,17 @@
     [self.tableView beginUpdates];
     [self.tableView reloadRowsAtIndexPaths:@[usernameRowIndexPath, emailRowIndexPath] withRowAnimation:UITableViewRowAnimationNone];
     [self.tableView endUpdates];
+    
+    [self updateReportedButtonVisibility];
+}
+
+- (void)updateReportedButtonVisibility
+{
+    if ([UserReportedNotification canViewReportedCatches]) {
+        self.navigationItem.rightBarButtonItem = reportedCatchesButton;
+    } else {
+        self.navigationItem.rightBarButtonItem = nil;
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -80,6 +98,7 @@
     [PFUser logOut];
     [self setUsernameAndEmailLabels];
     [self setLoginLogoutButtonLabel];
+    [self updateReportedButtonVisibility];
 }
 
 - (IBAction)loginLogoutButtonClicked:(UIButton *)sender {

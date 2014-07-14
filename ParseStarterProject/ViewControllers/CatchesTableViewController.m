@@ -1,5 +1,5 @@
 //
-//  ProfileCatchesTableViewController.m
+//  CatchesTableViewController.m
 //  TopFish
 //
 //  Created by Brycen Rogers on 9/4/13.
@@ -162,6 +162,9 @@ userInfoViewLabel;
     }
     PFQuery *query = [Catch query];
     [query whereKey:@"user" equalTo:user];
+    if (![[PFUser currentUser].username isEqualToString:user.username]) {
+        [query whereKey:@"reported" notEqualTo:[NSNumber numberWithBool:YES]];
+    }
     [query orderByDescending:@"createdAt"];
     [query includeKey:@"user"];
     return query;
@@ -196,6 +199,18 @@ userInfoViewLabel;
     NSAttributedString *sizeStringAttributed = [[NSAttributedString alloc] initWithString:sizeString attributes:@{NSForegroundColorAttributeName: [UIColor grayColor],
                                                                                                                   NSFontAttributeName: [UIFont fontWithName:@"Helvetica" size:12.0]}];
     cell.sizeLabel.attributedText = sizeStringAttributed;
+    
+    // Change text color on reported catches
+    if (object[@"reported"] == [NSNumber numberWithBool:YES]) {
+        NSAttributedString *speciesStringRed = [[NSAttributedString alloc] initWithString:object[@"species"] attributes:@{NSForegroundColorAttributeName: [ThemeColors redColor],
+                                                                                                                       NSFontAttributeName: [UIFont fontWithName:@"Helvetica-Bold" size:16.0]}];
+        cell.speciesLabel.attributedText = speciesStringRed;
+        
+        NSAttributedString *reportedString = [[NSAttributedString alloc] initWithString:@"Reported for content!" attributes:@{NSForegroundColorAttributeName: [ThemeColors redColor],
+                                                                                                                       NSFontAttributeName: [UIFont fontWithName:@"Helvetica" size:12.0]}];
+        cell.sizeLabel.attributedText = reportedString;
+    }
+    
     return cell;
 }
 

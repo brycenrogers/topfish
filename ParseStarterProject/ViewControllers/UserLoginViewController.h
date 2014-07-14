@@ -8,8 +8,9 @@
 
 #import <Parse/Parse.h>
 #import "LoginUserDelegate.h"
+#import "ThemedViewController.h"
 
-@interface UserLoginViewController : UIViewController<UITextFieldDelegate, UIAlertViewDelegate>
+@interface UserLoginViewController : ThemedViewController<UITextFieldDelegate, UIAlertViewDelegate>
 {
     UIViewController *signupVC;
     UIView *loadingOverlay;
@@ -19,6 +20,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *passwordField;
 @property (weak, nonatomic) id<LoginUserDelegate> delegate;
 @property (strong, nonatomic) IBOutlet UIImageView *logoImageView;
+@property (strong, nonatomic) UIToolbar *keyboardDoneView;
 
 - (IBAction)loginButton:(UIButton *)sender;
 - (IBAction)signupButton:(UIButton *)sender;

@@ -136,6 +136,10 @@
 		18C17D49194403AC00C32389 /* ArrowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C17D48194403AC00C32389 /* ArrowView.m */; };
 		18C1C0B0180A18B9002AE1F8 /* MethodListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C1C0AF180A18B9002AE1F8 /* MethodListTableViewController.m */; };
 		18C1C0B3180A193C002AE1F8 /* FilterTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C1C0B2180A193C002AE1F8 /* FilterTableViewController.m */; };
+		18D260791971E6D4001CD1F3 /* UserReportedNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D260781971E6D4001CD1F3 /* UserReportedNotification.m */; };
+		18D2607C1971E9A1001CD1F3 /* CatchReportedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D2607B1971E9A1001CD1F3 /* CatchReportedView.m */; };
+		18D2607F19731667001CD1F3 /* TermsAndPrivacyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D2607E19731667001CD1F3 /* TermsAndPrivacyViewController.m */; };
+		18D26082197345F8001CD1F3 /* ReportedCatchesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D26081197345F8001CD1F3 /* ReportedCatchesViewController.m */; };
 		18D2F5851818AB8800E11C6D /* CatchesNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D2F5841818AB8800E11C6D /* CatchesNavigationController.m */; };
 		18DB96ED17C9103B00BFD184 /* TakePhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DB96EC17C9103B00BFD184 /* TakePhotoViewController.m */; };
 		18DB96F017C9884900BFD184 /* CustomTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DB96EF17C9884900BFD184 /* CustomTabBarController.m */; };
@@ -336,6 +340,14 @@
 		18C1C0AF180A18B9002AE1F8 /* MethodListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MethodListTableViewController.m; path = ViewControllers/MethodListTableViewController.m; sourceTree = "<group>"; };
 		18C1C0B1180A193C002AE1F8 /* FilterTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FilterTableViewController.h; path = ViewControllers/FilterTableViewController.h; sourceTree = "<group>"; };
 		18C1C0B2180A193C002AE1F8 /* FilterTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FilterTableViewController.m; path = ViewControllers/FilterTableViewController.m; sourceTree = "<group>"; };
+		18D260771971E6D4001CD1F3 /* UserReportedNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserReportedNotification.h; path = Models/UserReportedNotification.h; sourceTree = "<group>"; };
+		18D260781971E6D4001CD1F3 /* UserReportedNotification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserReportedNotification.m; path = Models/UserReportedNotification.m; sourceTree = "<group>"; };
+		18D2607A1971E9A1001CD1F3 /* CatchReportedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CatchReportedView.h; path = Views/CatchReportedView.h; sourceTree = "<group>"; };
+		18D2607B1971E9A1001CD1F3 /* CatchReportedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CatchReportedView.m; path = Views/CatchReportedView.m; sourceTree = "<group>"; };
+		18D2607D19731667001CD1F3 /* TermsAndPrivacyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TermsAndPrivacyViewController.h; path = ViewControllers/TermsAndPrivacyViewController.h; sourceTree = "<group>"; };
+		18D2607E19731667001CD1F3 /* TermsAndPrivacyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TermsAndPrivacyViewController.m; path = ViewControllers/TermsAndPrivacyViewController.m; sourceTree = "<group>"; };
+		18D26080197345F8001CD1F3 /* ReportedCatchesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ReportedCatchesViewController.h; path = ViewControllers/ReportedCatchesViewController.h; sourceTree = "<group>"; };
+		18D26081197345F8001CD1F3 /* ReportedCatchesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ReportedCatchesViewController.m; path = ViewControllers/ReportedCatchesViewController.m; sourceTree = "<group>"; };
 		18D2F5831818AB8800E11C6D /* CatchesNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CatchesNavigationController.h; path = ViewControllers/CatchesNavigationController.h; sourceTree = "<group>"; };
 		18D2F5841818AB8800E11C6D /* CatchesNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CatchesNavigationController.m; path = ViewControllers/CatchesNavigationController.m; sourceTree = "<group>"; };
 		18D2F6141879C82700FC5B4C /* CatchMapDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CatchMapDelegate.h; sourceTree = "<group>"; };
@@ -552,6 +564,8 @@
 				1818F01917D81E5A00EF425C /* ProfileTableViewController.m */,
 				1818F01B17D81E9D00EF425C /* ProfileNavigationController.h */,
 				1818F01C17D81E9D00EF425C /* ProfileNavigationController.m */,
+				18D26080197345F8001CD1F3 /* ReportedCatchesViewController.h */,
+				18D26081197345F8001CD1F3 /* ReportedCatchesViewController.m */,
 			);
 			name = Profile;
 			sourceTree = "<group>";
@@ -661,6 +675,8 @@
 				188ED2BD18A3428700F96E4B /* AllMethodsSwitch.m */,
 				1829163A1933EAEC0063D4D2 /* BSVote.h */,
 				1829163B1933EAEC0063D4D2 /* BSVote.m */,
+				18D260771971E6D4001CD1F3 /* UserReportedNotification.h */,
+				18D260781971E6D4001CD1F3 /* UserReportedNotification.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -698,6 +714,8 @@
 				18B1012E1808DE5300330ECB /* UserLoginViewController.m */,
 				18B101301808DED800330ECB /* UserSignupViewController.h */,
 				18B101311808DED800330ECB /* UserSignupViewController.m */,
+				18D2607D19731667001CD1F3 /* TermsAndPrivacyViewController.h */,
+				18D2607E19731667001CD1F3 /* TermsAndPrivacyViewController.m */,
 			);
 			name = Login;
 			sourceTree = "<group>";
@@ -741,6 +759,8 @@
 				18C17D48194403AC00C32389 /* ArrowView.m */,
 				18F8D041194891CB00593ADA /* CatchDeletedView.h */,
 				18F8D042194891CB00593ADA /* CatchDeletedView.m */,
+				18D2607A1971E9A1001CD1F3 /* CatchReportedView.h */,
+				18D2607B1971E9A1001CD1F3 /* CatchReportedView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -945,8 +965,10 @@
 				18534DA918142CE4007F046A /* LeaderboardTableViewCell.m in Sources */,
 				18DB96F917CA518800BFD184 /* AddCatchMapLocationViewController.m in Sources */,
 				18493D49191EEDF800E8D72E /* ThemeColors.m in Sources */,
+				18D260791971E6D4001CD1F3 /* UserReportedNotification.m in Sources */,
 				18DB96FC17CBB92100BFD184 /* CatchMapAnnotation.m in Sources */,
 				185E58BC17D529BA006375B3 /* AddCatchNavigationController.m in Sources */,
+				18D2607F19731667001CD1F3 /* TermsAndPrivacyViewController.m in Sources */,
 				18493D43191581B500E8D72E /* CatchUpdatedView.m in Sources */,
 				185E58BF17D52EF9006375B3 /* CatchAddedViewController.m in Sources */,
 				18DE0A1D18274D6300F6C607 /* ThemedPFQueryTableViewController.m in Sources */,
@@ -954,10 +976,12 @@
 				18A009F219297CB400FBCFBC /* CatchMapAnnotationView.m in Sources */,
 				185E58C217D5405C006375B3 /* AddCatchNotesViewController.m in Sources */,
 				185E58C517D560DC006375B3 /* CatchPhoto.m in Sources */,
+				18D2607C1971E9A1001CD1F3 /* CatchReportedView.m in Sources */,
 				18F8D043194891CB00593ADA /* CatchDeletedView.m in Sources */,
 				1829162D1932C0740063D4D2 /* CatchesMapNavigationController.m in Sources */,
 				185BA39D17EF45DF001E2481 /* WeightMeasurementOptionsTableViewController.m in Sources */,
 				180D50971925A38D006DBE98 /* ThemedViewController.m in Sources */,
+				18D26082197345F8001CD1F3 /* ReportedCatchesViewController.m in Sources */,
 				180D509A1925B3AE006DBE98 /* LoginNavigationController.m in Sources */,
 				185E58C917D6C60C006375B3 /* CatchesMapViewController.m in Sources */,
 				18C17D4619436C8200C32389 /* ThemeFonts.m in Sources */,

@@ -7,12 +7,17 @@
 //
 
 #import "ProfileNavigationController.h"
+#import "CatchUpdatedView.h"
+#import "CatchDeletedView.h"
+#import "CatchReportedView.h"
 
 @interface ProfileNavigationController ()
 
 @end
 
 @implementation ProfileNavigationController
+
+@synthesize catchUpdated;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -33,6 +38,21 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)showCatchUpdatedMessage
+{
+    [CatchUpdatedView animateCatchUpdatedViewforView:self.view];
+}
+
+- (void)showCatchDeletedMessage
+{
+    [CatchDeletedView animateCatchDeletedViewforView:self.view];
+}
+
+- (void)showCatchReportedMessage
+{
+    [CatchReportedView animateCatchReportedViewforView:self.view];
 }
 
 @end

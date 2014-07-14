@@ -16,6 +16,7 @@
 #import "CatchesNavigationController.h"
 #import "ThemeColors.h"
 #import "BSVote.h"
+#import "UserReportedNotification.h"
 
 @interface CatchDetailTableViewController ()
 
@@ -37,7 +38,8 @@ editButton,
 deleteButton,
 fromSelectedCatchUsersCatches,
 catchNotesLabel,
-callBSButton;
+callBSButton,
+reportButton;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -101,7 +103,7 @@ callBSButton;
         return;
     }
     if (alertView.tag == 3 && buttonIndex == 1) {
-        [self castBSVote];
+        [self reportContent];
         return;
     }
 }
@@ -164,6 +166,21 @@ callBSButton;
     } else {
         catchImageView.image = [UIImage imageNamed:@"fish-default-photo.png"];
     }
+    
+    // If the catch has been reported, show "Reported" view
+    if (selectedCatch[@"reported"] == [NSNumber numberWithBool:YES]) {
+        UIView *reportedView = [[UIView alloc] initWithFrame:CGRectMake(0, 30, self.view.frame.size.width, 40)];
+        reportedView.backgroundColor = [ThemeColors redColor];
+        
+        UILabel *reportedLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, reportedView.frame.size.width, reportedView.frame.size.height)];
+        reportedLabel.textAlignment = NSTextAlignmentCenter;
+        NSAttributedString *reportedString = [[NSAttributedString alloc] initWithString:@"Reported for content!"
+                                                                             attributes:@{NSForegroundColorAttributeName: [UIColor whiteColor],
+                                                                                                                              NSFontAttributeName: [UIFont fontWithName:@"Helvetica-Bold" size:16.0]}];
+        reportedLabel.attributedText = reportedString;
+        [reportedView addSubview:reportedLabel];
+        [catchImageView addSubview:reportedView];
+    }
 }
 
 - (void)updateObject
@@ -184,10 +201,11 @@ callBSButton;
         if (editButton == nil) {
             UIButton *btn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
             [btn addTarget:self action:@selector(editButtonClicked) forControlEvents:UIControlEventTouchUpInside];
-            btn.frame = CGRectMake(224.0, 75.0, 30.0, 30.0);
+            btn.frame = CGRectMake(228.0, 75.0, 30.0, 30.0);
             [btn setImage:[UIImage imageNamed:@"pen-mini-white.png"] forState:UIControlStateNormal];
             [btn setBackgroundColor:[ThemeColors orangeColor]];
             [btn setTintColor:[UIColor whiteColor]];
+            btn.layer.cornerRadius = btn.bounds.size.width / 2.0;
             editButton = btn;
             NSIndexPath *index = [NSIndexPath indexPathForRow:1 inSection:0];
             [[self.tableView cellForRowAtIndexPath:index].contentView addSubview:editButton];
@@ -196,16 +214,18 @@ callBSButton;
         if (deleteButton == nil) {
             UIButton *btn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
             [btn addTarget:self action:@selector(deleteButtonClicked) forControlEvents:UIControlEventTouchUpInside];
-            btn.frame = CGRectMake(66.0, 75.0, 30.0, 30.0);
+            btn.frame = CGRectMake(62.0, 75.0, 30.0, 30.0);
             [btn setImage:[UIImage imageNamed:@"multiply-symbol-mini-white.png"] forState:UIControlStateNormal];
             [btn setBackgroundColor:[ThemeColors redColor]];
             [btn setTintColor:[UIColor whiteColor]];
+            btn.layer.cornerRadius = btn.bounds.size.width / 2.0;
             deleteButton = btn;
             NSIndexPath *index = [NSIndexPath indexPathForRow:1 inSection:0];
             [[self.tableView cellForRowAtIndexPath:index].contentView addSubview:deleteButton];
         }
         deleteButton.hidden = NO;
         callBSButton.hidden = YES;
+        reportButton.hidden = YES;
     } else {
         if (editButton != nil) {
             editButton.hidden = YES;
@@ -214,6 +234,7 @@ callBSButton;
             deleteButton.hidden = YES;
         }
         callBSButton.hidden = NO;
+        reportButton.hidden = NO;
     }
 }
 
@@ -368,7 +389,6 @@ callBSButton;
     } else {
         [self performSegueWithIdentifier:@"showCatchesFromUser" sender:nil];
     }
-    
 }
 
 - (void)changeLocationFieldIconToColor:(NSString *)color {}
@@ -384,24 +404,57 @@ callBSButton;
     [alert show];
 }
 
-- (IBAction)pressFlagButton:(UIButton *)sender {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Flag Content"
-                                                    message:@"You may flag content if it contains inappropriate photos or notes. Content that is flagged will be reviewed and removed within 24 hours if deemed inappropriate."
+- (IBAction)pressReportButton:(UIButton *)sender {
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Report Content"
+                                                    message:@"You may report content if it contains inappropriate photos or notes. Content that is reported will be reviewed and removed within 24 hours if deemed inappropriate."
                                                    delegate:self
                                           cancelButtonTitle:@"Cancel"
-                                          otherButtonTitles:@"Flag Content", nil];
+                                          otherButtonTitles:@"Report Content", nil];
     alert.tag = 3;
     [alert show];
 }
 
-- (void)flagContent
+- (void)reportContent
 {
-    // User's catch goes into "flagged" mode
-    selectedCatch.flagged = YES;
-    
-    // User receives Push notification??
-    
-    // Moderator reviews offending content and decides
+    // Validate that user can report catch
+    if ([UserReportedNotification canReportCatch:selectedCatch]) {
+        
+        // User's catch goes into "reported" mode
+        selectedCatch.reported = YES;
+        [selectedCatch saveInBackground];
+        
+        // Add UserReportedNotification for user
+        UserReportedNotification *ufn = [UserReportedNotification object];
+        Catch *catch = selectedCatch;
+        PFUser *currentUser = [PFUser currentUser];
+        PFUser *catchUser = selectedCatch.user;
+        ufn.reportedCatch = catch;
+        ufn.userWhoReported = currentUser;
+        ufn.user = catchUser;
+        [ufn.ACL setPublicWriteAccess:YES];
+        [ufn.ACL setPublicReadAccess:YES];
+        
+        // Save Notification
+        UINavigationController<CatchUpdatedNavigationControllerProtocol> *parentNC = (UINavigationController<CatchUpdatedNavigationControllerProtocol> *)self.navigationController;
+        [ufn saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+            if (succeeded) {
+                
+                [PFCloud callFunctionInBackground:@"sendMail"
+                                   withParameters:[UserReportedNotification reportedCatchEmailInfo:catch]
+                                            block:^(id object, NSError *error) {
+                                                if (!error) {
+                                                    NSLog(@"Reported Catch Email Sent");
+                                                }
+                }];
+                
+                // Show "Catch Reported" message
+                [parentNC showCatchReportedMessage];
+            }
+        }];
+        
+        // Return to previous view
+        [self.navigationController popViewControllerAnimated:YES];
+    }
 }
 
 - (void)castBSVote

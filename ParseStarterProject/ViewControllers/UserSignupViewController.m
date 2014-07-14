@@ -14,7 +14,7 @@
 
 @implementation UserSignupViewController
 
-@synthesize loadingOverlay, usernameField, emailField, passwordField, passwordConfirmField;
+@synthesize loadingOverlay, usernameField, emailField, passwordField, passwordConfirmField, keyboardDoneView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -27,7 +27,26 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    [self.usernameField becomeFirstResponder];
+    usernameField.inputAccessoryView = [self inputAccessoryView];
+    emailField.inputAccessoryView = [self inputAccessoryView];
+    passwordField.inputAccessoryView = [self inputAccessoryView];
+    passwordConfirmField.inputAccessoryView = [self inputAccessoryView];
+}
+
+- (UIView *)inputAccessoryView {
+    if (!keyboardDoneView) {
+        CGRect accessFrame = CGRectMake(0.0, 0.0, 320.0, 45.0);
+        keyboardDoneView = [[UIToolbar alloc] initWithFrame:accessFrame];
+        keyboardDoneView.barStyle = UIBarStyleDefault;
+        UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleBordered target:self action:@selector(doneButtonClicked)];
+        UIBarButtonItem *flexibleSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+        [keyboardDoneView setItems:[NSArray arrayWithObjects:flexibleSpace,doneButton,nil]];
+    }
+    return keyboardDoneView;
+}
+
+- (void)doneButtonClicked {
+    [[[UIApplication sharedApplication] keyWindow] endEditing:YES];
 }
 
 - (void)viewDidLoad
@@ -86,9 +105,13 @@
                                           cancelButtonTitle:@"OK"
                                           otherButtonTitles:nil];
     [alert show];
+    [self hideLoadingView];
 }
 
 - (void)attemptSignup {
+    
+    // Hide keyboard regardless of text field
+    [[[UIApplication sharedApplication] keyWindow] endEditing:YES];
     
     [self buildLoadingView];
     
@@ -102,7 +125,7 @@
     PFUser *user = [PFUser user];
     user.username = self.usernameField.text;
     user.password = self.passwordField.text;
-    user.email = self.emailField.text;\
+    user.email = self.emailField.text;
     
     [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (!error) {
