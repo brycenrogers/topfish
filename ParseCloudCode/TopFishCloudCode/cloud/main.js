@@ -30,3 +30,23 @@ Parse.Cloud.define("sendMail", function(request, response) {
       }
     });
 });
+
+Parse.Cloud.define("deleteUser", function(request, response) {
+  Parse.Cloud.httpRequest({
+    method: 'DELETE',
+    url: 'https://api.parse.com/1/users/' + request.params.userObjectId,
+    headers: {
+      "X-Parse-Application-Id": "TrlIuUXUHR2J3B8SBRFO9uaE14ivibSUBFQOih0Z",
+      "X-Parse-REST-API-Key": "GNTuCrdhTnQS5yQmrAqHppXqXAJxLfxA9rb60Dza",
+      "X-Parse-Master-Key": "C9xs8b6QtJlOpZUbVHFnHBkD8g90ZE5FjNqrHbms"
+    },
+    success: function(httpResponse) {
+      console.log(httpResponse.text);
+      response.success("User Deleted"); 
+    },
+    error: function(httpResponse) {
+      console.error('Request failed with response code ' + httpResponse.status);
+      response.error("Could not delete user. Error code: " + httpResponse.status); 
+    }
+  });
+});

@@ -21,5 +21,6 @@
 + (BOOL)canViewReportedCatches;
 
 + (NSDictionary *)reportedCatchEmailInfo:(Catch *)reportedCatch;
++ (NSDictionary *)reportedUserEmailInfo:(PFUser *)reportedUser;
 
 @end

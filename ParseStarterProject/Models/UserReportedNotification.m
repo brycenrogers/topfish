@@ -69,4 +69,20 @@
     return emailInfo;
 }
 
++ (NSDictionary *)reportedUserEmailInfo:(PFUser *)reportedUser
+{
+    NSString *bodyText = [NSString stringWithFormat:@"Your account with username \"%@\" on TopFish - Freshwater has been removed for violating the Terms of Use by submitting obscene or inappropriate content.", reportedUser.username];
+    
+    NSDictionary *emailInfo = @{@"toEmail1": reportedUser.email,
+                                @"toName1": reportedUser.email,
+                                @"toEmail2": @"",
+                                @"toName2": @"",
+                                @"fromEmail": @"report@topfishapp.com",
+                                @"fromName": @"TopFish Reports",
+                                @"subject": @"Your TopFish Account has been Removed",
+                                @"text": bodyText};
+    
+    return emailInfo;
+}
+
 @end

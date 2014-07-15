@@ -229,9 +229,38 @@ reportButton;
 - (void)rejectReportedCatch
 {
     if ([UserReportedNotification canViewReportedCatches]) {
-        // Delete Catch and show message
-        [selectedCatch deleteInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-            if (succeeded) {
+        // Delete User and all their catches, then show message
+        PFQuery *userCatchesQuery = [Catch query];
+        [userCatchesQuery whereKey:@"user" equalTo:selectedCatch.user];
+        [userCatchesQuery includeKey:@"user"];
+        [userCatchesQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+            if (!error) {
+                
+                Catch *firstCatch = [objects objectAtIndex:0];
+                PFUser *user = firstCatch.user;
+                
+                // Loop over each User's Catches and delete
+                for (Catch *catch in objects) {
+                    [catch deleteInBackground];
+                }
+                
+                [PFCloud callFunctionInBackground:@"sendMail"
+                                   withParameters:[UserReportedNotification reportedUserEmailInfo:user]
+                                            block:^(id object, NSError *error) {
+                                                if (!error) {
+                                                    NSLog(@"User Removed email sent");
+                                                }
+                                            }];
+                
+                // Delete user too
+                [PFCloud callFunctionInBackground:@"deleteUser"
+                                   withParameters:@{@"userObjectId": user.objectId}
+                                            block:^(id object, NSError *error) {
+                                                if (!error) {
+                                                    NSLog(@"User Deleted");
+                                                }
+                                            }];
+                
                 UINavigationController<CatchUpdatedNavigationControllerProtocol> *navController = (UINavigationController<CatchUpdatedNavigationControllerProtocol> *)self.navigationController;
                 [navController showCatchRejectedMessage];
                 [navController popViewControllerAnimated:YES];
@@ -254,7 +283,7 @@ reportButton;
 - (void)rejectButtonClicked
 {
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Reject Content"
-                                                    message:@"Rejected Catches are deemed inappropriate and are permanently deleted from the app. Are you sure?"
+                                                    message:@"If you reject this catch, the user and all of their catches will be permenantly deleted from the app. Are you sure?"
                                                    delegate:self
                                           cancelButtonTitle:@"Cancel"
                                           otherButtonTitles:@"Reject", nil];
