@@ -10,6 +10,8 @@
 #import "CatchUpdatedView.h"
 #import "CatchDeletedView.h"
 #import "CatchReportedView.h"
+#import "CatchRejectedView.h"
+#import "CatchApprovedView.h"
 
 @interface ProfileNavigationController ()
 
@@ -53,6 +55,16 @@
 - (void)showCatchReportedMessage
 {
     [CatchReportedView animateCatchReportedViewforView:self.view];
+}
+
+- (void)showCatchApprovedMessage
+{
+    [CatchApprovedView animateCatchApprovedViewforView:self.view];
+}
+
+- (void)showCatchRejectedMessage
+{
+    [CatchRejectedView animateCatchRejectedViewforView:self.view];
 }
 
 @end

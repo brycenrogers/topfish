@@ -22,17 +22,17 @@
 
 + (CatchReportedView *)getView
 {
-    CatchReportedView *voteCastView = [[CatchReportedView alloc] init];
-    voteCastView.backgroundColor = [ThemeColors redColor];
-    voteCastView.frame = CGRectMake(0, -64.0, 320.0, 64.0);
-    voteCastView.alpha = 0.5;
-    UILabel *catchUpdatedLabel = [[UILabel alloc] init];
-    catchUpdatedLabel.text = @"Catch Reported!";
-    catchUpdatedLabel.frame = CGRectMake(0.0, 10.0, voteCastView.frame.size.width, voteCastView.frame.size.height);
-    catchUpdatedLabel.textAlignment = NSTextAlignmentCenter;
-    catchUpdatedLabel.textColor = [UIColor whiteColor];
-    [voteCastView addSubview:catchUpdatedLabel];
-    return voteCastView;
+    CatchReportedView *catchReportedView = [[CatchReportedView alloc] init];
+    catchReportedView.backgroundColor = [ThemeColors redColor];
+    catchReportedView.frame = CGRectMake(0, -64.0, 320.0, 64.0);
+    catchReportedView.alpha = 0.5;
+    UILabel *catchReportedLabel = [[UILabel alloc] init];
+    catchReportedLabel.text = @"Catch Reported!";
+    catchReportedLabel.frame = CGRectMake(0.0, 10.0, catchReportedView.frame.size.width, catchReportedView.frame.size.height);
+    catchReportedLabel.textAlignment = NSTextAlignmentCenter;
+    catchReportedLabel.textColor = [UIColor whiteColor];
+    [catchReportedView addSubview:catchReportedLabel];
+    return catchReportedView;
 }
 
 + (void)animateCatchReportedViewforView:(UIView *)view

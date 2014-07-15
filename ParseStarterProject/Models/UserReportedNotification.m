@@ -30,6 +30,10 @@
     if ([currentUser.username isEqualToString:reportedCatch.user.username]) {
         return NO;
     }
+    // If it has been reported, it cannot be reported again
+    if (reportedCatch.reported == YES) {
+        return NO;
+    }
     return YES;
 }
 
@@ -41,7 +45,9 @@
     }
     // Only specific users can edit catches
     PFUser *currentUser = [PFUser currentUser];
-    if ([currentUser.objectId isEqualToString:@"w3y3hJZpxJ"]) {
+    if ([currentUser.email isEqualToString:@"brycenrogers@gmail.com"] ||
+        [currentUser.email isEqualToString:@"llombardi87@gmail.com"] ||
+        [currentUser.email isEqualToString:@"difect@gmail.com"]) {
         return YES;
     }
     return NO;
@@ -49,10 +55,12 @@
 
 + (NSDictionary *)reportedCatchEmailInfo:(Catch *)reportedCatch
 {
-    NSString *bodyText = [NSString stringWithFormat:@"Catch ID: %@", reportedCatch.objectId];
+    NSString *bodyText = [NSString stringWithFormat:@"Catch ID: %@\nGo to Profile > Reported in the TopFish - Freshwater app to review this catch.", reportedCatch.objectId];
     
-    NSDictionary *emailInfo = @{@"toEmail": @"brycenrogers@gmail.com",
-                                @"toName": @"Brycen Rogers",
+    NSDictionary *emailInfo = @{@"toEmail1": @"brycenrogers@gmail.com",
+                                @"toName1": @"TopFish Moderators",
+                                @"toEmail2": @"llombardi87@gmail.com",
+                                @"toName2": @"TopFish Moderators",
                                 @"fromEmail": @"report@topfishapp.com",
                                 @"fromName": @"TopFish Reported Catch",
                                 @"subject": @"TopFish Inappropriate Catch Reported",

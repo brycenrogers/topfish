@@ -140,6 +140,8 @@
 		18D2607C1971E9A1001CD1F3 /* CatchReportedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D2607B1971E9A1001CD1F3 /* CatchReportedView.m */; };
 		18D2607F19731667001CD1F3 /* TermsAndPrivacyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D2607E19731667001CD1F3 /* TermsAndPrivacyViewController.m */; };
 		18D26082197345F8001CD1F3 /* ReportedCatchesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D26081197345F8001CD1F3 /* ReportedCatchesViewController.m */; };
+		18D260851974E4AB001CD1F3 /* CatchApprovedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D260841974E4AB001CD1F3 /* CatchApprovedView.m */; };
+		18D260881974E586001CD1F3 /* CatchRejectedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D260871974E586001CD1F3 /* CatchRejectedView.m */; };
 		18D2F5851818AB8800E11C6D /* CatchesNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D2F5841818AB8800E11C6D /* CatchesNavigationController.m */; };
 		18DB96ED17C9103B00BFD184 /* TakePhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DB96EC17C9103B00BFD184 /* TakePhotoViewController.m */; };
 		18DB96F017C9884900BFD184 /* CustomTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DB96EF17C9884900BFD184 /* CustomTabBarController.m */; };
@@ -348,6 +350,10 @@
 		18D2607E19731667001CD1F3 /* TermsAndPrivacyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TermsAndPrivacyViewController.m; path = ViewControllers/TermsAndPrivacyViewController.m; sourceTree = "<group>"; };
 		18D26080197345F8001CD1F3 /* ReportedCatchesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ReportedCatchesViewController.h; path = ViewControllers/ReportedCatchesViewController.h; sourceTree = "<group>"; };
 		18D26081197345F8001CD1F3 /* ReportedCatchesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ReportedCatchesViewController.m; path = ViewControllers/ReportedCatchesViewController.m; sourceTree = "<group>"; };
+		18D260831974E4AB001CD1F3 /* CatchApprovedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CatchApprovedView.h; path = Views/CatchApprovedView.h; sourceTree = "<group>"; };
+		18D260841974E4AB001CD1F3 /* CatchApprovedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CatchApprovedView.m; path = Views/CatchApprovedView.m; sourceTree = "<group>"; };
+		18D260861974E586001CD1F3 /* CatchRejectedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CatchRejectedView.h; path = Views/CatchRejectedView.h; sourceTree = "<group>"; };
+		18D260871974E586001CD1F3 /* CatchRejectedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CatchRejectedView.m; path = Views/CatchRejectedView.m; sourceTree = "<group>"; };
 		18D2F5831818AB8800E11C6D /* CatchesNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CatchesNavigationController.h; path = ViewControllers/CatchesNavigationController.h; sourceTree = "<group>"; };
 		18D2F5841818AB8800E11C6D /* CatchesNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CatchesNavigationController.m; path = ViewControllers/CatchesNavigationController.m; sourceTree = "<group>"; };
 		18D2F6141879C82700FC5B4C /* CatchMapDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CatchMapDelegate.h; sourceTree = "<group>"; };
@@ -761,6 +767,10 @@
 				18F8D042194891CB00593ADA /* CatchDeletedView.m */,
 				18D2607A1971E9A1001CD1F3 /* CatchReportedView.h */,
 				18D2607B1971E9A1001CD1F3 /* CatchReportedView.m */,
+				18D260831974E4AB001CD1F3 /* CatchApprovedView.h */,
+				18D260841974E4AB001CD1F3 /* CatchApprovedView.m */,
+				18D260861974E586001CD1F3 /* CatchRejectedView.h */,
+				18D260871974E586001CD1F3 /* CatchRejectedView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -980,6 +990,7 @@
 				18F8D043194891CB00593ADA /* CatchDeletedView.m in Sources */,
 				1829162D1932C0740063D4D2 /* CatchesMapNavigationController.m in Sources */,
 				185BA39D17EF45DF001E2481 /* WeightMeasurementOptionsTableViewController.m in Sources */,
+				18D260881974E586001CD1F3 /* CatchRejectedView.m in Sources */,
 				180D50971925A38D006DBE98 /* ThemedViewController.m in Sources */,
 				18D26082197345F8001CD1F3 /* ReportedCatchesViewController.m in Sources */,
 				180D509A1925B3AE006DBE98 /* LoginNavigationController.m in Sources */,
@@ -996,6 +1007,7 @@
 				1818F01517D8046F00EF425C /* CatchesTableViewController.m in Sources */,
 				1818F01A17D81E5A00EF425C /* ProfileTableViewController.m in Sources */,
 				1818F01D17D81E9D00EF425C /* ProfileNavigationController.m in Sources */,
+				18D260851974E4AB001CD1F3 /* CatchApprovedView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

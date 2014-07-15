@@ -12,6 +12,8 @@
 #import "CatchesTableViewController.h"
 #import "CatchDeletedView.h"
 #import "CatchReportedView.h"
+#import "CatchApprovedView.h"
+#import "CatchRejectedView.h"
 
 @interface CatchesNavigationController ()
 
@@ -68,6 +70,16 @@
 - (void)showCatchReportedMessage
 {
     [CatchReportedView animateCatchReportedViewforView:self.view];
+}
+
+- (void)showCatchApprovedMessage
+{
+    [CatchApprovedView animateCatchApprovedViewforView:self.view];
+}
+
+- (void)showCatchRejectedMessage
+{
+    [CatchRejectedView animateCatchRejectedViewforView:self.view];
 }
 
 @end

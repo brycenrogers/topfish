@@ -106,6 +106,14 @@ reportButton;
         [self reportContent];
         return;
     }
+    if (alertView.tag == 4 && buttonIndex == 1) {
+        [self approveReportedCatch];
+        return;
+    }
+    if (alertView.tag == 5 && buttonIndex == 1) {
+        [self rejectReportedCatch];
+        return;
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -169,8 +177,8 @@ reportButton;
     
     // If the catch has been reported, show "Reported" view
     if (selectedCatch[@"reported"] == [NSNumber numberWithBool:YES]) {
-        UIView *reportedView = [[UIView alloc] initWithFrame:CGRectMake(0, 30, self.view.frame.size.width, 40)];
-        reportedView.backgroundColor = [ThemeColors redColor];
+        UIView *reportedView = [[UIView alloc] initWithFrame:CGRectMake(0, (catchImageView.frame.size.height - 40.0), self.view.frame.size.width, 40)];
+        reportedView.backgroundColor = [ThemeColors orangeColor];
         
         UILabel *reportedLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, reportedView.frame.size.width, reportedView.frame.size.height)];
         reportedLabel.textAlignment = NSTextAlignmentCenter;
@@ -180,7 +188,78 @@ reportButton;
         reportedLabel.attributedText = reportedString;
         [reportedView addSubview:reportedLabel];
         [catchImageView addSubview:reportedView];
+        
+        // If the user is mod, show the 'Allow' and 'Reject' buttons
+        if ([UserReportedNotification canViewReportedCatches]) {
+            
+            UIButton *approveBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+            [approveBtn addTarget:self action:@selector(approveButtonClicked) forControlEvents:UIControlEventTouchUpInside];
+            approveBtn.frame = CGRectMake(0, (catchImageView.frame.size.height - 40.0), 70.0, 40.0);
+            [approveBtn setTitle:@"Approve" forState:UIControlStateNormal];
+            [approveBtn setBackgroundColor:[ThemeColors greenColor]];
+            [approveBtn setTintColor:[UIColor whiteColor]];
+            [catchImageView addSubview:approveBtn];
+        
+            UIButton *rejectBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+            [rejectBtn addTarget:self action:@selector(rejectButtonClicked) forControlEvents:UIControlEventTouchUpInside];
+            rejectBtn.frame = CGRectMake((reportedView.frame.size.width - 70.0), (catchImageView.frame.size.height - 40.0), 70.0, 40.0);
+            [rejectBtn setTitle:@"Reject" forState:UIControlStateNormal];
+            [rejectBtn setBackgroundColor:[ThemeColors redColor]];
+            [rejectBtn setTintColor:[UIColor whiteColor]];
+            [catchImageView addSubview:rejectBtn];
+        }
     }
+}
+
+- (void)approveReportedCatch
+{
+    if ([UserReportedNotification canViewReportedCatches]) {
+        // Reset Catch by setting "reported" value to NO and show message
+        selectedCatch.reported = NO;
+        [selectedCatch saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+            if (succeeded) {
+                UINavigationController<CatchUpdatedNavigationControllerProtocol> *navController = (UINavigationController<CatchUpdatedNavigationControllerProtocol> *)self.navigationController;
+                [navController showCatchApprovedMessage];
+                [navController popViewControllerAnimated:YES];
+            }
+        }];
+    }
+}
+
+- (void)rejectReportedCatch
+{
+    if ([UserReportedNotification canViewReportedCatches]) {
+        // Delete Catch and show message
+        [selectedCatch deleteInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+            if (succeeded) {
+                UINavigationController<CatchUpdatedNavigationControllerProtocol> *navController = (UINavigationController<CatchUpdatedNavigationControllerProtocol> *)self.navigationController;
+                [navController showCatchRejectedMessage];
+                [navController popViewControllerAnimated:YES];
+            }
+        }];
+    }
+}
+
+- (void)approveButtonClicked
+{
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Approve Content"
+                                                    message:@"Only Approve a Reported catch if you are sure it is appropriate and non-offensive. Are you sure?"
+                                                   delegate:self
+                                          cancelButtonTitle:@"Cancel"
+                                          otherButtonTitles:@"Approve", nil];
+    alert.tag = 4;
+    [alert show];
+}
+
+- (void)rejectButtonClicked
+{
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Reject Content"
+                                                    message:@"Rejected Catches are deemed inappropriate and are permanently deleted from the app. Are you sure?"
+                                                   delegate:self
+                                          cancelButtonTitle:@"Cancel"
+                                          otherButtonTitles:@"Reject", nil];
+    alert.tag = 5;
+    [alert show];
 }
 
 - (void)updateObject
@@ -205,7 +284,6 @@ reportButton;
             [btn setImage:[UIImage imageNamed:@"pen-mini-white.png"] forState:UIControlStateNormal];
             [btn setBackgroundColor:[ThemeColors orangeColor]];
             [btn setTintColor:[UIColor whiteColor]];
-            btn.layer.cornerRadius = btn.bounds.size.width / 2.0;
             editButton = btn;
             NSIndexPath *index = [NSIndexPath indexPathForRow:1 inSection:0];
             [[self.tableView cellForRowAtIndexPath:index].contentView addSubview:editButton];
@@ -218,7 +296,6 @@ reportButton;
             [btn setImage:[UIImage imageNamed:@"multiply-symbol-mini-white.png"] forState:UIControlStateNormal];
             [btn setBackgroundColor:[ThemeColors redColor]];
             [btn setTintColor:[UIColor whiteColor]];
-            btn.layer.cornerRadius = btn.bounds.size.width / 2.0;
             deleteButton = btn;
             NSIndexPath *index = [NSIndexPath indexPathForRow:1 inSection:0];
             [[self.tableView cellForRowAtIndexPath:index].contentView addSubview:deleteButton];
@@ -283,7 +360,7 @@ reportButton;
     
     gradient = gradientFill;
     
-    [self.view.layer insertSublayer:gradient atIndex:1];
+    [catchImageView.layer insertSublayer:gradient atIndex:0];
 }
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch {

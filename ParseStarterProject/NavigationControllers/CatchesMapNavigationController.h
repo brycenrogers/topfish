@@ -17,5 +17,7 @@
 - (void)showCatchUpdatedMessage;
 - (void)showCatchDeletedMessage;
 - (void)showCatchReportedMessage;
+- (void)showCatchApprovedMessage;
+- (void)showCatchRejectedMessage;
 
 @end

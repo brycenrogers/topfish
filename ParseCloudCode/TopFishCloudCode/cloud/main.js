@@ -10,8 +10,12 @@ Parse.Cloud.define("sendMail", function(request, response) {
       from_name: request.params.fromName,
       to: [
         {
-          email: request.params.toEmail,
-          name: request.params.toName
+          email: request.params.toEmail1,
+          name: request.params.toName1
+        },
+        {
+          email: request.params.toEmail2,
+          name: request.params.toName2
         }
       ]
     }, async: true},

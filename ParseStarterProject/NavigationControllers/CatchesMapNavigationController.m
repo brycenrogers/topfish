@@ -10,6 +10,8 @@
 #import "CatchUpdatedView.h"
 #import "CatchDeletedView.h"
 #import "CatchReportedView.h"
+#import "CatchApprovedView.h"
+#import "CatchRejectedView.h"
 
 @interface CatchesMapNavigationController ()
 
@@ -51,6 +53,16 @@
 - (void)showCatchReportedMessage
 {
     [CatchReportedView animateCatchReportedViewforView:self.view];
+}
+
+- (void)showCatchApprovedMessage
+{
+    [CatchApprovedView animateCatchApprovedViewforView:self.view];
+}
+
+- (void)showCatchRejectedMessage
+{
+    [CatchRejectedView animateCatchRejectedViewforView:self.view];
 }
 
 /*
