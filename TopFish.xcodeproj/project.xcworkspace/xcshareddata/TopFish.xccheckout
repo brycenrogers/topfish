@@ -10,29 +10,29 @@
 	<string>TopFish</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>991313ED-0547-4871-9556-726F8C645051</key>
+		<key>0CEE4F762EC2A1055981816B83B9E54AB6A944ED</key>
 		<string>https://bitbucket.org/brycenrogers/topfish.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>TopFish.xcodeproj/project.xcworkspace</string>
+	<string>TopFish.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>991313ED-0547-4871-9556-726F8C645051</key>
+		<key>0CEE4F762EC2A1055981816B83B9E54AB6A944ED</key>
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://bitbucket.org/brycenrogers/topfish.git</string>
 	<key>IDESourceControlProjectVersion</key>
-	<integer>110</integer>
+	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>991313ED-0547-4871-9556-726F8C645051</string>
+	<string>0CEE4F762EC2A1055981816B83B9E54AB6A944ED</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>991313ED-0547-4871-9556-726F8C645051</string>
+			<string>0CEE4F762EC2A1055981816B83B9E54AB6A944ED</string>
 			<key>IDESourceControlWCCName</key>
 			<string>TopFish</string>
 		</dict>

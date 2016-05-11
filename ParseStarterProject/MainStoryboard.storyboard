@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="Crt-cQ-8uF">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="Crt-cQ-8uF">
     <dependencies>
-        <deployment defaultVersion="1792" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
     </dependencies>
     <scenes>
-        <!--Add Catch Info Table View Controller - Add Catch-->
+        <!--Add Catch-->
         <scene sceneID="gqX-Nh-NgX">
             <objects>
                 <tableViewController storyboardIdentifier="AddCatchInfoTableVC" id="VKv-ai-DfD" customClass="AddCatchInfoTableViewController" sceneMemberID="viewController">
@@ -85,12 +85,12 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="0.0" minimumFontSize="17" id="fVi-bW-tlm">
-                                                    <rect key="frame" x="121" y="7" width="95" height="30"/>
+                                                    <rect key="frame" x="121" y="6" width="95" height="30"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" keyboardType="decimalPad" returnKeyType="done"/>
                                                 </textField>
                                                 <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="lengthMeasurementButton" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="5ec-iC-PB2">
-                                                    <rect key="frame" x="226" y="5" width="74" height="31"/>
+                                                    <rect key="frame" x="226" y="4" width="74" height="32"/>
                                                     <state key="normal" title="▾  ">
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
@@ -116,12 +116,12 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="0.0" clearsOnBeginEditing="YES" minimumFontSize="17" id="0Z6-nL-dJU">
-                                                    <rect key="frame" x="121" y="7" width="95" height="30"/>
+                                                    <rect key="frame" x="121" y="8" width="95" height="30"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" keyboardType="decimalPad" returnKeyType="done"/>
                                                 </textField>
                                                 <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="weightMeasurementButton" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="0aq-Wb-Wpi">
-                                                    <rect key="frame" x="226" y="6" width="74" height="31"/>
+                                                    <rect key="frame" x="226" y="7" width="74" height="31"/>
                                                     <state key="normal" title="▾  ">
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
@@ -328,7 +328,7 @@
             </objects>
             <point key="canvasLocation" x="1233" y="-390"/>
         </scene>
-        <!--Add Catch Notes View Controller - Catch Notes-->
+        <!--Catch Notes-->
         <scene sceneID="k4d-wp-XDb">
             <objects>
                 <viewController id="gdP-aR-ots" customClass="AddCatchNotesViewController" sceneMemberID="viewController">
@@ -571,7 +571,7 @@
             </objects>
             <point key="canvasLocation" x="1721" y="-390"/>
         </scene>
-        <!--Catch Detail Table View Controller - Catch Details-->
+        <!--Catch Details-->
         <scene sceneID="oMO-lq-nZK">
             <objects>
                 <tableViewController id="Tgm-q9-U2M" customClass="CatchDetailTableViewController" sceneMemberID="viewController">
@@ -821,7 +821,7 @@
             </objects>
             <point key="canvasLocation" x="2148" y="-1072"/>
         </scene>
-        <!--Catch Photo Scroll View Controller - Photo-->
+        <!--Photo-->
         <scene sceneID="miF-JA-C8b">
             <objects>
                 <viewController id="UB5-8k-198" customClass="CatchPhotoScrollViewController" sceneMemberID="viewController">
@@ -845,7 +845,7 @@
             </objects>
             <point key="canvasLocation" x="2542" y="-1072"/>
         </scene>
-        <!--Species List Table View Controller - Species-->
+        <!--Species-->
         <scene sceneID="FIA-iV-LsK">
             <objects>
                 <tableViewController storyboardIdentifier="SpeciesListTableViewController" id="wz7-gc-i4a" customClass="SpeciesListTableViewController" sceneMemberID="viewController">
@@ -880,7 +880,7 @@
             </objects>
             <point key="canvasLocation" x="2148" y="-390"/>
         </scene>
-        <!--Method List Table View Controller - Method-->
+        <!--Method-->
         <scene sceneID="kLG-ch-BoN">
             <objects>
                 <tableViewController id="Xsj-Xh-rCK" customClass="MethodListTableViewController" sceneMemberID="viewController">
@@ -922,7 +922,6 @@
             <objects>
                 <navigationController storyboardIdentifier="AddCatchNC" definesPresentationContext="YES" id="vug-d2-F2g" customClass="AddCatchNavigationController" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="OqL-r8-ByA">
-                        <rect key="frame" x="0.0" y="0.0" width="0.0" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -948,7 +947,7 @@
             </objects>
             <point key="canvasLocation" x="-1110" y="-390"/>
         </scene>
-        <!--User Login View Controller - Login-->
+        <!--Login-->
         <scene sceneID="9ks-mp-ZR5">
             <objects>
                 <viewController storyboardIdentifier="LoginVC" id="NYF-Iw-Nds" customClass="UserLoginViewController" sceneMemberID="viewController">
@@ -1060,7 +1059,7 @@
             </objects>
             <point key="canvasLocation" x="-696" y="-390"/>
         </scene>
-        <!--User Signup View Controller - Create Account-->
+        <!--Create Account-->
         <scene sceneID="3wp-TF-WFV">
             <objects>
                 <viewController id="jPK-7F-T62" customClass="UserSignupViewController" sceneMemberID="viewController">
@@ -1164,7 +1163,7 @@
             </objects>
             <point key="canvasLocation" x="156" y="-390"/>
         </scene>
-        <!--Catches Map View Controller - Catch Map-->
+        <!--Catch Map-->
         <scene sceneID="6zs-bH-XL3">
             <objects>
                 <viewController storyboardIdentifier="MapVC" id="2Ys-CL-gX2" customClass="CatchesMapViewController" sceneMemberID="viewController">
@@ -1205,7 +1204,6 @@
                 <navigationController storyboardIdentifier="ProfileNC" definesPresentationContext="YES" id="asr-e3-e9B" customClass="ProfileNavigationController" sceneMemberID="viewController">
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Tld-w7-fXZ">
-                        <rect key="frame" x="0.0" y="0.0" width="0.0" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -1216,7 +1214,7 @@
             </objects>
             <point key="canvasLocation" x="153" y="1700"/>
         </scene>
-        <!--Profile Table View Controller - Profile-->
+        <!--Profile-->
         <scene sceneID="V5q-TK-N8M">
             <objects>
                 <tableViewController id="u9o-B4-ZXV" customClass="ProfileTableViewController" sceneMemberID="viewController">
@@ -1316,7 +1314,7 @@
             </objects>
             <point key="canvasLocation" x="687" y="1700"/>
         </scene>
-        <!--Reported Catches View Controller - Reported Catches-->
+        <!--Reported Catches-->
         <scene sceneID="53M-4P-4OG">
             <objects>
                 <tableViewController id="4VQ-6O-1qJ" customClass="ReportedCatchesViewController" sceneMemberID="viewController">
@@ -1379,7 +1377,7 @@
             </objects>
             <point key="canvasLocation" x="156" y="993"/>
         </scene>
-        <!--Catches Table View Controller - Catches-->
+        <!--Catches-->
         <scene sceneID="bI5-Ua-pu1">
             <objects>
                 <tableViewController storyboardIdentifier="CatchesTVC" id="5Eh-Y9-fsv" customClass="CatchesTableViewController" sceneMemberID="viewController">
@@ -1422,7 +1420,7 @@
             </objects>
             <point key="canvasLocation" x="687" y="990"/>
         </scene>
-        <!--Not Logged In Catches View Controller - Catches-->
+        <!--Catches-->
         <scene sceneID="2jj-zi-lMj">
             <objects>
                 <viewController storyboardIdentifier="NotLoggedInCatchesVC" title="Catches" id="Kfw-iF-YPm" customClass="NotLoggedInCatchesViewController" sceneMemberID="viewController">
@@ -1457,7 +1455,7 @@
             </objects>
             <point key="canvasLocation" x="-287" y="288"/>
         </scene>
-        <!--Leaderboard Table View Controller - Leaderboard-->
+        <!--Leaderboard-->
         <scene sceneID="XBj-15-4A9">
             <objects>
                 <tableViewController id="elB-Iy-rXn" customClass="LeaderboardTableViewController" sceneMemberID="viewController">
@@ -1539,7 +1537,7 @@
             </objects>
             <point key="canvasLocation" x="687" y="-1072"/>
         </scene>
-        <!--Filter Table View Controller - Filter Leaderboard-->
+        <!--Filter Leaderboard-->
         <scene sceneID="fCP-Xx-awo">
             <objects>
                 <tableViewController id="Mqq-wS-Xch" customClass="FilterTableViewController" sceneMemberID="viewController">
@@ -1558,7 +1556,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="All Methods" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="lBM-d7-1FK">
-                                                    <rect key="frame" x="20" y="11" width="177" height="21"/>
+                                                    <rect key="frame" x="20" y="10" width="177" height="20"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1578,7 +1576,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Filter by Method" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="S6u-IA-HHo">
-                                                    <rect key="frame" x="20" y="11" width="267" height="21"/>
+                                                    <rect key="frame" x="20" y="10" width="267" height="20"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
@@ -1597,7 +1595,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="All Species" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="H1E-Av-ujX">
-                                                    <rect key="frame" x="20" y="11" width="176" height="21"/>
+                                                    <rect key="frame" x="20" y="10" width="176" height="20"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1617,7 +1615,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Filter by Species" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="N5a-v4-Pn0">
-                                                    <rect key="frame" x="20" y="11" width="267" height="21"/>
+                                                    <rect key="frame" x="20" y="10" width="267" height="20"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
@@ -1636,7 +1634,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Apply Filter" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="BLR-JY-0T8">
-                                                    <rect key="frame" x="112" y="11" width="96" height="21"/>
+                                                    <rect key="frame" x="112" y="10" width="96" height="20"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1656,7 +1654,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Clear All Filters" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="FPA-LG-FW0">
-                                                    <rect key="frame" x="102" y="11" width="116" height="21"/>
+                                                    <rect key="frame" x="102" y="10" width="116" height="20"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.83543925382653061" green="0.0" blue="0.027186711721999792" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1733,7 +1731,6 @@
                 <navigationController storyboardIdentifier="LeaderboardNC" definesPresentationContext="YES" id="6e3-LO-A7E" customClass="LeaderboardNavigationController" sceneMemberID="viewController">
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="kk0-fq-YtS">
-                        <rect key="frame" x="0.0" y="0.0" width="0.0" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -1751,15 +1748,15 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="KFY-pa-lf1"/>
-        <segue reference="sRw-KT-edh"/>
         <segue reference="77Z-eG-1XR"/>
-        <segue reference="WdJ-xP-ZlC"/>
+        <segue reference="sRw-KT-edh"/>
+        <segue reference="KFY-pa-lf1"/>
         <segue reference="3jK-Ua-gAO"/>
-        <segue reference="MWN-Ke-I0o"/>
-        <segue reference="j3C-57-iVi"/>
+        <segue reference="WdJ-xP-ZlC"/>
         <segue reference="ocG-Wj-rP4"/>
         <segue reference="RIB-mm-YyM"/>
+        <segue reference="MWN-Ke-I0o"/>
+        <segue reference="j3C-57-iVi"/>
         <segue reference="ECu-Ds-uRV"/>
     </inferredMetricsTieBreakers>
 </document>
